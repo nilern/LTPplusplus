@@ -20,6 +20,12 @@
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 \usepackage{amsmath}                        % Lisää kaavavoimaa!
 \usepackage{enumerate}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
 
 \title{Lämpötekniikan perusteita}
 \date{\today}
@@ -35,350 +41,445 @@
 \newpage
 \pagenumbering{arabic}
 
-\chapter{Johdanto}
+% \chapter{Johdanto}
+% 
+% \part{Perustietoja} % ___________________________________________________________________
 
-\part{Perustietoja} % ___________________________________________________________________
+\chapter{Systeemi} % -----------------------------------------------
+% % Avoin, suljettu, adiabaattinen
 
-\chapter{Kontrollitilavuus ja systeemi} % -----------------------------------------------
-% Avoin, suljettu, adiabaattinen
+Systeemin käsite on lämpötieteissä hyvin keskeinen ja hyödyllinen.
 
-\chapter{Suureet} %---------------------------------------------------------------------
-% Tarvittavat prujuista ja kirjoista
+\section{Kontrollitilavuus} \label{section:kontrollitilavuus}
 
-\section{Aika ja avaruus}
+\textbf{Kontrollitilavuus} on mielivaltaisen avaruudessa sijaitsevan \textit{kontrollipinnan} sisältämä tilavuus. 
+Pinnan sijainti ja muoto voi myös riippua ajasta. 
 
-\subsection{Aika}
+Kontrollitilavuus voidaan siis valita täysin vapaasti, 
+mutta usein oikein valittu kontrollitilavuus helpottaa tai jopa mahdollistaa haluttujen tulosten 
+saamista.
 
-\subsection{Pituus, pinta-ala ja tilavuus}
+\section{Systeemin käsite}
 
-\section{Aine ja energia}
+\textbf{Systeemin} käsite on erityisesti termodynamiikassa keskeinen. Systeemiksi voidaan valita mikä tahansa 
+\nameref{section:kontrollitilavuus}.
 
-\subsection{Ainemäärä}
+Vaikka automaatiolle keskeisessä systeemiteoriassa systeemin käsite on suomennettu \textit{järjestelmäksi},
+lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}. Mahdollisesti sellaiset asiat kuin 
+sisäenergia ja entropia merkityksineen luovat sellaista kuvaa, että lämpötieteelliset systeemit eivät 
+yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.
 
-\subsection{Massa}
+\section{Avoin ja suljettu systeemi}
 
-\subsection{Tiheys}
+\textbf{Avoimen systeemin} kontrollipinta on avoin eli sen läpi voi kulkea ainetta. Tyypillisiä esimerkkejä 
+ovat \textit{lämmönsiirrin} ja \textit{turbiini}.
 
-\subsection{Voima}
+\textbf{Suljetun systeemin} kontrollipinta on suljettu eli sen läpi ei voi kulkea ainetta. Tyypillisiä 
+esimerkkejä ovat \textit{suljettu kaasusäiliö} ja \textit{metallikuutio}.
 
-\subsection{Energia}
+\section{Eristämätön ja eristetty systeemi}
 
-\section{Ekstensiivi- ja intensiivisuureet}
+\textbf{Eristämättömän systeemin} kontrollipinnan läpi voi vapaasti siirtyä lämpöä. 
+Tällainen on esimerkiksi \textit{ilmatilavuus keskellä muuta ilmaa}.
 
-\section{Termodynaamiset suureet}
+\textbf{Täydellisesti eristetyn eli adiabaattisen systeemin} kontrollipinnan läpi ei siirry lämpöä.
 
-\subsection{Viskositeetti}
+Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olemassa, vaan \textit{eristeillä} 
+on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
+systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
 
-\subsection{Lämmönjohtavuus}
+\section{Systeemin energiat}
 
-\subsection{Terminen diffusiviteetti}
+Lämpötieteissä ja lämpötekniikassa energia on keskeinen kiinnostuksen kohde. Systeemillä voi 
+olla montaa erityyppistä energiaa:
 
-\section{Tilasuureet l. termodynaamiset potentiaalit} 
-
-\subsection{Paine}
-
-\subsection{Tiheys ja ominaistilavuus}
-
-\newpage % A temporary hack
-
-\subsection{Sisäenergia}
-
-Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
-\textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
-siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
-\textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
-Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
-
-Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöliikkeen energiaa kutsutaan systeemin 
-\textbf{sisäenergiaksi $U$}. \textbf{Ominaissisäenergia $u$} on vain systeemin lämpötilan funktio:
-
-\begin{equation}
- u = u(T)
-\end{equation}
-
-Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
-
-\subsection{Lämpötila}
-
-\subsection{Entalpia}
-
-\textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
-
-\begin{equation}
- h = u + pv
-\end{equation}
-
-Näistä kaavoista nähdään että myös ominaisentalpia on ominaisenergiaa ja sisältää ominaissisäenergian sekä termin $pv$ 
-suuruisen lisäominaisenergian. Mikä sitten on entalpian fysikaalinen merkitys ja käytännön hyöty?
-
-% h = h(T)?
-
-\subsubsection{Lämmönsiirto vakiopaineessa}
-
-Olkoon meillä vakiopaineinen\footnote{``Isobaarinen''.} systeemi, johon tai josta siirtyy lämpöä. Vakiopaineinen systeemi 
-ei välttämättä ole vakiotilavuuksinen\footnote{``Isokoorinen''.}, joten sen tilavuus voi muuttua jolloin systeemi tekee 
-työtä ulkoisia painevoimia vastaan tai ympäristö tekee työtä systeemin painevoimia vastaan. 
-
-Siirtyvä lämpö voi nyt siis 
-olla positiivinen (systeemiin) tai negatiivinen (systeemistä). Työ aiheutuu lämmön aikaansaamasta tilavuuden muutoksesta. 
-Mikäli lämpöä tuodaan systeemiin, sen tilavuus kasvaa lämpölaajenemisen johdosta ja systeemi tekee työtä ympäristöön. 
-Tilavuudenmuutoksen merkki on siis sama kuin lämmön ja työn merkki on päinvastainen.
-
-Termodynamiikan ensimmäisen pääsäännön mukaan differentiaaliselle lämmöntuonnille pätee
-
-\begin{equation}
- du = dq + dw
-\end{equation}
-
-Differentiaalinen tilavuudenmuutostyö $dw$ voidaan korvata seuraavasti:
-
-\begin{equation}
- dw = -pdv
-\end{equation}
-
-Ja sijoittaa I pääsääntöön:
-
-\begin{equation}
-\label{psIpdv}
- du = dq - pdv
-\end{equation}
-
-Tästä nähdään että sisäenergian muutos on erisuuri kuin tuotu lämpömäärä:
-
-\begin{equation}
- du \neq dq
-\end{equation}
-
-Pidemmän päälle kaavan \ref{psIpdv} muistaminen johtaisi työläyteen (ja luultavasti myös huolimattomuusvirheisiin). Entalpian 
-differentiaalinen muutos on yleisesti
-
-\begin{equation}
- dh = du + pdv + vdp
-\end{equation}
-
-Vakiopaineessa $dp = 0$, joten
-
-\begin{equation}
- dh = du + pdv + vdp = du + pdv 
-\end{equation}
-
-ja tästä saadaan ratkaistua sisäenergian muutos
-
-\begin{equation}
- du = dh - pdv
-\end{equation}
-
-Sijoitetaan yhtälöön \ref{psIpdv}:
-
-\begin{equation}
- dh - pdv = dq - pdv
-\end{equation}
-
-Tilavuudenmuutostyö supistuu ja
-
-\begin{equation}
- dh = dq
-\end{equation}
-
-Koska yhtäsuuruus on näin yksinkertainen, se voidaan suoraan yleistää muillekin kuin differentiaalisille lämpömäärille:
-
-\begin{equation}
- \Delta h = \Delta q
-\end{equation}
-
-Eli kun systeemistä tai systeemiin siirtyy lämpöä vakiopaineessa systeemin entalpia muuttuu tuodun lämmön verran. Tämä 
-on erityisen kätevää kemiallisia reaktioita ja lämpövoimakoneita käsiteltäessä; kun seurataan sisäenergian sijaan 
-entalpian kehitystä voidaan reaktiolämmöt ja lämmönsiirtimissä siirtyvä lämpö lisätä tai vähentää suoraan siitä.
-
-\subsubsection{Virtausenergia}
-% Kuva!
-
-Entalpian määritelmässä esintyvä termi $pdv$ voidaan ymmärtää myös aineen liikkumisen vaatimaksi energiaksi. Selvennän 
-asiaa esimerkillä.
-
-Olkoon meillä putki, jossa virtaa jotain virtausainetta. Valitaan putken sisäpoikkileikkauksen (ala $A$) muotoinen ja $L$:n 
-pituinen kontrollitilavuus avoimeksi systeemiksemme. Kun systeemin ajanhetkellä $t_1$ sisältämä virtausaine on 
-ajanhetkellä $t_2$ siirtynyt juuri kokonaisuudessaan ulos systeemistä on sen täytynyt tehdä edessään olevia 
-painevoimia vastaan työ, jonka suuruus on
-
-\begin{equation}
- W = FL = pAL
-\end{equation}
-
-Huomataan, että systeemin tilavuushan on $AL$, joten
-
-\begin{equation}
- W = pV
-\end{equation}
-
-ja ominaissuureilla 
-
-\begin{equation}
- w = pv
-\end{equation}
-
-joka esiintyy ominaisentalpian määritelmässä. Tässä tulkinnassa systeemin ominaisentalpia sisältää siis
-
-\begin{enumerate}[a)]
- \item Sisäenergian eli lämpöliikkeen energian
- \item Virtausenergian eli virtauksen siirtotyön tekevän energian
+\begin{enumerate}
+ \item Liike-energiat:
+ \begin{enumerate}
+  \item \underline{Systeemin liike-energia}
+  \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
+ \end{enumerate}
+ \item Fysiikan perusvoimiin liittyvät energiat:
+ \begin{enumerate}
+  \item \underline{Gravitaation potentiaalienergia}
+  \item Sähköiset energiat:
+  \begin{enumerate}
+   \item Sähkömagneettinen potentiaalienergia
+   \item \textit{Kemiallinen sidosenergia}
+  \end{enumerate}
+  \item \textit{Heikon vuorovaikutuksen sidosenergia}
+  \item Vahvan vuorovaikutuksen sidosenergia
+ \end{enumerate}
 \end{enumerate}
 
-Tämä entalpian ominaisuus taas on kätevä niissä lukemattomissa lämpötekniikan sovellutuksissa, missä prosessissa on 
-olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin käyttämällä virtauksen jatkuminen muuttuu 
-analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
-ilmiöihin, esim. lämmönsiirtoon.
+\underline{Alleviivattuja energioita} käsitellään lämpötieteissä jatkuvasti. \textit{Kursivoidut 
+energiat} tulevat kyseeseen, mikäli systeemissä tapahtuu kemiallisia tai ydinreaktioita. 
 
-\subsection{Ominaislämpökapasiteetit}
+Sähkömagneettisella potentiaalienergialla on väliä vain mikäli systeemin kokonaisvaraus ei ole nolla ja 
+se on ulkoisessa sähkömagneettisessa kentässä. Lämpötieteissä ja -tekniikassa tällaiset tapaukset ovat 
+harvinaisia.
 
-Lämpötila, sisäenergia ja sisäenergian sisältävä entalpia mittaavat siis enemmän tai vähemmän samaa asiaa. Ne voidaan 
-näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Termodynamiikassa tähän käytetään 
-\textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja \textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}.
+Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
+ole käytännön sovelluksia.
 
-Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja entalpian differentiaaliset muutokset voi kytkeä lämpötilan 
-differentiaaliseen muutokseen osittaisderivaattojen avulla:
+\subsection{Energioiden koordinaatistoriippuvuus}
 
-\begin{align}
- du = \frac{\partial u}{\partial T}\bigg|_vdT\\
- dh = \frac{\partial h}{\partial T}\bigg|_pdT
-\end{align}
+Systeemin energiat voidaan jakaa myös seuraavasti:
 
-Nämä derivoinnin tuloksena syntyvät funktiot on nimetty ominaislämpökapasiteeteiksi (lyhyesti ``ominaislämmöiksi'') 
-vakiotilavuudessa ja vakiopaineessa:
+\begin{enumerate}
+ \item Koordinaattijärjestelmän ja/tai potentiaalienergian nollakohdan valinnasta riippuvat:
+ \begin{enumerate}
+  \item Systeemin liike-energia
+  \item Gravitaation potentiaalienergia
+  \item Sähkömagneettinen potentiaalienergia
+ \end{enumerate}
+ \item Näistä valinnoista riippumattomat:
+ \begin{enumerate}
+  \item Lämpöliikkeen liike-energia eli sisäenergia
+  \item Kemiallinen sidosenergia
+  \item Heikon vuorovaikutuksen sidosenergia
+  \item Vahvan vuorovaikutuksen sidosenergia
+ \end{enumerate}
+\end{enumerate}
 
-\begin{align}
- \frac{\partial u}{\partial T}\bigg|_v = c_v(T)\\
- \frac{\partial h}{\partial T}\bigg|_p = c_p(T)\\
- du = c_vdT\\
- dh = c_pdT
-\end{align}
 
-Yleisesti ottaen ominaislämmöt eivät ole yksinkertaisia tai helposti teoreettisesti johdettavissa olevia lämpötilan 
-funktioita. 
-
-Käytännön laskennassa ominaislämmöille käytetään taulukoituja, käyräksi piirrettyjä tai kokeellisen 
-polynomiapproksimaation muodossa olevia funktioita. Jos toimitaan kapealla lämpötila-alueella ja tulokset on 
-tärkeämpää saada nopeasti kuin tarkkoina voidaan ominaislämpö olettaa vakioksi lämpötila-alueella. Tällaisia tilanteita 
-ovat esim. alustavat tunnustelulaskelmat, pika-analyysit ja tentit.
-
-% \frac{c_p}{c_v} = \gamma, c_p - c_v = R
-% Kokoonpuristumattomattomalle c_p = c_v
-
-\subsection{Entropia}
-
-\subsection{Helmhotzin vapaaenergia}
-
-\subsection{Gibbsin vapaaenergia}
-
-\subsection{Vapaat tilasuureet l. vapaat muuttujat l. vapausasteet}
-
-\paragraph{Tilanyhtälö}
-
-\section{Suureluettelo}
-% Kunkin suureen nimet, symbolit, yksiköt
-
-\chapter{Säilymislait} % ---------------------------------------------------------------
-
-\section{Taselaskenta}
-% reynoldsin siirtoteoreema
-
-\section{Massan säilyminen}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\section{Liikemäärän säilyminen}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\section{Kulmaliikemäärän säilyminen}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\section{Energian säilyminen}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\chapter{Termodynamiikan pääsäännöt} % -------------------------------------------------
-
-\section{Nollas pääsääntö: lämpötilan määritelmä}
-
-\section{Ensimmäinen pääsääntö: energian säilyminen}
-
-\subsection{Systeemin energia ja siirtyvä energia}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\section{Toinen pääsääntö: epäjärjestyksen lisääntyminen}
-
-\subsection{Energian laatu}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\section{Kolmas pääsääntö: absoluuttinen nollapiste}
-
-\subsection{Suljettu systeemi}
-
-\subsection{Avoin systeemi}
-
-\chapter{Muut lait} % ------------------------------------------------------------------
-% esim. fourierin "laki"
-
-\part{Termodynamiikkaa}% ________________________________________________________________
-
-\chapter{Termodynaamiset prosessit}
-% Huomaa tilasuureiden ja muiden ero (Q ja W eivät potentiaaleja)
-% Työn ja lämmöntuonti vakiopaineessa, -tilavuudessa, -lämpötilassa, entropiassa...
-% Polytrooppiprosessi, mielivaltaiset prosessit
-
-\chapter{Aineen olomuodot ja faasimuutokset}
-% Kiinteä, neste, kaasu, ylikrittinen, plasma(...:P)
-% Faasidiagrammit
-
-\part{Virtausoppia} % ___________________________________________________________________
-
-\chapter{Virtausaineen käsite}
-
-\part{Lämmönsiirtoa} % ___________________________________________________________________
-
-\part{Matemaattisia menetelmiä} % ________________________________________________________
-
-\chapter{Differentiaalilaskenta} % -------------------------------------------------------
-% Osittais- ja kokonaisdifferentiaalit
-
-\section{Derivointi}
-% Osittais- ja kokonaisderivaatat
-
-\section{Integrointi}
-
-\section{Differentiaaliyhtälöt}
-
-\chapter{Vektorianalyysi} % --------------------------------------------------------------
-
-\section{Skalaari- ja vektorikentät}
-
-\section{Aikaderivoidut suureet}
-% ``Virrat``, totaalinen derivaatta 
-
-\chapter{Dimensioanalyysi} % -------------------------------------------------------------
-
-\section{Dimensiottomat suureet}
-
-\section{Lämpöteknisiä dimensiottomia suureita}
-% Suureet-osioon?
-
-\part{Laskuharjoitusten ratkaisuja} % ____________________________________________________
+% \chapter{Suureet} %---------------------------------------------------------------------
+% % Tarvittavat prujuista ja kirjoista
+% 
+% \section{Aika ja avaruus}
+% 
+% \subsection{Aika}
+% 
+% \subsection{Pituus, pinta-ala ja tilavuus}
+% 
+% \section{Aine ja energia}
+% 
+% \subsection{Ainemäärä}
+% 
+% \subsection{Massa}
+% 
+% \subsection{Tiheys}
+% 
+% \subsection{Voima}
+% 
+% \subsection{Energia}
+% 
+% \section{Ekstensiivi- ja intensiivisuureet}
+% 
+% \section{Termodynaamiset suureet}
+% 
+% \subsection{Viskositeetti}
+% 
+% \subsection{Lämmönjohtavuus}
+% 
+% \subsection{Terminen diffusiviteetti}
+% 
+% \section{Tilasuureet l. termodynaamiset potentiaalit} 
+% 
+% \subsection{Paine}
+% 
+% \subsection{Tiheys ja ominaistilavuus}
+% 
+% \newpage % A temporary hack
+% 
+% \subsection{Sisäenergia}
+% 
+% Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
+% \textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
+% siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
+% \textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
+% Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
+% 
+% Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöliikkeen energiaa kutsutaan systeemin 
+% \textbf{sisäenergiaksi $U$}. \textbf{Ominaissisäenergia $u$} on vain systeemin lämpötilan funktio:
+% 
+% \begin{equation}
+%  u = u(T)
+% \end{equation}
+% 
+% Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
+% 
+% \subsection{Lämpötila}
+% 
+% \subsection{Entalpia}
+% 
+% \textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
+% 
+% \begin{equation}
+%  h = u + pv
+% \end{equation}
+% 
+% Näistä kaavoista nähdään että myös ominaisentalpia on ominaisenergiaa ja sisältää ominaissisäenergian sekä termin $pv$ 
+% suuruisen lisäominaisenergian. Mikä sitten on entalpian fysikaalinen merkitys ja käytännön hyöty?
+% 
+% % h = h(T)?
+% 
+% \subsubsection{Lämmönsiirto vakiopaineessa}
+% 
+% Olkoon meillä vakiopaineinen\footnote{``Isobaarinen''.} systeemi, johon tai josta siirtyy lämpöä. Vakiopaineinen systeemi 
+% ei välttämättä ole vakiotilavuuksinen\footnote{``Isokoorinen''.}, joten sen tilavuus voi muuttua jolloin systeemi tekee 
+% työtä ulkoisia painevoimia vastaan tai ympäristö tekee työtä systeemin painevoimia vastaan. 
+% 
+% Siirtyvä lämpö voi nyt siis 
+% olla positiivinen (systeemiin) tai negatiivinen (systeemistä). Työ aiheutuu lämmön aikaansaamasta tilavuuden muutoksesta. 
+% Mikäli lämpöä tuodaan systeemiin, sen tilavuus kasvaa lämpölaajenemisen johdosta ja systeemi tekee työtä ympäristöön. 
+% Tilavuudenmuutoksen merkki on siis sama kuin lämmön ja työn merkki on päinvastainen.
+% 
+% Termodynamiikan ensimmäisen pääsäännön mukaan differentiaaliselle lämmöntuonnille pätee
+% 
+% \begin{equation}
+%  du = dq + dw
+% \end{equation}
+% 
+% Differentiaalinen tilavuudenmuutostyö $dw$ voidaan korvata seuraavasti:
+% 
+% \begin{equation}
+%  dw = -pdv
+% \end{equation}
+% 
+% Ja sijoittaa I pääsääntöön:
+% 
+% \begin{equation}
+% \label{psIpdv}
+%  du = dq - pdv
+% \end{equation}
+% 
+% Tästä nähdään että sisäenergian muutos on erisuuri kuin tuotu lämpömäärä:
+% 
+% \begin{equation}
+%  du \neq dq
+% \end{equation}
+% 
+% Pidemmän päälle kaavan \ref{psIpdv} muistaminen johtaisi työläyteen (ja luultavasti myös huolimattomuusvirheisiin). Entalpian 
+% differentiaalinen muutos on yleisesti
+% 
+% \begin{equation}
+%  dh = du + pdv + vdp
+% \end{equation}
+% 
+% Vakiopaineessa $dp = 0$, joten
+% 
+% \begin{equation}
+%  dh = du + pdv + vdp = du + pdv 
+% \end{equation}
+% 
+% ja tästä saadaan ratkaistua sisäenergian muutos
+% 
+% \begin{equation}
+%  du = dh - pdv
+% \end{equation}
+% 
+% Sijoitetaan yhtälöön \ref{psIpdv}:
+% 
+% \begin{equation}
+%  dh - pdv = dq - pdv
+% \end{equation}
+% 
+% Tilavuudenmuutostyö supistuu ja
+% 
+% \begin{equation}
+%  dh = dq
+% \end{equation}
+% 
+% Koska yhtäsuuruus on näin yksinkertainen, se voidaan suoraan yleistää muillekin kuin differentiaalisille lämpömäärille:
+% 
+% \begin{equation}
+%  \Delta h = \Delta q
+% \end{equation}
+% 
+% Eli kun systeemistä tai systeemiin siirtyy lämpöä vakiopaineessa systeemin entalpia muuttuu tuodun lämmön verran. Tämä 
+% on erityisen kätevää kemiallisia reaktioita ja lämpövoimakoneita käsiteltäessä; kun seurataan sisäenergian sijaan 
+% entalpian kehitystä voidaan reaktiolämmöt ja lämmönsiirtimissä siirtyvä lämpö lisätä tai vähentää suoraan siitä.
+% 
+% \subsubsection{Virtausenergia}
+% % Kuva!
+% 
+% Entalpian määritelmässä esintyvä termi $pdv$ voidaan ymmärtää myös aineen liikkumisen vaatimaksi energiaksi. Selvennän 
+% asiaa esimerkillä.
+% 
+% Olkoon meillä putki, jossa virtaa jotain virtausainetta. Valitaan putken sisäpoikkileikkauksen (ala $A$) muotoinen ja $L$:n 
+% pituinen kontrollitilavuus avoimeksi systeemiksemme. Kun systeemin ajanhetkellä $t_1$ sisältämä virtausaine on 
+% ajanhetkellä $t_2$ siirtynyt juuri kokonaisuudessaan ulos systeemistä on sen täytynyt tehdä edessään olevia 
+% painevoimia vastaan työ, jonka suuruus on
+% 
+% \begin{equation}
+%  W = FL = pAL
+% \end{equation}
+% 
+% Huomataan, että systeemin tilavuushan on $AL$, joten
+% 
+% \begin{equation}
+%  W = pV
+% \end{equation}
+% 
+% ja ominaissuureilla 
+% 
+% \begin{equation}
+%  w = pv
+% \end{equation}
+% 
+% joka esiintyy ominaisentalpian määritelmässä. Tässä tulkinnassa systeemin ominaisentalpia sisältää siis
+% 
+% \begin{enumerate}[a)]
+%  \item Sisäenergian eli lämpöliikkeen energian
+%  \item Virtausenergian eli virtauksen siirtotyön tekevän energian
+% \end{enumerate}
+% 
+% Tämä entalpian ominaisuus taas on kätevä niissä lukemattomissa lämpötekniikan sovellutuksissa, missä prosessissa on 
+% olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin käyttämällä virtauksen jatkuminen muuttuu 
+% analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
+% ilmiöihin, esim. lämmönsiirtoon.
+% 
+% \subsection{Ominaislämpökapasiteetit}
+% 
+% Lämpötila, sisäenergia ja sisäenergian sisältävä entalpia mittaavat siis enemmän tai vähemmän samaa asiaa. Ne voidaan 
+% näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Termodynamiikassa tähän käytetään 
+% \textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja \textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}.
+% 
+% Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja entalpian differentiaaliset muutokset voi kytkeä lämpötilan 
+% differentiaaliseen muutokseen osittaisderivaattojen avulla:
+% 
+% \begin{align}
+%  du = \frac{\partial u}{\partial T}\bigg|_vdT\\
+%  dh = \frac{\partial h}{\partial T}\bigg|_pdT
+% \end{align}
+% 
+% Nämä derivoinnin tuloksena syntyvät funktiot on nimetty ominaislämpökapasiteeteiksi (lyhyesti ``ominaislämmöiksi'') 
+% vakiotilavuudessa ja vakiopaineessa:
+% 
+% \begin{align}
+%  \frac{\partial u}{\partial T}\bigg|_v = c_v(T)\\
+%  \frac{\partial h}{\partial T}\bigg|_p = c_p(T)\\
+%  du = c_vdT\\
+%  dh = c_pdT
+% \end{align}
+% 
+% Yleisesti ottaen ominaislämmöt eivät ole yksinkertaisia tai helposti teoreettisesti johdettavissa olevia lämpötilan 
+% funktioita. 
+% 
+% Käytännön laskennassa ominaislämmöille käytetään taulukoituja, käyräksi piirrettyjä tai kokeellisen 
+% polynomiapproksimaation muodossa olevia funktioita. Jos toimitaan kapealla lämpötila-alueella ja tulokset on 
+% tärkeämpää saada nopeasti kuin tarkkoina voidaan ominaislämpö olettaa vakioksi lämpötila-alueella. Tällaisia tilanteita 
+% ovat esim. alustavat tunnustelulaskelmat, pika-analyysit ja tentit.
+% 
+% % \frac{c_p}{c_v} = \gamma, c_p - c_v = R
+% % Kokoonpuristumattomattomalle c_p = c_v
+% 
+% \subsection{Entropia}
+% 
+% \subsection{Helmhotzin vapaaenergia}
+% 
+% \subsection{Gibbsin vapaaenergia}
+% 
+% \subsection{Vapaat tilasuureet l. vapaat muuttujat l. vapausasteet}
+% 
+% \paragraph{Tilanyhtälö}
+% 
+% \section{Suureluettelo}
+% % Kunkin suureen nimet, symbolit, yksiköt
+% 
+% \chapter{Säilymislait} % ---------------------------------------------------------------
+% 
+% \section{Taselaskenta}
+% % reynoldsin siirtoteoreema
+% 
+% \section{Massan säilyminen}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \section{Liikemäärän säilyminen}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \section{Kulmaliikemäärän säilyminen}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \section{Energian säilyminen}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \chapter{Termodynamiikan pääsäännöt} % -------------------------------------------------
+% 
+% \section{Nollas pääsääntö: lämpötilan määritelmä}
+% 
+% \section{Ensimmäinen pääsääntö: energian säilyminen}
+% 
+% \subsection{Systeemin energia ja siirtyvä energia}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \section{Toinen pääsääntö: epäjärjestyksen lisääntyminen}
+% 
+% \subsection{Energian laatu}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \section{Kolmas pääsääntö: absoluuttinen nollapiste}
+% 
+% \subsection{Suljettu systeemi}
+% 
+% \subsection{Avoin systeemi}
+% 
+% \chapter{Muut lait} % ------------------------------------------------------------------
+% % esim. fourierin "laki"
+% 
+% \part{Termodynamiikkaa}% ________________________________________________________________
+% 
+% \chapter{Termodynaamiset prosessit}
+% % Huomaa tilasuureiden ja muiden ero (Q ja W eivät potentiaaleja)
+% % Työn ja lämmöntuonti vakiopaineessa, -tilavuudessa, -lämpötilassa, entropiassa...
+% % Polytrooppiprosessi, mielivaltaiset prosessit
+% 
+% \chapter{Aineen olomuodot ja faasimuutokset}
+% % Kiinteä, neste, kaasu, ylikrittinen, plasma(...:P)
+% % Faasidiagrammit
+% 
+% \part{Virtausoppia} % ___________________________________________________________________
+% 
+% \chapter{Virtausaineen käsite}
+% 
+% \part{Lämmönsiirtoa} % ___________________________________________________________________
+% 
+% \part{Matemaattisia menetelmiä} % ________________________________________________________
+% 
+% \chapter{Differentiaalilaskenta} % -------------------------------------------------------
+% % Osittais- ja kokonaisdifferentiaalit
+% 
+% \section{Derivointi}
+% % Osittais- ja kokonaisderivaatat
+% 
+% \section{Integrointi}
+% 
+% \section{Differentiaaliyhtälöt}
+% 
+% \chapter{Vektorianalyysi} % --------------------------------------------------------------
+% 
+% \section{Skalaari- ja vektorikentät}
+% 
+% \section{Aikaderivoidut suureet}
+% % ``Virrat``, totaalinen derivaatta 
+% 
+% \chapter{Dimensioanalyysi} % -------------------------------------------------------------
+% 
+% \section{Dimensiottomat suureet}
+% 
+% \section{Lämpöteknisiä dimensiottomia suureita}
+% % Suureet-osioon?
+% 
+% \part{Laskuharjoitusten ratkaisuja} % ____________________________________________________
 
 \end{document}
 
