@@ -142,6 +142,162 @@ Systeemin energiat voidaan jakaa myös seuraavasti:
  \end{enumerate}
 \end{enumerate}
 
+\section{Systeemin energiasuureet}
+
+\subsection{Lämpöliikkeen liike-energia eli sisäenergia}
+
+Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
+\textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
+siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
+\textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
+Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
+
+Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöliikkeen energiaa kutsutaan systeemin 
+\textbf{sisäenergiaksi $U$}. \textbf{Ominaissisäenergia $u$} on vain systeemin lämpötilan funktio:
+
+\begin{equation}
+ u = u(T)
+\end{equation}
+
+Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
+
+\subsubsection{Entalpia}
+
+\textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
+
+\begin{equation}
+ h = u + pv
+\end{equation}
+
+Näistä kaavoista nähdään että myös ominaisentalpia on ominaisenergiaa ja sisältää ominaissisäenergian sekä termin $pv$ 
+suuruisen lisäominaisenergian. Mikä sitten on entalpian fysikaalinen merkitys ja käytännön hyöty?
+
+% h = h(T)?
+
+\paragraph{Lämmönsiirto vakiopaineessa}
+
+Olkoon meillä vakiopaineinen\footnote{``Isobaarinen''.} systeemi, johon tai josta siirtyy lämpöä. Vakiopaineinen systeemi 
+ei välttämättä ole vakiotilavuuksinen\footnote{``Isokoorinen''.}, eli sen tilavuus voi muuttua jolloin systeemi tekee 
+työtä ulkoisia painevoimia vastaan tai ympäristö tekee työtä systeemin painevoimia vastaan. 
+
+Siirtyvä lämpö voi nyt  
+olla positiivinen (systeemiin) tai negatiivinen (systeemistä). Työ aiheutuu lämmön aikaansaamasta tilavuuden muutoksesta. 
+Mikäli lämpöä tuodaan systeemiin, sen tilavuus kasvaa lämpölaajenemisen johdosta ja systeemi tekee työtä ympäristöön. 
+Tilavuudenmuutoksen merkki on siis sama kuin lämmön ja työn merkki on päinvastainen.
+
+Termodynamiikan ensimmäisen pääsäännön mukaan differentiaaliselle lämmöntuonnille pätee
+
+\begin{equation}
+ du = dq + dw
+\end{equation}
+
+Differentiaalinen tilavuudenmuutostyö $dw$ voidaan korvata seuraavasti:
+
+\begin{equation}
+ dw = -pdv
+\end{equation}
+
+Ja sijoittaa I pääsääntöön:
+
+\begin{equation}
+\label{psIpdv}
+ du = dq - pdv
+\end{equation}
+
+Tästä nähdään että sisäenergian muutos on erisuuri kuin tuotu lämpömäärä:
+
+\begin{equation}
+ du \neq dq
+\end{equation}
+
+Pidemmän päälle kaavan \ref{psIpdv} muistaminen johtaisi työläyteen (ja luultavasti myös huolimattomuusvirheisiin). Entalpian 
+differentiaalinen muutos on yleisesti
+
+\begin{equation}
+ dh = du + pdv + vdp
+\end{equation}
+
+Vakiopaineessa $dp = 0$, joten
+
+\begin{equation}
+ dh = du + pdv + vdp = du + pdv 
+\end{equation}
+
+ja tästä saadaan ratkaistua sisäenergian muutos
+
+\begin{equation}
+ du = dh - pdv
+\end{equation}
+
+Sijoitetaan yhtälöön \ref{psIpdv}:
+
+\begin{equation}
+ dh - pdv = dq - pdv
+\end{equation}
+
+Tilavuudenmuutostyö supistuu ja
+
+\begin{equation}
+ dh = dq
+\end{equation}
+
+Koska yhtäsuuruus on näin yksinkertainen, se voidaan suoraan yleistää muillekin kuin differentiaalisille lämpömäärille:
+
+\begin{equation}
+ \Delta h = \Delta q
+\end{equation}
+
+Eli kun systeemistä tai systeemiin siirtyy lämpöä vakiopaineessa systeemin entalpia muuttuu tuodun lämmön verran. Tämä 
+on erityisen kätevää kemiallisia reaktioita ja lämpövoimakoneita käsiteltäessä; kun seurataan sisäenergian sijaan 
+entalpian kehitystä voidaan reaktiolämmöt ja lämmönsiirtimissä siirtyvä lämpö lisätä tai vähentää suoraan siitä.
+
+\paragraph{Virtausenergia}
+% Kuva!
+
+Entalpian määritelmässä esintyvä termi $pdv$ voidaan ymmärtää myös aineen siirtymisen vaatimaksi energiaksi. 
+
+\textbf{Huom:}
+
+\begin{enumerate}
+ \item Tässä on kysessä työ, joka tehdään (virtausaineesta koostuvaa) systeemiä siirrettäessä. Kyse ei ole siis liike-energiasta, 
+  joka on oma terminsä.
+ \item Tämä työ ei ole verrannollinen systeemin nopeuteen toisin kuin liike-energia. (Muistathan että $v \neq \left|\vec{v}\right|$!)
+\end{enumerate}
+
+Selvennän tätä entalpian tulkintaa esimerkillä.
+
+Olkoon meillä putki, jossa virtaa jotain virtausainetta. Valitaan putken sisäpoikkileikkauksen (ala $A$) muotoinen ja $L$:n 
+pituinen kontrollitilavuus avoimeksi systeemiksemme. Kun systeemin ajanhetkellä $t_1$ sisältämä virtausaine on 
+ajanhetkellä $t_2$ siirtynyt juuri kokonaisuudessaan ulos systeemistä on sen täytynyt tehdä edessään olevia 
+painevoimia vastaan työ, jonka suuruus on
+
+\begin{equation}
+ W = FL = pAL
+\end{equation}
+
+Huomataan, että systeemin tilavuushan on $AL$, joten
+
+\begin{equation}
+ W = pV
+\end{equation}
+
+ja ominaissuureilla 
+
+\begin{equation}
+ w = pv
+\end{equation}
+
+joka esiintyy ominaisentalpian määritelmässä. Tässä tulkinnassa systeemin ominaisentalpia sisältää siis
+
+\begin{enumerate}[a)]
+ \item Sisäenergian eli lämpöliikkeen energian
+ \item Virtausenergian eli virtauksen siirtotyön tekevän energian
+\end{enumerate}
+
+Tämä entalpian ominaisuus taas on kätevä niissä lukemattomissa lämpötekniikan sovellutuksissa, missä prosessissa on 
+olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin käyttämällä virtauksen jatkuminen muuttuu 
+analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
+ilmiöihin, esim. lämmönsiirtoon.
 
 % \chapter{Suureet} %---------------------------------------------------------------------
 % % Tarvittavat prujuista ja kirjoista
@@ -182,162 +338,20 @@ Systeemin energiat voidaan jakaa myös seuraavasti:
 % 
 % \newpage % A temporary hack
 % 
-% \subsection{Sisäenergia}
-% 
-% Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
-% \textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
-% siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
-% \textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
-% Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
-% 
-% Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöliikkeen energiaa kutsutaan systeemin 
-% \textbf{sisäenergiaksi $U$}. \textbf{Ominaissisäenergia $u$} on vain systeemin lämpötilan funktio:
-% 
-% \begin{equation}
-%  u = u(T)
-% \end{equation}
-% 
-% Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
+
 % 
 % \subsection{Lämpötila}
-% 
-% \subsection{Entalpia}
-% 
-% \textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
-% 
-% \begin{equation}
-%  h = u + pv
-% \end{equation}
-% 
-% Näistä kaavoista nähdään että myös ominaisentalpia on ominaisenergiaa ja sisältää ominaissisäenergian sekä termin $pv$ 
-% suuruisen lisäominaisenergian. Mikä sitten on entalpian fysikaalinen merkitys ja käytännön hyöty?
-% 
-% % h = h(T)?
-% 
-% \subsubsection{Lämmönsiirto vakiopaineessa}
-% 
-% Olkoon meillä vakiopaineinen\footnote{``Isobaarinen''.} systeemi, johon tai josta siirtyy lämpöä. Vakiopaineinen systeemi 
-% ei välttämättä ole vakiotilavuuksinen\footnote{``Isokoorinen''.}, joten sen tilavuus voi muuttua jolloin systeemi tekee 
-% työtä ulkoisia painevoimia vastaan tai ympäristö tekee työtä systeemin painevoimia vastaan. 
-% 
-% Siirtyvä lämpö voi nyt siis 
-% olla positiivinen (systeemiin) tai negatiivinen (systeemistä). Työ aiheutuu lämmön aikaansaamasta tilavuuden muutoksesta. 
-% Mikäli lämpöä tuodaan systeemiin, sen tilavuus kasvaa lämpölaajenemisen johdosta ja systeemi tekee työtä ympäristöön. 
-% Tilavuudenmuutoksen merkki on siis sama kuin lämmön ja työn merkki on päinvastainen.
-% 
-% Termodynamiikan ensimmäisen pääsäännön mukaan differentiaaliselle lämmöntuonnille pätee
-% 
-% \begin{equation}
-%  du = dq + dw
-% \end{equation}
-% 
-% Differentiaalinen tilavuudenmuutostyö $dw$ voidaan korvata seuraavasti:
-% 
-% \begin{equation}
-%  dw = -pdv
-% \end{equation}
-% 
-% Ja sijoittaa I pääsääntöön:
-% 
-% \begin{equation}
-% \label{psIpdv}
-%  du = dq - pdv
-% \end{equation}
-% 
-% Tästä nähdään että sisäenergian muutos on erisuuri kuin tuotu lämpömäärä:
-% 
-% \begin{equation}
-%  du \neq dq
-% \end{equation}
-% 
-% Pidemmän päälle kaavan \ref{psIpdv} muistaminen johtaisi työläyteen (ja luultavasti myös huolimattomuusvirheisiin). Entalpian 
-% differentiaalinen muutos on yleisesti
-% 
-% \begin{equation}
-%  dh = du + pdv + vdp
-% \end{equation}
-% 
-% Vakiopaineessa $dp = 0$, joten
-% 
-% \begin{equation}
-%  dh = du + pdv + vdp = du + pdv 
-% \end{equation}
-% 
-% ja tästä saadaan ratkaistua sisäenergian muutos
-% 
-% \begin{equation}
-%  du = dh - pdv
-% \end{equation}
-% 
-% Sijoitetaan yhtälöön \ref{psIpdv}:
-% 
-% \begin{equation}
-%  dh - pdv = dq - pdv
-% \end{equation}
-% 
-% Tilavuudenmuutostyö supistuu ja
-% 
-% \begin{equation}
-%  dh = dq
-% \end{equation}
-% 
-% Koska yhtäsuuruus on näin yksinkertainen, se voidaan suoraan yleistää muillekin kuin differentiaalisille lämpömäärille:
-% 
-% \begin{equation}
-%  \Delta h = \Delta q
-% \end{equation}
-% 
-% Eli kun systeemistä tai systeemiin siirtyy lämpöä vakiopaineessa systeemin entalpia muuttuu tuodun lämmön verran. Tämä 
-% on erityisen kätevää kemiallisia reaktioita ja lämpövoimakoneita käsiteltäessä; kun seurataan sisäenergian sijaan 
-% entalpian kehitystä voidaan reaktiolämmöt ja lämmönsiirtimissä siirtyvä lämpö lisätä tai vähentää suoraan siitä.
-% 
-% \subsubsection{Virtausenergia}
-% % Kuva!
-% 
-% Entalpian määritelmässä esintyvä termi $pdv$ voidaan ymmärtää myös aineen liikkumisen vaatimaksi energiaksi. Selvennän 
-% asiaa esimerkillä.
-% 
-% Olkoon meillä putki, jossa virtaa jotain virtausainetta. Valitaan putken sisäpoikkileikkauksen (ala $A$) muotoinen ja $L$:n 
-% pituinen kontrollitilavuus avoimeksi systeemiksemme. Kun systeemin ajanhetkellä $t_1$ sisältämä virtausaine on 
-% ajanhetkellä $t_2$ siirtynyt juuri kokonaisuudessaan ulos systeemistä on sen täytynyt tehdä edessään olevia 
-% painevoimia vastaan työ, jonka suuruus on
-% 
-% \begin{equation}
-%  W = FL = pAL
-% \end{equation}
-% 
-% Huomataan, että systeemin tilavuushan on $AL$, joten
-% 
-% \begin{equation}
-%  W = pV
-% \end{equation}
-% 
-% ja ominaissuureilla 
-% 
-% \begin{equation}
-%  w = pv
-% \end{equation}
-% 
-% joka esiintyy ominaisentalpian määritelmässä. Tässä tulkinnassa systeemin ominaisentalpia sisältää siis
-% 
-% \begin{enumerate}[a)]
-%  \item Sisäenergian eli lämpöliikkeen energian
-%  \item Virtausenergian eli virtauksen siirtotyön tekevän energian
-% \end{enumerate}
-% 
-% Tämä entalpian ominaisuus taas on kätevä niissä lukemattomissa lämpötekniikan sovellutuksissa, missä prosessissa on 
-% olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin käyttämällä virtauksen jatkuminen muuttuu 
-% analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
-% ilmiöihin, esim. lämmönsiirtoon.
 % 
 % \subsection{Ominaislämpökapasiteetit}
 % 
 % Lämpötila, sisäenergia ja sisäenergian sisältävä entalpia mittaavat siis enemmän tai vähemmän samaa asiaa. Ne voidaan 
-% näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Termodynamiikassa tähän käytetään 
-% \textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja \textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}.
-% 
-% Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja entalpian differentiaaliset muutokset voi kytkeä lämpötilan 
-% differentiaaliseen muutokseen osittaisderivaattojen avulla:
+% näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Tästä kytkennästä on myös se olennainen hyöty, 
+% että laskennassa hyödylliset mutta vaikeasti mitattavat sisäenergia ja entalpia saadaan kytkettyä harvemmin kiinnostavaan 
+% mutta helposti mitattavaan lämpötilaan.
+
+% Termodynamiikassa kytkentään käytetään \textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja 
+% \textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}. Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja 
+% entalpian differentiaaliset muutokset voi kytkeä lämpötilan differentiaaliseen muutokseen osittaisderivaattojen avulla:
 % 
 % \begin{align}
 %  du = \frac{\partial u}{\partial T}\bigg|_vdT\\
