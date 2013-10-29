@@ -37,6 +37,7 @@
 % Creative Commons, LaTeX-maininnat tähän
 \newpage
 \pagenumbering{Roman}
+\setcounter{tocdepth}{3}
 \tableofcontents
 \newpage
 \pagenumbering{arabic}
@@ -44,6 +45,8 @@
 % \chapter{Johdanto}
 % 
 % \part{Perustietoja} % ___________________________________________________________________
+
+\setcounter{secnumdepth}{3}
 
 \chapter{Systeemi} % -----------------------------------------------
 % % Avoin, suljettu, adiabaattinen
@@ -143,7 +146,7 @@ Systeemin energiat voidaan jakaa myös seuraavasti:
 
 \section{Systeemin energiasuureet}
 
-\subsection{Lämpöliikkeen liike-energia eli sisäenergia}
+\subsection{Lämpöliikkeen liike-energia eli sisäenergia U}
 
 Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
 \textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
@@ -160,7 +163,9 @@ Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöl
 
 Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
 
-\subsubsection{Entalpia}
+\subsection{Sisäenergian johdannaisenergiat}
+
+\subsubsection{Entalpia H} \label{sssection:entalpia}
 
 \textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
 
@@ -271,7 +276,7 @@ ajanhetkellä $t_2$ siirtynyt juuri kokonaisuudessaan ulos systeemistä on sen t
 painevoimia vastaan työ, jonka suuruus on
 
 \begin{equation}
- W = FL = pAL
+ W = |\vec{F}| L = pAL
 \end{equation}
 
 Huomataan, että systeemin tilavuushan on $AL$, joten
@@ -297,6 +302,203 @@ Tämä entalpian ominaisuus taas on kätevä niissä lukemattomissa lämpötekni
 olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin käyttämällä virtauksen jatkuminen muuttuu 
 analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
 ilmiöihin, esim. lämmönsiirtoon.
+
+\subsubsection{Helmholtzin vapaaenergia F} \label{sssection:helmholtz}
+
+Myös \textbf{Helmholtzin vapaaenergia} $F$ on apusuure, ja se on määritelty näin:
+
+\begin{equation}
+ F = U - TS
+\end{equation}
+
+Helmholtzin vapaaenergia on siis sisäenergian sekä entropian ja lämpötilan tulon erotus. Mutta mikä on sen 
+käytännön merkitys?
+
+\paragraph{Lämmönsiirto vakiolämpötilassa ja -tilavuudessa}
+
+Olkoon meillä systeemi, josta tai johon siirtyy lämpöä. Prosessi tapahtuu niin, että systeemin lämpötila ja 
+tilavuus ovat vakioita\footnote{``Isoterminen ja isokoorinen prosessi''.}. 
+Koska tilavuus on vakio, edes tilavuudenmuutostyötä ei tapahdu:
+
+\begin{align}
+ T(t) & = T\\
+ V(t) & = V\\
+ \Delta U & = Q_{siirto} + W = Q_{siirto}
+\end{align}
+
+eli 
+
+\begin{equation}
+\label{eqn:isoTV}
+ \Delta U = Q_{siirto}
+\end{equation}
+
+Systeemiin lämpönä tuotu energia menee siis systeemin sisäenergian (molekyylien kineettinen energia) kasvattamiseen.
+
+Lämpöä voi tulla systeemiin kahdesta lähteestä; systeemin ulkopuolelta siirtymällä ja sen sisältä kun jokin muu 
+energia muuttuu epäjärjestyneeseen muotoon (esimerkiksi turbulenssi muuttaa molekyylien ``koordinoitunutta'' 
+liike-energiaa satunnaiseksi eli lämpöliikkeen liike-energiaksi).
+
+\begin{equation}
+\label{eqn:QQQ}
+ Q = Q_{siirto} + Q_{h\ddot{a}vi\ddot{o}t}
+\end{equation}
+
+Kokonaislämpö voidaan lausua entropian muutoksen kautta entropian ja lämpötilan avulla ja
+koska lämpötila on vakio:
+
+\begin{equation}
+\label{eqn:DeltaS}
+ \Delta S = \frac{Q}{T} \Leftrightarrow Q = T\Delta S
+\end{equation}
+
+Sijoitetaan kaava \ref{eqn:DeltaS} kaavaan \ref{eqn:QQQ}:
+
+\begin{equation}
+ T\Delta S = Q_{siirto} + Q_{h\ddot{a}vi\ddot{o}t}
+\end{equation}
+
+Häviöt synnyttävät aina positiivisen lämpömäärän, joten
+
+\begin{align}
+ Q_{h\ddot{a}vi\ddot{o}t} & \geq 0\\
+ \Rightarrow T\Delta S & \geq Q_{siirto}\\
+ \label{eqn:QTSsiirto}
+ \Leftrightarrow Q_{siirto} & \leq T \Delta S
+\end{align}
+
+Sijoitetaan kaava \ref{eqn:QTSsiirto} kaavaan \ref{eqn:isoTV}:
+
+\begin{equation}
+ \Delta U = Q_{siirto} \leq T\Delta S
+\end{equation}
+
+eli 
+
+\begin{align}
+ & \Delta U \leq T\Delta S\\
+ & \Delta U - T\Delta S \leq 0\\
+ & \Delta(U - TS) \leq 0\\
+ & \Delta F \leq 0
+\end{align}
+
+Siis kun
+
+\begin{align}
+ T(t) = T\\
+ V(t) = V\\
+ W = 0
+\end{align}
+
+On Helmholtzin vapaaenergian muutoksen oltava
+
+\begin{equation}
+ \Delta F \leq 0
+\end{equation}
+
+\paragraph{Fysikaalinen ja kemiallinen merkitys}
+
+Kun systeemi on vakiolämpötilassa ja -tilavuudessa eikä sisäisiä häviöitä tapahdu, on 
+
+\begin{equation}
+ \Delta F = 0
+\end{equation}
+
+Ja systeemi on termodynaamisessa tasapainossa.
+
+Mikäli
+
+\begin{equation}
+ \Delta F < 0
+\end{equation}
+
+tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
+kunnes systeemi on termodynaamisessa tasapainossa.
+
+\subsubsection{Gibbsin vapaaentalpia G}
+
+Kuten entalpia ja Helmholtzin vapaaenergia, \textbf{Gibbsin vapaaentalpia} $G$ on apusuure, 
+ja se on määritelty näin:
+
+\begin{equation}
+ G = H - TS
+\end{equation}
+
+Gibbsin vapaaentalpian määritelmä näyttää hyvin samankaltaiselta kuin Helmholtzin vapaaenergian määritelmä. 
+Miksiköhän?
+
+\paragraph{Lämmönsiirto vakiolämpötilassa ja -paineessa}
+
+Huomaa, että seuraava päättely etenee hyvin samalla tavalla kuin Helmholtzin vapaaenergian tapauksessa.
+
+Siirretään lämpöä systeemistä tai systeemiin vakiolämpötilassa ja -paineessa:
+
+\begin{align}
+ T(t) & = T\\
+ p(t) & = p\\
+ \Delta U & = Q_{siirto} + W
+\end{align}
+
+Nyt tilavuudenmuutostyötä voi esiintyä ja analyysi voisi mennä monimutkaiseksi, muttei mene jos muistamme 
+kappaleessa \nameref{sssection:entalpia} saamaamme tulosta, eli että vakiopaineessa:
+
+\begin{equation}
+ \Delta H = Q_{siirto}
+\end{equation}
+
+ja kuten kappaleessa \nameref{sssection:helmholtz} päättelimme
+
+\begin{equation}
+ Q_{siirto} \leq T \Delta S
+\end{equation}
+
+Kun yhdistämme nämä kaavat, saamme
+
+\begin{equation}
+ \Delta H = Q_{siirto} \leq T\Delta S
+\end{equation}
+
+Ja edelleen: 
+
+\begin{align}
+ & \Delta H \leq T\Delta S\\
+ & \Delta H - T\Delta S \leq 0\\
+ & \Delta(H - TS) \leq 0\\
+ & \Delta G \leq 0
+\end{align}
+
+Siis kun
+
+\begin{align}
+ T(t) = T\\
+ p(t) = p\\
+ W = 0
+\end{align}
+
+On Gibbsin vapaaentalpian muutoksen oltava
+
+\begin{equation}
+ \Delta G \leq 0
+\end{equation}
+
+\paragraph{Fysikaalinen ja kemiallinen merkitys}
+
+Kun systeemi on vakiolämpötilassa ja -paineessa eikä sisäisiä häviöitä tapahdu, on 
+
+\begin{equation}
+ \Delta G = 0
+\end{equation}
+
+Ja systeemi on termodynaamisessa tasapainossa.
+
+Mikäli
+
+\begin{equation}
+ \Delta G < 0
+\end{equation}
+
+tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
+kunnes systeemi on termodynaamisessa tasapainossa.
 
 % \chapter{Suureet} %---------------------------------------------------------------------
 % % Tarvittavat prujuista ja kirjoista
