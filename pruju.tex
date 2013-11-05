@@ -18,6 +18,7 @@
 \usepackage[utf8]{inputenc}               % Tekstiasetuksia, sisältää ääkköset
 \usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+\usepackage{a4wide}
 \usepackage{amsmath}                        % Lisää kaavavoimaa!
 \usepackage{enumerate}
 \usepackage{hyperref}
@@ -71,6 +72,11 @@ lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}. Mahdollisesti
 sisäenergia ja entropia merkityksineen luovat sellaista kuvaa, että lämpötieteelliset systeemit eivät 
 yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.
 
+\section{Ympäristön käsite}
+
+\textbf{Ympäristö} käsittää termodynamiikassa kaiken systeemin ulkopuolella olevan. Yhdessä systeemi ja ympäristö 
+muodostavat siis \textbf{maailmankaikkeuden}.
+
 \section{Avoin ja suljettu systeemi}
 
 \textbf{Avoimen systeemin} kontrollipinta on avoin eli sen läpi voi kulkea ainetta. Tyypillisiä esimerkkejä 
@@ -90,7 +96,7 @@ Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olem
 on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
 systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
 
-\section{Systeemin energiat}
+\chapter{Systeemin energiat}
 
 Lämpötieteissä ja lämpötekniikassa energia on keskeinen kiinnostuksen kohde. Systeemillä voi 
 olla montaa erityyppistä energiaa:
@@ -124,7 +130,7 @@ harvinaisia.
 Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
 ole käytännön sovelluksia.
 
-\subsection{Energioiden koordinaatistoriippuvuus}
+\section{Energioiden koordinaatistoriippuvuus}
 
 Systeemin energiat voidaan jakaa myös seuraavasti:
 
@@ -499,6 +505,63 @@ Mikäli
 
 tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
 kunnes systeemi on termodynaamisessa tasapainossa.
+
+\chapter{Siirtymäenergiat}
+
+Systeemillä voi siis olla monenlaista energiaa. Myös systeemin ympäristöllä voi olla näitä 
+energioita.
+
+Sillä hetkellä kun energia siirtyy systeemin rajan yli voi se kuitenkin termodynamiikassa 
+olla vain kahta tyyppiä: \textbf{lämpöä $Q$} tai \textbf{työtä $W$}. Vastaavasti systeemillä 
+tai ympäristöllä sinänsä ei voi olla näitä energioita vaan varastoituessaan systeemiin tai 
+ympäristöön ne muuttuvat aina johonkin muuhun muotoon.
+
+\section{Merkkisopimus}
+
+Systeemiin siirtyvä työ ja lämpö ovat aina positiivisia, systeemistä siirtyvät negatiivisia.
+
+Päinvastoin voidaan todeta että mikäli työtä tai lämpöä ei alunperin tiedetä, ratkaistun 
+työn tai lämmön etumerkki kertoo, siirtyikö se systeemistä vai systeemiin.
+
+\section{Lämpö Q}
+
+Lämpö on energiaa, joka siirtyy systeemin rajojen yli siksi, että systeemin ja ympäristön 
+välillä on lämpötilaero. 
+
+Siirtyminen systeemin rajojen yli voi tapahtua millä tahansa \textbf{lämmönsiirtotavalla}:
+
+\begin{itemize}
+ \item johtumalla
+ \item kulkeutumalla\footnote{``Konvektiolla''.}
+ \item säteilemällä
+ \item tai jollain näiden 
+yhdistelmällä\footnote{Erityisen merkittävä yhdistelmä on johtumisesta ja kulkeutumisesta 
+koostuva ``\textbf{konvektiivinen lämmönsiirto}''.}.
+\end{itemize}
+
+Lämpö siirtyy aina korkeammasta lämpötilasta matalampaan. Kuten myöhemmin selviää, tämä 
+on seurausta termodynamiikan II pääsäännöstä. Aina kun lämpöä siirtyy, joko systeemin tai 
+ympäristön entropia ja sen myötä maailmankaikkeuden epäjärjestys kasvaa.
+Tähän liittyen lämpö on ``epäjärjestynyttä energiaa'', jolla voidaan tehdä vähemmän 
+erilaisia asioita kuin työllä.
+
+Lämmönsiirto muuttaa ensisijaisesti systeemin tai ympäristön sisäenergiaa. (Mieti, 
+miten tämä liittyy siihen, että sisäenergia on ``lämpöliikkeen liike-energiaa''.)
+
+\section{Työ W}
+
+Työ on lämpöä monimuotoisempi ja vaikeammin määriteltävissä oleva siirtymäenergia. 
+
+Työ voi olla esimerkiksi systeemin tilavuudenmuutostyötä, turbiinin akselityötä, 
+sähkövirran energiaa jne.
+
+Työ on ``järjestynyttä energiaa'', joka voidaan muuttaa vaihtelevilla hyötysuhteilla 
+moniksi muiksi energian muodoiksi. Kun pelkästään työtä siirtyy ei systeemin tai ympäristön 
+entropia muutu.
+
+Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä taas ei voida 
+(sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
+II pääsääntöä.
 
 % \chapter{Suureet} %---------------------------------------------------------------------
 % % Tarvittavat prujuista ja kirjoista
