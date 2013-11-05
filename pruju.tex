@@ -21,6 +21,7 @@
 \usepackage{a4wide}
 \usepackage{amsmath}                        % Lisää kaavavoimaa!
 \usepackage{enumerate}
+\usepackage{framed}
 \usepackage{hyperref}
 \makeatother
 \hypersetup{
@@ -516,7 +517,7 @@ olla vain kahta tyyppiä: \textbf{lämpöä $Q$} tai \textbf{työtä $W$}. Vasta
 tai ympäristöllä sinänsä ei voi olla näitä energioita vaan varastoituessaan systeemiin tai 
 ympäristöön ne muuttuvat aina johonkin muuhun muotoon.
 
-\section{Merkkisopimus}
+\section{Merkkisopimus} \label{sec:merkkisopimus}
 
 Systeemiin siirtyvä työ ja lämpö ovat aina positiivisia, systeemistä siirtyvät negatiivisia.
 
@@ -562,6 +563,53 @@ entropia muutu.
 Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä taas ei voida 
 (sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
 II pääsääntöä.
+
+\chapter{Termodynamiikan I pääsääntö}
+
+\textbf{Termodynamiikan I pääsääntö} on seuraava kokeellisesti havaittu luonnonlaki:
+
+\begin{quote}
+ Energia säilyy.
+\end{quote}
+
+Sen voi ilmaista myös seuraavilla tavoilla:
+
+\begin{quote}
+ Energia on tuhoutumatonta
+\end{quote}
+
+\begin{quote}
+ Energia ei tuhoudu, ainoastaan muuttaa muotoaan.
+\end{quote}
+
+\begin{quote}
+ Maailmankaikkeuden kokonaisenergia on vakio.
+\end{quote}
+
+Termodynamiikan I pääsäännön voi määritellä myös käytännössä hyödyllisellä tavalla 
+systeemin energioiden ja siirtymäenergioiden avulla. 
+
+Mikäli energiaa siirtyy systeemiin, 
+täytyy systeemin energian kasvaa. Mikäli energiaa siirtyy systeemistä, täytyy systeemin 
+energian pienentyä. \hyperref[sec:merkkisopimus]{Merkkisopimuksen} ansiosta seuraava 
+lause kattaa nämä molemmat tapaukset:
+
+\begin{quote}
+ Systeemin kokonaisenergian muutos = siirtymäenergioiden summa
+\end{quote}
+
+Siistissä täysin matemaattisessa kaavamuodossa termodynamiikan I pääsääntö on siis
+
+\begin{framed}
+\begin{equation}
+ \Delta E_{sys} = Q_{tot} + W_{tot}
+\end{equation}
+\end{framed}
+
+Termodynamiikan pääsäännöt ovat kaikkien fysiikan lakien tavoin \textbf{universaaleja} 
+eli voimassa kaikille systeemeille ja prosesseille kaikkialla, kaikkina aikoina. Voimme 
+siis aina käyttää laskelmissamme termodynamiikan I pääsääntöä tässä muodossa yhtenä 
+yhtälöistämme.
 
 % \chapter{Suureet} %---------------------------------------------------------------------
 % % Tarvittavat prujuista ja kirjoista
