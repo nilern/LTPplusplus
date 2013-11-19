@@ -19,9 +19,9 @@
 \usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 \usepackage{a4wide}
-\usepackage{amsmath}                        % Lisää kaavavoimaa!
+\usepackage[intlimits]{amsmath}                        % Lisää kaavavoimaa!
 \usepackage{enumerate}
-\usepackage{framed}
+% \usepackage{framed}
 \usepackage{hyperref}
 \makeatother
 \hypersetup{
@@ -43,12 +43,11 @@
 \tableofcontents
 \newpage
 \pagenumbering{arabic}
+\setcounter{secnumdepth}{3}
 
 % \chapter{Johdanto}
 % 
-% \part{Perustietoja} % ___________________________________________________________________
-
-\setcounter{secnumdepth}{3}
+\part{Termodynamiikka} % ___________________________________________________________________
 
 \chapter{Systeemi} % -----------------------------------------------
 % % Avoin, suljettu, adiabaattinen
@@ -97,10 +96,258 @@ Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olem
 on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
 systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
 
-\chapter{Systeemin energiat}
+\chapter{Energian tiede} % -----------------------------------------------
 
-Lämpötieteissä ja lämpötekniikassa energia on keskeinen kiinnostuksen kohde. Systeemillä voi 
-olla montaa erityyppistä energiaa:
+Termodynamiikan ydin on energia. Termodynamiikan pääsäännötkin käsittelevät energiaa; sen määrää, 
+muotoa, laatua, jakautumista ja niin edelleen.
+
+\section{Klassinen ja tilastollinen termodynamiikka}
+
+\textbf{Klassinen termodynamiikka} käsittelee makroskooppisia systeemejä, ilmiöitä ja suureita. Se kehitettiin 
+olennaisilta osiltaan valmiiksi ennen kuin molekyylien olemassaolo oli yleisesti hyväksyttyä tai todennettua. 
+
+Esimerkiksi lämpötekniikassa keskeiset lämpötekniset laitteet kuten lämpövoimakoneet, 
+lämpöpumput, pumput, puhaltimet, turbiinit sekä lämmönvaihtimet ovat makroskooppisia systeemejä, joiden 
+tutkimuksessa klassisella termodynamiikalla saadaan suhteellisen helposti kiinnostavia ja hyödyllisiä tuloksia.
+
+Valitettavasti klassisen termodynamiikan lainalaisuuksia on hankala ymmärtää ja perustella itselleen. Tämä johtuu 
+siitä, että pohjimmiltaan termodynamiikka käsittelee molekyylien energioiden tilastollisia ominaisuuksia.
+
+\textbf{Tilastollinen termodynamiikka} redusoi klassisen termodynamiikan dynamiikkaan (ja kvanttimekaniikkaan).
+\footnote{Vastaavasti kuin kemia pystyttiin aikoinaan redusoimaan kvanttimekaniikkaan.} 
+
+Klassista termodynamiikkaa syvällisempänä ja tilastollisena tieteenä sitä on vaikeampi soveltaa käytäntöön. 
+Toisaalta tilastollisen termodynamiikan käsitteillä termodynaamiset lainalaisuudet on mahdollista selittää ja 
+perustella tyydyttävästi.
+
+Tässä kirjassa opetellaan ennen kaikkea soveltamaan klassista termodynamiikkaa lämpöteknisiin ongelmiin. 
+Kun se on ymmärryksen kannalta tarpeellista, käytän tilastollista termodynamiikkaa selittämään asioita.
+
+\section{Mitä on energia?}
+
+Ennen kuin sukellamme varsinaiseen termodynamiikkaan, on tärkeää selvittää, mitä energia on. Mielenkiintoista 
+kyllä, energian määritelmä ei varsinaisesti kuulu termodynamiikkaan vaan mekaniikkaan. Energian määritelmä on 
+seuraavanlainen:
+
+\begin{quote}
+ Energia on kykyä tehdä työtä.
+\end{quote}
+
+\subsection{Työ W}
+
+Mitä työ sitten on? Mekaniikassa \textbf{työn W} yleinen määritelmä on
+
+\begin{equation}
+\label{eq:W}
+ W = \int_S \vec{F} \cdot \vec{ds}
+\end{equation}
+
+Mitä tämä sitten tarkoittaa? 
+
+Arkisestikin voimme todeta, että jonkin kappaleen siirtämisen ``työläys'' on suoraan verrannollinen
+
+\begin{enumerate}
+ \item Voimaan $F$, joka tarvitaan kappaleen liikuttamiseksi
+ \item Matkaan $s$, joka kappaletta siirretään
+\end{enumerate}
+
+Kun voima on vakio ja reitti koko ajan voiman suuntainen, nämä verrannollisuudet voidaan yhdistää tuloksi ja 
+(valitsemalla määritelmässä verrannollisuuskertoimeksi 1) määritellä työ
+
+\begin{equation}
+ W = |\vec{F}|s
+\end{equation}
+
+Yleisessä tapauksessa ei päästä näin helpolla, sillä kappaleeseen vaikuttavan voiman suuruus ja suunta voivat 
+riippua esimerkiksi ajasta ja kappaleen paikasta eikä reittikään ole välttämättä lähelläkään suoraa. 
+
+Onneksi 
+mikä tahansa infinitesimaalisen lyhyt reitin pätkä $\vec{ds}$ voidaan katsoa hyvällä tarkkuudella suoraksi ja 
+voiman reitin suuntainen komponentti saadaan pistetulolla eli
+
+\begin{equation}
+ dW = \vec{F} \cdot \vec{ds}
+\end{equation}
+
+Kun nämä infinitesimaalisen lyhyet reitin pätkät sitten summataan eli integroidaan saadaan työn yleinen määritelmä 
+\ref{eq:W}.
+
+Työn määritelmä voitaisiin avata sanallisesti vaikka seuraavasti:
+
+\begin{quotation}
+``Kun kappale, johon voima $\vec{F}$ vaikuttaa, kulkee 
+reitin $S$ tekee voima kaavasta \ref{eq:W} laskettavissa olevan määrän työtä.''
+\end{quotation}
+
+ Huomioi, että tämä ei vaadi, että 
+juuri voima $\vec{F}$ aiheuttaisi kappaleen liikkeen.
+
+\subsection{Energia E}
+
+Nyt kun olemme kerranneet työn määritelmän, käsitelkäämme vielä \textbf{energian E} määritelmä. 
+
+Energia on siis kykyä tehdä työtä. Systeemin yhteydessä ja työn ymmärtämisen kautta se tarkoittaa itse 
+asiassa seuraavaa:
+
+\begin{quotation}
+ Systeemillä on energiaa, kun on mahdollista löytää toinen systeemi, johon systeemi voi kohdistaa 
+ voiman $\vec{F}$ kun toinen systeemi liikkuu reitin $S$.
+\end{quotation}
+
+Systeemin ei tarvitse kyetä tuottamaan mielivaltaista voimaa mielivaltaiselle reitille vaan riittää että 
+voidaan keksiä jokin järjestely mitä analysoitaessa kaavaa \ref{eq:W} voidaan soveltaa tarkasteltavan 
+systeemin tuottamaan voimaan $\vec{F}$.
+
+Kääntäen voidaan todeta että kaikilla systeemeillä, jotka tuottavat johonkin muuhun voiman edes 
+infinitesimaalisen lyhyellä matkalla, on energiaa.
+
+Käsiä heiluttelevana loppukaneettina totean, että energia on siis ``voimantuottokykyä''\footnote{
+Mietipä tätä: \textit{voimanlähteellä} on aina jokin \textit{teho} $P = \dfrac{dE}{dt}$!}.
+
+\chapter{Systeemin energiat} % -----------------------------------------------
+
+\section{Potentiaalienergia ja liike-energia}
+
+Kuten muistamme, työn yleinen määritelmä on
+
+\begin{equation}
+ W = \int_S \vec{F} \cdot \vec{ds}
+\end{equation}
+
+ja systeemillä on energiaa mikäli se kykenee tuottamaan kaavassa toimivan voiman $\vec{F}$.
+
+Reitti $S$ on vain mielivaltainen avaruuskäyrä eikä sitä voi analysoida sen enempää\footnote{
+Ainakaan millään käytännössä kovin hyödyllisellä tavalla.}.
+
+Sen sijaan kiinnostava ja vastattavissa oleva kysymys on:
+
+\begin{quote}
+ Millainen työn määritelmässä esiintyvä voima $\vec{F}$ voi olla? 
+\end{quote}
+
+Fysiikassa on onnistuttu palauttamaan kaikki mahdolliset maailmankaikkeudessa esiintyvät voimat 
+\textit{neljään perusvuorovaikutukseen} kuuluviksi:
+
+\begin{enumerate}
+ \item Gravitaatio
+ \item Sähkömagnetismi
+ \item Heikko ydinvoima
+ \item Vahva ydinvoima
+\end{enumerate}
+
+Näiden vuorovaikutusten voimien suuruus riippuu etäisyydestä voiman aiheuttajaan ja mahdollisesti myös ajasta. 
+Tätä kuvataan \textit{voimakentillä} eli määrittämällä voima ajan ja paikan funktiona $\vec{F}(\vec{r}, t)$. 
+
+Esimerkiksi sähkövarauksen $q_1$ toiseen sähkövaraukseen $q_2$ aiheuttama voimakenttä on
+
+\begin{equation}
+ \vec{F}(\vec{r}) = \frac{1}{4\pi\epsilon_0}\frac{q_1q_2}{|\vec{r}|^2}\hat{r}
+\end{equation}
+
+ja massan $m_1$ toiseen massaan $m_2$ aiheuttama voima on (Newtonin painovoimateoriassa)
+
+\begin{equation}
+ \vec{F}(\vec{r}) = G\frac{m_1m_2}{|\vec{r}|^2}\hat{r}
+\end{equation}
+
+\subsection{Potentiaalienergia $E_p$}
+
+\begin{quotation}
+Systeemillä on \textbf{potentiaalienergiaa $E_p$}, mikäli se on jossain siihen vaikuttavassa voimakentässä 
+paikassa, josta se voi liikkua sellaisen reitin että voimakenttä tekee siihen positiivisen työn.
+\end{quotation}
+
+Potentiaalienergia on siis systeemin mahdollisuus saada voimakenttä tekemään siihen työtä. Eikö silloin 
+energia ole itse asiassa voimakentän aiheuttavalla systeemillä? Pohjimmiltaan kyllä.
+
+Mutta kun systeemi kulkee reittinsä voimakentässä se voi vuorostaan aiheuttaa voiman johonkin toiseen 
+systeemin, joka voi tällöin kulkea jonkin reitin - eli systeemi tekee työtä! Se toki ``vain'' välittää 
+voimakentän energiaa, mutta käytännössä näin voidaan esimerkiksi tehdä työtä johonkin, mihin voimakenttä 
+ei kohdistu ainakaan toivotulla tavalla.
+
+Esimerkiksi gravitaatiokentän energialla on vaikea saada elektroneja liikkumaan maanpinnan suuntaisesti, mutta 
+siinä voidaan onnistua välillisesti näin:
+
+\begin{enumerate}
+ \item Vesimassalla on potentiaalienergiaa, sillä se on korkealla gravitaatiokentässä.
+ \item Kun vesi päästetään putoamaan, gravitaatiokenttä tekee siihen työtä.
+ \item Vesi kulkee turbiinin läpi ja tekee siihen työtä.
+ \item Turbiini tekee työtä generaattorin roottoriin.
+ \item Generaattorin roottori aiheuttaa käämien elektroneihin sähkömagneettisen voiman, joka tekee niihin 
+ työtä.
+ \item Elektronit liikkuvat johtimessa. Meillä on sähkövirtaa!
+\end{enumerate}
+
+Systeemille voidaan antaa potentiaalienergiaa liikuttamalla sitä voimakentässä niin, että voimakentän 
+tekemä työ on negatiivinen. Tällöin joudutaan tuottamaan jokin toinen voima tekemään vastaavan 
+suuruinen positiivinen työ. Tämän voiman tuottamiseen käytetty energia saadaan näin varastoitua 
+potentiaalienergiaksi.
+
+\subsection{Liike-energia $E_k$}
+
+\begin{quotation}
+ Systeemillä on liike-energiaa, kun se voi pienentämällä nopeuttaan tehdä työtä.
+\end{quotation}
+
+Newtonin toinen laki kertoo voiman, jonka hidastuva systeemi aiheuttaa:
+
+\begin{equation}
+ \vec{F} = m\vec{a}
+\end{equation}
+
+Sijoitetaan se työn määritelmään:
+
+\begin{equation}
+ W = \int_S \vec{F} \cdot \vec{ds} = \int_S m\vec{a} \cdot \vec{ds} = m\int_S \vec{a} \cdot \vec{ds}
+\end{equation}
+
+Käytetään kiihtyvyyden ja nopeuden määritelmiä 
+
+\begin{align}
+\vec{a} &= \frac{d\vec{v}}{dt} \\
+\vec{v} &= \frac{d\vec{s}}{dt} \Leftrightarrow d\vec{s} =  \vec{v}dt\\
+\end{align}
+
+Sijoitetaan ja sievennetään:
+
+\begin{equation}
+ W = m\int_S \vec{a} \cdot \vec{ds} = m\int_S \frac{d\vec{v}}{dt} \cdot \vec{v}dt = m\int_S d\vec{v} \cdot \vec{v}
+\end{equation}
+
+Avataan pistetulo integroimalla komponenteittain:
+
+\begin{equation}
+ W = m\int_S d\vec{v} \cdot \vec{v} = m \left(\int_S v_xdv_x + \int_S v_ydv_y + \int_S v_zdv_z\right)
+\end{equation}
+
+saadaan
+
+\begin{equation}
+ W = m \left(\int_S v_xdv_x + \int_S v_ydv_y + \int_S v_zdv_z\right) 
+ = m \left(\frac{1}{2}v_x^2 + \frac{1}{2}v_y^2 + \frac{1}{2}v_z^2\right)
+\end{equation}
+
+josta saadaan lopulta nopeudesta saatavaksi työksi
+
+\begin{equation}
+ W = m \left(\frac{1}{2}v_x^2 + \frac{1}{2}v_y^2 + \frac{1}{2}v_z^2\right)
+ = \frac{1}{2}m \left(v_x^2 + v_y^2 + v_z^2\right)
+ = \frac{1}{2}m (\vec{v} \cdot \vec{v})
+ = \frac{1}{2}m|\vec{v}|^2
+\end{equation}
+
+Liike-energia on siis
+
+\begin{equation}
+ E_k = W = \frac{1}{2}m|\vec{v}|^2
+\end{equation}
+
+Systeemille voidaan antaa liike-energiaa aiheuttamalla siihen nettovoima, joka tekee työtä systeemin 
+nopeuden kasvattamiseksi. Tähän kulunut energia varastoituu systeemin liike-energiaksi.
+
+\section{Energiat lämpötieteissä}
+
+Systeemillä voi siis olla montaa erityyppistä energiaa:
 
 \begin{enumerate}
  \item Liike-energiat:
@@ -108,7 +355,7 @@ olla montaa erityyppistä energiaa:
   \item \underline{Systeemin liike-energia}
   \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
  \end{enumerate}
- \item Fysiikan perusvoimiin liittyvät energiat:
+ \item Fysiikan perusvoimiin liittyvät potentiaalienergiat:
  \begin{enumerate}
   \item \underline{Gravitaation potentiaalienergia}
   \item Sähköiset energiat:
@@ -600,11 +847,9 @@ lause kattaa nämä molemmat tapaukset:
 
 Siistissä täysin matemaattisessa kaavamuodossa termodynamiikan I pääsääntö on siis
 
-\begin{framed}
 \begin{equation}
  \Delta E_{sys} = Q_{tot} + W_{tot}
 \end{equation}
-\end{framed}
 
 Termodynamiikan pääsäännöt ovat kaikkien fysiikan lakien tavoin \textbf{universaaleja} 
 eli voimassa kaikille systeemeille ja prosesseille kaikkialla, kaikkina aikoina. Voimme 
