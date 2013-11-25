@@ -47,8 +47,6 @@
 
 % \chapter{Johdanto}
 % 
-\part{Termodynamiikka} % ___________________________________________________________________
-
 \chapter{Systeemi} % -----------------------------------------------
 % % Avoin, suljettu, adiabaattinen
 
@@ -95,6 +93,178 @@ Tällainen on esimerkiksi \textit{ilmatilavuus keskellä muuta ilmaa}.
 Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olemassa, vaan \textit{eristeillä} 
 on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
 systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
+
+\chapter{Suureita} % -----------------------------------------------
+
+Ennen kuin alamme varsinaisesti käsitellä termodynamiikkaa tai muitakaan lämpötieteitä on syytä palauttaa mieleen 
+muutama suure yksiköineen ja määritelmineen. Luultavasti suureet ovat ennestään tuttuja etkä halua käyttää 
+niihin juurikaan aikaa mutta yllätyksiäkin lienee luvassa ja syvälliseen ymmärrykseen on hyvä pyrkiä - pidemmällä 
+tähtäimellä sitä kautta pääsee vähemmällä.
+
+\section{Puhtaista luvuista vektoreihin}
+
+\begin{itemize}
+ \item \textbf{Puhtailla luvuilla} ei ole yksikköä. Meillä voi olla esimerkiksi 2 pakastinta, 3 turbiinia ja 1 lämmönvaihdin.
+ \item \textbf{Skalaarisuureilla} on yksikkö eli suuruus: pituudella metri, massalla kilogramma jne.
+ \item \textbf{Vektorisuureilla} on suuruus ja suunta, esimerkiksi voiman yksikkö on newton mutta on välttämätöntä 
+ tietää myös mihin suuntaan voima vetää tai työntää.
+\end{itemize}
+
+% kunkin suureen kohdalla, onko se mikä näistä!
+
+\section{Avaruus ja aika} % ...................................................
+
+Lämpötieteissä ulottuvuuksia käsitellään klassisen fysiikan tapaan eli avaruusulottuvuuksia on kolme ja ne ovat 
+toisistaan sekä ajan yhdestä ulottuvuudesta erillisiä. Syitä tähän on pohjimmiltaan kaksi:
+
+\begin{enumerate}
+ \item Lämpötieteet syntyivät ennen suhteellisuusteoriaa ja muuta modernia fysiikkaa.
+ \item Käytännön sovelluksissa on harvinaista joutua käsittelemään tilanteita joissa tarvittaisiin 
+ suhteellisuusteorian aika-avaruutta\footnote{Miksi tämä on englanniksi ``spacetime'' ja suomeksi ``aika-avaruus''?}
+ tai ylimääräisiä avaruusulottuvuuksia.
+\end{enumerate}
+
+\subsection{Avaruus}
+
+\subsubsection{Yksiulotteinen sijainti s}
+
+Ensimmäisenä on syytä mainita, että jos tilannetta voidaan kuvata yksiulotteisena\footnote{ajattele vaikkapa 
+raiteillaan pysyvää junaa}, käytetään joskus ainoana avaruuskoordinaattina \textbf{sijaintia s}.
+
+\subsubsection{Kolmiulotteinen sijainti r}
+
+Avaruuden ulottuvuuksia on siis kolme ja ne muodostavan kolmiulotteisen avaruuden. 
+
+Mikä tahansa piste tässä avaruudessa voidaan määrittää \textbf{kolmen koordinaatin} avulla. 
+Ensin koordinaatit täytyy kalibroida määrittämällä niille nollakohdat sekä yksiköt. ``Kartesiolainen'' eli 
+suorakulmainen $(x, y, z)$-koordinaatisto on yleisin, mutta lämpötieteissä eivät ole erityisen harvinaisia tilanteet 
+joissa esimerkiksi sylinterikoordinaatisto $(z, r, \theta)$ tai pallokoordinaatisto $(r, \theta, \phi)$ on kätevämpi.
+
+\textbf{Origo} sijaitsee koordinaattien nollakohtien leikkauspisteessä $(0, 0, 0)$. Minkä tahansa pisteen sijainti 
+voidaan ilmoittaa \textbf{paikkavektorilla $\vec{r}$} origosta kyseiseen pisteeseen. Kartesiolaisessa koordinaatistossa
+
+\begin{equation}
+ \vec{r} = \begin{bmatrix}
+            x\\ y\\ z
+           \end{bmatrix}
+\end{equation}
+
+\subsubsection{Pituus L}
+
+\textbf{Pituuden} (usein \textbf{L}) yksikkönä käytetään SI-perusyksikkö \textbf{metriä}:
+
+\begin{equation}
+ [L] = m
+\end{equation}
+
+(``Metri on sellaisen matkan pituus, jonka valo kulkee tyhjiössä aikavälissä 1/299 792 458 sekuntia 
+(17. CGPM, 1983).'')
+
+\subsubsection{Pinta-ala A}
+
+\textbf{Pinta-alan} (usein \textbf{A}) yksikkönä käytetään \textbf{neliömetriä}:
+
+\begin{equation}
+ [A] = m^2
+\end{equation}
+
+(Suorakaiteen pinta-alaa voi kuvata kertomalla sen sivujen pituudet toisillaan. Koska minkä muotoisen tasokuvion 
+tahansa voi ajatella muodostuvan esimerkiksi mielivaltaisen pienistä neliöistä, on neliömetri pätevä mittaamaan 
+mielivaltaisen muotoisia pinta-aloja).
+
+\subsubsection{Tilavuus V}
+
+\textbf{Tilavuuden} (usein \textbf{V}) yksikkönä käytetään \textbf{kuutiometriä}:
+
+\begin{equation}
+ [V] = m^3
+\end{equation}
+
+(Suorakulmaisen särmiön voi kuvata kertomalla sen sivujen pituudet toisillaan. Koska minkä muotoisen avaruuskappaleen 
+tahansa voi ajatella muodostuvan esimerkiksi mielivaltaisen pienistä kuutioista, on kuutiometri pätevä mittaamaan 
+mielivaltaisen muotoisia tilavuuksia).
+
+\subsection{Aika t}
+
+\textbf{Ajan t} yksikkönä käytetään SI-perusyksikkö \textbf{sekuntia}:
+
+\begin{equation}
+ [t] = s
+\end{equation}
+
+(``Sekunti on 9 192 631 770 kertaa sellaisen säteilyn jaksonaika, joka vastaa cesium 133 -atomin siirtymää 
+perustilan ylihienorakenteen kahden energiatason välillä (13. CGPM, 1967).'')
+
+% massa ja moolimäärä
+
+\section{Aikaderivaattasuureet} % ...................................................
+
+% Suureen muutos / ajan muutos - muutos tietyssä ajassa - aika mieliv. lyhyeksi - aikaderivointi
+
+% Ajan ja tilan kytkentä - vaikka itsenäisiä, muuttuvat yhtä aikaa
+
+\subsection{Nopeus v}
+
+Yksiulotteisen sijainnin muutoksen suhde ajan muutokseen on \textbf{vauhti $|\vec{v}|$}:
+
+\begin{equation}
+ v = \frac{\Delta s}{\Delta t}
+\end{equation}
+
+Jos vauhti halutaan mielivaltaisen lyhyenä ajanhetkenä tämä lähestyy aikaderivaattaa:
+
+\begin{equation}
+ v = \frac{ds}{dt}
+\end{equation}
+
+Kun tämä siiretään kolmiulotteiseen avaruuteen paikkavektorin $\vec{r}$ derivaataksi saadaan \textbf{nopeus $\vec{v}$} 
+joka on siis myös vektorisuure:
+
+\begin{equation}
+ \vec{v} = \frac{d\vec{r}}{dt}
+\end{equation}
+
+Nopeuden yksiköksi tulee sama kuin vauhdinkin eli
+
+\begin{equation}
+ [v] = \left[\frac{ds}{dt}\right] = \left[\frac{s}{t}\right] = \frac{m}{s}
+\end{equation}
+
+% aikaderivaatan pistemerkintä & ``virta''
+% kiihtyvyys, massa- mooli, tilavuusvirrat
+
+\section{Voima F} % ...................................................
+
+Olemme tottuneet ajattelemaan voimaa jonkinlaisena perussuureena, mutta itse asiassa se on vain hyvin kätevä 
+johdannaissuure, joka on määritelty Newtonin II lain \footnote{Newtonin I laki on II lain erikoistapaus.} perusteella:
+
+\begin{equation}
+ \vec{F} = \frac{d\vec{p}}{dt} = \frac{d(m\vec{v})}{dt}
+\end{equation}
+
+Niinpä sen yksiköksi tulee:
+
+\begin{equation}
+ [F] = [|\vec{F}|] = \left[\frac{d(m|\vec{v}|)}{dt}\right] = \left[\frac{mv}{t}\right] 
+  = \left[\frac{mL}{t^2}\right] = \frac{kgm}{s^2}
+\end{equation}
+
+Tämä on edelleen nimetty\footnote{ilmeisistä syistä} Newtoniksi:
+
+\begin{equation}
+ [F] = \frac{kgm}{s^2} = N
+\end{equation}
+
+Voimia ei liene todellisuudessa olemassakaan. Ne ovat vain yksi ihmiskunnan historian hyödyllisimmistä abstraktioista. 
+Tämä voiman eksakti muoto kuvaa vain sitä mitä arkikielen voima-sanakin: ``voimaa'' tarvitaan sitä enemmän mitä enemmän 
+ja mitä nopeammin materiaa joudutaan kiihdyttämään (tai hidastamaan, $ a < 0$).
+
+
+\part{Termodynamiikka} % ___________________________________________________________________
+
+% O:s pääsääntö ja lämpötila
+% Tilasuureet
+% Ideaalikaasun tilanyhtälö
 
 \chapter{Energian tiede} % -----------------------------------------------
 
