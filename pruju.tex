@@ -260,6 +260,23 @@ ei mittausten mukaan ole vakio. Alun perin kilogramma piti määritellä ``1 lit
 4 °C:n lämpötilassa''. Vesipohjaiseen määritelmään siirtymistä on myöhemminkin ehdotettu, joskin niin että 
 määritelmä vastaisi nykyistä kilogramman määritelmää paremmalla tarkkuudella.
 
+\subsection{Moolimassa M}
+
+Systeemin massa ja ainemäärä riippuvat toisistaan \textbf{Moolimassan M} kautta:
+
+\begin{equation}
+ M = \frac{m}{n}
+\end{equation}
+
+Moolimassan SI-yksiköksi tulee
+
+\begin{equation}
+ [M] = \left[\frac{m}{n}\right] = \frac{[m]}{[n]} = \frac{kg}{mol}
+\end{equation}
+
+Tämä on kuitenkin niin suuri yksikkö että helpommin käsiteltäviä lukuja saadaan käyttämällä yksikkönä joko 
+g/mol (yleisin) tai kg/kmol.
+
 \section{Aikaderivaattasuureet} % ...................................................
 
 % Suureen muutos / ajan muutos - muutos tietyssä ajassa - aika mieliv. lyhyeksi - aikaderivointi
@@ -437,8 +454,6 @@ infinitesimaalisen lyhyellä matkalla, on energiaa.
 Käsiä heiluttelevana loppukaneettina totean, että energia on siis ``voimantuottokykyä''\footnote{
 Mietipä tätä: \textit{voimanlähteellä} on aina jokin \textit{teho} $P = \dfrac{dE}{dt}$!}.
 
-\chapter{Systeemin energiat} % -----------------------------------------------
-
 \section{Potentiaalienergia ja liike-energia}
 
 Kuten muistamme, työn yleinen määritelmä on
@@ -578,6 +593,106 @@ Liike-energia on siis
 Systeemille voidaan antaa liike-energiaa aiheuttamalla siihen nettovoima, joka tekee työtä systeemin 
 nopeuden kasvattamiseksi. Tähän kulunut energia varastoituu systeemin liike-energiaksi.
 
+\chapter{Aineen energiarakenne} % -----------------------------------------------
+
+\subsection{Sisäenergia U}
+
+Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
+\textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
+siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
+\textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
+Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
+
+Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
+energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
+
+\subsection{Lämpötila T}
+
+Sisäenergia on siis systeemin molekyylien liike-energioiden summa. Mitkä sitten ovat yksittäisten molekyylien energiat? 
+Missä tahansa käytännön systeemissä on niin valtava määrä molekyyleja\footnote{Muistathan että yhdessä moolissa on 
+noin $6,022\cdot10^{23}$ molekyylia.}, ettei ole mielekästä määrittää kunkin energiaa erikseen.
+
+On kuitenkin mahdollista määrittää molekyylien energioiden jakauma. Molekyylien energiat ovat tietenkin kvantittuneet, 
+jolloin energiajakauma kertoo mikä osuus molekyyleista on milläkin energiatasolla. Tämä voidaan tehdä kullekin molekyylien 
+energian tyypille (translaatio, rotaatio, vibraatio).
+
+Tilastollisen termodynamiikan mukaan $N$ molekyylin jakauma $m$ energiatasojoukolle voi toteutua
+
+\begin{equation}
+% \prod:in rajat näkyvät väärin vaikka intlimits käytössä!
+\label{eq:ejakW}
+ W = \frac{N!}{\prod_{i=1}^m(n_i!)}
+\end{equation}
+
+tavalla kun $n_i$ on molekyylien määrä energiatasolla $i$.
+
+Mikä $n_i$ eli molekyylien energiajakauma sitten on? Yllä oleva kaava ei ota tähän kantaa. 
+Nimittäin luonto toimii satunnaisesti eli kaikki energiajakaumat ovat mahdollisia. Tilastollisen termodynamiikan 
+teoria kertoo kuitenkin meille, mikä jakauma on todennäköisin eli voi toteutua kaavan \ref{eq:ejakW} mukaisesti 
+suurimmalla määrällä eri tapoja. Yleensä se on \textit{Boltzmann-jakauma}:
+
+\begin{equation}
+\label{eq:boltzmann}
+ n_i = n_0p_ie^{-\dfrac{\epsilon_i}{kT}}
+\end{equation}
+
+jossa $\epsilon_i$ on energiatasojoukon $i$ keskimääräinen energia, $p_i$ on energiatasojoukkoon kuuluvien energioiden 
+määrä\footnote{Tällä otetaan huomioon se, että molekyylien vaikuttaessa toisiinsa energiatasot leviävät energiavöiksi ja 
+se, että useaa erilaista liiketilaa voi vastata sama energia.}, $n_0$ on molekyylien määrä alimmalla 
+energiatasolla, $k$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelvineinä}.
+
+% Kelvinasteen ja Boltzmannin vakion määritelmät!
+
+Systeemin lämpötila kertoo siis sen, millä tavalla molekyylien liike-energiat ovat jakautuneet.
+
+\subsection{Sisäenergia lämpötilan funktiona}
+
+Systeemin sisäenergia on kaikkien sen molekyylien energioiden summa:
+
+\begin{equation}
+ U = \sum_{i=1}^m\epsilon_in_i
+\end{equation}
+
+Sijoitetaan tähän kaava \ref{eq:boltzmann}:
+
+\begin{equation}
+ U = \sum_{i=1}^m\epsilon_in_0p_ie^{-\dfrac{\epsilon_i}{kT}}
+\end{equation}
+
+Tästä näemme että systeemin sisäenergia riippuu
+
+\begin{enumerate}
+ \item Systeemin lämpötilasta $T$
+ \item Systeemin ainemäärästä $n$ ($n_i$:n kautta)
+ \item Systeemin koostumuksesta (sen muodostavan aineen energiatasojen suuruuksista $\epsilon_i$:n kautta)
+\end{enumerate}
+
+Mikäli systeemin koostumus ei muutu (esim. reaktioiden tai virtausten johdosta) pätee
+
+\begin{equation}
+ U = U(T, n)
+\end{equation}
+
+Ainemäärän vaikutus saadaan eliminoitua käyttämällä molaarista sisäenergiaa
+
+\begin{equation}
+ U_m = \frac{U}{n} = U_m(T)
+\end{equation}
+
+Koska systeemin massa riippuu sen ainemäärästä moolimassan kautta pätee myös ominaissisäenergialle vastaavasti:
+
+\begin{equation}
+ u = u(T)
+\end{equation}
+
+Eli ominaissisäenergia on vain lämpötilan funktio. Tämä on olennainen tulos, joka klassisessa termodynamiikassa 
+otetaan 'annettuna' eli puhtaasti empiirisenä havaintona. Opittuamme tilastollisen termodynamiikan avulla lämpötilan 
+todellisen merkityksen tulos oli kuitenkin helppo johtaa ja ymmärtää.
+
+% Ominaislämpökapasiteetit (ainakin c_v)
+
+\chapter{Systeemin energiat} % -----------------------------------------------
+
 \section{Energiat lämpötieteissä}
 
 Systeemillä voi siis olla montaa erityyppistä energiaa:
@@ -632,23 +747,6 @@ Systeemin energiat voidaan jakaa myös seuraavasti:
 \end{enumerate}
 
 \section{Systeemin energiasuureet}
-
-\subsection{Lämpöliikkeen liike-energia eli sisäenergia U}
-
-Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
-\textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
-siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyörimiseen omien symmetria-akseleidensa ympäri eli 
-\textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
-Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
-
-Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa lämpöliikkeen energiaa kutsutaan systeemin 
-\textbf{sisäenergiaksi $U$}. \textbf{Ominaissisäenergia $u$} on vain systeemin lämpötilan funktio:
-
-\begin{equation}
- u = u(T)
-\end{equation}
-
-Tämä ominaisuus on seurausta siitä, että myös lämpötila on pohjimmiltaan samaa ilmiötä eli lämpöliikkeen voimakkuutta mittaava suure.
 
 \subsection{Sisäenergian johdannaisenergiat}
 
