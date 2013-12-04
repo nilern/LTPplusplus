@@ -593,9 +593,21 @@ Liike-energia on siis
 Systeemille voidaan antaa liike-energiaa aiheuttamalla siihen nettovoima, joka tekee työtä systeemin 
 nopeuden kasvattamiseksi. Tähän kulunut energia varastoituu systeemin liike-energiaksi.
 
-\chapter{Aineen energiarakenne} % -----------------------------------------------
+% Liike-energian jako translaatioon, rotaatioon ja vibraatioon kaavoineen
 
-\subsection{Sisäenergia U}
+\chapter{Systeemin energiat} % -----------------------------------------------
+
+\section{Makroskooppiset energiat} % -----------------------------------------------
+
+\section{Mikroskooppiset energiat} % -----------------------------------------------
+
+Systeemillä kokonaisuutena voi siis olla erinäisiä potentiaali- ja liike-energioita. Se voi esimerkiksi olla verrattain korkealla 
+tai siirtymä-, pyörimis- tai värähtelyliikkeessä. Tämä ``makromekaniikka'' on tuttua ja helposti ymmärrettävää.
+
+Termodynamiikassa keskeisimmässä osassa ovat kuitenkin systeemin muodostavien molekyylien, atomien, elektronien ja atomiydinten 
+energiat.
+
+\subsection{Mikroskooppiset liike-energiat}
 
 Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
 \textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
@@ -603,10 +615,16 @@ siirtymiseen eli \textit{translaatioon}, ei-pallosymmetristen molekyylien pyöri
 \textit{rotaatioon} ja moniatomiseen molekyyliin kuuluvien atomien värähtelyyn toistensa suhteen eli \textit{vibraatioon}. 
 Molekyylit voivat siis liikkua, pyöriä ja värähdellä vaikka systeemi kokonaisuutena ei tekisi mitään näistä asioista.
 
+Systeemin mikroskooppisten osasten liike-energioita tutkii erityisesti \textbf{tilastollinen termodynamiikka} mutta itse asiassa 
+myös ne klassisen termodynamiikan käsitteet jotka tuntuvat vaikeasti ymmärrettäviltä tai ``käsiä heilutellen hatusta vedetyiltä'' 
+kuten sisäenergia, lämpötila ja entropia kuvaavat itse asiassa näiden ilmiöiden makroskooppisesti mitattavia seurauksia.
+
+\subsubsection{Sisäenergia U}
+
 Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
 energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
 
-\subsection{Lämpötila T}
+\subsubsection{Lämpötila T}
 
 Sisäenergia on siis systeemin molekyylien liike-energioiden summa. Mitkä sitten ovat yksittäisten molekyylien energiat? 
 Missä tahansa käytännön systeemissä on niin valtava määrä molekyyleja\footnote{Muistathan että yhdessä moolissa on 
@@ -645,7 +663,7 @@ energiatasolla, $k$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelv
 
 Systeemin lämpötila kertoo siis sen, millä tavalla molekyylien liike-energiat ovat jakautuneet.
 
-\subsection{Sisäenergia lämpötilan funktiona}
+\subsubsection{Sisäenergia lämpötilan funktiona}
 
 Systeemin sisäenergia on kaikkien sen molekyylien energioiden summa:
 
@@ -691,64 +709,7 @@ todellisen merkityksen tulos oli kuitenkin helppo johtaa ja ymmärtää.
 
 % Ominaislämpökapasiteetit (ainakin c_v)
 
-\chapter{Systeemin energiat} % -----------------------------------------------
-
-\section{Energiat lämpötieteissä}
-
-Systeemillä voi siis olla montaa erityyppistä energiaa:
-
-\begin{enumerate}
- \item Liike-energiat:
- \begin{enumerate}
-  \item \underline{Systeemin liike-energia}
-  \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
- \end{enumerate}
- \item Fysiikan perusvoimiin liittyvät potentiaalienergiat:
- \begin{enumerate}
-  \item \underline{Gravitaation potentiaalienergia}
-  \item Sähköiset energiat:
-  \begin{enumerate}
-   \item Sähkömagneettinen potentiaalienergia
-   \item \textit{Kemiallinen sidosenergia}
-  \end{enumerate}
-  \item \textit{Heikon vuorovaikutuksen sidosenergia}
-  \item Vahvan vuorovaikutuksen sidosenergia
- \end{enumerate}
-\end{enumerate}
-
-\underline{Alleviivattuja energioita} käsitellään lämpötieteissä jatkuvasti. \textit{Kursivoidut 
-energiat} tulevat kyseeseen, mikäli systeemissä tapahtuu kemiallisia tai ydinreaktioita. 
-
-Sähkömagneettisella potentiaalienergialla on väliä vain mikäli systeemin kokonaisvaraus ei ole nolla ja 
-se on ulkoisessa sähkömagneettisessa kentässä. Lämpötieteissä ja -tekniikassa tällaiset tapaukset ovat 
-harvinaisia.
-
-Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
-ole käytännön sovelluksia.
-
-\section{Energioiden koordinaatistoriippuvuus}
-
-Systeemin energiat voidaan jakaa myös seuraavasti:
-
-\begin{enumerate}
- \item Koordinaattijärjestelmän ja/tai potentiaalienergian nollakohdan valinnasta riippuvat:
- \begin{enumerate}
-  \item Systeemin liike-energia
-  \item Gravitaation potentiaalienergia
-  \item Sähkömagneettinen potentiaalienergia
- \end{enumerate}
- \item Näistä valinnoista riippumattomat:
- \begin{enumerate}
-  \item Lämpöliikkeen liike-energia eli sisäenergia
-  \item Kemiallinen sidosenergia
-  \item Heikon vuorovaikutuksen sidosenergia
-  \item Vahvan vuorovaikutuksen sidosenergia
- \end{enumerate}
-\end{enumerate}
-
-\section{Systeemin energiasuureet}
-
-\subsection{Sisäenergian johdannaisenergiat}
+%\subsubsection{Sisäenergian johdannaisenergiat}:
 
 \subsubsection{Entalpia H} \label{sssection:entalpia}
 
@@ -1085,6 +1046,72 @@ Mikäli
 tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
 kunnes systeemi on termodynaamisessa tasapainossa.
 
+\subsection{Mikroskooppiset potentiaalienergiat eli sidosenergiat}
+
+Mikroskooppisia potentiaalienergioita kutsutaan yleensä \textbf{sidosenergioiksi} sillä ne sitovat aineen eri osasia 
+yhteen niihin muotoihin, joihin olemme tottuneet. Niiden tutkimus kuuluu enemmän kemian, kvanttimekaniikan ja ydinfysiikan 
+kuin (edes tilastollisen) termodynamiikan alueelle. 
+
+Niistä on kuitenkin syytä puhua jonkin verran myös lämpötekniikan oppikirjassa, sillä niillä on keskeinen rooli
+etenkin monissa energiantuotantoprosesseissa: polttoprosesseissa (kemiallinen sidosenergia), ydinvoimassa (ytimen 
+sidosenergia) sekä myös erilaisissa aurinkopaneeleissa (elektronien sidosenergia yleisesti, joskus myös kemiallinen 
+sidosenergia).
+
+\section{Energiat lämpötieteissä}
+
+Systeemillä voi siis olla montaa erityyppistä energiaa:
+
+\begin{enumerate}
+ \item Liike-energiat:
+ \begin{enumerate}
+  \item \underline{Systeemin liike-energia}
+  \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
+ \end{enumerate}
+ \item Fysiikan perusvoimiin liittyvät potentiaalienergiat:
+ \begin{enumerate}
+  \item \underline{Gravitaation potentiaalienergia}
+  \item Sähköiset energiat:
+  \begin{enumerate}
+   \item Sähkömagneettinen potentiaalienergia
+   \item \textit{Kemiallinen sidosenergia}
+  \end{enumerate}
+  \item \textit{Heikon vuorovaikutuksen sidosenergia}
+  \item Vahvan vuorovaikutuksen sidosenergia
+ \end{enumerate}
+\end{enumerate}
+
+\underline{Alleviivattuja energioita} käsitellään lämpötieteissä jatkuvasti. \textit{Kursivoidut 
+energiat} tulevat kyseeseen, mikäli systeemissä tapahtuu kemiallisia tai ydinreaktioita. 
+
+Sähkömagneettisella potentiaalienergialla on väliä vain mikäli systeemin kokonaisvaraus ei ole nolla ja 
+se on ulkoisessa sähkömagneettisessa kentässä. Lämpötieteissä ja -tekniikassa tällaiset tapaukset ovat 
+harvinaisia.
+
+Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
+ole käytännön sovelluksia.
+
+\section{Energioiden koordinaatistoriippuvuus}
+
+Systeemin energiat voidaan jakaa myös seuraavasti:
+
+\begin{enumerate}
+ \item Koordinaattijärjestelmän ja/tai potentiaalienergian nollakohdan valinnasta riippuvat:
+ \begin{enumerate}
+  \item Systeemin liike-energia
+  \item Gravitaation potentiaalienergia
+  \item Sähkömagneettinen potentiaalienergia
+ \end{enumerate}
+ \item Näistä valinnoista riippumattomat:
+ \begin{enumerate}
+  \item Lämpöliikkeen liike-energia eli sisäenergia
+  \item Kemiallinen sidosenergia
+  \item Heikon vuorovaikutuksen sidosenergia
+  \item Vahvan vuorovaikutuksen sidosenergia
+ \end{enumerate}
+\end{enumerate}
+
+
+
 \chapter{Siirtymäenergiat}
 
 Systeemillä voi siis olla monenlaista energiaa. Myös systeemin ympäristöllä voi olla näitä 
@@ -1142,7 +1169,34 @@ Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä t
 (sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
 II pääsääntöä.
 
-\chapter{Termodynamiikan I pääsääntö}
+\chapter{Tilasuureet} % ---------------------------------------------------------------------
+
+Niitä termodynaamisia suureita, jotka riippuvat vain toistensa arvoista tarkasteluhetkellä 
+eivätkä siitä millaisella prosessilla näihin arvoihin on tultu kutsutaan tilasuureiksi.
+
+\begin{itemize}
+ \item Perustavimmat tilasuureet ovat \textbf{paine p}, \textbf{lämpötila T}, 
+    \textbf{tilavuus V}, \textbf{sisäenergia U} sekä \textbf{entropia S}.
+ \item Keskeisiä ovat myös näiden johdannaissuureet \textbf{entalpia H}, 
+  \textbf{Helmhotzin vapaaenergia F} sekä \textbf{Gibbsin vapaaenergia G}.
+\end{itemize}
+
+Mikä tahansa funktio, joka sisältää vain tilasuureita, massaa ja ainemäärää on myös tilasuure. 
+Niinpä myös ominaistilavuus v, tiheys $\rho = \frac{1}{v}$, ominaissisäenergia u, molaarinen 
+ominaissisäenergia $U_m$ jne. ovat tilasuureita.
+
+% Esimerkkejä tilasuureen merkityksestä.
+
+\textbf{Lämpö Q} ja \textbf{työ W} \underline{eivät} ole tilasuureita!
+
+% Esimerkkejä tästä.
+
+% ``Termodynaamiset potentiaalit'', selitys eksaktista differentiaalista, pyörteettömyydestä, 
+% vertaus potentiaalienergiaan ja sähköiseen potentiaaliin.
+
+% Tilanyhtälö, ideaalikaasun tilanyhtälö
+
+\chapter{Termodynamiikan I pääsääntö} % -----------------------------------------------------
 
 \textbf{Termodynamiikan I pääsääntö} on seuraava kokeellisesti havaittu luonnonlaki:
 
