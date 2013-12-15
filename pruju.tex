@@ -17,6 +17,7 @@
 
 \usepackage[utf8]{inputenc}               % Tekstiasetuksia, sisältää ääkköset
 \usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl} % Paremman näköiset fontit
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 \usepackage{a4wide}
 \usepackage[intlimits]{amsmath}                        % Lisää kaavavoimaa!
@@ -216,7 +217,7 @@ muita hiukkasia tai sellaisten hiukkasten määriteltyjä ryhmiä. (14. CGPM, 19
 0,012 kilogrammassa hiili-12:ta eli yhdessä moolissa olevien hiukkasten lukumäärä on \textbf{Avogadron luku $N_A$}:
 
 \begin{equation}
- [N_A] \approx (6,02214129 ± 0,00000027)\cdot10^{23}
+ [N_A] \approx (6,02214129 \pm 0,00000027)\cdot10^{23}
 \end{equation}
 
 Ainemäärä on hyödyllinen yleensä kemiassa (koska reaktioissa väliä on molekyylien määrällä) ja kaasuja käsiteltäessä 
@@ -257,7 +258,7 @@ Massan SI-perusyksikkö on \textbf{kilogramma kg}:
 Kilogramma on ainoa SI-perusyksikkö, joka vielä perustuu tällaiseen prototyyppiin. Tämä on ongelmallista ensinnäkin 
 siksi, että prototyyppi ei ole toistettavissa ja toisekseen siksi että - kauhistus sentään - prototyypin massa 
 ei mittausten mukaan ole vakio. Alun perin kilogramma piti määritellä ``1 litra vettä on massaltaan kilogramman 
-4 °C:n lämpötilassa''. Vesipohjaiseen määritelmään siirtymistä on myöhemminkin ehdotettu, joskin niin että 
+4 $^{\circ}$C:n lämpötilassa''. Vesipohjaiseen määritelmään siirtymistä on myöhemminkin ehdotettu, joskin niin että 
 määritelmä vastaisi nykyistä kilogramman määritelmää paremmalla tarkkuudella.
 
 \subsection{Moolimassa M}
@@ -624,7 +625,7 @@ kuten sisäenergia, lämpötila ja entropia kuvaavat itse asiassa näiden ilmiö
 Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
 energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
 
-\subsubsection{Lämpötila T}
+\subsubsection{Lämpötila T} \label{sssection:T}
 
 Sisäenergia on siis systeemin molekyylien liike-energioiden summa. Mitkä sitten ovat yksittäisten molekyylien energiat? 
 Missä tahansa käytännön systeemissä on niin valtava määrä molekyyleja\footnote{Muistathan että yhdessä moolissa on 
@@ -651,13 +652,13 @@ suurimmalla määrällä eri tapoja. Yleensä se on \textit{Boltzmann-jakauma}:
 
 \begin{equation}
 \label{eq:boltzmann}
- n_i = n_0p_ie^{-\dfrac{\epsilon_i}{kT}}
+ n_i = n_0p_ie^{-\dfrac{\epsilon_i}{k_BT}}
 \end{equation}
 
 jossa $\epsilon_i$ on energiatasojoukon $i$ keskimääräinen energia, $p_i$ on energiatasojoukkoon kuuluvien energioiden 
 määrä\footnote{Tällä otetaan huomioon se, että molekyylien vaikuttaessa toisiinsa energiatasot leviävät energiavöiksi ja 
 se, että useaa erilaista liiketilaa voi vastata sama energia.}, $n_0$ on molekyylien määrä alimmalla 
-energiatasolla, $k$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelvineinä}.
+energiatasolla, $k_B$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelvineinä}.
 
 % Kelvinasteen ja Boltzmannin vakion määritelmät!
 
@@ -1169,7 +1170,7 @@ Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä t
 (sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
 II pääsääntöä.
 
-\chapter{Tilasuureet} % ---------------------------------------------------------------------
+\chapter{Tilasuureet} \label{chapter:tilasuureet} % ----------------------------------------
 
 Niitä termodynaamisia suureita, jotka riippuvat vain toistensa arvoista tarkasteluhetkellä 
 eivätkä siitä millaisella prosessilla näihin arvoihin on tultu kutsutaan tilasuureiksi.
@@ -1218,6 +1219,10 @@ Sen voi ilmaista myös seuraavilla tavoilla:
  Maailmankaikkeuden kokonaisenergia on vakio.
 \end{quote}
 
+\begin{quote}
+ On mahdotonta rakentaa laite, joka synnyttää maailmankaikkeuteen uutta energiaa. (Ns. tyypin I ikiliikkuja.)
+\end{quote}
+
 Termodynamiikan I pääsäännön voi määritellä myös käytännössä hyödyllisellä tavalla 
 systeemin energioiden ja siirtymäenergioiden avulla. 
 
@@ -1240,6 +1245,184 @@ Termodynamiikan pääsäännöt ovat kaikkien fysiikan lakien tavoin \textbf{uni
 eli voimassa kaikille systeemeille ja prosesseille kaikkialla, kaikkina aikoina. Voimme 
 siis aina käyttää laskelmissamme termodynamiikan I pääsääntöä tässä muodossa yhtenä 
 yhtälöistämme.
+
+% Noether
+
+\chapter{Termodynamiikan II pääsääntö}
+
+Ensimmäisen pääsäännön kannalta on samantekevää, onko energia liike- vai potentiaalienergiana tai 
+siirtyykö se systeemistä toiseen työnä vai lämpönä, kunhan energian kokonaismäärä säilyy jokaisella 
+ajanhetkellä.
+
+Jo lämpötieteiden ja -tekniikan pioneerit kuitenkin huomasivat, että lämpöön ja työhön päti muitakin
+lainalaisuuksia.
+
+\paragraph{Lämmönsiirron suunta}
+
+Havaittiin että lämpö siirtyi luonnollisesti vain tiettyyn suuntaan:
+
+\begin{quote}
+ Spontaanissa prosessissa lämpö siirtyy aina korkeammasta lämpötilasta matalampaan.
+\end{quote}
+
+Tämän lämpötekninen seuraus on:
+
+\begin{quote}
+ On mahdotonta rakentaa laitetta, joka siirtää lämpöä matalammasta lämpötilasta korkeampaan tekemättä 
+ lainkaan työtä. (Eli jäähdytystekniikka kuluttaa väistämättä energiaa.)
+\end{quote}
+
+\paragraph{Lämmön ja työn muuttaminen toisikseen}
+
+Havaittiin että työllä ja lämmöllä oli perustavanlaatuinen ero:
+
+\begin{quote}
+ Työ voidaan muuttaa kokonaan lämmöksi, mutta lämpöä ei kokonaan työksi.
+\end{quote}
+
+Tämän lämpötekninen seuraus on:
+
+\begin{quote}
+ On mahdotonta rakentaa laite, joka muuttaa lämmön kokonaan työksi. (Ns. tyypin II ikiliikkuja).
+\end{quote}
+
+\section{Entropia S}
+
+Myöhemmin onnistuttiin kehittämään uusi tilasuure, \textbf{entropia S}, jonka avulla kaikki
+edellämainitut lainalaisuudet voitiin lausua yhdellä lauseella:
+
+\begin{quote}
+ Eristetyn systeemin entropia kasvaa tai pysyy vakiona jokaisessa prosessissa.
+\end{quote}
+
+Tällä lauseella on erikoistapaus, joka tuntuu itse asiassa paljon kaikenkattavammalta:
+
+\begin{quote}
+ Maailmankaikkeuden entropia on ajan aidosti kasvava funktio\footnote{Eli dramaattisemmin ``entropia 
+ kasvaa maailmanlopun edellä''. 
+ 
+ Isälläni oli tapana sanoa ``pyy pienenee maailmanlopun 
+ edellä''. Kun kysyin että miksi, niin vastaus oli ``entropian ja pyyn summa on vakio''. Arvelin, että 
+ pyy on jokin kreikkalainen aakkonen koska tuntui siltä että entropiaa, mitä se sitten onkaan, tuskin 
+ mitataan samoissa yksiköissä kuin pieniä lintuja. 
+ 
+ Saattaa olla myös jokin satu, jossa säälimätön jumala kiroaa pyyt aina vain pienenemään sukupolvi 
+ sukupolvelta. Oli miten oli, minusta kuitenkin tuli teekkari eikä ornitologia tai teologia.}.
+\end{quote}
+
+Tämä on seurausta siitä, että maailmankaikkeus on eristetty systeemi\footnote{Mikäli oletamme että sen 
+sen ulkopuolella ei ole mitään. Toisaalta yhtä lailla voidaan olettaa, että siellä on toisia maailmankaikkeuksia 
+eli multiversumi.} ja ajan myötä tapahtuu vain prosesseja, joissa sen entropia kasvaa tai pysyy vakiona.
+
+Tuo ensimmäinen lause tunnetaan \textbf{termodynamiikan toisena pääsääntönä} ja käytännönläheisesti 
+lausumme sen systeemiterminologialla ja matemaattisessa differentiaalimuodossa seuraavasti:
+
+\begin{equation}
+\label{eqn:psII}
+ dS_{tot} = dS_{sys} + dS_{surr} \geq 0
+\end{equation}
+
+Eli maailmankaikkeuden kokonaisentropian, joka on systeemin ja ympäristön entropioiden summa, muutos on $\geq 0$. 
+Tässä kokonaisentropian kasvu on ilmaistu entropian muutoksen avulla koska muutoksia on helpompi mitata 
+ja myös käsitellä matemaattisesti kuin absoluuttisia arvoja.
+
+Termodynamiikan II pääsääntö pätee aina ja kaikille prosesseille. Kaava \ref{eqn:psII} sisältää kaiken, 
+mitä tässä luvussa on sitä ennen käsitelty.
+
+% Todistus siitä, että entropia on tilasuure.
+% Todistukset, että sisältää.
+
+\subsection{Mitä entropia on}
+
+Entropia kehitettiin klassisen termodynamiikan työkaluilla. Todettiin että tämä uusi tilasuure on kätevä 
+työkalu, koska se tiivistää havaitut lainalaisuudet lämmönsiirron suunnasta sekä työn ja lämmön suhteesta.
+
+% Edellä todistettiin klassisen termodynamiikan teorialla, että entropia todella on tilasuure, ja että 
+% termodynamiikan II pääsääntö todella sisältää nuo molemmat lainalaisuudet. 
+Klassinen termodynamiikka 
+ei kuitenkaan kerro mitään siitä, mitä entropia itse asiassa \textit{on}.
+
+Entropiaa vaivaa sama ongelma kuin lämpötilaa, eli suuri osa sen käyttäjistä ei tiedä mitä se itse asiassa 
+kuvaa. On vain jokin epämääräinen kuva siitä, että ``entropia on epäjärjestyksen mitta''. Tätä voidaan 
+havainnollistaa vaikka sellaisella analogialla että ``keittiökin menee ajan mittaan epäjärjestykseen 
+(mikäli järjestyksen pitämisessä ei nähdä suurta vaivaa)''. 
+
+\textbf{Ei pidä paikkaansa, että entropia olisi suoranaisesti epäjärjestyksen mitta.} Koetapa kokata jonkun 
+toisen keittiössä. Sinusta ehkä tuntuu, että kaikki löytyy mistä sattuu eli on epäjärjestyksessä, mutta keittiön 
+omistajan mielestä kaikki voi olla juuri siellä missä pitääkin eli järjestyksessä. Järjestys on siis ihmisten 
+keksintö ja määrittelykysymys. Moisten kanssa painiminen on \textit{``humanistien'' hommaa}.
+
+\paragraph{Mitä entropia sitten todella mittaa?}
+
+Tilastollisesta termodynamiikasta entropialle saadaan kuitenkin brutaalin yksinkertainen määritelmä ja kaava:
+
+\begin{equation}
+\label{eqn:S}
+ S = k_B \ln W
+\end{equation}
+
+missä $W$ ei ole työ vaan sama kuin kappaleessa \nameref{sssection:T} eli niiden tapojen lukumäärä, jolla 
+systeemin energiajakauma voi toteutua. $k_B$ on samaisessa kappaleessa ensi kertaa kohtaamamme Boltzmannin vakio.
+
+Luonnollinen logaritmi entropian kaavassa on selitettävissä seuraavasti:
+
+\begin{itemize}
+ \item Olkoon meillä systeemi, joka koostuu osasysteemeistä 1 ja 2.
+ \item Entropia on ekstensiivisuure jolloin $S_{sys} = S_1 + S_2$
+ \item Toisaalta koko systeemin energiajakauma voi toteutua $W_{sys} = W_1W_2$ tavalla\footnote{Tämä ajattelutapa 
+ on mahdollisesti tuttu todennäköisyyslaskennasta.}.
+ \item Oletetaan että $S$ ja $\ln W$ ovat suoraan verrannollisia: $S = k \ln W$
+ \item Systeemin entropian on tällöin oltava\\ $S_{sys} = k\ln W_{sys} = k\ln W_1W_2 = k \ln W_1 + k \ln W_2 = S_1 + S_2$
+ \item Eli oletus toimii. Verrannollisuuskertoimen $k$ mitattua arvoa $k_B$ kutsutaan Boltzmannin 
+	vakioksi\footnote{$k_B = 1,3806488\cdot10^{-23}\frac{J}{K}$}.
+\end{itemize}
+
+W on puhdas luku, joten entropian yksiköksi tulee
+
+\begin{equation}
+ [S] = [k_B\ln W] = [k_B] = \frac{J}{K} % Tää ei ehkää oo ihan OK tapa selvittää yksikkö!
+\end{equation}
+
+\paragraph{Mutta mitä entropia oikeastaan on?}
+
+Verrannollisuuskerroin $k_B$ ja luonnollinen logaritmi esiintyvät entropian tilastollisessa määritelmässä vain 
+jotta se saadaan täsmäämään klassisen termodynamiikan entropiaan. \textbf{Entropia on siis pohjimmiltaan vain 
+W:n funktio:}
+
+\begin{equation}
+\label{eqn:SfW}
+ S = f(W)
+\end{equation}
+
+Ja W tosiaan on niiden tapojen lukumäärä, jolla systeemin osasten energiajakauma voi toteutua. 
+
+\paragraph{Ja miksi se aina kasvaa?}
+
+Kaavoista \ref{eqn:S} ja \ref{eqn:SfW} nähdään että S on aidosti kasvava W:n funktio ja voi siis 
+kasvaa vain kun W kasvaa. Miksi W sitten aina kasvaa? Koska energiajakauman todennäköisyys 
+on suoraan verrannollinen siihen, kuinka monella eri tavalla kyseinen energiajakauma voi toteutua:
+
+\begin{equation}
+ P \sim W
+\end{equation}
+
+Ajan kuluessa sitä suurempi osa systeemeistä asettuu tiettyyn tilaan mitä todennäköisempi tuo tila on.
+Eli systeemit asettuvat tiloihin, joiden P on mahdollisimman suuri. Ja P on suoraan verrannollinen W:hen 
+jonka funktio entropia S on.
+
+Termodynamiikan II pääsääntö tarkoittaa siis pohjimmiltaan seuraavaa:
+
+\begin{quote}
+ Maailmankaikkeus pyrkii kohti todennäköisintä tilaansa.
+\end{quote}
+
+Vaikuttaa aika itsestäänselvältä latteudelta, varsinkin kun vertaa siihen epämääräiseen kuvaan, joka 
+minullakin ennen oli. Kyse ei olekaan siitä, että ``ajan kuluessa epäjärjestys kasvaa'' eli 
+``maailmanlopun edellä kaikki menee päin helvettiä''\footnote{Itse asiassa kun entropia on saavuttanut 
+maksiminsa ja lämmönsiirto loppunut on kaikkialla maailmankaikkeudessa sama muutaman kelvinin lämpötila. 
+Kyllähän joku voisi sanoa että se on ``helvetin kylmä''...}.
+
+% Srev ja [S]
 
 % \chapter{Suureet} %---------------------------------------------------------------------
 % % Tarvittavat prujuista ja kirjoista
