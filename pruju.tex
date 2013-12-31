@@ -15,12 +15,13 @@
 
 \documentclass[12pt,a4paper,finnish]{book}
 
-\usepackage[utf8]{inputenc}               % Tekstiasetuksia, sisältää ääkköset
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
 \usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
-\usepackage{ae,aecompl} % Paremman näköiset fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 % \usepackage{a4wide}
-\usepackage[intlimits]{amsmath}                        % Lisää kaavavoimaa!
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{fixltx2e}                       % \textsubscript
 \usepackage{enumerate}
 % \usepackage{framed}
 \usepackage{hyperref}
@@ -37,7 +38,7 @@
 \begin{document}
 
 \maketitle
-% Creative Commons, LaTeX-maininnat tähän
+% GPL, LaTeX-maininnat tähän
 \newpage
 \pagenumbering{Roman}
 \setcounter{tocdepth}{3}
@@ -46,74 +47,46 @@
 \pagenumbering{arabic}
 \setcounter{secnumdepth}{3}
 
-% \chapter{Johdanto}
-% 
-\chapter{Systeemi} % -----------------------------------------------
-% % Avoin, suljettu, adiabaattinen
+\chapter*{Johdanto} %------------------------------------------------------------------------------------------
+\addcontentsline{toc}{chapter}{Johdanto}
+\renewcommand{\thesection}{\arabic{section}}
 
-Systeemin käsite on lämpötieteissä hyvin keskeinen ja hyödyllinen.
+\section{Lämpötieteet ja lämpötekniikka} %..............................................
 
-\section{Kontrollitilavuus} \label{section:kontrollitilavuus}
+\section{Suorittamisesta ymmärtämiseen} %...............................................
 
-\textbf{Kontrollitilavuus} on mielivaltaisen avaruudessa sijaitsevan \textit{kontrollipinnan} sisältämä tilavuus. 
-Pinnan sijainti ja muoto voi myös riippua ajasta. 
+\section{Merkinnöistä} %................................................................
 
-Kontrollitilavuus voidaan siis valita täysin vapaasti, 
-mutta usein oikein valittu kontrollitilavuus helpottaa haluttujen tulosten saamista tai jopa ylipäätään mahdollistaa sen.
+% u, U, v, V, w, W, Q, h, H
 
-\section{Systeemin käsite}
+\renewcommand{\thepart}{\arabic{part}}
+\setcounter{part}{-1}
+\part{Suureita} % _____________________________________________________________________________________________
+\setcounter{chapter}{0}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 
-\textbf{Systeemin} käsite on erityisesti termodynamiikassa keskeinen. Systeemiksi voidaan valita mikä tahansa 
-\nameref{section:kontrollitilavuus}.
-
-Vaikka automaatiolle keskeisessä systeemiteoriassa systeemin käsite on suomennettu \textit{järjestelmäksi},
-lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}. Mahdollisesti sellaiset asiat kuin 
-sisäenergia ja entropia merkityksineen luovat sellaista kuvaa, että lämpötieteelliset systeemit eivät 
-yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.
-
-\section{Ympäristön käsite}
-
-\textbf{Ympäristö} käsittää termodynamiikassa kaiken systeemin ulkopuolella olevan. Yhdessä systeemi ja ympäristö 
-muodostavat siis \textbf{maailmankaikkeuden}.
-
-\section{Avoin ja suljettu systeemi}
-
-\textbf{Avoimen systeemin} kontrollipinta on avoin eli sen läpi voi kulkea ainetta. Tyypillisiä esimerkkejä 
-ovat \textit{lämmönsiirrin} ja \textit{turbiini}.
-
-\textbf{Suljetun systeemin} kontrollipinta on suljettu eli sen läpi ei voi kulkea ainetta. Tyypillisiä 
-esimerkkejä ovat \textit{suljettu kaasusäiliö} ja \textit{metallikuutio}.
-
-\section{Eristämätön ja eristetty systeemi}
-
-\textbf{Eristämättömän systeemin} kontrollipinnan läpi voi vapaasti siirtyä lämpöä. 
-Tällainen on esimerkiksi \textit{ilmatilavuus keskellä muuta ilmaa}.
-
-\textbf{Täydellisesti eristetyn eli adiabaattisen systeemin} kontrollipinnan läpi ei siirry lämpöä.
-
-Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olemassa, vaan \textit{eristeillä} 
-on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
-systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
-
-\chapter{Suureita} % -----------------------------------------------
+% Suureet: teoria, ymmärrys
+% Kaavat: käytäntö, tulokset
 
 Ennen kuin alamme varsinaisesti käsitellä termodynamiikkaa tai muitakaan lämpötieteitä on syytä palauttaa mieleen 
 muutama suure yksiköineen ja määritelmineen. Luultavasti suureet ovat ennestään tuttuja etkä halua käyttää 
 niihin juurikaan aikaa mutta yllätyksiäkin lienee luvassa ja syvälliseen ymmärrykseen on hyvä pyrkiä - pidemmällä 
 tähtäimellä sitä kautta pääsee vähemmällä.
 
-\section{Puhtaista luvuista vektoreihin}
-
-\begin{itemize}
- \item \textbf{Puhtailla luvuilla} ei ole yksikköä. Meillä voi olla esimerkiksi 2 pakastinta, 3 turbiinia ja 1 lämmönvaihdin.
- \item \textbf{Skalaarisuureilla} on yksikkö eli suuruus: pituudella metri, massalla kilogramma jne.
- \item \textbf{Vektorisuureilla} on suuruus ja suunta, esimerkiksi voiman yksikkö on newton mutta on välttämätöntä 
- tietää myös mihin suuntaan voima vetää tai työntää.
-\end{itemize}
+% \section{Puhtaista luvuista vektoreihin}
+% 
+% \begin{itemize}
+%  \item \textbf{Puhtailla luvuilla} ei ole yksikköä. Meillä voi olla esimerkiksi 2 pakastinta, 3 turbiinia ja 1 lämmönvaihdin.
+%  \item \textbf{Skalaarisuureilla} on yksikkö eli suuruus: pituudella metri, massalla kilogramma jne.
+%  \item \textbf{Vektorisuureilla} on suuruus ja suunta, esimerkiksi voiman yksikkö on newton mutta on välttämätöntä 
+%  tietää myös mihin suuntaan voima vetää tai työntää.
+% \end{itemize}
 
 % kunkin suureen kohdalla, onko se mikä näistä!
 
-\section{Avaruus ja aika} % ...................................................
+\chapter{Perussuureita} %--------------------------------------------------------------------------------------------
+
+\section{Avaruus ja aika} % ................................................................
 
 Lämpötieteissä ulottuvuuksia käsitellään klassisen fysiikan tapaan eli avaruusulottuvuuksia on kolme ja ne ovat 
 toisistaan sekä ajan yhdestä ulottuvuudesta erillisiä. Syitä tähän on pohjimmiltaan kaksi:
@@ -126,29 +99,6 @@ toisistaan sekä ajan yhdestä ulottuvuudesta erillisiä. Syitä tähän on pohj
 \end{enumerate}
 
 \subsection{Avaruus}
-
-\subsubsection{Yksiulotteinen sijainti s}
-
-Ensimmäisenä on syytä mainita, että jos tilannetta voidaan kuvata yksiulotteisena\footnote{ajattele vaikkapa 
-raiteillaan pysyvää junaa}, käytetään joskus ainoana avaruuskoordinaattina \textbf{sijaintia s}.
-
-\subsubsection{Kolmiulotteinen sijainti r}
-
-Avaruuden ulottuvuuksia on siis kolme ja ne muodostavan kolmiulotteisen avaruuden. 
-
-Mikä tahansa piste tässä avaruudessa voidaan määrittää \textbf{kolmen koordinaatin} avulla. 
-Ensin koordinaatit täytyy kalibroida määrittämällä niille nollakohdat sekä yksiköt. ``Kartesiolainen'' eli 
-suorakulmainen $(x, y, z)$-koordinaatisto on yleisin, mutta lämpötieteissä eivät ole erityisen harvinaisia tilanteet 
-joissa esimerkiksi sylinterikoordinaatisto $(z, r, \theta)$ tai pallokoordinaatisto $(r, \theta, \phi)$ on kätevämpi.
-
-\textbf{Origo} sijaitsee koordinaattien nollakohtien leikkauspisteessä $(0, 0, 0)$. Minkä tahansa pisteen sijainti 
-voidaan ilmoittaa \textbf{paikkavektorilla $\vec{r}$} origosta kyseiseen pisteeseen. Kartesiolaisessa koordinaatistossa
-
-\begin{equation}
- \vec{r} = \begin{bmatrix}
-            x\\ y\\ z
-           \end{bmatrix}
-\end{equation}
 
 \subsubsection{Pituus L}
 
@@ -181,9 +131,32 @@ mielivaltaisen muotoisia pinta-aloja).
  [V] = m^3
 \end{equation}
 
-(Suorakulmaisen särmiön voi kuvata kertomalla sen sivujen pituudet toisillaan. Koska minkä muotoisen avaruuskappaleen 
+(Suorakulmaisen särmiön tilavuutta voi kuvata kertomalla sen sivujen pituudet toisillaan. Koska minkä muotoisen avaruuskappaleen 
 tahansa voi ajatella muodostuvan esimerkiksi mielivaltaisen pienistä kuutioista, on kuutiometri pätevä mittaamaan 
 mielivaltaisen muotoisia tilavuuksia).
+
+\subsubsection{Yksiulotteinen sijainti s}
+
+Ensimmäisenä on syytä mainita, että jos tilannetta voidaan kuvata yksiulotteisena\footnote{ajattele vaikkapa 
+raiteillaan pysyvää junaa}, käytetään joskus ainoana avaruuskoordinaattina \textbf{sijaintia s}.
+
+\subsubsection{Kolmiulotteinen sijainti \={r}}
+
+Avaruuden ulottuvuuksia on siis kolme ja ne muodostavan kolmiulotteisen avaruuden. 
+
+Mikä tahansa piste tässä avaruudessa voidaan määrittää \textbf{kolmen koordinaatin} avulla. 
+Ensin koordinaatit täytyy kalibroida määrittämällä niille nollakohdat sekä yksiköt. ``Kartesiolainen'' eli 
+suorakulmainen $(x, y, z)$-koordinaatisto on yleisin, mutta lämpötieteissä eivät ole erityisen harvinaisia tilanteet 
+joissa esimerkiksi sylinterikoordinaatisto $(z, r, \theta)$ tai pallokoordinaatisto $(r, \theta, \phi)$ on kätevämpi.
+
+\textbf{Origo} sijaitsee koordinaattien nollakohtien leikkauspisteessä $(0, 0, 0)$. Minkä tahansa pisteen sijainti 
+voidaan ilmoittaa \textbf{paikkavektorilla $\vec{r}$} origosta kyseiseen pisteeseen. Kartesiolaisessa koordinaatistossa
+
+\begin{equation}
+ \vec{r} = \begin{bmatrix}
+            x\\ y\\ z
+           \end{bmatrix}
+\end{equation}
 
 \subsection{Aika t}
 
@@ -198,7 +171,7 @@ perustilan ylihienorakenteen kahden energiatason välillä (13. CGPM, 1967).'')
 
 % Kenttäsuureet
 
-\section{Aineen määrä} % ...................................................
+\section{Aineen määrä} % ..............................................................
 
 \subsection{Ainemäärä n}
 
@@ -239,6 +212,8 @@ Hidas ja painava massa ovat kuitenkin saman suuruiset, mikä ei ollut klassisen 
 mitenkään itsestään selvää. Kuitenkin jo Galileo Galilei huomasi kokeellisesti, että kaikkien kappaleiden 
 kappaleen \textbf{putoamiskiihtyvyys g} on sama. Näin voi olla vain, mikäli hidas ja painava massa ovat yhtä suuret.
 
+% Todistus
+
 Suppea suhteellisuusteoria pätee vain vakionopeudella liikkuville koordinaatistoille (arkisemmin ``tarkkailijoille''). 
 Se sai alkunsa sähkömagneettisten aaltojen teoriassa tehdystä havainnosta että valon nopeus tyhjiössä on 
 koordinaatiston nopeudesta riippumaton vakio.
@@ -261,30 +236,15 @@ ei mittausten mukaan ole vakio. Alun perin kilogramma piti määritellä ``1 lit
 4 $^{\circ}$C:n lämpötilassa''. Vesipohjaiseen määritelmään siirtymistä on myöhemminkin ehdotettu, joskin niin että 
 määritelmä vastaisi nykyistä kilogramman määritelmää paremmalla tarkkuudella.
 
-\subsection{Moolimassa M}
+\chapter{Yksinkertaisia johdannaissuureita} % --------------------------------------------------------------------
 
-Systeemin massa ja ainemäärä riippuvat toisistaan \textbf{Moolimassan M} kautta:
-
-\begin{equation}
- M = \frac{m}{n}
-\end{equation}
-
-Moolimassan SI-yksiköksi tulee
-
-\begin{equation}
- [M] = \left[\frac{m}{n}\right] = \frac{[m]}{[n]} = \frac{kg}{mol}
-\end{equation}
-
-Tämä on kuitenkin niin suuri yksikkö että helpommin käsiteltäviä lukuja saadaan käyttämällä yksikkönä joko 
-g/mol (yleisin) tai kg/kmol.
-
-\section{Aikaderivaattasuureet} % ...................................................
+\section{Aikaderivaattasuureet} % ................................................................
 
 % Suureen muutos / ajan muutos - muutos tietyssä ajassa - aika mieliv. lyhyeksi - aikaderivointi
 
 % Ajan ja tilan kytkentä - vaikka itsenäisiä, muuttuvat yhtä aikaa
 
-\subsection{Nopeus v}
+\subsection{Nopeus \={v}}
 
 Yksiulotteisen sijainnin muutoksen suhde ajan muutokseen on \textbf{vauhti $|\vec{v}|$}:
 
@@ -312,9 +272,41 @@ Nopeuden yksiköksi tulee sama kuin vauhdinkin eli
 \end{equation}
 
 % aikaderivaatan pistemerkintä & ``virta''
-% kiihtyvyys, massa- mooli, tilavuusvirrat
 
-\section{Voima F} % ...................................................
+\subsection{Kiihtyvyys \={a}}
+
+\subsection{Tilavuusvirta \.{V}}
+
+\subsection{Moolivirta \.{n}}
+
+\subsection{Massavirta \.{m}}
+
+\section{Ekstensiivi- ja intensiivisuureet} %...............................................
+
+\subsection{Ominaissuureet}
+
+\subsection{Molaariset ominaissuureet}
+
+\subsection{Moolimassa M}
+
+Systeemin massa ja ainemäärä riippuvat toisistaan \textbf{Moolimassan M} kautta:
+
+\begin{equation}
+ M = \frac{m}{n}
+\end{equation}
+
+Moolimassan SI-yksiköksi tulee
+
+\begin{equation}
+ [M] = \left[\frac{m}{n}\right] = \frac{[m]}{[n]} = \frac{kg}{mol}
+\end{equation}
+
+Tämä on kuitenkin niin suuri yksikkö että helpommin käsiteltäviä lukuja saadaan käyttämällä yksikkönä joko 
+g/mol (yleisin) tai kg/kmol.
+
+\chapter{Monimutkaisempia johdannaissuureita} % ------------------------------------------------------------------
+
+\section{Voima \={F}} % ...........................................................
 
 Olemme tottuneet ajattelemaan voimaa jonkinlaisena perussuureena, mutta itse asiassa se on vain hyvin kätevä 
 johdannaissuure, joka on määritelty Newtonin II lain \footnote{Newtonin I laki on II lain erikoistapaus.} perusteella:
@@ -340,51 +332,9 @@ Voimia ei liene todellisuudessa olemassakaan. Ne ovat vain yksi ihmiskunnan hist
 Tämä voiman eksakti muoto kuvaa vain sitä mitä arkikielen voima-sanakin: ``voimaa'' tarvitaan sitä enemmän mitä enemmän 
 ja mitä nopeammin materiaa joudutaan kiihdyttämään (tai hidastamaan, $ a < 0$).
 
+\section{Paine p} %....................................................................
 
-\part{Termodynamiikka} % ___________________________________________________________________
-
-% O:s pääsääntö ja lämpötila
-% Tilasuureet
-% Ideaalikaasun tilanyhtälö
-
-\chapter{Energian tiede} % -----------------------------------------------
-
-Termodynamiikan ydin on energia. Termodynamiikan pääsäännötkin käsittelevät energiaa; sen määrää, 
-muotoa, laatua, jakautumista ja niin edelleen.
-
-\section{Klassinen ja tilastollinen termodynamiikka}
-
-\textbf{Klassinen termodynamiikka} käsittelee makroskooppisia systeemejä, ilmiöitä ja suureita. Se kehitettiin 
-olennaisilta osiltaan valmiiksi ennen kuin molekyylien olemassaolo oli yleisesti hyväksyttyä tai todennettua. 
-
-Esimerkiksi lämpötekniikassa keskeiset lämpötekniset laitteet kuten lämpövoimakoneet, 
-lämpöpumput, pumput, puhaltimet, turbiinit sekä lämmönvaihtimet ovat makroskooppisia systeemejä, joiden 
-tutkimuksessa klassisella termodynamiikalla saadaan suhteellisen helposti kiinnostavia ja hyödyllisiä tuloksia.
-
-Valitettavasti klassisen termodynamiikan lainalaisuuksia on hankala ymmärtää ja perustella itselleen. Tämä johtuu 
-siitä, että pohjimmiltaan termodynamiikka käsittelee molekyylien energioiden tilastollisia ominaisuuksia.
-
-\textbf{Tilastollinen termodynamiikka} redusoi klassisen termodynamiikan dynamiikkaan (ja kvanttimekaniikkaan).
-\footnote{Vastaavasti kuin kemia pystyttiin aikoinaan redusoimaan kvanttimekaniikkaan.} 
-
-Klassista termodynamiikkaa syvällisempänä ja tilastollisena tieteenä sitä on vaikeampi soveltaa käytäntöön. 
-Toisaalta tilastollisen termodynamiikan käsitteillä termodynaamiset lainalaisuudet on mahdollista selittää ja 
-perustella tyydyttävästi.
-
-Tässä kirjassa opetellaan ennen kaikkea soveltamaan klassista termodynamiikkaa lämpöteknisiin ongelmiin. 
-Kun se on ymmärryksen kannalta tarpeellista, käytän tilastollista termodynamiikkaa selittämään asioita.
-
-\section{Mitä on energia?}
-
-Ennen kuin sukellamme varsinaiseen termodynamiikkaan, on tärkeää selvittää, mitä energia on. Mielenkiintoista 
-kyllä, energian määritelmä ei varsinaisesti kuulu termodynamiikkaan vaan mekaniikkaan. Energian määritelmä on 
-seuraavanlainen:
-
-\begin{quote}
- Energia on kykyä tehdä työtä.
-\end{quote}
-
-\subsection{Työ W}
+\section{Työ W} %......................................................................
 
 Mitä työ sitten on? Mekaniikassa \textbf{työn W} yleinen määritelmä on
 
@@ -433,12 +383,99 @@ reitin $S$ tekee voima kaavasta \ref{eq:W} laskettavissa olevan määrän työt�
  Huomioi, että tämä ei vaadi, että 
 juuri voima $\vec{F}$ aiheuttaisi kappaleen liikkeen.
 
-\subsection{Energia E}
+\part{Termodynamiikka} % _____________________________________________________________________________________
+\setcounter{chapter}{0}
 
-Nyt kun olemme kerranneet työn määritelmän, käsitelkäämme vielä \textbf{energian E} määritelmä. 
+% "Lämmön liikkeet", "energian tiede"
+~\cite{4laws}~\cite{stattherintro}~\cite{thermoeng}~\cite{ltp1}
 
-Energia on siis kykyä tehdä työtä. Systeemin yhteydessä ja työn ymmärtämisen kautta se tarkoittaa itse 
-asiassa seuraavaa:
+\chapter{Klassinen ja tilastollinen termodynamiikka} %--------------------------------------------------------
+
+\textbf{Klassinen termodynamiikka} käsittelee makroskooppisia systeemejä, ilmiöitä ja suureita. Se kehitettiin 
+olennaisilta osiltaan valmiiksi ennen kuin molekyylien olemassaolo oli yleisesti hyväksyttyä tai todennettua. 
+
+Esimerkiksi lämpötekniikassa keskeiset lämpötekniset laitteet kuten lämpövoimakoneet, 
+lämpöpumput, pumput, puhaltimet, turbiinit sekä lämmönvaihtimet ovat makroskooppisia systeemejä, joiden 
+tutkimuksessa klassisella termodynamiikalla saadaan suhteellisen helposti kiinnostavia ja hyödyllisiä tuloksia.
+
+Valitettavasti klassisen termodynamiikan lainalaisuuksia on hankala ymmärtää ja perustella itselleen. Tämä johtuu 
+siitä, että pohjimmiltaan termodynamiikka käsittelee molekyylien energioiden tilastollisia ominaisuuksia.
+
+\textbf{Tilastollinen termodynamiikka} redusoi klassisen termodynamiikan dynamiikkaan (ja kvanttimekaniikkaan).
+\footnote{Vastaavasti kuin kemia pystyttiin aikoinaan redusoimaan kvanttimekaniikkaan.} 
+
+Klassista termodynamiikkaa syvällisempänä ja tilastollisena tieteenä sitä on vaikeampi soveltaa käytäntöön. 
+Toisaalta tilastollisen termodynamiikan käsitteillä termodynaamiset lainalaisuudet on mahdollista selittää ja 
+perustella tyydyttävästi.
+
+Tässä kirjassa opetellaan ennen kaikkea soveltamaan klassista termodynamiikkaa lämpöteknisiin ongelmiin. 
+Kun se on ymmärryksen kannalta tarpeellista, käytän tilastollista termodynamiikkaa selittämään asioita.
+
+\chapter{Systeemi} % -----------------------------------------------------------------------------------------
+% % Avoin, suljettu, adiabaattinen
+
+Systeemin käsite on lämpötieteissä hyvin keskeinen ja hyödyllinen.
+
+\section{Kontrollitilavuus} \label{section:kontrollitilavuus} %........................
+
+\textbf{Kontrollitilavuus} on mielivaltaisen avaruudessa sijaitsevan \textit{kontrollipinnan} sisältämä tilavuus. 
+Pinnan sijainti ja muoto voi myös riippua ajasta. 
+
+Kontrollitilavuus voidaan siis valita täysin vapaasti, 
+mutta usein oikein valittu kontrollitilavuus helpottaa haluttujen tulosten saamista tai jopa ylipäätään mahdollistaa sen.
+
+\section{Systeemin käsite} %............................................................
+
+\textbf{Systeemin} käsite on erityisesti termodynamiikassa keskeinen. Systeemiksi voidaan valita mikä tahansa 
+\nameref{section:kontrollitilavuus}.
+
+Vaikka automaatiolle keskeisessä systeemiteoriassa systeemin käsite on suomennettu \textit{järjestelmäksi},
+lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}. Mahdollisesti sellaiset asiat kuin 
+sisäenergia ja entropia merkityksineen luovat sellaista kuvaa, että lämpötieteelliset systeemit eivät 
+yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.
+
+\section{Ympäristön käsite} %...........................................................
+
+\textbf{Ympäristö} käsittää termodynamiikassa kaiken systeemin ulkopuolella olevan. Yhdessä systeemi ja ympäristö 
+muodostavat siis \textbf{maailmankaikkeuden}.
+
+\section{Avoin ja suljettu systeemi} %..................................................
+
+\textbf{Avoimen systeemin} kontrollipinta on avoin eli sen läpi voi kulkea ainetta. Tyypillisiä esimerkkejä 
+ovat \textit{lämmönsiirrin} ja \textit{turbiini}.
+
+\textbf{Suljetun systeemin} kontrollipinta on suljettu eli sen läpi ei voi kulkea ainetta. Tyypillisiä 
+esimerkkejä ovat \textit{suljettu kaasusäiliö} ja \textit{metallikuutio}.
+
+\section{Eristämätön ja eristetty systeemi}%............................................
+
+\textbf{Eristämättömän systeemin} kontrollipinnan läpi voi vapaasti siirtyä lämpöä. 
+Tällainen on esimerkiksi \textit{ilmatilavuus keskellä muuta ilmaa}.
+
+\textbf{Täydellisesti eristetyn eli adiabaattisen systeemin} kontrollipinnan läpi ei siirry lämpöä.
+
+Täydellisesti eristettyjä systeemejä ei tietenkään ole todellisuudessa olemassa, vaan \textit{eristeillä} 
+on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lämmön määrää. Hyvin eristettyjä 
+systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
+
+\section{Taselaskenta} %................................................................
+
+\chapter{Energian tiede} % ------------------------------------------------------------------------------
+
+Termodynamiikan ydin on energia. Termodynamiikan pääsäännötkin käsittelevät energiaa; sen määrää, 
+muotoa, laatua, jakautumista ja niin edelleen.
+
+\section{Energia E} %....................................................................
+
+Ennen kuin sukellamme varsinaiseen termodynamiikkaan, on tärkeää selvittää, mitä energia on. Mielenkiintoista 
+kyllä, energian määritelmä ei varsinaisesti kuulu termodynamiikkaan vaan mekaniikkaan. Energian määritelmä on 
+seuraavanlainen:
+
+\begin{quote}
+ Energia on kykyä tehdä työtä.
+\end{quote}
+
+Systeemin yhteydessä ja työn ymmärtämisen kautta se tarkoittaa itse asiassa seuraavaa:
 
 \begin{quotation}
  Systeemillä on energiaa, kun on mahdollista löytää toinen systeemi, johon systeemi voi kohdistaa 
@@ -455,7 +492,7 @@ infinitesimaalisen lyhyellä matkalla, on energiaa.
 Käsiä heiluttelevana loppukaneettina totean, että energia on siis ``voimantuottokykyä''\footnote{
 Mietipä tätä: \textit{voimanlähteellä} on aina jokin \textit{teho} $P = \dfrac{dE}{dt}$!}.
 
-\section{Potentiaalienergia ja liike-energia}
+\section{Potentiaalienergia ja liike-energia} %........................................
 
 Kuten muistamme, työn yleinen määritelmä on
 
@@ -499,7 +536,7 @@ ja massan $m_1$ toiseen massaan $m_2$ aiheuttama voima on (Newtonin painovoimate
  \vec{F}(\vec{r}) = G\frac{m_1m_2}{|\vec{r}|^2}\hat{r}
 \end{equation}
 
-\subsection{Potentiaalienergia $E_p$}
+\subsection{Potentiaalienergia E\textsubscript{p}}
 
 \begin{quotation}
 Systeemillä on \textbf{potentiaalienergiaa $E_p$}, mikäli se on jossain siihen vaikuttavassa voimakentässä 
@@ -532,7 +569,7 @@ tekemä työ on negatiivinen. Tällöin joudutaan tuottamaan jokin toinen voima 
 suuruinen positiivinen työ. Tämän voiman tuottamiseen käytetty energia saadaan näin varastoitua 
 potentiaalienergiaksi.
 
-\subsection{Liike-energia $E_k$}
+\subsection{Liike-energia E\textsubscript{k}}
 
 \begin{quotation}
  Systeemillä on liike-energiaa, kun se voi pienentämällä nopeuttaan tehdä työtä.
@@ -595,20 +632,19 @@ Systeemille voidaan antaa liike-energiaa aiheuttamalla siihen nettovoima, joka t
 nopeuden kasvattamiseksi. Tähän kulunut energia varastoituu systeemin liike-energiaksi.
 
 % Liike-energian jako translaatioon, rotaatioon ja vibraatioon kaavoineen
+% Nollatason mielivaltaisuus
 
-\chapter{Systeemin energiat} % -----------------------------------------------
+\chapter{Systeemin energiat} % --------------------------------------------------------------------------
 
-\section{Makroskooppiset energiat} % -----------------------------------------------
+\section{Ulkoiset energiat} %............................................................
 
-\section{Mikroskooppiset energiat} % -----------------------------------------------
+\section{Sisäenergia} %.................................................................
 
 Systeemillä kokonaisuutena voi siis olla erinäisiä potentiaali- ja liike-energioita. Se voi esimerkiksi olla verrattain korkealla 
 tai siirtymä-, pyörimis- tai värähtelyliikkeessä. Tämä ``makromekaniikka'' on tuttua ja helposti ymmärrettävää.
 
 Termodynamiikassa keskeisimmässä osassa ovat kuitenkin systeemin muodostavien molekyylien, atomien, elektronien ja atomiydinten 
 energiat.
-
-\subsection{Mikroskooppiset liike-energiat}
 
 Vaikka systeemi kokonaisuutena ei olisi liikkeessä, ovat siihen kuuluvat molekyylit jatkuvasti 
 \textit{lämpöliikkeessä}\footnote{Mikäli systeemin lämpötila on yli 0 K.}. Tämä lämpöliike jakautuu kolmeen tyyppiin: molekyylien 
@@ -620,99 +656,12 @@ Systeemin mikroskooppisten osasten liike-energioita tutkii erityisesti \textbf{t
 myös ne klassisen termodynamiikan käsitteet jotka tuntuvat vaikeasti ymmärrettäviltä tai ``käsiä heilutellen hatusta vedetyiltä'' 
 kuten sisäenergia, lämpötila ja entropia kuvaavat itse asiassa näiden ilmiöiden makroskooppisesti mitattavia seurauksia.
 
-\subsubsection{Sisäenergia U}
+\subsection{Sisäenergia U}
 
 Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
 energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
 
-\subsubsection{Lämpötila T} \label{sssection:T}
-
-Sisäenergia on siis systeemin molekyylien liike-energioiden summa. Mitkä sitten ovat yksittäisten molekyylien energiat? 
-Missä tahansa käytännön systeemissä on niin valtava määrä molekyyleja\footnote{Muistathan että yhdessä moolissa on 
-noin $6,022\cdot10^{23}$ molekyylia.}, ettei ole mielekästä määrittää kunkin energiaa erikseen.
-
-On kuitenkin mahdollista määrittää molekyylien energioiden jakauma. Molekyylien energiat ovat tietenkin kvantittuneet, 
-jolloin energiajakauma kertoo mikä osuus molekyyleista on milläkin energiatasolla. Tämä voidaan tehdä kullekin molekyylien 
-energian tyypille (translaatio, rotaatio, vibraatio).
-
-Tilastollisen termodynamiikan mukaan $N$ molekyylin jakauma $m$ energiatasojoukolle voi toteutua
-
-\begin{equation}
-% \prod:in rajat näkyvät väärin vaikka intlimits käytössä!
-\label{eq:ejakW}
- W = \frac{N!}{\prod_{i=1}^m(n_i!)}
-\end{equation}
-
-tavalla kun $n_i$ on molekyylien määrä energiatasolla $i$.
-
-Mikä $n_i$ eli molekyylien energiajakauma sitten on? Yllä oleva kaava ei ota tähän kantaa. 
-Nimittäin luonto toimii satunnaisesti eli kaikki energiajakaumat ovat mahdollisia. Tilastollisen termodynamiikan 
-teoria kertoo kuitenkin meille, mikä jakauma on todennäköisin eli voi toteutua kaavan \ref{eq:ejakW} mukaisesti 
-suurimmalla määrällä eri tapoja. Yleensä se on \textit{Boltzmann-jakauma}:
-
-\begin{equation}
-\label{eq:boltzmann}
- n_i = n_0p_ie^{-\dfrac{\epsilon_i}{k_BT}}
-\end{equation}
-
-jossa $\epsilon_i$ on energiatasojoukon $i$ keskimääräinen energia, $p_i$ on energiatasojoukkoon kuuluvien energioiden 
-määrä\footnote{Tällä otetaan huomioon se, että molekyylien vaikuttaessa toisiinsa energiatasot leviävät energiavöiksi ja 
-se, että useaa erilaista liiketilaa voi vastata sama energia.}, $n_0$ on molekyylien määrä alimmalla 
-energiatasolla, $k_B$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelvineinä}.
-
-% Kelvinasteen ja Boltzmannin vakion määritelmät!
-
-Systeemin lämpötila kertoo siis sen, millä tavalla molekyylien liike-energiat ovat jakautuneet.
-
-\subsubsection{Sisäenergia lämpötilan funktiona}
-
-Systeemin sisäenergia on kaikkien sen molekyylien energioiden summa:
-
-\begin{equation}
- U = \sum_{i=1}^m\epsilon_in_i
-\end{equation}
-
-Sijoitetaan tähän kaava \ref{eq:boltzmann}:
-
-\begin{equation}
- U = \sum_{i=1}^m\epsilon_in_0p_ie^{-\dfrac{\epsilon_i}{kT}}
-\end{equation}
-
-Tästä näemme että systeemin sisäenergia riippuu
-
-\begin{enumerate}
- \item Systeemin lämpötilasta $T$
- \item Systeemin ainemäärästä $n$ ($n_i$:n kautta)
- \item Systeemin koostumuksesta (sen muodostavan aineen energiatasojen suuruuksista $\epsilon_i$:n kautta)
-\end{enumerate}
-
-Mikäli systeemin koostumus ei muutu (esim. reaktioiden tai virtausten johdosta) pätee
-
-\begin{equation}
- U = U(T, n)
-\end{equation}
-
-Ainemäärän vaikutus saadaan eliminoitua käyttämällä molaarista sisäenergiaa
-
-\begin{equation}
- U_m = \frac{U}{n} = U_m(T)
-\end{equation}
-
-Koska systeemin massa riippuu sen ainemäärästä moolimassan kautta pätee myös ominaissisäenergialle vastaavasti:
-
-\begin{equation}
- u = u(T)
-\end{equation}
-
-Eli ominaissisäenergia on vain lämpötilan funktio. Tämä on olennainen tulos, joka klassisessa termodynamiikassa 
-otetaan 'annettuna' eli puhtaasti empiirisenä havaintona. Opittuamme tilastollisen termodynamiikan avulla lämpötilan 
-todellisen merkityksen tulos oli kuitenkin helppo johtaa ja ymmärtää.
-
-% Ominaislämpökapasiteetit (ainakin c_v)
-
-%\subsubsection{Sisäenergian johdannaisenergiat}:
-
-\subsubsection{Entalpia H} \label{sssection:entalpia}
+\subsection{Entalpia H} \label{sssection:entalpia} %.......................................
 
 \textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
 
@@ -850,7 +799,556 @@ olennaisessa osassa putkessa virtaava virtausaine. Nimittäin entalpiaa näin k�
 analyysissa ikäänkuin sisäänrakennetuksi itsestäänselvyydeksi ja voidaan keskittyä tavoitteen kannalta kiinnostavampiin 
 ilmiöihin, esim. lämmönsiirtoon.
 
-\subsubsection{Helmholtzin vapaaenergia F} \label{sssection:helmholtz}
+\subsection{Lämpötila T} \label{sssection:T} %..............................................
+
+Sisäenergia on siis systeemin molekyylien liike-energioiden summa. Mitkä sitten ovat yksittäisten molekyylien energiat? 
+Missä tahansa käytännön systeemissä on niin valtava määrä molekyyleja\footnote{Muistathan että yhdessä moolissa on 
+noin $6,022\cdot10^{23}$ molekyylia.}, ettei ole mielekästä määrittää kunkin energiaa erikseen.
+
+On kuitenkin mahdollista määrittää molekyylien energioiden jakauma. Molekyylien energiat ovat tietenkin kvantittuneet, 
+jolloin energiajakauma kertoo mikä osuus molekyyleista on milläkin energiatasolla. Tämä voidaan tehdä kullekin molekyylien 
+energian tyypille (translaatio, rotaatio, vibraatio).
+
+Tilastollisen termodynamiikan mukaan $N$ molekyylin jakauma $m$ energiatasojoukolle voi toteutua
+
+\begin{equation}
+% \prod:in rajat näkyvät väärin vaikka intlimits käytössä!
+\label{eq:ejakW}
+ W = \frac{N!}{\prod_{i=1}^m(n_i!)}
+\end{equation}
+
+tavalla kun $n_i$ on molekyylien määrä energiatasolla $i$.
+
+Mikä $n_i$ eli molekyylien energiajakauma sitten on? Yllä oleva kaava ei ota tähän kantaa. 
+Nimittäin luonto toimii satunnaisesti eli kaikki energiajakaumat ovat mahdollisia. Tilastollisen termodynamiikan 
+teoria kertoo kuitenkin meille, mikä jakauma on todennäköisin eli voi toteutua kaavan \ref{eq:ejakW} mukaisesti 
+suurimmalla määrällä eri tapoja. Yleensä se on \textit{Boltzmann-jakauma}:
+
+\begin{equation}
+\label{eq:boltzmann}
+ n_i = n_0p_ie^{-\dfrac{\epsilon_i}{k_BT}}
+\end{equation}
+
+jossa $\epsilon_i$ on energiatasojoukon $i$ keskimääräinen energia, $p_i$ on energiatasojoukkoon kuuluvien energioiden 
+määrä\footnote{Tällä otetaan huomioon se, että molekyylien vaikuttaessa toisiinsa energiatasot leviävät energiavöiksi ja 
+se, että useaa erilaista liiketilaa voi vastata sama energia.}, $n_0$ on molekyylien määrä alimmalla 
+energiatasolla, $k_B$ Boltzmannin vakio ja \textbf{T on systeemin lämpötila kelvineinä}.
+
+% Kelvinasteen ja Boltzmannin vakion määritelmät!
+
+Systeemin lämpötila kertoo siis sen, millä tavalla molekyylien liike-energiat ovat jakautuneet.
+
+\subsection{Sisäenergia lämpötilan funktiona} %.......................................
+
+Systeemin sisäenergia on kaikkien sen molekyylien energioiden summa:
+
+\begin{equation}
+ U = \sum_{i=1}^m\epsilon_in_i
+\end{equation}
+
+Sijoitetaan tähän kaava \ref{eq:boltzmann}:
+
+\begin{equation}
+ U = \sum_{i=1}^m\epsilon_in_0p_ie^{-\dfrac{\epsilon_i}{kT}}
+\end{equation}
+
+Tästä näemme että systeemin sisäenergia riippuu
+
+\begin{enumerate}
+ \item Systeemin lämpötilasta $T$
+ \item Systeemin ainemäärästä $n$ ($n_i$:n kautta)
+ \item Systeemin koostumuksesta (sen muodostavan aineen energiatasojen suuruuksista $\epsilon_i$:n kautta)
+\end{enumerate}
+
+Mikäli systeemin koostumus ei muutu (esim. reaktioiden tai virtausten johdosta) pätee
+
+\begin{equation}
+ U = U(T, n)
+\end{equation}
+
+Ainemäärän vaikutus saadaan eliminoitua käyttämällä molaarista sisäenergiaa
+
+\begin{equation}
+ U_m = \frac{U}{n} = U_m(T)
+\end{equation}
+
+Koska systeemin massa riippuu sen ainemäärästä moolimassan kautta pätee myös ominaissisäenergialle vastaavasti:
+
+\begin{equation}
+ u = u(T)
+\end{equation}
+
+Eli ominaissisäenergia on vain lämpötilan funktio. Tämä on olennainen tulos, joka klassisessa termodynamiikassa 
+otetaan 'annettuna' eli puhtaasti empiirisenä havaintona. Opittuamme tilastollisen termodynamiikan avulla lämpötilan 
+todellisen merkityksen tulos oli kuitenkin helppo johtaa ja ymmärtää.
+
+% \subsection{Mikroskooppiset potentiaalienergiat eli sidosenergiat}
+% 
+% Mikroskooppisia potentiaalienergioita kutsutaan yleensä \textbf{sidosenergioiksi} sillä ne sitovat aineen eri osasia 
+% yhteen niihin muotoihin, joihin olemme tottuneet. Niiden tutkimus kuuluu enemmän kemian, kvanttimekaniikan ja ydinfysiikan 
+% kuin (edes tilastollisen) termodynamiikan alueelle. 
+% 
+% Niistä on kuitenkin syytä puhua jonkin verran myös lämpötekniikan oppikirjassa, sillä niillä on keskeinen rooli
+% etenkin monissa energiantuotantoprosesseissa: polttoprosesseissa (kemiallinen sidosenergia), ydinvoimassa (ytimen 
+% sidosenergia) sekä myös erilaisissa aurinkopaneeleissa (elektronien sidosenergia yleisesti, joskus myös kemiallinen 
+% sidosenergia).
+% 
+% \section{Energiat lämpötieteissä}
+% 
+% Systeemillä voi siis olla montaa erityyppistä energiaa:
+% 
+% \begin{enumerate}
+%  \item Liike-energiat:
+%  \begin{enumerate}
+%   \item \underline{Systeemin liike-energia}
+%   \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
+%  \end{enumerate}
+%  \item Fysiikan perusvoimiin liittyvät potentiaalienergiat:
+%  \begin{enumerate}
+%   \item \underline{Gravitaation potentiaalienergia}
+%   \item Sähköiset energiat:
+%   \begin{enumerate}
+%    \item Sähkömagneettinen potentiaalienergia
+%    \item \textit{Kemiallinen sidosenergia}
+%   \end{enumerate}
+%   \item \textit{Heikon vuorovaikutuksen sidosenergia}
+%   \item Vahvan vuorovaikutuksen sidosenergia
+%  \end{enumerate}
+% \end{enumerate}
+% 
+% \underline{Alleviivattuja energioita} käsitellään lämpötieteissä jatkuvasti. \textit{Kursivoidut 
+% energiat} tulevat kyseeseen, mikäli systeemissä tapahtuu kemiallisia tai ydinreaktioita. 
+% 
+% Sähkömagneettisella potentiaalienergialla on väliä vain mikäli systeemin kokonaisvaraus ei ole nolla ja 
+% se on ulkoisessa sähkömagneettisessa kentässä. Lämpötieteissä ja -tekniikassa tällaiset tapaukset ovat 
+% harvinaisia.
+% 
+% Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
+% ole käytännön sovelluksia.
+% 
+% \section{Energioiden koordinaatistoriippuvuus}
+% 
+% Systeemin energiat voidaan jakaa myös seuraavasti:
+% 
+% \begin{enumerate}
+%  \item Koordinaattijärjestelmän ja/tai potentiaalienergian nollakohdan valinnasta riippuvat:
+%  \begin{enumerate}
+%   \item Systeemin liike-energia
+%   \item Gravitaation potentiaalienergia
+%   \item Sähkömagneettinen potentiaalienergia
+%  \end{enumerate}
+%  \item Näistä valinnoista riippumattomat:
+%  \begin{enumerate}
+%   \item Lämpöliikkeen liike-energia eli sisäenergia
+%   \item Kemiallinen sidosenergia
+%   \item Heikon vuorovaikutuksen sidosenergia
+%   \item Vahvan vuorovaikutuksen sidosenergia
+%  \end{enumerate}
+% \end{enumerate}
+
+\subsection{Lämpökapasiteetit} %.........................................................
+
+Lämpötila, sisäenergia ja sisäenergian sisältävä entalpia mittaavat siis enemmän tai vähemmän samaa asiaa. Ne voidaan 
+näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Tästä kytkennästä on myös se olennainen hyöty, 
+että laskennassa hyödylliset mutta vaikeasti mitattavat sisäenergia ja entalpia saadaan kytkettyä harvemmin kiinnostavaan 
+mutta helposti mitattavaan lämpötilaan.
+
+Termodynamiikassa kytkentään käytetään \textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja 
+\textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}. Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja 
+entalpian differentiaaliset muutokset voi kytkeä lämpötilan differentiaaliseen muutokseen osittaisderivaattojen avulla:
+
+\begin{align}
+ du = \frac{\partial u}{\partial T}\bigg|_vdT\\
+ dh = \frac{\partial h}{\partial T}\bigg|_pdT
+\end{align}
+
+Nämä derivoinnin tuloksena syntyvät funktiot on nimetty ominaislämpökapasiteeteiksi (lyhyesti ``ominaislämmöiksi'') 
+vakiotilavuudessa ja vakiopaineessa:
+
+\begin{align}
+ \frac{\partial u}{\partial T}\bigg|_v = c_v(T)\\
+ \frac{\partial h}{\partial T}\bigg|_p = c_p(T)\\
+ du = c_vdT\\
+ dh = c_pdT
+\end{align}
+
+Yleisesti ottaen ominaislämmöt eivät ole yksinkertaisia tai helposti teoreettisesti johdettavissa olevia lämpötilan 
+funktioita. 
+
+Käytännön laskennassa ominaislämmöille käytetään taulukoituja, käyräksi piirrettyjä tai kokeellisen 
+polynomiapproksimaation muodossa olevia funktioita. Jos toimitaan kapealla lämpötila-alueella ja tulokset on 
+tärkeämpää saada nopeasti kuin tarkkoina voidaan ominaislämpö olettaa vakioksi lämpötila-alueella. Tällaisia tilanteita 
+ovat esim. alustavat tunnustelulaskelmat, pika-analyysit ja tentit.
+
+% \frac{c_p}{c_v} = \gamma, c_p - c_v = R
+% Kokoonpuristumattomattomalle c_p = c_v
+
+\chapter{Siirtymäenergiat} % ----------------------------------------------------------------------------------
+
+Systeemillä voi siis olla monenlaista energiaa. Myös systeemin ympäristöllä voi olla näitä 
+energioita.
+
+Sillä hetkellä kun energia siirtyy systeemin rajan yli voi se kuitenkin termodynamiikassa 
+olla vain kahta tyyppiä: \textbf{lämpöä $Q$} tai \textbf{työtä $W$}. Vastaavasti systeemillä 
+tai ympäristöllä sinänsä ei voi olla näitä energioita vaan varastoituessaan systeemiin tai 
+ympäristöön ne muuttuvat aina johonkin muuhun muotoon.
+
+\section{Merkkisopimus} \label{sec:merkkisopimus} %........................................
+
+Systeemiin siirtyvä työ ja lämpö ovat aina positiivisia, systeemistä siirtyvät negatiivisia.
+
+Päinvastoin voidaan todeta että mikäli työtä tai lämpöä ei alunperin tiedetä, ratkaistun 
+työn tai lämmön etumerkki kertoo, siirtyikö se systeemistä vai systeemiin.
+
+\section{Lämpö Q} %........................................................................
+
+Lämpö on energiaa, joka siirtyy systeemin rajojen yli siksi, että systeemin ja ympäristön 
+välillä on lämpötilaero. 
+
+Siirtyminen systeemin rajojen yli voi tapahtua millä tahansa \textbf{lämmönsiirtotavalla}:
+
+\begin{itemize}
+ \item johtumalla
+ \item kulkeutumalla\footnote{``Konvektiolla''.}
+ \item säteilemällä
+ \item tai jollain näiden 
+yhdistelmällä\footnote{Erityisen merkittävä yhdistelmä on johtumisesta ja kulkeutumisesta 
+koostuva ``\textbf{konvektiivinen lämmönsiirto}''.}.
+\end{itemize}
+
+Lämpö siirtyy aina korkeammasta lämpötilasta matalampaan. Kuten myöhemmin selviää, tämä 
+on seurausta termodynamiikan II pääsäännöstä. Aina kun lämpöä siirtyy, joko systeemin tai 
+ympäristön entropia ja sen myötä maailmankaikkeuden epäjärjestys kasvaa.
+Tähän liittyen lämpö on ``epäjärjestynyttä energiaa'', jolla voidaan tehdä vähemmän 
+erilaisia asioita kuin työllä.
+
+Lämmönsiirto muuttaa ensisijaisesti systeemin tai ympäristön sisäenergiaa. (Mieti, 
+miten tämä liittyy siihen, että sisäenergia on ``lämpöliikkeen liike-energiaa''.)
+
+\section{Työ W} %.................................................................
+
+Työ on lämpöä monimuotoisempi ja vaikeammin määriteltävissä oleva siirtymäenergia. 
+
+Työ voi olla esimerkiksi systeemin tilavuudenmuutostyötä, turbiinin akselityötä, 
+sähkövirran energiaa jne.
+
+Työ on ``järjestynyttä energiaa'', joka voidaan muuttaa vaihtelevilla hyötysuhteilla 
+moniksi muiksi energian muodoiksi. Kun pelkästään työtä siirtyy ei systeemin tai ympäristön 
+entropia muutu.
+
+Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä taas ei voida 
+(sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
+II pääsääntöä.
+
+\chapter{Tasapaino ja epätasapaino} %---------------------------------------------------------
+
+\section{Mekaaninen tasapaino} %...............................................
+
+\section{Terminen tasapaino} %.................................................
+
+\section{Dynaaminen tasapaino} %...............................................
+
+% Myös jatkuvuustila
+
+\chapter{Tilasuureet} \label{chapter:tilasuureet} % ------------------------------------------
+
+Niitä termodynaamisia suureita, jotka riippuvat vain toistensa arvoista tarkasteluhetkellä 
+eivätkä siitä millaisella prosessilla näihin arvoihin on tultu kutsutaan tilasuureiksi.
+
+\begin{itemize}
+ \item Perustavimmat tilasuureet ovat \textbf{paine p}, \textbf{lämpötila T}, 
+    \textbf{tilavuus V}, \textbf{sisäenergia U} sekä \textbf{entropia S}.
+ \item Keskeisiä ovat myös näiden johdannaissuureet \textbf{entalpia H}, 
+  \textbf{Helmhotzin vapaaenergia F} sekä \textbf{Gibbsin vapaaenergia G}.
+\end{itemize}
+
+Mikä tahansa funktio, joka sisältää vain tilasuureita, massaa ja ainemäärää on myös tilasuure. 
+Niinpä myös ominaistilavuus v, tiheys $\rho = \frac{1}{v}$, ominaissisäenergia u, molaarinen 
+ominaissisäenergia $U_m$ jne. ovat tilasuureita.
+
+% Esimerkkejä tilasuureen merkityksestä.
+
+\textbf{Lämpö Q} ja \textbf{työ W} \underline{eivät} ole tilasuureita!
+
+% Esimerkkejä tästä.
+
+\section{Termodynaamiset potentiaalit} %................................................
+
+% ``Termodynaamiset potentiaalit'', selitys eksaktista differentiaalista, pyörteettömyydestä, 
+% vertaus potentiaalienergiaan ja sähköiseen potentiaaliin.
+
+\section{Aineen olomuodot} %............................................................
+
+% Kanneton astia: vrt. kiinteä - neste (asettuu muotoon) - kaasu ja plasma (karkaavat ilman selkeää vaakasuoraa pintaa)
+
+\section{Vapausasteet} %................................................................
+
+\section{Vakioprosessit}%...............................................................
+
+\section{Tilanyhtälöt}%.................................................................
+
+% Tilanyhtälö, ideaalikaasun tilanyhtälö
+
+\subsection{Ideaalikaasun tilanyhtälö}
+
+\subsection{Reaalikaasujen tilanyhtälöitä}
+
+\chapter{Termodynamiikan 0. pääsääntö} %----------------------------------------------------------------
+
+\section{Teoria} %....................................................................
+
+\subsection{Terminen tasapaino}
+
+\section{Käytäntö} %..................................................................
+
+\subsection{Lämpömittari}
+
+\chapter{Termodynamiikan 1. pääsääntö} % ---------------------------------------------------------------
+
+\section{Teoria} %....................................................................
+
+\textbf{Termodynamiikan I pääsääntö} on seuraava kokeellisesti havaittu luonnonlaki:
+
+\begin{quote}
+ Energia säilyy.
+\end{quote}
+
+Sen voi ilmaista myös seuraavilla tavoilla:
+
+\begin{quote}
+ Energia on tuhoutumatonta
+\end{quote}
+
+\begin{quote}
+ Energia ei tuhoudu, ainoastaan muuttaa muotoaan.
+\end{quote}
+
+\begin{quote}
+ Maailmankaikkeuden kokonaisenergia on vakio.
+\end{quote}
+
+\begin{quote}
+ On mahdotonta rakentaa laite, joka synnyttää maailmankaikkeuteen uutta energiaa. (Ns. tyypin I ikiliikkuja.)
+\end{quote}
+
+Termodynamiikan I pääsäännön voi määritellä myös käytännössä hyödyllisellä tavalla 
+systeemin energioiden ja siirtymäenergioiden avulla. 
+
+Mikäli energiaa siirtyy systeemiin, 
+täytyy systeemin energian kasvaa. Mikäli energiaa siirtyy systeemistä, täytyy systeemin 
+energian pienentyä. \hyperref[sec:merkkisopimus]{Merkkisopimuksen} ansiosta seuraava 
+lause kattaa nämä molemmat tapaukset:
+
+\begin{quote}
+ Systeemin kokonaisenergian muutos = siirtymäenergioiden summa
+\end{quote}
+
+Siistissä täysin matemaattisessa kaavamuodossa termodynamiikan I pääsääntö on siis
+
+\begin{equation}
+ \Delta E_{sys} = Q_{tot} + W_{tot}
+\end{equation}
+
+Termodynamiikan pääsäännöt ovat kaikkien fysiikan lakien tavoin \textbf{universaaleja} 
+eli voimassa kaikille systeemeille ja prosesseille kaikkialla, kaikkina aikoina. Voimme 
+siis aina käyttää laskelmissamme termodynamiikan I pääsääntöä tässä muodossa yhtenä 
+yhtälöistämme.
+
+\subsection{Noetherin teoreema}
+
+\section{Käytäntö} %....................................................................
+
+\subsection{Suljettu systeemi}
+
+\subsection{Avoin systeemi}
+
+\subsection{Bernoullin yhtälö}
+
+% Energiat, paineet, nostokorkeudet
+
+\chapter{Termodynamiikan 2. pääsääntö} %--------------------------------------------------------------
+
+\section{Teoria} %....................................................................
+
+Ensimmäisen pääsäännön kannalta on samantekevää, onko energia liike- vai potentiaalienergiana tai 
+siirtyykö se systeemistä toiseen työnä vai lämpönä, kunhan energian kokonaismäärä säilyy jokaisella 
+ajanhetkellä.
+
+Jo lämpötieteiden ja -tekniikan pioneerit kuitenkin huomasivat, että lämpöön ja työhön päti muitakin
+lainalaisuuksia.
+
+\paragraph{Lämmönsiirron suunta}
+
+Havaittiin että lämpö siirtyi luonnollisesti vain tiettyyn suuntaan:
+
+\begin{quote}
+ Spontaanissa prosessissa lämpö siirtyy aina korkeammasta lämpötilasta matalampaan.
+\end{quote}
+
+Tämän lämpötekninen seuraus on:
+
+\begin{quote}
+ On mahdotonta rakentaa laitetta, joka siirtää lämpöä matalammasta lämpötilasta korkeampaan tekemättä 
+ lainkaan työtä. (Eli jäähdytystekniikka kuluttaa väistämättä energiaa.)
+\end{quote}
+
+\paragraph{Lämmön ja työn muuttaminen toisikseen}
+
+Havaittiin että työllä ja lämmöllä oli perustavanlaatuinen ero:
+
+\begin{quote}
+ Työ voidaan muuttaa kokonaan lämmöksi, mutta lämpöä ei kokonaan työksi.
+\end{quote}
+
+Tämän lämpötekninen seuraus on:
+
+\begin{quote}
+ On mahdotonta rakentaa laite, joka muuttaa lämmön kokonaan työksi. (Ns. tyypin II ikiliikkuja).
+\end{quote}
+
+\subsection{Entropia S}
+
+Myöhemmin onnistuttiin kehittämään uusi tilasuure, \textbf{entropia S}, jonka avulla kaikki
+edellämainitut lainalaisuudet voitiin lausua yhdellä lauseella:
+
+\begin{quote}
+ Eristetyn systeemin entropia kasvaa tai pysyy vakiona jokaisessa prosessissa.
+\end{quote}
+
+Tällä lauseella on erikoistapaus, joka tuntuu itse asiassa paljon kaikenkattavammalta:
+
+\begin{quote}
+ Maailmankaikkeuden entropia on ajan aidosti kasvava funktio\footnote{Eli dramaattisemmin ``entropia 
+ kasvaa maailmanlopun edellä''. 
+ 
+ Isälläni oli tapana sanoa ``pyy pienenee maailmanlopun 
+ edellä''. Kun kysyin että miksi, niin vastaus oli ``entropian ja pyyn summa on vakio''. Arvelin, että 
+ pyy on jokin kreikkalainen aakkonen koska tuntui siltä että entropiaa, mitä se sitten onkaan, tuskin 
+ mitataan samoissa yksiköissä kuin pieniä lintuja. 
+ 
+ Saattaa olla myös jokin satu, jossa säälimätön jumala kiroaa pyyt aina vain pienenemään sukupolvi 
+ sukupolvelta. Oli miten oli, minusta kuitenkin tuli teekkari eikä ornitologia tai teologia.}.
+\end{quote}
+
+Tämä on seurausta siitä, että maailmankaikkeus on eristetty systeemi\footnote{Mikäli oletamme että sen 
+sen ulkopuolella ei ole mitään. Toisaalta yhtä lailla voidaan olettaa, että siellä on toisia maailmankaikkeuksia 
+eli multiversumi.} ja ajan myötä tapahtuu vain prosesseja, joissa sen entropia kasvaa tai pysyy vakiona.
+
+Tuo ensimmäinen lause tunnetaan \textbf{termodynamiikan toisena pääsääntönä} ja käytännönläheisesti 
+lausumme sen systeemiterminologialla ja matemaattisessa differentiaalimuodossa seuraavasti:
+
+\begin{equation}
+\label{eqn:psII}
+ dS_{tot} = dS_{sys} + dS_{surr} \geq 0
+\end{equation}
+
+Eli maailmankaikkeuden kokonaisentropian, joka on systeemin ja ympäristön entropioiden summa, muutos on $\geq 0$. 
+Tässä kokonaisentropian kasvu on ilmaistu entropian muutoksen avulla koska muutoksia on helpompi mitata 
+ja myös käsitellä matemaattisesti kuin absoluuttisia arvoja.
+
+Termodynamiikan II pääsääntö pätee aina ja kaikille prosesseille. Kaava \ref{eqn:psII} sisältää kaiken, 
+mitä tässä luvussa on sitä ennen käsitelty.
+
+% Todistus siitä, että entropia on tilasuure.
+% Todistukset, että sisältää.
+
+\paragraph{Mitä entropia on}
+
+Entropia kehitettiin klassisen termodynamiikan työkaluilla. Todettiin että tämä uusi tilasuure on kätevä 
+työkalu, koska se tiivistää havaitut lainalaisuudet lämmönsiirron suunnasta sekä työn ja lämmön suhteesta.
+
+% Edellä todistettiin klassisen termodynamiikan teorialla, että entropia todella on tilasuure, ja että 
+% termodynamiikan II pääsääntö todella sisältää nuo molemmat lainalaisuudet. 
+Klassinen termodynamiikka 
+ei kuitenkaan kerro mitään siitä, mitä entropia itse asiassa \textit{on}.
+
+Entropiaa vaivaa sama ongelma kuin lämpötilaa, eli suuri osa sen käyttäjistä ei tiedä mitä se itse asiassa 
+kuvaa. On vain jokin epämääräinen kuva siitä, että ``entropia on epäjärjestyksen mitta''. Tätä voidaan 
+havainnollistaa vaikka sellaisella analogialla että ``keittiökin menee ajan mittaan epäjärjestykseen 
+(mikäli järjestyksen pitämisessä ei nähdä suurta vaivaa)''. 
+
+\textbf{Ei pidä paikkaansa, että entropia olisi suoranaisesti epäjärjestyksen mitta.} Koetapa kokata jonkun 
+toisen keittiössä. Sinusta ehkä tuntuu, että kaikki löytyy mistä sattuu eli on epäjärjestyksessä, mutta keittiön 
+omistajan mielestä kaikki voi olla juuri siellä missä pitääkin eli järjestyksessä. Järjestys on siis ihmisten 
+keksintö ja määrittelykysymys. Moisten kanssa painiminen on \textit{``humanistien'' hommaa}.
+
+\subsection{Kohti todennäköisintä tilaa}
+
+\paragraph{Mitä entropia sitten todella mittaa?}
+
+Tilastollisesta termodynamiikasta entropialle saadaan kuitenkin brutaalin yksinkertainen määritelmä ja kaava:
+
+\begin{equation}
+\label{eqn:S}
+ S = k_B \ln W
+\end{equation}
+
+missä $W$ ei ole työ vaan sama kuin kappaleessa \nameref{sssection:T} eli niiden tapojen lukumäärä, jolla 
+systeemin energiajakauma voi toteutua. $k_B$ on samaisessa kappaleessa ensi kertaa kohtaamamme Boltzmannin vakio.
+
+Luonnollinen logaritmi entropian kaavassa on selitettävissä seuraavasti:
+
+\begin{itemize}
+ \item Olkoon meillä systeemi, joka koostuu osasysteemeistä 1 ja 2.
+ \item Entropia on ekstensiivisuure jolloin $S_{sys} = S_1 + S_2$
+ \item Toisaalta koko systeemin energiajakauma voi toteutua $W_{sys} = W_1W_2$ tavalla\footnote{Tämä ajattelutapa 
+ on mahdollisesti tuttu todennäköisyyslaskennasta.}.
+ \item Oletetaan että $S$ ja $\ln W$ ovat suoraan verrannollisia: $S = k \ln W$
+ \item Systeemin entropian on tällöin oltava\\ $S_{sys} = k\ln W_{sys} = k\ln W_1W_2 = k \ln W_1 + k \ln W_2 = S_1 + S_2$
+ \item Eli oletus toimii. Verrannollisuuskertoimen $k$ mitattua arvoa $k_B$ kutsutaan Boltzmannin 
+	vakioksi\footnote{$k_B = 1,3806488\cdot10^{-23}\frac{J}{K}$}.
+\end{itemize}
+
+W on puhdas luku, joten entropian yksiköksi tulee
+
+\begin{equation}
+ [S] = [k_B\ln W] = [k_B] = \frac{J}{K} % Tää ei ehkää oo ihan OK tapa selvittää yksikkö!
+\end{equation}
+
+\paragraph{Mutta mitä entropia oikeastaan on?}
+
+Verrannollisuuskerroin $k_B$ ja luonnollinen logaritmi esiintyvät entropian tilastollisessa määritelmässä vain 
+jotta se saadaan täsmäämään klassisen termodynamiikan entropiaan. \textbf{Entropia on siis pohjimmiltaan vain 
+W:n funktio:}
+
+\begin{equation}
+\label{eqn:SfW}
+ S = f(W)
+\end{equation}
+
+Ja W tosiaan on niiden tapojen lukumäärä, jolla systeemin osasten energiajakauma voi toteutua. 
+
+\paragraph{Ja miksi se aina kasvaa?}
+
+Kaavoista \ref{eqn:S} ja \ref{eqn:SfW} nähdään että S on aidosti kasvava W:n funktio ja voi siis 
+kasvaa vain kun W kasvaa. Miksi W sitten aina kasvaa? Koska energiajakauman todennäköisyys 
+on suoraan verrannollinen siihen, kuinka monella eri tavalla kyseinen energiajakauma voi toteutua:
+
+\begin{equation}
+ P \sim W
+\end{equation}
+
+Ajan kuluessa sitä suurempi osa systeemeistä asettuu tiettyyn tilaan mitä todennäköisempi tuo tila on.
+Eli systeemit asettuvat tiloihin, joiden P on mahdollisimman suuri. Ja P on suoraan verrannollinen W:hen 
+jonka funktio entropia S on.
+
+Termodynamiikan II pääsääntö tarkoittaa siis pohjimmiltaan seuraavaa:
+
+\begin{quote}
+ Maailmankaikkeus pyrkii kohti todennäköisintä tilaansa.
+\end{quote}
+
+Vaikuttaa aika itsestäänselvältä latteudelta, varsinkin kun vertaa siihen epämääräiseen kuvaan, joka 
+minullakin ennen oli. Kyse ei olekaan siitä, että ``ajan kuluessa epäjärjestys kasvaa'' eli 
+``maailmanlopun edellä kaikki menee päin helvettiä''\footnote{Itse asiassa kun entropia on saavuttanut 
+maksiminsa ja lämmönsiirto loppunut on kaikkialla maailmankaikkeudessa sama muutaman kelvinin lämpötila. 
+Kyllähän joku voisi sanoa että se on ``helvetin kylmä''...}.
+
+% Srev ja [S]
+
+\section{Käytäntö} %....................................................................
+
+\subsection{Helmholtzin vapaaenergia F} \label{sssection:helmholtz}
 
 Myös \textbf{Helmholtzin vapaaenergia} $F$ on apusuure, ja se on määritelty näin:
 
@@ -962,7 +1460,7 @@ Mikäli
 tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
 kunnes systeemi on termodynaamisessa tasapainossa.
 
-\subsubsection{Gibbsin vapaaentalpia G}
+\subsection{Gibbsin vapaaentalpia G}
 
 Kuten entalpia ja Helmholtzin vapaaenergia, \textbf{Gibbsin vapaaentalpia} $G$ on apusuure, 
 ja se on määritelty näin:
@@ -1047,578 +1545,20 @@ Mikäli
 tarkoittaa se sitä, että systeemissä muut energian muodot muuttuvat häviöiden kautta lämmöksi 
 kunnes systeemi on termodynaamisessa tasapainossa.
 
-\subsection{Mikroskooppiset potentiaalienergiat eli sidosenergiat}
+\chapter{Termodynamiikan 3. pääsääntö} %--------------------------------------------------------------
 
-Mikroskooppisia potentiaalienergioita kutsutaan yleensä \textbf{sidosenergioiksi} sillä ne sitovat aineen eri osasia 
-yhteen niihin muotoihin, joihin olemme tottuneet. Niiden tutkimus kuuluu enemmän kemian, kvanttimekaniikan ja ydinfysiikan 
-kuin (edes tilastollisen) termodynamiikan alueelle. 
+\section{Teoria} %....................................................................
 
-Niistä on kuitenkin syytä puhua jonkin verran myös lämpötekniikan oppikirjassa, sillä niillä on keskeinen rooli
-etenkin monissa energiantuotantoprosesseissa: polttoprosesseissa (kemiallinen sidosenergia), ydinvoimassa (ytimen 
-sidosenergia) sekä myös erilaisissa aurinkopaneeleissa (elektronien sidosenergia yleisesti, joskus myös kemiallinen 
-sidosenergia).
+\section{Käytäntö} %..................................................................
 
-\section{Energiat lämpötieteissä}
+\part*{Liitteet} %___________________________________________________________________________________
+\addcontentsline{toc}{part}{Liitteet}
+\setcounter{chapter}{0}
 
-Systeemillä voi siis olla montaa erityyppistä energiaa:
+\chapter{Lähdeluettelo} %----------------------------------------------------------------------------
 
-\begin{enumerate}
- \item Liike-energiat:
- \begin{enumerate}
-  \item \underline{Systeemin liike-energia}
-  \item \underline{Lämpöliikkeen liike-energia eli sisäenergia}
- \end{enumerate}
- \item Fysiikan perusvoimiin liittyvät potentiaalienergiat:
- \begin{enumerate}
-  \item \underline{Gravitaation potentiaalienergia}
-  \item Sähköiset energiat:
-  \begin{enumerate}
-   \item Sähkömagneettinen potentiaalienergia
-   \item \textit{Kemiallinen sidosenergia}
-  \end{enumerate}
-  \item \textit{Heikon vuorovaikutuksen sidosenergia}
-  \item Vahvan vuorovaikutuksen sidosenergia
- \end{enumerate}
-\end{enumerate}
-
-\underline{Alleviivattuja energioita} käsitellään lämpötieteissä jatkuvasti. \textit{Kursivoidut 
-energiat} tulevat kyseeseen, mikäli systeemissä tapahtuu kemiallisia tai ydinreaktioita. 
-
-Sähkömagneettisella potentiaalienergialla on väliä vain mikäli systeemin kokonaisvaraus ei ole nolla ja 
-se on ulkoisessa sähkömagneettisessa kentässä. Lämpötieteissä ja -tekniikassa tällaiset tapaukset ovat 
-harvinaisia.
-
-Vahvan vuorovaikutuksen sidosenergia sitoo kvarkit protoneiksi ja neutroneiksi. Sillä ei toistaiseksi 
-ole käytännön sovelluksia.
-
-\section{Energioiden koordinaatistoriippuvuus}
-
-Systeemin energiat voidaan jakaa myös seuraavasti:
-
-\begin{enumerate}
- \item Koordinaattijärjestelmän ja/tai potentiaalienergian nollakohdan valinnasta riippuvat:
- \begin{enumerate}
-  \item Systeemin liike-energia
-  \item Gravitaation potentiaalienergia
-  \item Sähkömagneettinen potentiaalienergia
- \end{enumerate}
- \item Näistä valinnoista riippumattomat:
- \begin{enumerate}
-  \item Lämpöliikkeen liike-energia eli sisäenergia
-  \item Kemiallinen sidosenergia
-  \item Heikon vuorovaikutuksen sidosenergia
-  \item Vahvan vuorovaikutuksen sidosenergia
- \end{enumerate}
-\end{enumerate}
-
-
-
-\chapter{Siirtymäenergiat}
-
-Systeemillä voi siis olla monenlaista energiaa. Myös systeemin ympäristöllä voi olla näitä 
-energioita.
-
-Sillä hetkellä kun energia siirtyy systeemin rajan yli voi se kuitenkin termodynamiikassa 
-olla vain kahta tyyppiä: \textbf{lämpöä $Q$} tai \textbf{työtä $W$}. Vastaavasti systeemillä 
-tai ympäristöllä sinänsä ei voi olla näitä energioita vaan varastoituessaan systeemiin tai 
-ympäristöön ne muuttuvat aina johonkin muuhun muotoon.
-
-\section{Merkkisopimus} \label{sec:merkkisopimus}
-
-Systeemiin siirtyvä työ ja lämpö ovat aina positiivisia, systeemistä siirtyvät negatiivisia.
-
-Päinvastoin voidaan todeta että mikäli työtä tai lämpöä ei alunperin tiedetä, ratkaistun 
-työn tai lämmön etumerkki kertoo, siirtyikö se systeemistä vai systeemiin.
-
-\section{Lämpö Q}
-
-Lämpö on energiaa, joka siirtyy systeemin rajojen yli siksi, että systeemin ja ympäristön 
-välillä on lämpötilaero. 
-
-Siirtyminen systeemin rajojen yli voi tapahtua millä tahansa \textbf{lämmönsiirtotavalla}:
-
-\begin{itemize}
- \item johtumalla
- \item kulkeutumalla\footnote{``Konvektiolla''.}
- \item säteilemällä
- \item tai jollain näiden 
-yhdistelmällä\footnote{Erityisen merkittävä yhdistelmä on johtumisesta ja kulkeutumisesta 
-koostuva ``\textbf{konvektiivinen lämmönsiirto}''.}.
-\end{itemize}
-
-Lämpö siirtyy aina korkeammasta lämpötilasta matalampaan. Kuten myöhemmin selviää, tämä 
-on seurausta termodynamiikan II pääsäännöstä. Aina kun lämpöä siirtyy, joko systeemin tai 
-ympäristön entropia ja sen myötä maailmankaikkeuden epäjärjestys kasvaa.
-Tähän liittyen lämpö on ``epäjärjestynyttä energiaa'', jolla voidaan tehdä vähemmän 
-erilaisia asioita kuin työllä.
-
-Lämmönsiirto muuttaa ensisijaisesti systeemin tai ympäristön sisäenergiaa. (Mieti, 
-miten tämä liittyy siihen, että sisäenergia on ``lämpöliikkeen liike-energiaa''.)
-
-\section{Työ W}
-
-Työ on lämpöä monimuotoisempi ja vaikeammin määriteltävissä oleva siirtymäenergia. 
-
-Työ voi olla esimerkiksi systeemin tilavuudenmuutostyötä, turbiinin akselityötä, 
-sähkövirran energiaa jne.
-
-Työ on ``järjestynyttä energiaa'', joka voidaan muuttaa vaihtelevilla hyötysuhteilla 
-moniksi muiksi energian muodoiksi. Kun pelkästään työtä siirtyy ei systeemin tai ympäristön 
-entropia muutu.
-
-Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä taas ei voida 
-(sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
-II pääsääntöä.
-
-\chapter{Tilasuureet} \label{chapter:tilasuureet} % ----------------------------------------
-
-Niitä termodynaamisia suureita, jotka riippuvat vain toistensa arvoista tarkasteluhetkellä 
-eivätkä siitä millaisella prosessilla näihin arvoihin on tultu kutsutaan tilasuureiksi.
-
-\begin{itemize}
- \item Perustavimmat tilasuureet ovat \textbf{paine p}, \textbf{lämpötila T}, 
-    \textbf{tilavuus V}, \textbf{sisäenergia U} sekä \textbf{entropia S}.
- \item Keskeisiä ovat myös näiden johdannaissuureet \textbf{entalpia H}, 
-  \textbf{Helmhotzin vapaaenergia F} sekä \textbf{Gibbsin vapaaenergia G}.
-\end{itemize}
-
-Mikä tahansa funktio, joka sisältää vain tilasuureita, massaa ja ainemäärää on myös tilasuure. 
-Niinpä myös ominaistilavuus v, tiheys $\rho = \frac{1}{v}$, ominaissisäenergia u, molaarinen 
-ominaissisäenergia $U_m$ jne. ovat tilasuureita.
-
-% Esimerkkejä tilasuureen merkityksestä.
-
-\textbf{Lämpö Q} ja \textbf{työ W} \underline{eivät} ole tilasuureita!
-
-% Esimerkkejä tästä.
-
-% ``Termodynaamiset potentiaalit'', selitys eksaktista differentiaalista, pyörteettömyydestä, 
-% vertaus potentiaalienergiaan ja sähköiseen potentiaaliin.
-
-% Tilanyhtälö, ideaalikaasun tilanyhtälö
-
-\chapter{Termodynamiikan I pääsääntö} % -----------------------------------------------------
-
-\textbf{Termodynamiikan I pääsääntö} on seuraava kokeellisesti havaittu luonnonlaki:
-
-\begin{quote}
- Energia säilyy.
-\end{quote}
-
-Sen voi ilmaista myös seuraavilla tavoilla:
-
-\begin{quote}
- Energia on tuhoutumatonta
-\end{quote}
-
-\begin{quote}
- Energia ei tuhoudu, ainoastaan muuttaa muotoaan.
-\end{quote}
-
-\begin{quote}
- Maailmankaikkeuden kokonaisenergia on vakio.
-\end{quote}
-
-\begin{quote}
- On mahdotonta rakentaa laite, joka synnyttää maailmankaikkeuteen uutta energiaa. (Ns. tyypin I ikiliikkuja.)
-\end{quote}
-
-Termodynamiikan I pääsäännön voi määritellä myös käytännössä hyödyllisellä tavalla 
-systeemin energioiden ja siirtymäenergioiden avulla. 
-
-Mikäli energiaa siirtyy systeemiin, 
-täytyy systeemin energian kasvaa. Mikäli energiaa siirtyy systeemistä, täytyy systeemin 
-energian pienentyä. \hyperref[sec:merkkisopimus]{Merkkisopimuksen} ansiosta seuraava 
-lause kattaa nämä molemmat tapaukset:
-
-\begin{quote}
- Systeemin kokonaisenergian muutos = siirtymäenergioiden summa
-\end{quote}
-
-Siistissä täysin matemaattisessa kaavamuodossa termodynamiikan I pääsääntö on siis
-
-\begin{equation}
- \Delta E_{sys} = Q_{tot} + W_{tot}
-\end{equation}
-
-Termodynamiikan pääsäännöt ovat kaikkien fysiikan lakien tavoin \textbf{universaaleja} 
-eli voimassa kaikille systeemeille ja prosesseille kaikkialla, kaikkina aikoina. Voimme 
-siis aina käyttää laskelmissamme termodynamiikan I pääsääntöä tässä muodossa yhtenä 
-yhtälöistämme.
-
-% Noether
-
-\chapter{Termodynamiikan II pääsääntö}
-
-Ensimmäisen pääsäännön kannalta on samantekevää, onko energia liike- vai potentiaalienergiana tai 
-siirtyykö se systeemistä toiseen työnä vai lämpönä, kunhan energian kokonaismäärä säilyy jokaisella 
-ajanhetkellä.
-
-Jo lämpötieteiden ja -tekniikan pioneerit kuitenkin huomasivat, että lämpöön ja työhön päti muitakin
-lainalaisuuksia.
-
-\paragraph{Lämmönsiirron suunta}
-
-Havaittiin että lämpö siirtyi luonnollisesti vain tiettyyn suuntaan:
-
-\begin{quote}
- Spontaanissa prosessissa lämpö siirtyy aina korkeammasta lämpötilasta matalampaan.
-\end{quote}
-
-Tämän lämpötekninen seuraus on:
-
-\begin{quote}
- On mahdotonta rakentaa laitetta, joka siirtää lämpöä matalammasta lämpötilasta korkeampaan tekemättä 
- lainkaan työtä. (Eli jäähdytystekniikka kuluttaa väistämättä energiaa.)
-\end{quote}
-
-\paragraph{Lämmön ja työn muuttaminen toisikseen}
-
-Havaittiin että työllä ja lämmöllä oli perustavanlaatuinen ero:
-
-\begin{quote}
- Työ voidaan muuttaa kokonaan lämmöksi, mutta lämpöä ei kokonaan työksi.
-\end{quote}
-
-Tämän lämpötekninen seuraus on:
-
-\begin{quote}
- On mahdotonta rakentaa laite, joka muuttaa lämmön kokonaan työksi. (Ns. tyypin II ikiliikkuja).
-\end{quote}
-
-\section{Entropia S}
-
-Myöhemmin onnistuttiin kehittämään uusi tilasuure, \textbf{entropia S}, jonka avulla kaikki
-edellämainitut lainalaisuudet voitiin lausua yhdellä lauseella:
-
-\begin{quote}
- Eristetyn systeemin entropia kasvaa tai pysyy vakiona jokaisessa prosessissa.
-\end{quote}
-
-Tällä lauseella on erikoistapaus, joka tuntuu itse asiassa paljon kaikenkattavammalta:
-
-\begin{quote}
- Maailmankaikkeuden entropia on ajan aidosti kasvava funktio\footnote{Eli dramaattisemmin ``entropia 
- kasvaa maailmanlopun edellä''. 
- 
- Isälläni oli tapana sanoa ``pyy pienenee maailmanlopun 
- edellä''. Kun kysyin että miksi, niin vastaus oli ``entropian ja pyyn summa on vakio''. Arvelin, että 
- pyy on jokin kreikkalainen aakkonen koska tuntui siltä että entropiaa, mitä se sitten onkaan, tuskin 
- mitataan samoissa yksiköissä kuin pieniä lintuja. 
- 
- Saattaa olla myös jokin satu, jossa säälimätön jumala kiroaa pyyt aina vain pienenemään sukupolvi 
- sukupolvelta. Oli miten oli, minusta kuitenkin tuli teekkari eikä ornitologia tai teologia.}.
-\end{quote}
-
-Tämä on seurausta siitä, että maailmankaikkeus on eristetty systeemi\footnote{Mikäli oletamme että sen 
-sen ulkopuolella ei ole mitään. Toisaalta yhtä lailla voidaan olettaa, että siellä on toisia maailmankaikkeuksia 
-eli multiversumi.} ja ajan myötä tapahtuu vain prosesseja, joissa sen entropia kasvaa tai pysyy vakiona.
-
-Tuo ensimmäinen lause tunnetaan \textbf{termodynamiikan toisena pääsääntönä} ja käytännönläheisesti 
-lausumme sen systeemiterminologialla ja matemaattisessa differentiaalimuodossa seuraavasti:
-
-\begin{equation}
-\label{eqn:psII}
- dS_{tot} = dS_{sys} + dS_{surr} \geq 0
-\end{equation}
-
-Eli maailmankaikkeuden kokonaisentropian, joka on systeemin ja ympäristön entropioiden summa, muutos on $\geq 0$. 
-Tässä kokonaisentropian kasvu on ilmaistu entropian muutoksen avulla koska muutoksia on helpompi mitata 
-ja myös käsitellä matemaattisesti kuin absoluuttisia arvoja.
-
-Termodynamiikan II pääsääntö pätee aina ja kaikille prosesseille. Kaava \ref{eqn:psII} sisältää kaiken, 
-mitä tässä luvussa on sitä ennen käsitelty.
-
-% Todistus siitä, että entropia on tilasuure.
-% Todistukset, että sisältää.
-
-\subsection{Mitä entropia on}
-
-Entropia kehitettiin klassisen termodynamiikan työkaluilla. Todettiin että tämä uusi tilasuure on kätevä 
-työkalu, koska se tiivistää havaitut lainalaisuudet lämmönsiirron suunnasta sekä työn ja lämmön suhteesta.
-
-% Edellä todistettiin klassisen termodynamiikan teorialla, että entropia todella on tilasuure, ja että 
-% termodynamiikan II pääsääntö todella sisältää nuo molemmat lainalaisuudet. 
-Klassinen termodynamiikka 
-ei kuitenkaan kerro mitään siitä, mitä entropia itse asiassa \textit{on}.
-
-Entropiaa vaivaa sama ongelma kuin lämpötilaa, eli suuri osa sen käyttäjistä ei tiedä mitä se itse asiassa 
-kuvaa. On vain jokin epämääräinen kuva siitä, että ``entropia on epäjärjestyksen mitta''. Tätä voidaan 
-havainnollistaa vaikka sellaisella analogialla että ``keittiökin menee ajan mittaan epäjärjestykseen 
-(mikäli järjestyksen pitämisessä ei nähdä suurta vaivaa)''. 
-
-\textbf{Ei pidä paikkaansa, että entropia olisi suoranaisesti epäjärjestyksen mitta.} Koetapa kokata jonkun 
-toisen keittiössä. Sinusta ehkä tuntuu, että kaikki löytyy mistä sattuu eli on epäjärjestyksessä, mutta keittiön 
-omistajan mielestä kaikki voi olla juuri siellä missä pitääkin eli järjestyksessä. Järjestys on siis ihmisten 
-keksintö ja määrittelykysymys. Moisten kanssa painiminen on \textit{``humanistien'' hommaa}.
-
-\paragraph{Mitä entropia sitten todella mittaa?}
-
-Tilastollisesta termodynamiikasta entropialle saadaan kuitenkin brutaalin yksinkertainen määritelmä ja kaava:
-
-\begin{equation}
-\label{eqn:S}
- S = k_B \ln W
-\end{equation}
-
-missä $W$ ei ole työ vaan sama kuin kappaleessa \nameref{sssection:T} eli niiden tapojen lukumäärä, jolla 
-systeemin energiajakauma voi toteutua. $k_B$ on samaisessa kappaleessa ensi kertaa kohtaamamme Boltzmannin vakio.
-
-Luonnollinen logaritmi entropian kaavassa on selitettävissä seuraavasti:
-
-\begin{itemize}
- \item Olkoon meillä systeemi, joka koostuu osasysteemeistä 1 ja 2.
- \item Entropia on ekstensiivisuure jolloin $S_{sys} = S_1 + S_2$
- \item Toisaalta koko systeemin energiajakauma voi toteutua $W_{sys} = W_1W_2$ tavalla\footnote{Tämä ajattelutapa 
- on mahdollisesti tuttu todennäköisyyslaskennasta.}.
- \item Oletetaan että $S$ ja $\ln W$ ovat suoraan verrannollisia: $S = k \ln W$
- \item Systeemin entropian on tällöin oltava\\ $S_{sys} = k\ln W_{sys} = k\ln W_1W_2 = k \ln W_1 + k \ln W_2 = S_1 + S_2$
- \item Eli oletus toimii. Verrannollisuuskertoimen $k$ mitattua arvoa $k_B$ kutsutaan Boltzmannin 
-	vakioksi\footnote{$k_B = 1,3806488\cdot10^{-23}\frac{J}{K}$}.
-\end{itemize}
-
-W on puhdas luku, joten entropian yksiköksi tulee
-
-\begin{equation}
- [S] = [k_B\ln W] = [k_B] = \frac{J}{K} % Tää ei ehkää oo ihan OK tapa selvittää yksikkö!
-\end{equation}
-
-\paragraph{Mutta mitä entropia oikeastaan on?}
-
-Verrannollisuuskerroin $k_B$ ja luonnollinen logaritmi esiintyvät entropian tilastollisessa määritelmässä vain 
-jotta se saadaan täsmäämään klassisen termodynamiikan entropiaan. \textbf{Entropia on siis pohjimmiltaan vain 
-W:n funktio:}
-
-\begin{equation}
-\label{eqn:SfW}
- S = f(W)
-\end{equation}
-
-Ja W tosiaan on niiden tapojen lukumäärä, jolla systeemin osasten energiajakauma voi toteutua. 
-
-\paragraph{Ja miksi se aina kasvaa?}
-
-Kaavoista \ref{eqn:S} ja \ref{eqn:SfW} nähdään että S on aidosti kasvava W:n funktio ja voi siis 
-kasvaa vain kun W kasvaa. Miksi W sitten aina kasvaa? Koska energiajakauman todennäköisyys 
-on suoraan verrannollinen siihen, kuinka monella eri tavalla kyseinen energiajakauma voi toteutua:
-
-\begin{equation}
- P \sim W
-\end{equation}
-
-Ajan kuluessa sitä suurempi osa systeemeistä asettuu tiettyyn tilaan mitä todennäköisempi tuo tila on.
-Eli systeemit asettuvat tiloihin, joiden P on mahdollisimman suuri. Ja P on suoraan verrannollinen W:hen 
-jonka funktio entropia S on.
-
-Termodynamiikan II pääsääntö tarkoittaa siis pohjimmiltaan seuraavaa:
-
-\begin{quote}
- Maailmankaikkeus pyrkii kohti todennäköisintä tilaansa.
-\end{quote}
-
-Vaikuttaa aika itsestäänselvältä latteudelta, varsinkin kun vertaa siihen epämääräiseen kuvaan, joka 
-minullakin ennen oli. Kyse ei olekaan siitä, että ``ajan kuluessa epäjärjestys kasvaa'' eli 
-``maailmanlopun edellä kaikki menee päin helvettiä''\footnote{Itse asiassa kun entropia on saavuttanut 
-maksiminsa ja lämmönsiirto loppunut on kaikkialla maailmankaikkeudessa sama muutaman kelvinin lämpötila. 
-Kyllähän joku voisi sanoa että se on ``helvetin kylmä''...}.
-
-% Srev ja [S]
-
-% \chapter{Suureet} %---------------------------------------------------------------------
-% % Tarvittavat prujuista ja kirjoista
-% 
-% \section{Aika ja avaruus}
-% 
-% \subsection{Aika}
-% 
-% \subsection{Pituus, pinta-ala ja tilavuus}
-% 
-% \section{Aine ja energia}
-% 
-% \subsection{Ainemäärä}
-% 
-% \subsection{Massa}
-% 
-% \subsection{Tiheys}
-% 
-% \subsection{Voima}
-% 
-% \subsection{Energia}
-% 
-% \section{Ekstensiivi- ja intensiivisuureet}
-% 
-% \section{Termodynaamiset suureet}
-% 
-% \subsection{Viskositeetti}
-% 
-% \subsection{Lämmönjohtavuus}
-% 
-% \subsection{Terminen diffusiviteetti}
-% 
-% \section{Tilasuureet l. termodynaamiset potentiaalit} 
-% 
-% \subsection{Paine}
-% 
-% \subsection{Tiheys ja ominaistilavuus}
-% 
-% \newpage % A temporary hack
-% 
-
-% 
-% \subsection{Lämpötila}
-% 
-% \subsection{Ominaislämpökapasiteetit}
-% 
-% Lämpötila, sisäenergia ja sisäenergian sisältävä entalpia mittaavat siis enemmän tai vähemmän samaa asiaa. Ne voidaan 
-% näinollen luultavasti kytkeä toisiinsa jollakin yksinkertaisella tavalla. Tästä kytkennästä on myös se olennainen hyöty, 
-% että laskennassa hyödylliset mutta vaikeasti mitattavat sisäenergia ja entalpia saadaan kytkettyä harvemmin kiinnostavaan 
-% mutta helposti mitattavaan lämpötilaan.
-
-% Termodynamiikassa kytkentään käytetään \textbf{ominaislämpökapasiteettia vakiotilavuudessa $c_v$} ja 
-% \textbf{ominaislämpökapasiteettia  vakiopaineessa $c_p$}. Määritellään nämä ominaislämpökapasiteetit. Sisäenergian ja 
-% entalpian differentiaaliset muutokset voi kytkeä lämpötilan differentiaaliseen muutokseen osittaisderivaattojen avulla:
-% 
-% \begin{align}
-%  du = \frac{\partial u}{\partial T}\bigg|_vdT\\
-%  dh = \frac{\partial h}{\partial T}\bigg|_pdT
-% \end{align}
-% 
-% Nämä derivoinnin tuloksena syntyvät funktiot on nimetty ominaislämpökapasiteeteiksi (lyhyesti ``ominaislämmöiksi'') 
-% vakiotilavuudessa ja vakiopaineessa:
-% 
-% \begin{align}
-%  \frac{\partial u}{\partial T}\bigg|_v = c_v(T)\\
-%  \frac{\partial h}{\partial T}\bigg|_p = c_p(T)\\
-%  du = c_vdT\\
-%  dh = c_pdT
-% \end{align}
-% 
-% Yleisesti ottaen ominaislämmöt eivät ole yksinkertaisia tai helposti teoreettisesti johdettavissa olevia lämpötilan 
-% funktioita. 
-% 
-% Käytännön laskennassa ominaislämmöille käytetään taulukoituja, käyräksi piirrettyjä tai kokeellisen 
-% polynomiapproksimaation muodossa olevia funktioita. Jos toimitaan kapealla lämpötila-alueella ja tulokset on 
-% tärkeämpää saada nopeasti kuin tarkkoina voidaan ominaislämpö olettaa vakioksi lämpötila-alueella. Tällaisia tilanteita 
-% ovat esim. alustavat tunnustelulaskelmat, pika-analyysit ja tentit.
-% 
-% % \frac{c_p}{c_v} = \gamma, c_p - c_v = R
-% % Kokoonpuristumattomattomalle c_p = c_v
-% 
-% \subsection{Entropia}
-% 
-% \subsection{Helmhotzin vapaaenergia}
-% 
-% \subsection{Gibbsin vapaaenergia}
-% 
-% \subsection{Vapaat tilasuureet l. vapaat muuttujat l. vapausasteet}
-% 
-% \paragraph{Tilanyhtälö}
-% 
-% \section{Suureluettelo}
-% % Kunkin suureen nimet, symbolit, yksiköt
-% 
-% \chapter{Säilymislait} % ---------------------------------------------------------------
-% 
-% \section{Taselaskenta}
-% % reynoldsin siirtoteoreema
-% 
-% \section{Massan säilyminen}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \section{Liikemäärän säilyminen}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \section{Kulmaliikemäärän säilyminen}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \section{Energian säilyminen}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \chapter{Termodynamiikan pääsäännöt} % -------------------------------------------------
-% 
-% \section{Nollas pääsääntö: lämpötilan määritelmä}
-% 
-% \section{Ensimmäinen pääsääntö: energian säilyminen}
-% 
-% \subsection{Systeemin energia ja siirtyvä energia}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \section{Toinen pääsääntö: epäjärjestyksen lisääntyminen}
-% 
-% \subsection{Energian laatu}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \section{Kolmas pääsääntö: absoluuttinen nollapiste}
-% 
-% \subsection{Suljettu systeemi}
-% 
-% \subsection{Avoin systeemi}
-% 
-% \chapter{Muut lait} % ------------------------------------------------------------------
-% % esim. fourierin "laki"
-% 
-% \part{Termodynamiikkaa}% ________________________________________________________________
-% 
-% \chapter{Termodynaamiset prosessit}
-% % Huomaa tilasuureiden ja muiden ero (Q ja W eivät potentiaaleja)
-% % Työn ja lämmöntuonti vakiopaineessa, -tilavuudessa, -lämpötilassa, entropiassa...
-% % Polytrooppiprosessi, mielivaltaiset prosessit
-% 
-% \chapter{Aineen olomuodot ja faasimuutokset}
-% % Kiinteä, neste, kaasu, ylikrittinen, plasma(...:P)
-% % Faasidiagrammit
-% 
-% \part{Virtausoppia} % ___________________________________________________________________
-% 
-% \chapter{Virtausaineen käsite}
-% 
-% \part{Lämmönsiirtoa} % ___________________________________________________________________
-% 
-% \part{Matemaattisia menetelmiä} % ________________________________________________________
-% 
-% \chapter{Differentiaalilaskenta} % -------------------------------------------------------
-% % Osittais- ja kokonaisdifferentiaalit
-% 
-% \section{Derivointi}
-% % Osittais- ja kokonaisderivaatat
-% 
-% \section{Integrointi}
-% 
-% \section{Differentiaaliyhtälöt}
-% 
-% \chapter{Vektorianalyysi} % --------------------------------------------------------------
-% 
-% \section{Skalaari- ja vektorikentät}
-% 
-% \section{Aikaderivoidut suureet}
-% % ``Virrat``, totaalinen derivaatta 
-% 
-% \chapter{Dimensioanalyysi} % -------------------------------------------------------------
-% 
-% \section{Dimensiottomat suureet}
-% 
-% \section{Lämpöteknisiä dimensiottomia suureita}
-% % Suureet-osioon?
-% 
-% \part{Laskuharjoitusten ratkaisuja} % ____________________________________________________
+\bibliography{pruju}{}
+\bibliographystyle{plain}
 
 \end{document}
 
