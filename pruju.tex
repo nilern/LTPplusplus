@@ -1095,13 +1095,81 @@ ominaissisäenergia $U_m$ jne. ovat tilasuureita.
 
 \chapter{Termodynamiikan 0. pääsääntö} %----------------------------------------------------------------
 
+Termodynamiikassa on neljä pääsääntöä. Ne ovat tämän tieteen keskeisimmät luonnonlait. Ensimmäisenä 
+keksittiin tai oikeammin määriteltiin havaintojen pohjalta ensimmäinen pääsääntö, seuraavaksi tietenkin 
+toinen. Nollas ja kolmas pääsääntö keksittiin tai pikemminkin nähtiin tarpeellisiksi määritellä vasta 
+myöhemmin. 
+
+Tästä johtuu se, että pääsääntöjen numerointi alkaa nollasta. Nollas 
+pääsääntö haluttiin yksinkertaisempana ja perustavampana sijoittaa ennen ensimmäistä ja toista 
+pääsääntöä, mutta näiden numerointi oli jo vakiintunut.\footnote{Nollasta alkava numerointi ei siis 
+ole ohjelmoinnin tietorakenteiden indeksoinnin vaikutusta...}
+
 \section{Teoria} %....................................................................
 
-\subsection{Terminen tasapaino}
+Nollas pääsääntö on seuraava, ehkä pedantin tuntuinen lausunto:
+
+\begin{quote}
+ Mikäli systeemit $A$ ja $B$ ovat termisessä tasapainossa keskenään ja systeemit $B$ ja $C$ ovat 
+ termisessä tasapainossa keskenään, myös systeemit $A$ ja $C$ ovat termisessä tasapainossa keskenään.
+\end{quote}
+
+Mitä tällä lausunnolla sitten saavutetaan? Terminen tasapainohan tarkoitti sitä, että systeemien 
+välillä ei siirry lämpöä. Termodynamiikan toisen pääsäännön seurauksena\footnote{Kuten Navier-Stokesin 
+yhtälöt, myös termodynamiikan pääsäännöt ovat ``elliptisiä'' eli viittaavat kaikki toisiinsa eivätkä 
+rakennu ainoastaan edellisten pääsääntöjen pohjalle.} lämpö siirtyy aina korkeammasta 
+lämpötilasta matalampaan, minkä kääntöpuolena lämpöä ei siirry silloin, kun systeemien lämpötila 
+on sama.
+
+Kun terminen tasapaino ilmaistaan nyt lämpötilojen yhtäsuuruutena, saadaan termodynamiikan nollanneksi 
+pääsäännöksi
+
+\begin{quote}
+ Mikäli systeemit $A$ ja $B$ ovat keskenään samassa lämpötilassa ja systeemit $B$ ja $C$ ovat 
+ keskenään samassa lämpötilassa, myös systeemit $A$ ja $C$ ovat keskenään samassa lämpötilassa.
+\end{quote}
+
+Mikäli matemaattis-looginen ilmaisu tuntuu sinusta selkeämmältä, yllä oleva voidaan kirjoittaa 
+sillä tavalla kompaktisti 
+
+\begin{equation}
+ T_A = T_B \wedge T_B = T_C \Rightarrow T_A = T_C
+\end{equation}
 
 \section{Käytäntö} %..................................................................
 
-\subsection{Lämpömittari}
+Varsinkin tuo viimeisin, matemaattis-looginen nollannen pääsäännön muotoilu tuntui itsestään 
+selvältä. Mitä nollas pääsääntö oikeastaan määrittelee?
+
+\paragraph{Se määrittelee lämpötilan mitattavana suureena.}
+
+Mittaamme lämpömittareilla muiden systeemien lämpötiloja, mutta itse asiassa lämpömittari kertoo aina 
+\textit{oman} lämpötilansa. Esimerkiksi kun perinteisen elohopea- tai alkoholilämpömittarin nestepatsas 
+nousee, se johtuu nesteen lämpölaajenemisesta, mikä taas johtuu nesteen lämpötilan noususta.
+
+Kuitenkin kun lämpömittarin annetaan vaihtaa lämpöä lämpötilamittauksen kohteena olevan systeemin (ja 
+vain sen) kanssa riittävän pitkään, päädytään lopulta tilanteeseen, jossa ne ovat termisessä tasapainossa. 
+Eli ylläolevan järkeilyn mukaan lämpömittarin lämpötila on sama kuin mittauksen kohteena olevan systeemin.
+
+Lämpömittarit olisivat hyödyttömiä laitteita, mikäli ne antaisivat kahdelle samassa lämpötilassa olevalle 
+systeemille eri lukeman tai käänteisesti kahdelle eri lämpötilassa olevalle systeemille saman lukeman. 
+
+Termodynamiikan nollannen pääsäännön mukaan asian laita ei kuitenkaan ole näin onnettomasti, vaan mikäli 
+systeemi $B$ on lämpömittari, se antaa (teoriassa\footnote{Käytännössähän lämpömittari ei välttämättä 
+saavuta termistä tasapainoa mitattavan systeemin kanssa riittävän nopeasti tai kerro omaa lämpötilaansa 
+luotettavasti.}) saman lukeman kummallekin samassa lämpötilassa olevalle systeemille $A$ ja $C$. 
+Termodynamiikan nollas pääsääntö siis vakuuttaa ja varmistaa, että lämpömittarit ovat ainakin teoreettisesti 
+luotettavia. 
+
+\paragraph{Se määrittelee lämpötilan tilasuureena.}
+
+Edellisen kokeellista tutkijaa helpottavan seikan lisäksi termodynamiikan nollas pääsääntö vahvistaa lämpötilan 
+ylipäätään tilasuureena, myös laskelmissa käytettäväksi. Eli lämpötila kertoo jotain systeemin tilasta, 
+nimellisesti sen, minkä systeemien kanssa systeemi voi vaihtaa lämpöä ja mihin suuntaan.
+
+Nollas pääsääntö, kuten muutkin pääsäännöt, toimii ensisijaisesti klassisen termodynamiikan viitekehyksessä. 
+Aiemmin lämpötilaa määritellessämmehän näimme, että lämpötilan syvällinen merkitys on se, että se kertoo 
+systeemin energiajakaumien todennäköisimmät muodot.
 
 \chapter{Termodynamiikan 1. pääsääntö} % ---------------------------------------------------------------
 
