@@ -1615,9 +1615,87 @@ kunnes systeemi on termodynaamisessa tasapainossa.
 
 \chapter{Termodynamiikan 3. pääsääntö} %--------------------------------------------------------------
 
+Ensimmäisen pääsäännön käyttöönotto vaati sisäenergian määrittelemisen suureena, mutta se käsitteli vain 
+sisäenergian muutoksia eikä vaatinut sille absoluuttista arvoa vaan referenssitaso voitiin valita 
+vapaasti. Sisäenergialle saadaan kuitenkin absoluuttinen arvo, kun asetetaan se nollaksi 
+absoluuttisessa nollapisteessä. Aineella on toki tällöin epätarkkuusperiaatteen mukaan 
+jäännösenergiaa\footnote{Ns. nollapiste-energia, joka on ikiliikkujien rakentajien modernien vastineiden 
+suuressa suosiossa.}, mutta koska sitä on kovin vaikea saada aineesta poistettua -- ainakaan lämpöä 
+poistamalla se ei onnistu -- joten tässä sisäenergian nollaamisessa ei ole normaalisti juurikaan riskiä.
+
+Vastaavasti toisen pääsäännön määritteleminen hyvin vaati entropian käyttöönottoa suureena, mutta pääsääntö 
+käsitteli vain sen muutoksia absoluuttisten arvojen sijaan. Kolmas pääsääntö määrittelee entropialle 
+absoluuttisen arvon. Toisaalta siitä seuraa, että absoluuttista nollapistettä ei voida saavuttaa ainakaan 
+millään ilmeisellä tavalla.
+
 \section{Teoria} %....................................................................
 
+Termodynamiikan kolmas pääsääntö kuuluu seuraavasti:
+
+\begin{quote}
+ Jokaisen puhtaan, kiderakenteeltaan virheettömän kristallimaisen aineen entropia on 
+ nolla absoluuttisessa nollapisteessä.
+\end{quote}
+
+Eli matemaattisessa muodossa
+
+\begin{equation}
+ S_{crystal}(0 K) = 0
+\end{equation}
+
+Syynä tähän on se, että virheetön kiderakenne voidaan järjestää vain yhdellä tavalla - muut tavathan 
+ovat virheellisiä. Niinpä
+
+\begin{equation}
+ S_{kiderakenne}(0K) = k_B \ln W_{kiderakenne}(0K) = k_b \ln 1 = 0
+\end{equation}
+
+Lisäksi absoluuttisessa nollapisteessä kiderakenteella voi olla vain mitätön 
+määrä\footnote{Nollapiste-energian suuruinen.} liike-energiaa. Jos liike-energian määrä pyöristetään 
+nollaan, myös tällöin syntyvä askelfunktiomainen energiajakauma (Fermi-Dirac-jakauma) voi toteutua 
+vain yhdellä tavalla eli niin, että jokaisella kristallin yksikkökopilla on sama, potentiaalienergiasta 
+koostuva kvantitunut energia. Niinpä
+
+\begin{equation}
+ S_{energiajakauma}(0K) = k_B \ln W_{energiajakauma}(0K) = k_b \ln 1 = 0
+\end{equation}
+
+ja edelleen
+
+\begin{equation}
+ S_{crystal}(0K) = S_{kiderakenne}(0K) + S_{energiajakauma}(0K) = 0 + 0 = 0
+\end{equation}
+
+% \paragraph{Absoluuttisen nollapisteen saavuttamattomuus}
+% 
+% seuraa termodynamiikan kolmannesta pääsäännöstä. Nimittäin jos meillä on systeemi hyvin pienessä 
+% lämpötilassa $T_1$ ja ympäristö lämpötilassa $T_2$ ja
+% 
+% \begin{equation}
+%  T_1 < T_2
+% \end{equation}
+% 
+% Koska systeemin on annettu mennä termiseen tasapainoon ympäristön\footnote{Joka voi olla 
+% esim. nestemäistä heliumia.} kanssa ($T_1 = T_2$) ja sen 
+% jälkeen sitä on alettu jäähdyttää lämpöpumpulla tai vastaavalla järjestelyllä\footnote{Siis 
+% käytännössä jollakin kiertoprosessilla, tyypillisesti erittäin matalien lämpötilojen tavoittelussa 
+% käytetään \textit{adiabaattista demagnetaatiota}, jonka selittäminen tässä ei ole olennaista.}.
+% 
+% Jotta 
+
 \section{Käytäntö} %..................................................................
+
+Käytännössä termodynamiikan kolmas pääsääntö ei ole kovin merkittävä kuin matalan lämpötilan 
+maailmanennätyksen tavoittelijoille\footnote{Tämänhetkinen (\today) ennätys on ilmeiseti luokkaa $10^{-8}K$}. 
+
+Teorian suhteen kolmannella päännöllä on myös laskelmille merkittäviä seurauksia, se nimittäin 
+tekee ideaalikaasun todellisen olemassaolon mahdottomaksi. Toisaalta jo ideaalikaasun nimestä käy ilmi, 
+ettei sen arvella vastaavan todellisuutta vaan täydellisyyttä.
+
+Virheettömiä kristallejakaan ei tietenkään ole olemassa, niinkuin ei mitään täydellistä. Kiderakenteeseen 
+tulee nimittäin aina virheitä, kun aineita jäähdytetään nopeammin kuin äärettömän hitaasti. Lasin 
+ja kvartsin ero on nimenomaan se, että lasi on jäähtynyt niin nopeasti, ettei silä ole lainkaan säännöllistä 
+kiderakennetta. Mutta kvartsikiteetkään eivät ikinä ole täysin virheettömiä.
 
 \part*{Liitteet} %___________________________________________________________________________________
 \addcontentsline{toc}{part}{Liitteet}
