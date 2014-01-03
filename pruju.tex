@@ -53,11 +53,89 @@
 
 \section{Lämpötieteet ja lämpötekniikka} %..............................................
 
-\section{Suorittamisesta ymmärtämiseen} %...............................................
+On helppo ajatella suoraviivaisesti, että \textbf{tieteet} lähtevät liikkeelle kiinnostuksesta johonkin 
+luonnossa tapahtuvaan \textbf{ilmiöön}. 
+Sitten tehdään \textbf{perustutkimusta} -- laaditaan \textbf{teorioita} ja \textbf{testataan niitä kokeellisesti}. 
+Lopulta kun teoria on riittävän \textbf{yleispätevä}, joku käyttää sitä ja luovuuttaan teknisen tai muun \textbf{käytännön 
+sovelluksen} luomiseen. Ollaan edetty \textbf{soveltavaan tutkimukseen}.
+
+\textbf{Lämpötieteet}, kuten tässä kirjassa käsiteltävät
+
+\begin{itemize}
+ \item Termodynamiikka
+ \item Virtausoppi
+ \item Lämmönsiirto
+\end{itemize}
+
+ovat kuitenkin suurelta osin ns. \textbf{teknisiä tieteitä} eli insinöörien työkaluja. Ne ovat 
+syntyneet pikemminkin tutkittaessa, miten \textbf{lämpöteknisiä} sovelluksia, kuten 
+
+\begin{itemize}
+ \item Lämpövoimakoneita (voimalaitokset)
+ \item Lämpöpumppuja (jäähdytys ja lämmitys)
+ \item Virtauskoneita (pumppuja, puhaltimia, kompressoreja ja turbiineja)
+ \item Lämmönsiirtimiä (monien prosessien osana)
+\end{itemize}
+
+voitaisiin parantaa. Vaikka lämpötieteet ovat sittemmin monin osin kehittyneet maailmaa syleilevän yleispäteviksi, 
+niiden keskeisin tai ainakin hyvödyllisin sovellusalue on edelleen juuri lämpötekniikka.
+
+\section{Suureet, luonnonlait ja kaavat; ymmärrys ja tulokset} %...............................................
+
+Mielikuvamme luonnontieteistä ja teknisistä tieteistä on usein sellainen, että ne koostuvat pääosin \textbf{kaavoista}. 
+Itse asiassa kaavat ovat kuitenkin vain korkealle abstraktiotasolle jalostettuja yhteenvetoja siitä ymmärryksestä, 
+joka on saavutettu \textbf{teoreettisten mallien} ja \textbf{kokeellisen tutkimuksen} vuorovaikutuksessa.
+
+Useimmiten kaavat kertovat joidenkin \textbf{suureiden} välisen yhteyden matemaattisessa muodossa. Yhteys sinänsä 
+saattaa olla syvällinen ajatus, jopa \textbf{luonnonlaki} -- monet kaavat kuvaavat esimerkiksi energian säilymistä:
+
+\begin{align}
+ \frac{\dot{Q} + \dot{W}}{\dot{m}} &= \Delta\left(h + \frac{1}{2}\vec{V}^2 + gz\right)\\
+ \rho c_v\frac{dT}{dt} &= k\nabla^2T + \dot{Q}
+\end{align}
+
+Kuitenkin ehkä suurempi osa luonnontieteen oivalluksista on käsitteellistetty itse suureisiin. Monet kaavatkin 
+ovat itse asiassa vain suureiden määritelmiä:
+
+\begin{align}
+ H &= U + pV\\
+ G &= H - T\Delta S 
+\end{align}
+
+Niinpä jos tämän kirjan ``punainen lanka'' ovat luonnonlait, niin ehkä suureet ovat toinen yhtälailla tärkeä
+``vihreä lanka''\footnote{Myös erään puolueen lehti. Tämän alaviitteen tarkoitus on kuitenkin huomauttaa, 
+ettei tässä ole kyse tuotesijoittelusta tai poliittisesta propagandasta.}. Kaavat ovat toki tärkeitä, sillä 
+niillä saadaan \textbf{tuloksia}, mutta vasta niiden taustalla vaikuttavien suureiden ja luonnonlakien 
+ymmärtäminen mahdollistaa \textbf{luovuuden}. Tai edes oikeiden kaavojen käytön oikeassa tilanteessa ja siten 
+tulosten \textbf{oikeellisuuden}.
 
 \section{Merkinnöistä} %................................................................
 
-% u, U, v, V, w, W, Q, h, H
+Lämpötieteiden kirjallinen perinne on vanha ja julkaisujen määrä valtava. Tämän seikan valossa on täysin 
+ymmärrettävää, että \textbf{käytetyt merkinnätkin vaihtelevat melkoisesti}:
+
+\begin{itemize}
+ \item Esimerkiksi $q$:lla voidaan merkitä ominaislämpöä ($J/kg$), lämpövirran tiheyttä ($W/m^2$) tai jopa 
+  tilavuusvirtaa ($m^3/s$). 
+ \item Samaten $u$, $v$ ja $h$ voivat merkitä sisäenergiaa, ominaistilavuutta ja entalpiaa -- tai 
+  sitten nopeusvektorin x- ja y-komponentteja sekä lämmönsiirtokerrointa.
+\end{itemize}
+  
+Tämän tilanteen syntyä on edesauttanut myös se, että jo lämpötieteiden sisällä -- saati sitten fysiikassa 
+yleensä -- on käytössä niin monta suuretta, että latinalaiset tai kreikkalaisetkaan aakkoset eivät tahdo riittää.
+
+Kun teoria on hyvin hallussa, suureet menevät harvoin sekaisin sekalaisista merkinnöistä huolimatta. 
+Laskentatilanteesta, kaavojen muodosta ja yksiköistä näkee, mistä suureista on kyse. Mutta tätä kirjaa 
+lukevat ainakin toivottavasti ne, joilla teoria ei ole vielä juuri ollenkaan hallussa.
+
+Niinpä \textbf{olen pyrkinyt yksiselitteiseen merkintätapaan}, jossa eri suureita ei merkitä samalla merkinnällä. 
+Mikäli eri kirjaimen käyttäminen olisi täysin yleisen käytännön vastaista käytän vektorimerkkejä 
+tai aikaderivaattoja  suureiden erottelemiseksi:
+ 
+\begin{itemize}
+ \item ominaistilavuus $v$, vauhti eli nopeusvektorin pituus $|\vec{v}|$
+ \item tilavuus $V$, tilavuusvirta $\dot{V}$
+\end{itemize}
 
 \renewcommand{\thepart}{\arabic{part}}
 \setcounter{part}{-1}
@@ -65,13 +143,10 @@
 \setcounter{chapter}{0}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 
-% Suureet: teoria, ymmärrys
-% Kaavat: käytäntö, tulokset
-
 Ennen kuin alamme varsinaisesti käsitellä termodynamiikkaa tai muitakaan lämpötieteitä on syytä palauttaa mieleen 
-muutama suure yksiköineen ja määritelmineen. Luultavasti suureet ovat ennestään tuttuja etkä halua käyttää 
-niihin juurikaan aikaa mutta yllätyksiäkin lienee luvassa ja syvälliseen ymmärrykseen on hyvä pyrkiä - pidemmällä 
-tähtäimellä sitä kautta pääsee vähemmällä.
+muutama perussuure yksiköineen ja määritelmineen. Luultavasti suureet ovat ennestään tuttuja etkä halua käyttää 
+niihin juurikaan aikaa mutta perusteelliseen ymmärrykseen on hyvä pyrkiä -- pidemmällä tähtäimellä sitä kautta 
+pääsee vähemmällä. Ja mistäpä muualta perusteellinen ymmärrys lähtisi kuin perusteista, perusasoista.
 
 % \section{Puhtaista luvuista vektoreihin}
 % 
@@ -336,7 +411,7 @@ ja mitä nopeammin materiaa joudutaan kiihdyttämään (tai hidastamaan, $ a < 0
 
 \section{Työ W} %......................................................................
 
-Mitä työ sitten on? Mekaniikassa \textbf{työn W} yleinen määritelmä on
+Mitä työ on? Mekaniikassa \textbf{työn W} yleinen määritelmä on
 
 \begin{equation}
 \label{eq:W}
@@ -1654,7 +1729,7 @@ Lisäksi absoluuttisessa nollapisteessä kiderakenteella voi olla vain mitätön
 määrä\footnote{Nollapiste-energian suuruinen.} liike-energiaa. Jos liike-energian määrä pyöristetään 
 nollaan, myös tällöin syntyvä askelfunktiomainen energiajakauma (Fermi-Dirac-jakauma) voi toteutua 
 vain yhdellä tavalla eli niin, että jokaisella kristallin yksikkökopilla on sama, potentiaalienergiasta 
-koostuva kvantitunut energia. Niinpä
+koostuva kvantittunut energia. Niinpä
 
 \begin{equation}
  S_{energiajakauma}(0K) = k_B \ln W_{energiajakauma}(0K) = k_b \ln 1 = 0
