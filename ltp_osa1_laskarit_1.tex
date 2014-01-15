@@ -13,7 +13,7 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-\documentclass[12pt,a4paper,finnish]{book}
+\documentclass[12pt,a4paper,finnish]{article}
 
 \usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
 \usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
@@ -31,84 +31,61 @@
   linkcolor=blue,
 }
 
-\title{LTP++\\Laskuharjoitustehtävien ratkaisuja}
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 1 ratkaisut}
 \date{\today}
 \author{Pauli Jaakkola}
 
 \begin{document}
 
 \maketitle
-% Creative Commons, LaTeX-maininnat tähän
-\newpage
-\pagenumbering{Roman}
-\tableofcontents
-\newpage
-\pagenumbering{arabic}
-
-\chapter*{Johdanto} %------------------------------------------------------------------------------------------
-\addcontentsline{toc}{chapter}{Johdanto}
-
-Tämä dokumentti sisältää itse laatimiani ratkaisuja TTY:n Lämpötekniikan perusteet -opintojakson laskuharjoituksiin.
-Pyrin ratkaisuissa erityisesti korostamaan ratkaisujen lämpötieteellisä perusteita ja noudattamaan sekaannuksia 
-aiheuttamatonta merkintätapaa.
-
-Opintojakson ollessa käynnissä ratkaisut päivittyvät tänne kunkin laskuharjoituskerran jälkeen. 
-
-\part{Termodynamiikka}
-
-\chapter{Laskuharjoitus 1}
 
 \section{Tehtävä 2}
 
+\begin{math}
 \begin{aligned}
  &p = 1bar = 10^5 Pa\\
  &T = 20\,^{\circ}C = 293(,15)K\\
  &M = 28,965 g/mol\\
- &R_u = 8,314 J/molK\\
+ &R_u = 8,314 J/molK
 \end{aligned}
-
-\paragraph{Ideaalikaasun tilanyhtälö}
-
-Tämä on luultavasti ennestään tuttu muoto ja kemiassa ylivoimaisesti yleisin:
+\end{math}
 
 \begin{equation}
  pV = nR_uT
 \end{equation}
 
-Käytetään ainemäärän ja massan yhteyttä $M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}$:
+\begin{equation}
+ M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}
+\end{equation}
 
 \begin{equation}
  pV = \frac{m}{M}R_uT
 \end{equation}
-
-Kaasukohtainen kaasuvakio on määritelty $R = \frac{R_u}{M}$. Päädytään seuraavaan muotoon, 
-joka on lämpötekniikassa usein käyttökelpoisempi koska siinä esiintyy ainemäärää 
-helpommin mitattavissa oleva massa:
+ 
+\begin{equation}
+R = \frac{R_u}{M}
+\end{equation}
 
 \begin{equation}
  pV = mRT
 \end{equation}
 
-Jaetaan massalla ja otetaan käyttöön ominaissuureiden merkintätapa $v = \frac{V}{m}$:
-
 \begin{equation}
  p\frac{V}{m} = RT
 \end{equation}
 
-Tästä muodosta on usein hyötyä esimerkiksi johdettaessa jotain tuloksia ominaissuureille:
+\begin{equation}
+v = \frac{V}{m}
+\end{equation}
 
 \begin{equation}
 \label{eq:pvRT}
  pv = RT
 \end{equation}
 
-Sillä ratkeaa tämäkin tehtävä. Ominaistilavuus on nimittäin tiheyden käänteisluku:
-
 \begin{equation}
  v = \frac{V}{m} = \frac{1}{\frac{m}{V}} = \frac{1}{\rho}
 \end{equation}
-
-Sijoitetaan yhtälöön \ref{eq:pvRT}:
 
 \begin{equation}
  \frac{p}{\rho} = RT
@@ -118,8 +95,6 @@ Sijoitetaan yhtälöön \ref{eq:pvRT}:
  \rho = \frac{p}{RT}
 \end{equation}
 
-Sijoitetaan arvot ja saadaan tehtävän vastaus:
-
 \begin{equation}
  R = \frac{R_u}{M} \approx 287,036 \frac{J}{kgK}
 \end{equation}
@@ -128,5 +103,98 @@ Sijoitetaan arvot ja saadaan tehtävän vastaus:
  \rho = \frac{p}{RT} \approx \underline{1,189 \frac{kg}{m^3}}
 \end{equation}
 
-\end{document}
+\section{Tehtävä 3}
 
+\subsection{a}
+
+Työ saadaan muutettua kokonaan lämmöksi, mutta vain osa lämmöstä saadaan muutettua työksi.
+
+\subsection{b}
+
+\begin{math}
+ \begin{aligned}
+  &m = 1 kg\\
+  &c_p = 4200 \frac{J}{kgK}\\
+  &\Delta T = 1\,^{\circ}C = 1 K
+ \end{aligned}
+\end{math}
+
+\begin{equation}
+ \Delta E = Q + W = Q
+\end{equation}
+
+\begin{equation}
+ Q = \Delta E = \Delta U = m\Delta u = mc_v\Delta T
+\end{equation}
+
+\begin{equation}
+ c_v = c_p
+\end{equation}
+
+\begin{equation}
+ Q = mc_p\Delta T \approx 4200 J = \underline{4,2 kJ}
+\end{equation}
+
+\subsection{c}
+
+\begin{math}
+ \begin{aligned}
+  &m = 1 kg\\
+  &W = Q_{b-kohta} = 4200 J
+ \end{aligned}
+\end{math}
+
+\begin{equation}
+ \Delta E = Q + W = W
+\end{equation}
+
+\begin{equation}
+ \Delta E = \Delta E_k = W
+\end{equation}
+
+\begin{equation}
+ \Delta E_k = \Delta \left(\frac{1}{2}m|\vec{v}|^2\right) = \frac{1}{2}m\Delta\left(|\vec{v}|^2\right) = 
+  \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{v_1}|^2\right) = W
+\end{equation}
+
+\begin{equation}
+ \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{v_1}|^2\right) = \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{0}|^2\right)
+  = W
+\end{equation}
+
+\begin{equation}
+ \frac{1}{2}m|\vec{v_2}|^2= W
+\end{equation}
+
+\begin{equation}
+ |\vec{v_2}| = \sqrt{\frac{2W}{m}} \approx \underline{91,65 \frac{m}{s}}
+\end{equation}
+
+\subsection{d}
+
+\begin{math}
+ \begin{aligned}
+  &m = 1 kg\\
+  &W = W_{c-kohta} = 4200 J\\
+  &g = 9,81 \frac{m}{s^2}
+ \end{aligned}
+\end{math}
+
+\begin{equation}
+ \Delta E = Q + W = W
+\end{equation}
+
+\begin{equation}
+ \Delta E = \Delta E_p = W
+\end{equation}
+
+\begin{equation}
+ \Delta E_p = mg\Delta h = W
+\end{equation}
+
+\begin{equation}
+ \Delta h = \frac{W}{mg} \approx \underline{428,3 m}
+\end{equation}
+
+
+\end{document}
