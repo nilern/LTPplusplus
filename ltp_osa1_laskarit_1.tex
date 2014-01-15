@@ -21,9 +21,10 @@
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 % \usepackage{a4wide}
 \usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
 \usepackage{fixltx2e}                       % \textsubscript
 \usepackage{enumerate}
-% \usepackage{framed}
+\usepackage{framed}
 \usepackage{hyperref}
 \makeatother
 \hypersetup{
@@ -39,214 +40,177 @@
 
 \maketitle
 \tableofcontents
+\newpage
 
 \section{Tehtävä 2}
 
 \begin{math}
-\begin{aligned}
- &p = 1bar = 10^5 Pa\\
- &T = 20\,^{\circ}C = 293(,15)K\\
- &M = 28,965 g/mol\\
- &R_u = 8,314 J/molK
-\end{aligned}
+\begin{array}{ll}
+ p = 1bar = 10^5 Pa & R_u = 8,314 \frac{J}{molK}\\
+ T = 20\,^{\circ}C = 293(,15)K & M = 28,965 \frac{g}{mol}\\
+ & R = \frac{R_u}{M} \approx 287,036 \frac{J}{kgK}
+\end{array}
 \end{math}
 
-\begin{equation}
- pV = nR_uT
-\end{equation}
-
-\begin{equation}
- M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}
-\end{equation}
-
-\begin{equation}
- pV = \frac{m}{M}R_uT
-\end{equation}
- 
-\begin{equation}
-R = \frac{R_u}{M}
-\end{equation}
-
-\begin{equation}
- pV = mRT
-\end{equation}
-
-\begin{equation}
- p\frac{V}{m} = RT
-\end{equation}
-
-\begin{equation}
-v = \frac{V}{m}
-\end{equation}
-
-\begin{equation}
-\label{eq:pvRT}
- pv = RT
-\end{equation}
-
-\begin{equation}
- v = \frac{V}{m} = \frac{1}{\frac{m}{V}} = \frac{1}{\rho}
-\end{equation}
-
-\begin{equation}
- \frac{p}{\rho} = RT
-\end{equation}
-
-\begin{equation}
- \rho = \frac{p}{RT}
-\end{equation}
-
-\begin{equation}
- R = \frac{R_u}{M} \approx 287,036 \frac{J}{kgK}
-\end{equation}
-
-\begin{equation}
- \rho = \frac{p}{RT} \approx \underline{1,189 \frac{kg}{m^3}}
-\end{equation}
+\begin{align}
+ &pV = Nk_BT \;\;\bigg|\bigg|\;\; Nk_B = nN_Ak_B = nR_u\\
+ &\underline{pV = nR_uT} \;\;\bigg|\bigg|\;\; M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}\\
+ &pV = \frac{m}{M}R_uT \;\;\bigg|\bigg|\;\; R = \frac{R_u}{M}\\
+ &\underline{pV = mRT}\\
+ &p\frac{V}{m} = RT \;\;\bigg|\bigg|\;\; v = \frac{V}{m}\\
+ &\underline{pv = RT} \;\;\bigg|\bigg|\;\; v = \frac{V}{m} = \frac{1}{\frac{m}{V}} = \frac{1}{\rho}\\
+ &\frac{p}{\rho} = RT\\
+ &\rho = \frac{p}{RT}\\
+ &\rho = \frac{p}{RT} \approx \underline{1,189 \frac{kg}{m^3}}
+\end{align}
 
 \section{Tehtävä 3}
 
 \subsection{a}
-
-Työ saadaan muutettua kokonaan lämmöksi, mutta vain osa lämmöstä saadaan muutettua työksi.
+\begin{enumerate}
+ \item Ne johtuvat eri asioista:
+ \begin{itemize}
+  \item Työtä siirtyy systeemin ja ympäristön välillä, koska niiden välillä on nettovoima
+    eli ne eivät ole \textit{mekaanisessa tasapainossa}
+  \item Lämpöä siirtyy systeemin ja ympäristön välillä, koska niillä on lämpötilaero
+    eli ne eivät ole \textit{termisessä tasapainossa}
+ \end{itemize}
+ \item Työ saadaan muutettua kokonaan lämmöksi, mutta vain osa lämmöstä saadaan muutettua työksi.
+  (Termodynamiikan II pääsääntö.)
+\end{enumerate}
 
 \subsection{b}
 
 \begin{math}
- \begin{aligned}
-  &m = 1 kg\\
-  &c_p = 4200 \frac{J}{kgK}\\
-  &\Delta T = 1\,^{\circ}C = 1 K
- \end{aligned}
+ \begin{array}{lll}
+  m = 1 kg & c_p = 4200 \frac{J}{kgK} & \Delta T = 1\,^{\circ}C = 1 K
+ \end{array}
 \end{math}
 
-\begin{equation}
- \Delta E = Q + W = Q
-\end{equation}
-
-\begin{equation}
- Q = \Delta E = \Delta U = m\Delta u = mc_v\Delta T
-\end{equation}
-
-\begin{equation}
- c_v = c_p
-\end{equation}
-
-\begin{equation}
- Q = mc_p\Delta T \approx 4200 J = \underline{4,2 kJ}
-\end{equation}
+\begin{align}
+ &\Delta E = Q + W = Q\\
+ &Q = \Delta E = \Delta U  \;\;\bigg|\bigg|\;\;  \Delta U = m\Delta u = mc_v\Delta T\\
+ &c_v = c_p \;\;\bigg|\bigg|\;\; \text{(Katso \nameref{t:5})}\\
+ &Q = mc_p\Delta T \approx 4200 J = \underline{4,2 kJ}
+\end{align}
 
 \subsection{c}
 
 \begin{math}
- \begin{aligned}
-  &m = 1 kg\\
-  &W = Q_{b-kohta} = 4200 J
- \end{aligned}
+ \begin{array}{lll}
+  m = 1 kg & W = Q_{b-kohta} = 4200 J & \vec{v_1} = \vec{0}\\
+ \end{array}
 \end{math}
 
-\begin{equation}
- \Delta E = Q + W = W
-\end{equation}
-
-\begin{equation}
- \Delta E = \Delta E_k = W
-\end{equation}
-
-\begin{equation}
- \Delta E_k = \Delta \left(\frac{1}{2}m|\vec{v}|^2\right) = \frac{1}{2}m\Delta\left(|\vec{v}|^2\right) = 
-  \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{v_1}|^2\right) = W
-\end{equation}
-
-\begin{equation}
- \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{v_1}|^2\right) = \frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{0}|^2\right)
-  = W
-\end{equation}
-
-\begin{equation}
- \frac{1}{2}m|\vec{v_2}|^2= W
-\end{equation}
-
-\begin{equation}
- |\vec{v_2}| = \sqrt{\frac{2W}{m}} \approx \underline{91,65 \frac{m}{s}}
-\end{equation}
+\begin{align}
+ &\Delta E = Q + W = W\\
+ &\Delta E = \Delta E_k = W \;\;\bigg|\bigg|\;\; 
+ \Delta E_k = \Delta \left(\frac{1}{2}m|\vec{v}|^2\right) = \frac{1}{2}m\Delta\left(|\vec{v}|^2\right)\\
+ &\frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{v_1}|^2\right) = W\\
+ &\frac{1}{2}m\left(|\vec{v_2}|^2 -|\vec{0}|^2\right)
+  = W\\
+ &\frac{1}{2}m|\vec{v_2}|^2= W\\
+ &|\vec{v_2}| = \sqrt{\frac{2W}{m}} \approx \underline{91,65 \frac{m}{s}}
+\end{align}
 
 \subsection{d}
 
 \begin{math}
- \begin{aligned}
-  &m = 1 kg\\
-  &W = W_{c-kohta} = 4200 J\\
-  &g = 9,81 \frac{m}{s^2}
- \end{aligned}
+ \begin{array}{lll}
+  m = 1 kg & W = W_{c-kohta} = 4200 J & g = 9,81 \frac{m}{s^2}
+ \end{array}
 \end{math}
 
-\begin{equation}
- \Delta E = Q + W = W
-\end{equation}
-
-\begin{equation}
- \Delta E = \Delta E_p = W
-\end{equation}
-
-\begin{equation}
- \Delta E_p = mg\Delta h = W
-\end{equation}
-
-\begin{equation}
- \Delta h = \frac{W}{mg} \approx \underline{428,3 m}
-\end{equation}
+\begin{align}
+ &\Delta E = Q + W = W\\
+ &\Delta E = \Delta E_p = W \;\;\bigg|\bigg|\;\; \Delta E_p = mg\Delta h\\
+ &mg\Delta h = W\\
+ &\Delta h = \frac{W}{mg} \approx \underline{428,3 m}
+\end{align}
 
 \section{Tehtävä 4}
 
 \begin{math}
- \begin{aligned}
-  &L = 0,2m\\
-  &D = 0,2m\\
-  &m = 200kg\\
-  &T = 20\,^{\circ}C = 293(,15K )\\
-  &p_\infty = 1 bar = 10^5 pa\\
-  &c_p = 1\frac{kJ}{kgK} = 1000 \frac{J}{kgK}\\
-  &M = 28,965\frac{g}{mol}\\
-  &R_u = 8,314\frac{J}{molK}\\
-  &R = \frac{R_u}{M} \approx 287,036 \frac{J}{kgK}
- \end{aligned}
+ \begin{array}{lll}
+  L = 0,2m & T = 20\,^{\circ}C = 293(,15K )
+    & R_u = 8,314\frac{J}{molK}\\
+  D = 0,2m&p_\infty = 1 bar = 10^5 pa & M = 28,965\frac{g}{mol}\\
+  m = 200kg  & g = 9,81 \frac{m}{s^2}& R = \frac{R_u}{M} \approx 287,036 \frac{J}{kgK}\\
+ \end{array}
 \end{math}
 
-\begin{equation}
- \downarrow: p_\infty A + mg - pA = 0
-\end{equation}
+\begin{align}
+ \downarrow: \; &p_\infty A + mg - pA = 0\\
+ &pA = p_\infty A + mg\\
+ &p = p_\infty + \frac{mg}{A} \;\;\bigg|\bigg|\;\; A = \pi R^2 = \pi \left(\frac{D}{2}\right)^2 = \frac{\pi}{4}D^2\\
+ &p = p_\infty + \frac{mg}{\frac{\pi}{4}D^2} = p_\infty + \frac{4mg}{\pi D^2} 
+  \approx 1,624\cdot10^5Pa = \underline{1,624 bar}
+\end{align}
+\begin{align}
+ &pV = m_iRT\\
+ &m_i = \frac{pV}{RT} \;\;\bigg|\bigg|\;\; V = AL = \frac{\pi}{4}D^2L\\
+ &m_i = \frac{p\pi D^2L}{4RT} \approx 0,012kg = \underline{12g}
+\end{align}
 
-\begin{equation}
- pA = p_\infty A + mg
-\end{equation}
+\section{Tehtävä 5} \label{t:5}
 
-\begin{equation}
- p = p_\infty + \frac{mg}{A}
-\end{equation}
+Todistetaan, että kokoonpuristumattomalle aineelle
 
-\begin{equation}
- A = \pi R^2 = \pi \left(\frac{D}{2}\right)^2 = \frac{\pi}{4}D^2
-\end{equation}
+\begin{framed}
+ \begin{equation}
+  c_p = c_v
+ \end{equation}
+\end{framed}
 
-\begin{equation}
- p = p_\infty + \frac{mg}{\frac{\pi}{4}D^2} = p_\infty + \frac{4mg}{\pi D^2} \approx 1,624\cdot10^5Pa = \underline{1,624 bar}
-\end{equation}
+\begin{align}
+ &c_v = \left(\frac{\partial u}{\partial T}\right)_v\\
+ &c_p = \left(\frac{\partial h}{\partial T}\right)_p\\
+ &h = u + pv\\
+ &\rho = vakio\\
+ &v = \frac{1}{\rho} = vakio \Leftrightarrow \frac{\partial v}{\partial T} = 0
+\end{align}
 
-\begin{equation}
- pV = m_iRT
-\end{equation}
+\begin{align}
+ &c_p = \left(\frac{\partial h}{\partial T}\right)_p 
+  = \left(\frac{\partial (u + pv)}{\partial T}\right)_p
+   = \left(\frac{\partial u}{\partial T} + \frac{\partial (pv)}{\partial T}\right)_p\\
+ &c_p
+  = \left(\frac{\partial u}{\partial T} + p\frac{\partial v}{\partial T} 
+    + v\frac{\partial p}{\partial T}\right)_p \;\;\bigg|\bigg|\;\; 
+  \frac{\partial v}{\partial T} = 0, \left(\frac{\partial p}{\partial T}\right)_p = 0\\
+ &c_p = \left(\frac{\partial u}{\partial T}\right)_p \;\;\bigg|\bigg|\;\; 
+  u = u(T) \Rightarrow \left(\frac{\partial u}{\partial T}\right)_p 
+     = \frac{du}{dT} = \left(\frac{\partial u}{\partial T}\right)_v\\
+ &c_p = \left(\frac{\partial u}{\partial T}\right)_v = c_v \; \square
+\end{align}
 
-\begin{equation}
- m_i = \frac{pV}{RT}
-\end{equation}
+\section{Tehtävä 10}
 
-\begin{equation}
- V = AL
-\end{equation}
+\subsection{a}
 
-\begin{equation}
- m_i = \frac{pAL}{RT} \approx 0,012kg = \underline{12g}
-\end{equation}
+Otetaan vettä ja tuhkaa ja mitataan niiden massat sekä lämpötilat. Sitten sekoitetaan ne termospullossa 
+(voidaan olettaa adiabaattiseksi) ja mitataan seoksen loppulämpötila. Koska veden 
+ominaislämpökapasiteetti tunnetaan, jää tuhkan ominaislämpökapasiteetti ainoaksi tuntemattomaksi.
+
+\subsection{b}
+
+\begin{math}
+\begin{array}{lll}
+  m_t = 0,4 kg & T_t = 80\;^{\circ}C & T_l = 20\;^{\circ}C\\
+  m_v = 0,5 kg & T_v = 10\;^{\circ}C & c_{pv} = 4200 \frac{J}{kgK}\\
+\end{array}
+\end{math}
+
+\begin{align}
+ &Q_t = -Q_v \;\;\bigg|\bigg|\;\; \Delta U = Q + W = Q\\
+ &\Delta U_t = -\Delta U_v \;\;\bigg|\bigg|\;\; \Delta U = m\Delta u = mc_v\Delta T = mc_p\Delta T\\
+ &m_tc_{pt}\Delta T_t = -m_vc_{pv}\Delta T_v \;\;\bigg|\bigg|\;\;
+  \begin{aligned}
+    &\Delta T_t = T_l - T_t\\
+    &\Delta T_v = T_l - T_v
+  \end{aligned}\\
+ &m_tc_{pt}(T_l - T_t) = -m_vc_{pv}(T_l - T_v)\\
+ &c_{pt} = \frac{m_v(T_l - T_v)}{m_t(T_t - T_l)}c_{pv} \approx \underline{875\frac{J}{kgK}}
+\end{align}
 
 \end{document}
