@@ -32,6 +32,15 @@
   linkcolor=blue,
 }
 
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
 \title{LTP++: Termodynamiikka\\Laskuharjoituksen 1 ratkaisut}
 \date{\today}
 \author{Pauli Jaakkola}
