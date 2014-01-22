@@ -409,7 +409,7 @@ ja mitä nopeammin materiaa joudutaan kiihdyttämään (tai hidastamaan, $ a < 0
 
 \section{Paine p} %....................................................................
 
-\section{Työ W} %......................................................................
+\section{Työ W} \label{def:W}%......................................................................
 
 Mitä työ on? Mekaniikassa \textbf{työn W} yleinen määritelmä on
 
@@ -1058,15 +1058,26 @@ ovat esim. alustavat tunnustelulaskelmat, pika-analyysit ja tentit.
 % \frac{c_p}{c_v} = \gamma, c_p - c_v = R
 % Kokoonpuristumattomattomalle c_p = c_v
 
-\chapter{Siirtymäenergiat} % ----------------------------------------------------------------------------------
+\chapter{Energian siirtymistavat} % ----------------------------------------------------------------------------------
 
 Systeemillä voi siis olla monenlaista energiaa. Myös systeemin ympäristöllä voi olla näitä 
-energioita.
+energioita.Systeemin rajojen yli energia voi kuitenkin termodynamiikassa siirtyä vain kahdella tavalla: \textbf{lämpönä $Q$} 
+tai \textbf{työnä $W$}. 
 
-Sillä hetkellä kun energia siirtyy systeemin rajan yli voi se kuitenkin termodynamiikassa 
-olla vain kahta tyyppiä: \textbf{lämpöä $Q$} tai \textbf{työtä $W$}. Vastaavasti systeemillä 
-tai ympäristöllä sinänsä ei voi olla näitä energioita vaan varastoituessaan systeemiin tai 
-ympäristöön ne muuttuvat aina johonkin muuhun muotoon.
+Nämä eivät sinänsä ole energiamuotoja, vaan \textbf{energian siirtymistapoja}, vaikka niillä onkin energian
+yksiköt. Vastaavasti systeemillä tai ympäristöllä sinänsä ei myöskään voi olla työtä tai lämpöä vaan 
+varastoituessaan systeemiin tai ympäristöön ne muuttuvat aina johonkin muuhun muotoon\footnote{Vaikka 
+sisäenergiasta puhutaankin usein ``lämpöenergiana'' ja ``entalpia'' tulee kreikan sanasta \textit{enthalpos}, 
+``lämpö sisällä''.}.
+
+Helpoin tapa ymmärtää tämä ero on ehkä energian määritelmän mieleen palauttaminen:
+
+\begin{quote}
+ Energia on kykyä tehdä työtä.
+\end{quote}
+
+Tämän määritelmän valossa vaikuttaa siltä, että työ on jotain muuta kuin energiaa\footnote{Itse asiassahan 
+se on määritelty mekaniikassa paljon energiaa eksaktimmin (katso \nameref{def:W}).}.
 
 \section{Merkkisopimus} \label{sec:merkkisopimus} %........................................
 
@@ -1077,7 +1088,7 @@ työn tai lämmön etumerkki kertoo, siirtyikö se systeemistä vai systeemiin.
 
 \section{Lämpö Q} %........................................................................
 
-Lämpö on energiaa, joka siirtyy systeemin rajojen yli siksi, että systeemin ja ympäristön 
+Energia siirtyy lämpönä systeemin rajojen yli siksi, että systeemin ja ympäristön 
 välillä on lämpötilaero. 
 
 Siirtyminen systeemin rajojen yli voi tapahtua millä tahansa \textbf{lämmönsiirtotavalla}:
@@ -1102,7 +1113,8 @@ miten tämä liittyy siihen, että sisäenergia on ``lämpöliikkeen liike-energ
 
 \section{Työ W} %.................................................................
 
-Työ on lämpöä monimuotoisempi ja vaikeammin määriteltävissä oleva siirtymäenergia. 
+Energia siirtyy työnä systeemin rajojen yli siksi, että systeemin ja ympäristön 
+välillä on nettovoima. 
 
 Työ voi olla esimerkiksi systeemin tilavuudenmuutostyötä, turbiinin akselityötä, 
 sähkövirran energiaa jne.
@@ -1119,7 +1131,28 @@ II pääsääntöä.
 
 \section{Mekaaninen tasapaino} %...............................................
 
+Systeemit ovat mekaanisessa tasapainossa, kun niiden välillä ei esiinny nettovoimaa eikä 
+siis työtä:
+
+\begin{align}
+ &\sum \vec{F_{1-2}} = \vec{0} \\
+ &W = \int_S \vec{F{1-2}} \cdot \vec{ds} = \int_S \vec{0} \cdot \vec{ds} = 0
+\end{align}
+
 \section{Terminen tasapaino} %.................................................
+
+Systeemit ovat termisessä tasapainossa, kun niiden välillä ei ole lämpötilaeroa eikä 
+siis siirry lämpöä:
+
+\begin{align}
+ &T_{1} = T_{2}\\
+  &\Rightarrow Q_{1-2} = 0
+\end{align}
+
+(Koska eri lämmönsiirtotapoja ei voi työn tavoin palauttaa yhteen kaavaan, lämmön 
+siirtymättömyyttä ei tässä perustella matemaattisesti.)
+
+%\section{Termodynaaminen tasapaino} % (?)
 
 \section{Dynaaminen tasapaino} %...............................................
 
