@@ -1,0 +1,259 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 2 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 7}
+
+\begin{math}
+ \begin{array}{l l l}
+  p_1 = 1 bar = 10^5 Pa & T_1 = T = 20\,^\circ C = 293(,15 K) K & m_1 = m\\
+  p_2 = 3 bar = 3\cdot 10^5 Pa & T_2 = T = 293K & m_2 = m\\
+  R_u = 8,314 \frac{J}{molK} & M = 28,965 \frac{g}{mol} & R = \frac{R_u}{M} \approx 287,04 \frac{J}{kgK}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{equation}
+ pV = mRT
+\end{equation}
+
+\begin{equation}
+\left\{
+\begin{aligned}
+ p_1V_1 &= m_1RT_1 = mRT\\
+ p_2V_2 &= m_2RT_2 = mRT
+\end{aligned}\right.
+\end{equation}
+
+\begin{equation}
+ p_1V_1 = p_2V_2
+\end{equation}
+
+\begin{equation}
+ \frac{V_1}{V_2} = \frac{p_2}{p_1} \approx \underline{3}
+\end{equation}
+
+\subsection{b}
+
+\begin{align}
+ &W = -\int_{V_1}^{V_2}p(V)dV \quad\bigg|\bigg|\quad p(V) = \frac{mRT}{V}\\
+ &W = -\int_{V_1}^{V_2}\frac{mRT}{V}dV = -mRT\int_{V_1}^{V_2}\frac{dV}{V}\\
+ &W = -mRT\bigg/_{V_1}^{V_2}\ln(V) = -mRT(\ln(V_2) - \ln(V_1))\\
+ &W = mRT(\ln(V_1) - \ln(V_2)) = mRT\ln\left(\frac{V_1}{V_2}\right)\\
+ &w = \frac{W}{m} = \frac{mRT\ln\left(\frac{V_1}{V_2}\right)}{m} = RT\ln\left(\frac{V_1}{V_2}\right)\\
+ &w = RT\ln\left(\frac{V_1}{V_2}\right) \approx 92,4\frac{kJ}{kg} \approx \underline{92\frac{kJ}{kg}}
+\end{align}
+
+\subsection{d}
+
+\begin{align}
+&\Delta u = u_2 - u_1 \quad\bigg|\bigg|\quad u = u(T)\\
+ &\Delta u = u(T_2) - u(T_1) \quad\bigg|\bigg|\quad T_2 = T_1 = T\\
+ &\Delta u = u(T) - u(T) = \underline{0}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &\Delta U = Q + W \quad\bigg|\bigg|\quad :m\\
+ &\Delta u = q + w = 0\\
+ &q = -w \approx \underline{-92\frac{kJ}{kg}}
+\end{align}
+
+\section{Tehtävä 9}
+
+\subsection{a}
+
+\begin{equation}
+\left\{
+ \begin{aligned}
+    pV^\gamma &= \text{vakio}\\
+    pV &= nR_uT
+ \end{aligned}\right.
+\end{equation}
+
+\begin{equation}
+\left\{
+ \begin{aligned}
+    p_1V_1^\gamma = p_2V_2^\gamma\\
+    V = \frac{nR_uT}{p}
+ \end{aligned}\right.
+\end{equation}
+
+\begin{align}
+ &p_1\left(\frac{nR_uT_1}{p_1}\right)^\gamma = p_2\left(\frac{nR_uT_2}{p_2}\right)^\gamma\\
+ &p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma\\
+ &T_2^\gamma = \left(\frac{p_1}{p_2}\right)^{1-\gamma}T_1^\gamma\\
+ &T_2 = \underline{\left(\frac{p_1}{p_2}\right)^{\frac{1-\gamma}{\gamma}}T_1}
+\end{align}
+
+\subsection{b}
+
+\begin{math}
+ \begin{array}{l l}
+  p_1 = 1 bar = 10^5 Pa & T_1 = 20 \,^\circ C = 293(,15 K)\\
+  p_2 = 3 bar = 3\cdot 10^5 Pa & \gamma = 1,4
+ \end{array}
+\end{math}
+
+\begin{equation}
+ T_2 = \left(\frac{p_1}{p_2}\right)^{\frac{1-\gamma}{\gamma}}T_1 \approx 401,04 K \approx \underline{128\,^\circ C}
+\end{equation}
+
+\subsection{c}
+
+\begin{math}
+ c_p = 1 \frac{kJ}{kgK} = 1000 \frac{J}{kgK}
+\end{math}
+
+\begin{align}
+ &\Delta U = Q + W = w \quad\bigg|\bigg|\quad :m\\
+ &\Delta u = w\\
+ &w = \Delta u = c_v\Delta T = \underline{c_v(T_2 - T_1)}\\
+ &\frac{c_p}{c_v} \Leftrightarrow c_v = \frac{c_p}{\gamma} \approx = 714,29 \frac{J}{kgK}\\
+ &w = c_v(T_2 - T_1) \approx 77,172 \frac{kJ}{kg} \approx \underline{77 \frac{kJ}{kg}}
+\end{align}
+
+\subsection{d}
+
+\begin{align}
+ &W = -\int_{V_1}^{V_2} p(V)dV \quad\bigg|\bigg|\quad pV^\gamma = \text{vakio} = C \Leftrightarrow p(V) = \frac{C}{V^\gamma}\\
+ &W = -\int_{V_1}^{V_2} \frac{C}{V^\gamma}dV = -C\int_{V_1}^{V_2}V^{-\gamma}dV\\
+ &W = -C\bigg/_{V_1}^{V_2}\frac{1}{-\gamma + 1}V^{-\gamma + 1} = \frac{C}{\gamma - 1}\bigg/_{V_1}^{V_2}V^{1 -\gamma}\\
+ &W = \frac{C}{\gamma - 1}\left(V_2^{1-\gamma} - V_1^{1-\gamma}\right)\\
+ &W = \frac{C}{\gamma - 1}V_2^{1-\gamma} - \frac{C}{\gamma - 1}V_1^{1-\gamma}\\
+ &W = \frac{C}{V_2^{\gamma}}\frac{V_2}{1-\gamma} - \frac{C}{V_1^{\gamma}}\frac{V_1}{1-\gamma} \quad \bigg|\bigg| \quad 
+  pV^\gamma = C \Leftrightarrow \frac{C}{V^\gamma} = p\\
+ &W = \frac{p_2V_2}{1-\gamma} - \frac{p_1V_1}{1-\gamma} \quad \bigg|\bigg| \quad pV = mRT\\
+ & W = \frac{mRT_2}{1-\gamma} - \frac{mRT_1}{1-\gamma} = \frac{mR}{1-\gamma}(T_2 - T_1) \quad \bigg|\bigg| \quad :m\\
+ &w = \frac{R}{1-\gamma}(T_2 - T_1)
+\end{align}
+
+\begin{align}
+ &\frac{R}{1-\gamma} \quad \bigg|\bigg| \quad 
+ \begin{aligned}
+  R &= c_p - c_v\\
+  \gamma &= \frac{c_p}{c_v}
+ \end{aligned}\\
+ &\frac{R}{1-\gamma} = \frac{c_p - c_v}{\frac{c_p}{c_v} - 1} = \frac{c_v(c_p - c_v)}{c_v\left(\frac{c_p}{c_v} - 1\right)}
+  = \frac{c_v(c_p - c_v)}{c_p - c_v} = c_v
+\end{align}
+
+\begin{equation}
+ w = \frac{R}{1-\gamma}(T_2 - T_1) = \underline{c_v(T_2 - T_1)}
+\end{equation}
+
+\section{Tehtävä 16}
+
+\begin{math}
+ \begin{array}{l l l}
+  T_1 = 0\,^\circ C = 293(,15)K & \Delta h_{sl}(T_1) = 330 \frac{kJ}{kg} & c_p = 4,2\frac{kJ}{kg}\\
+  T_2 = 100\,^\circ C = 393(,15)K & \Delta h_{lg}(T_2) = 2260 \frac{kJ}{kg} &
+ \end{array}
+\end{math}
+
+\begin{equation}
+ q_0 = \Delta h_0 = \Delta h_{lg}(T_2)
+\end{equation}
+
+\subsection{a}
+
+\begin{align}
+ &q_1 = \Delta h_1 = \Delta h_{\text{lämmitys}} + \Delta h_{lg}(T_2)\\
+ &\frac{\Delta q}{q_0} = \frac{q_1 - q_0}{q_0} = \frac{(\Delta h_{\text{lämmitys}} + \Delta h_{lg}(T_2)) - \Delta h_{lg}(T_2)}{\Delta h_{lg}(T_2)}\\
+ &\frac{\Delta q}{q_0} = \frac{\Delta h_{\text{lämmitys}}}{\Delta h_{lg}(T_2)} = \frac{c_p(T_2 - T_1)}{\Delta h_{lg}(T_2)}\approx 0,186 \approx \underline{19\%}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &q_2 = \Delta h_2 = \Delta h_{sl}(T_1) + \Delta h_{\text{lämmitys}} + \Delta h_{lg}(T_2)\\
+ &\frac{\Delta q}{q_0} = \frac{q_2 - q_0}{q_0} = \frac{(\Delta h_{sl}(T_1) + \Delta h_{\text{lämmitys}} + \Delta h_{lg}(T_2)) - \Delta h_{lg}(T_2)}{\Delta h_{lg}(T_2)}\\
+ &\frac{\Delta q}{q_0} = \frac{\Delta h_{sl}(T_1) + \Delta h_{\text{lämmitys}}}{\Delta h_{lg}(T_2)} 
+ = \frac{\Delta h_{sl}(T_1)+ c_p(T_2 - T_1)}{\Delta h_{lg}(T_2)}\approx 0,332 \approx \underline{33\%}
+ \end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
