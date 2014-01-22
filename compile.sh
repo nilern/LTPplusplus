@@ -1,8 +1,8 @@
 #! /bin/sh
 
 pdflatex -output-directory pruju/ pruju.tex
-pdflatex -output-directory laskarit/ laskarit.tex
+pdflatex -output-directory laskarit/ ltp_osa?_laskarit_?.tex
 htlatex pruju.tex "html,mathplayer" "" "-dpruju/"
-htlatex laskarit.tex "html,mathplayer" "" "-dlaskarit/"
+htlatex ltp_osa?_laskarit_?.tex "html,mathplayer" "" "-dlaskarit/"
 cp pruju.tex pruju/
-cp laskarit.tex laskarit/
+cp ltp_osa?_laskarit_?.tex laskarit/
