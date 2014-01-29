@@ -1,0 +1,254 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 3 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 11}
+
+\begin{math}
+ \begin{array}{l l l}
+  p_{He, 1} = p_{i, 1} = 1 bar = 10^5 Pa & T_{He, 1} = T_{i, 1} = 20\,^{\circ}C = 293(,15) K & V_{He, 1} = V_{i, 1} = 0,1m^3\\
+  p_{He, 2} = 2 bar = 2\cdot10^5 Pa & & \\
+ \end{array}
+\end{math}
+
+\begin{math}
+ \begin{array}{l l l}
+  M_{He} = 4,0 \frac{kg}{kmol} & c_{p, He} = 5,2 \frac{kJ}{kgK} & \gamma_{He} = 1,66\\
+  M_{i} = 28,965 \frac{kg}{kmol} & c_{p, i} = 1,0 \frac{kJ}{kgK} & \gamma_{i} = 1,4\\
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{equation}
+ T_{He, 2} = \left(\frac{p_{He, 1}}{p_{He, 2}}\right)^{\frac{1 - \gamma_{He}}{\gamma_{He}}}T_{He, 1} \approx 386 K \approx \underline{113\,^{\circ}C}
+  \quad \bigg|\bigg| \quad \text{Katso tehtävä 9a (harjoitus 2)}
+\end{equation}
+
+\subsection{b}
+
+\begin{align}
+ &\left\{
+  \begin{aligned}
+  &\Delta U_{He} = Q_{He} + W_{He}\\
+  &Q_{He} = 0\quad \bigg|\bigg| \quad \text{Isentrooppinen on adiabaattinen}\\
+  &\Delta U_{He} = m_{He}\Delta u_{He} = m_{He}c_{v, He}\Delta T_{He} = m_{He}c_{v, He}(T_{He, 2} - T_{He, 1})
+  \end{aligned}\right.\\
+ &W_{He} = \Delta U_{He} = m_{He}c_{v, He}(T_{He, 2} - T_{He, 1})
+\end{align}
+
+Tarvitaan $m_{He}$ ja $c_{v, He}$:
+
+\begin{align}
+ &\left\{
+  \begin{aligned}
+    &p_{He,1}V_{He, 1} = m_{He}R_{He}T_{He, 1}\\
+    &R_{He} = \frac{R_u}{M_{He}}
+  \end{aligned}\right.\\
+ &m_{He} = \frac{p_{He, 1}V_{He, 1}}{R_{He}T_{He, 1}} = \frac{p_{He, 1}V_{He, 1}M_{He}}{R_uT_{He, 1}} \approx 0,0164 kg\\
+  &\gamma_{He} = \frac{c_{p, He}}{c_{v, He}} \Leftrightarrow c_{v, He} = \frac{c_{p, He}}{\gamma_{He}} \approx 3,133 \frac{kJ}{kgK}\\
+ &W_{He} = m_{He}c_{v, He}(T_{He, 2} - T_{He, 1}) \approx 4,78 kJ \approx \underline{4,8 kJ}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\Delta U_i = Q_i + W_i\\
+  &W_i = -W_{He}\\
+  &\Delta U_i = m_ic_{v, i}(T_{i, 2} - T_{i, 1})
+ \end{aligned}\right.\\
+ &Q_i = \Delta U_i - W_i = m_ic_{v, i}(T_{i, 2} - T_{i, 1}) + W_{He}
+\end{align}
+
+Tarvitaan $m_i$, $c_{v, i}$ ja $T_{i, 2}$:
+
+\begin{align}
+ &m_i = \frac{p_{i, 1}V_{i, 1}M_{i}}{R_uT_{i, 1}} \approx 0,119 kg\\
+  &c_{v, i} = \frac{c_{p, i}}{\gamma_i} \approx 0,714 \frac{kJ}{kgK}\\
+  &p_{i,2}V_{i, 2} = m_iR_iT_{i, 2} = \frac{m_iR_uT_{i, 2}}{M_i}\\
+  &T_{i, 2} = \frac{p_{i,2}V_{i, 2}M_i}{m_iR_u}
+\end{align}
+
+Tarvitaan $p_{i,2}$ ja  $V_{i, 2}$:
+
+\begin{align}
+ \rightarrow: \quad &p_{i,2}A - p_{He,2}A = 0\\
+ &p_{i,2} = p_{He,2}
+\end{align}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &V_1 = V_2\\
+  &p_{He, 1}V_{He, 1}^{\gamma_{He}} = p_{He, 2}V_{He, 2}^{\gamma_{He}}
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &V_{i, 1} + V_{He, 1} = V_{i, 2} + V_{He, 2}\\
+  &V_{He, 2}^{\gamma_{He}} = \frac{p_{He, 1}}{p_{He, 2}}V_{He, 1}^{\gamma_{He}}
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &V_{i, 2} = V_{i, 1} + V_{He, 1} - V_{He, 2}\\
+  &V_{He, 2} = \left(\frac{p_{He, 1}}{p_{He, 2}}\right)^{\frac{1}{\gamma_{He}}}V_{He, 1} \approx 0,066m^3
+ \end{aligned}\right.\\
+ &V_{i, 2} = V_{i, 1} + V_{He, 1} - V_{He, 2} \approx 0,0134m^3\\
+ &T_{i, 2} = \frac{p_{i,2}V_{i, 2}M_i}{m_iR_u} \approx 786 K
+\end{align}
+
+\begin{equation}
+ Q_i = m_ic_{v, i}(T_{i, 2} - T_{i, 1}) + W_{He} \approx \underline{46,7 kJ}
+\end{equation}
+
+\section{Tehtävä 12}
+
+\subsection{a}
+
+\begin{math}
+ \begin{array}{l l l}
+  T_1 = 20 \,^{\circ}C = 293(,15 K) & V_1 = V_4 & p_1 = 1 bar = 10^5 Pa\\
+  T_2 = 300 \,^{\circ}C = 573(,15 K) & V_2 = V_3 &\\
+  T_3 = 600 \,^{\circ}C = 873(,15 K) &  & \\
+ \end{array}
+\end{math}
+
+\begin{math}
+ \begin{array}{l l}
+  c_p = 1,0 \frac{kJ}{kgK} & \gamma = 1,4\\
+ \end{array}
+\end{math}
+
+\begin{align}
+  & p_1V_1^{\gamma} = p_2V_2^{\gamma} \quad \bigg|\bigg| \quad pV = nR_uT \Leftrightarrow p = \frac{nR_uT}{V}\\
+  & \frac{nR_uT_1}{V_1}V_1^{\gamma} = \frac{nR_uT_2}{V_1}V_2^{\gamma}\\
+  & T_1V_1^{\gamma - 1} = T_2V_2^{\gamma - 1}\\
+  & \frac{V_1}{V_2} = \left(\frac{T_2}{T_1}\right)^{\frac{1}{\gamma - 1}} \approx \underline{5,348}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\Delta u_{2-3} = q_{2-3} + w_{2-3}\\
+  &w_{2-3} = \int_{V_2}^{V_3}p(V)dV \quad \bigg|\bigg| \quad dV = 0\\
+  &\Delta u_{2-3} = c_v\Delta T_{2-3} = c_v(T_3 - T_2) 
+ \end{aligned}\right.\\
+ &q_{2-3} = \Delta u_{2-3} = c_v(T_3 - T_2)
+\end{align}
+
+\begin{equation}
+ \gamma = \frac{c_p}{c_v} \Leftrightarrow c_v = \frac{c_p}{\gamma} \approx 0,714 \frac{kJ}{kgK}
+\end{equation}
+
+\begin{equation}
+ q_{2-3} = c_v(T_3 - T_2) \approx \underline{214,2 kJ}
+\end{equation}
+
+\subsection{c}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\Delta u_{3-4} = q_{3-4} + w_{3-4}\\
+  &q_{3-4} = 0
+ \end{aligned}\right.\\
+ &w_{3-4} = \Delta u_{3-4} = c_v(T_4 - T_3)
+\end{align}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  & T_3V_3^{\gamma - 1} = T_4V_4^{\gamma - 1}\\
+  &\frac{V_3}{V_4} = \frac{V_2}{V_1}
+ \end{aligned}\right.\\
+ & \frac{T_4}{T_3} = \left(\frac{V_3}{V_4}\right)^{\gamma - 1} = \left(\frac{V_2}{V_1}\right)^{\gamma - 1}\\
+ &T_4 = \left(\frac{V_2}{V_1}\right)^{\gamma - 1}T_3 \approx 446,4K
+\end{align}
+
+\begin{equation}
+ w_{3-4} = c_v(T_4 - T_3) \approx \underline{-305\frac{kJ}{kg}}
+\end{equation}
+
+\subsection{d}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  & \Delta u_{4-1} = q_{4-1} + w_{4-1}\\
+  &w_{4-1} = \int_{V_4}^{V_1}p(V)dV = 0 \quad \bigg|\bigg| \quad dV = 0
+ \end{aligned}\right.\\
+ & q_{4-1} = \Delta u_{4-1} = c_v(T_1 - T_4) \approx \underline{-109,6\frac{kJ}{kg}}
+\end{align}
+
+\section{Tehtävä 14}
+
+\begin{math}
+ \begin{array}{l l l}
+  m_C = 1 kg & M_C = 12,01 \frac{g}{mol} = 12,01\cdot 10^{-3} \frac{kg}{mol} & M_{CO_2} = 44,01 \frac{g}{mol} = 44,01\cdot 10^{-3} \frac{kg}{mol}\\
+ \end{array}
+\end{math}
+
+\begin{equation}
+ C(s) + O_2(g) \rightarrow CO_2(g)
+\end{equation}
+
+\begin{align}
+ &n_C = n_{CO_2} \quad \bigg|\bigg| \quad M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}\\ 
+ &\frac{m_C}{M_C} = \frac{m_{CO2}}{M_{CO2}}\\
+ &m_{CO2} = \frac{M_{CO2}}{M_C}m_C \approx \underline{3,66 kg}
+\end{align}
+
+
+\end{document}
