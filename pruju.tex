@@ -23,7 +23,7 @@
 \usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
 \usepackage{fixltx2e}                       % \textsubscript
 \usepackage{enumerate}
-% \usepackage{framed}
+\usepackage{framed}
 \usepackage{hyperref}
 \makeatother
 \hypersetup{
@@ -736,7 +736,7 @@ kuten sisäenergia, lämpötila ja entropia kuvaavat itse asiassa näiden ilmiö
 Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
 energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
 
-\subsection{Entalpia H} \label{sssection:entalpia} %.......................................
+\subsection{Entalpia H} \label{def:H} %.......................................
 
 \textbf{Entalpia $H$} on vain apusuure, joka on määritelty seuraavasti:
 
@@ -1198,6 +1198,94 @@ ominaissisäenergia $U_m$ jne. ovat tilasuureita.
 % Tilanyhtälö, ideaalikaasun tilanyhtälö
 
 \subsection{Ideaalikaasun tilanyhtälö}
+
+Ideaalikaasu on yksinkertainen kaasun malli. Ideaalikaasumallissa oletetaan että kaasun muodostavilla 
+hiukkasilla ei ole tilavuutta eivätkä ne vaikuta toisiinsa muuten kuin törmäämällä kimmoisasti. 
+Mikäli kaasun tiheys ei ole kovin korkea tai lämpötila matala näissä oletuksissa 
+ei tehdä suurta virhettä, sillä kaasuhiukkaset ovat hyvin pieniä verrattuna niiden väliseen tilaan 
+ja hiukkasten korkea keskimääräinen energia peittää niiden epäideaaliset vuorovaikutukset 
+(hiukkasten välillä esiintyy nimittäin tietenkin esimerkiksi sähkömagneettisia, kaukovaikutteisia 
+voimia).
+
+En mene tässä ideaalikaasumalliin sen syvällisemmin, sillä se kuuluu varsinaisesti tilastolliseen 
+termodynamiikkaan liittyvän \textit{kineettisen kaasuteorian}\footnote{Kineettinen kaasuteoria 
+palauttaa kaasujen makroskooppiset ominaisuudet ne muodostavien hiukkasten liikkeisiin.} piiriin. 
+Kineettisestä kaasuteoriasta saadaan kuitenkin ideaalikaasun kontrollitilavuuden $V$, kontrollitilavuuden 
+``seinämiin'' kohdistuvan paineen $p$, hiukkasten lukumäärän $N$ ja kaasun lämpötilan $T$ välille 
+seuraava yhteys:
+
+\begin{equation}
+ pV = Nk_BT
+\end{equation}
+
+Tätä sanotaan \textbf{ideaalikaasun tilanyhtälöksi}.
+
+Yhtälön molempien puolten yksiköksi tulee itse asiassa joule. Tämä johtuu siitä, että ne ovat 
+kumpikin verrannollisia kaasun hiukkasten translaatioliike-energiaan. Jo luvussa \nameref{def:H} 
+näimme, että termi $pV$ liittyy nimenomaan systeemin rajoihinsa kohdistamaan paineeseen. Kaasuhiukkasten 
+keskimääräinen translaation liike-energia taas on vapausasteiden määrä kertaa $\frac{1}{2}k_bT$:
+
+\begin{equation}
+ \overline{E}_{k,tr} = 3\cdot \frac{1}{2}k_bT = \frac{3}{2}k_bT
+\end{equation}
+
+Emme tietenkään yleensä tiedä hiukkasten lukumäärää kovin tarkasti eikä se kiinnostakaan. Onneksi 
+ideaalikaasun tilanyhtälö saadaan helposti kätevämpään muotoon:
+
+\begin{equation}
+ pV = Nk_BT = nN_Ak_BT
+\end{equation}
+
+Nyt voimme määritellä Boltzmannin ja Avogadron vakioiden avulla \textit{yleisen kaasuvakion} $R_u$:
+
+\begin{equation}
+ R_u = N_Ak_B \approx 8,3145 \frac{J}{molK}
+\end{equation}
+
+Jolloin ideaalikaasun tilanyhtälö tulee ainakin kemiassa yleisimpään muotoonsa:
+
+\begin{framed}
+\begin{equation}
+ pV = nR_uT
+\end{equation}
+\end{framed}
+
+Moolimäärä usein tiedetään ja se on reaktioiden, liuosten jne. kannalta muutenkin olennainen.
+Lämpötekniikassa se ei kuitenkaan aina ole olennainen ja massa on helpompi mitata, joten 
+meidän tarkoituksiimme usein vielä kätevämpi muoto saadaan moolimassan määritelmän avulla:
+
+\begin{align}
+ &pV = nR_uT \quad \bigg|\bigg| \quad M = \frac{m}{n} \Leftrightarrow n = \frac{m}{M}\\
+ &pV = \frac{m}{M}R_uT
+\end{align}
+
+Voimme edelleen määritellä \textit{kaasukohtaisen kaasuvakion} $R$\footnote{Kemiassa 
+kaasukohtaista kaasuvakiota ei juurikaan esiinny, joten \underline{yleistä kaasuvakiota} merkitään 
+vain $R$:llä.}:
+
+\begin{framed}
+\begin{equation}
+\label{eq:pVmRT}
+ pV = mRT
+\end{equation}
+\end{framed}
+
+Aina ei massaakaan tiedetä tai muusta syystä on kätevintä toimia ominaissuureilla. Kun yhtälö 
+\ref{eq:pVmRT} jaetaan puolittain massalla, saadaan ominaissuureille ideaalikaasun tilanyhtälöksi
+
+\begin{framed}
+\begin{equation}
+\label{eq:pVmRT}
+ pv = RT
+\end{equation}
+\end{framed}
+
+Joskus saatetaan vielä korvata ominaistilavuus tiheydellä. Nehän ovat käänteislukuja ($v = \frac{1}{\rho}$):
+
+\begin{equation}
+\label{eq:pVmRT}
+ \frac{p}{\rho} = RT
+\end{equation}
 
 \subsection{Reaalikaasujen tilanyhtälöitä}
 
@@ -1661,7 +1749,7 @@ Siirretään lämpöä systeemistä tai systeemiin vakiolämpötilassa ja -paine
 \end{align}
 
 Nyt tilavuudenmuutostyötä voi esiintyä ja analyysi voisi mennä monimutkaiseksi, muttei mene jos muistamme 
-kappaleessa \nameref{sssection:entalpia} saamaamme tulosta, eli että vakiopaineessa:
+kappaleessa \nameref{def:H} saamaamme tulosta, eli että vakiopaineessa:
 
 \begin{equation}
  \Delta H = Q_{siirto}
