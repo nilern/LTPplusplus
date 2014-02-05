@@ -1,0 +1,272 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 3 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 15}
+
+\begin{math}
+\begin{array}{l l l}
+ p = 10^5 Pa & T = 20 \,^{\circ}C = 293(,15 K) & V = 1 m^3\\
+ \varphi = 0,5 & M_{H_2O} = 2M_H + M_O = 18 \frac{g}{mol} & 
+\end{array}
+\end{math}
+
+\begin{align}
+ &\varphi = \frac{p_h}{p_h'(T)}\\
+ &p_h = \varphi p_h'(T)\\
+ &p_h'(T) \approx 2337 Pa\\
+ &p_h = \varphi p_h'(T) \approx 1169 Pa\\
+ &p_hV = m_hR_hT = m_h\frac{R_u}{M_{H_2O}}T\\
+ &m_h = \frac{p_hVM_{H_2O}}{R_uT} \approx \underline{8,6 g}
+\end{align}
+
+\section{Tehtävä 21}
+
+\begin{math}
+ \begin{array}{l l l}
+  p = 10^5 Pa & T = 35 \,^{\circ}C = 308(,15 K) & V = 1 m^3\\
+  \varphi = 0,85 & \varphi_{kp} = 1 & p_{kp} = p\\
+  p_h'(T) \approx 5625 Pa & M_i = 28,965\frac{g}{mol} & M_{H_2O} = 18\frac{g}{mol}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ &\varphi = \frac{p_h}{p_h'(T)}\\
+ &p_h = \varphi p_h'(T) \approx \underline{4781 Pa}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\omega_{kp} = \omega_{0} \quad \bigg|\bigg| \quad \omega = 0,622\frac{p_h'(T)}{\frac{p}{\varphi} - p_h'(T)}\\
+ &0,622\frac{p_h'(T_{kp})}{\frac{p}{\varphi_{kp}} - p_h'(T_{kp})} = 0,622\frac{p_h'(T)}{\frac{p}{\varphi} - p_h'(T)}\\
+ &\frac{p_h'(T_{kp})}{p - p_h'(T_{kp})} = \frac{p_h'(T)}{\frac{p}{\varphi} - p_h'(T)}\\
+ &\frac{1}{\frac{p}{p_h'(T_{kp})} - 1} = \frac{1}{\frac{p}{\varphi p_h'(T)} - 1}\\
+ &\frac{p}{\varphi p_h'(T)} - 1 = \frac{p}{p_h'(T_{kp})} - 1\\
+ &p_h'(T_{kp}) = \varphi p_h'(T) \approx 4781 Pa\\
+ &T_{kp} = T'(p_h'(T_{kp})) = T'(4871 Pa) \approx \underline{32 \,^{\circ}C}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &pv = RT\\
+ &\frac{p}{\rho} = RT\\
+ &\rho = \frac{p}{RT} = \frac{pM}{R_uT}
+\end{align}
+
+\begin{align}
+ &p = p_{ki} + p_h\\
+ &p_{ki} = p - p_h \approx 95219 Pa
+\end{align}
+
+\begin{align}
+ &\rho_i = \frac{p_{ki}}{RT} = \frac{p_{ki}M_i}{R_uT} \approx \underline{1,077 \frac{kg}{m^3}}\\
+ &\rho_i = \frac{p_{h}}{RT} = \frac{p_{h}M_{H_2O}}{R_uT} \approx \underline{0,034 \frac{kg}{m^3}}
+\end{align}
+
+\subsection{d}
+
+\begin{equation}
+ m_h = \rho_hV \approx 0,034 kg = \underline{34 g}
+\end{equation}
+
+\section{Tehtävä 18}
+
+\begin{math}
+ \begin{array}{l l l}
+  p_1 = 10^5 Pa & \rho_1 = \rho_2 = \rho = 1000\frac{kg}{m^3}\\
+  T = 50 \,^{\circ}C & A_2 = \frac{A_1}{2}
+ \end{array}
+\end{math}
+
+\begin{equation}
+  \left\{
+  \begin{aligned}
+  &\Delta E = Q + W\\
+    &\dot{m_1} = \dot{m_2}
+    \end{aligned}\right.
+\end{equation}
+
+\begin{align}
+  &\Delta E = Q + W\\
+  &Q + W = \Delta \left(U + pV + E_k + E_p\right) = \Delta \left(H + E_k + E_p\right)\\
+  &Q + W = \Delta \left(H + \frac{1}{2}m|\vec{V}|^2 + mgz\right)\\
+  &Q + W = m\Delta \left(h + \frac{|\vec{V}|^2}{2} + gz\right)\\
+  &\dot{Q} + \dot{W} = \dot{m}\Delta \left(h + \frac{|\vec{V}|^2}{2} + gz\right)\\
+\end{align}
+
+\begin{framed}
+\begin{equation}
+  \frac{\dot{Q} + \dot{W}}{\dot{m}} = \Delta \left(h + \frac{|\vec{V}|^2}{2} + gz\right)
+\end{equation}
+\end{framed}
+
+\begin{align}
+  &\Delta \left(h + \frac{|\vec{V}|^2}{2} + gz\right) = 0\\
+   &\left(h_2 + \frac{|\vec{V_2}|^2}{2} + gz_2\right) - \left(h_1 + \frac{|\vec{V_1}|^2}{2} + gz_1\right) = 0\\
+   &h_2 + \frac{|\vec{V_2}|^2}{2} + gz_2 = h_1 + \frac{|\vec{V_1}|^2}{2} + gz_1\\
+   &u_2 + p_2v_2 + \frac{|\vec{V_2}|^2}{2} + gz_2 = u_1 + p_1v_1 + \frac{|\vec{V_1}|^2}{2} + gz_1
+\end{align}
+
+\begin{framed}
+\begin{equation}
+   \frac{p_2}{\rho_2} + \frac{|\vec{V_2}|^2}{2} + gz_2 = \frac{p_1}{\rho_1} + \frac{|\vec{V_1}|^2}{2} + gz_1
+\end{equation}
+\end{framed}
+
+\begin{equation}
+   \frac{p_2}{\rho} + \frac{|\vec{V_2}|^2}{2} = \frac{p_1}{\rho} + \frac{|\vec{V_1}|^2}{2}
+\end{equation}
+
+\begin{align}
+  &\dot{m_1} = \dot{m_2}\\
+  &\rho_1 A_1|\vec{V_1}| = \rho_2 A_2|\vec{V_2}|\\
+  &\rho A_1|\vec{V_1}| = \rho \frac{A_1}{2}|\vec{V_2}|\\
+  & |\vec{V_2}| = 2|\vec{V_1}|
+\end{align}
+
+\begin{align}
+  &\left\{
+  \begin{aligned}
+   &\frac{p_2}{\rho} + \frac{|\vec{V_2}|^2}{2} = \frac{p_1}{\rho} + \frac{|\vec{V_1}|^2}{2}\\
+  & |\vec{V_2}| = 2|\vec{V_1}|
+    \end{aligned}\right.\\
+   &\frac{p_2}{\rho} + \frac{2|\vec{V_1}|^2}{2} = \frac{p_1}{\rho} + \frac{|\vec{V_1}|^2}{2}\\
+   &\frac{3}{2}|\vec{V_1}|^2 = \frac{p_1 - p_2}{\rho}\\
+   &|\vec{V_1}| = \sqrt{\frac{2}{3}\frac{p_1 - p_2}{\rho}}
+\end{align}
+
+\subsection{a}
+
+\begin{align}
+ &T = 50\,^{\circ}C\\
+ &p_2 = p_h'(T) \approx 12334 Pa\\
+ &|\vec{V_1}| = \sqrt{\frac{2}{3}\frac{p_1 - p_2}{\rho}} \approx \underline{7,6\frac{m}{s}}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &T = 20\,^{\circ}C\\
+ &p_2 = p_h'(T) \approx 2337 Pa\\
+ &|\vec{V_1}| = \sqrt{\frac{2}{3}\frac{p_1 - p_2}{\rho}} \approx \underline{8,1\frac{m}{s}}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &T = 70\,^{\circ}C\\
+ &p_2 = p_h'(T) \approx 31160 Pa\\
+ &|\vec{V_1}| = \sqrt{\frac{2}{3}\frac{p_1 - p_2}{\rho}} \approx \underline{6,8\frac{m}{s}}
+\end{align}
+
+\section{Tehtävä 13}
+
+\begin{math}
+ \begin{array}{l l l}
+  p = 10^5 Pa & T = 20 \,^{\circ}C = 293(,15) K & V = 1 m^3\\
+  M_{CO_2} = 44,01 \frac{g}{mol} & M_i = 28,965 \frac{g}{mol} & \rho_i = 1,189 \frac{kg}{m^3}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{math}
+ x_v = 360 ppm = 360\cdot 10^{-6} = 3,60 \cdot 10^{-4}
+\end{math}
+
+\begin{align}
+ &x_v = \frac{V_{CO_2}}{V}\\
+ &V_{CO_2} = x_vV = 3,60 \cdot 10^{-4} m^3\\
+ &pV_{CO_2} = n_{CO_2}R_uT\\
+ &n_{CO_2} = \frac{pV_{CO_2}}{R_uT} \approx \underline{0,015 mol}\\
+ &M_{CO_2} = \frac{m_{CO_2}}{n_{CO_2}}\\
+ &m_{CO_2} = M_{CO_2}n_{CO_2} \approx \underline{0,65g}\\
+\end{align}
+
+\subsection{b}
+
+\begin{math}
+ x_n = 3,60 \cdot 10^{-4}
+\end{math}
+
+\begin{align}
+&\left\{
+ \begin{aligned}
+  &x_n = \frac{n_{CO_2}}{n}\\
+  &pV = nR_uT \Leftrightarrow &n = \frac{pV}{R_uT}
+ \end{aligned}\right.\\
+ &x_n = \frac{\frac{pV_{CO_2}}{R_uT}}{\frac{pV}{R_uT}} = \frac{V_{CO_2}}{V} = x_v\\
+ \Rightarrow 
+&\left\{
+ \begin{aligned}& n_{CO_2} \approx \underline{0,015 mol}\\
+ &m_{CO_2} \approx \underline{0,65g}\\
+ \end{aligned}\right.
+\end{align}
+
+\subsection{c}
+
+\begin{math}
+ x_m = 3,60 \cdot 10^{-4}
+\end{math}
+
+\begin{align}
+ &x_m = \frac{m_{CO_2}}{m}\\
+ &m_{CO_2} = x_mm = x_m\rho_iV \approx \underline{0,43g}\\
+ &n_{CO_2} = \frac{m_{CO_2}}{M_{CO_2}} \approx \underline{9,7 \cdot 10^{-3} mol}
+\end{align}
+
+
+\end{document}
