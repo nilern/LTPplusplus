@@ -1,0 +1,275 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 5 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 19}
+
+\begin{math}
+ \begin{array}{l l l}
+  p_2 = p_{\infty} = 101325 Pa & |\vec{V_2}| = 0 & z_2 = h = 0,050 m\\
+  p_1 = p_{\infty} + \rho gz_1 & |\vec{V_1}| = |\vec{V}| & z_1 = ?\\
+  \rho = 1000\frac{kg}{m^3} & & g = 9,81\frac{m}{s^2}
+ \end{array}
+\end{math}
+
+\begin{framed}
+  \begin{align}
+    \frac{p_1}{\rho} + \frac{1}{2}|\vec{V_1}|^2 + gz_1 &= \frac{p_2}{\rho} + \frac{1}{2}|\vec{V_2}|^2 + gz_2\\
+    p_1 + \frac{1}{2}\rho|\vec{V_1}|^2 + \rho gz_1 &= p_2 + \frac{1}{2}\rho|\vec{V_2}|^2 + \rho gz_2\\
+    \frac{p_1}{\rho g} + \frac{1}{2g}|\vec{V_1}|^2 + z_1 &= \frac{p_2}{\rho g} + \frac{1}{2g}|\vec{V_2}|^2 + z_2
+  \end{align}
+\end{framed}
+
+\begin{align}
+ \frac{p_1}{\rho} + \frac{1}{2}|\vec{V_1}|^2 + gz_1 &= \frac{p_2}{\rho} + \frac{1}{2}|\vec{V_2}|^2 + gz_2\\
+ \frac{p_{\infty} + \rho gz_1}{\rho} + \frac{1}{2}|\vec{V}|^2 + gz_1 &= \frac{p_{\infty}}{\rho} + \frac{1}{2}0^2 + gh\\
+ \frac{p_{\infty}}{\rho} + \frac{1}{2}|\vec{V}|^2 &= \frac{p_{\infty}}{\rho} + gh\\
+ \frac{1}{2}|\vec{V}|^2 &= gh\\
+ |\vec{V}| &= \sqrt{2gh} \approx 0,99 \frac{m}{s} \approx \underline{1 \frac{m}{s}}
+\end{align}
+
+\section{Tehtävä 6}
+
+\begin{math}
+ \begin{array}{l l}
+  |\vec{V}| = 10 \frac{m}{s} & d = 100m
+ \end{array}
+\end{math}
+
+\subsection{a}
+\begin{align}
+ &E = E_k = \frac{1}{2}m|\vec{V}|^2 \quad \bigg|\bigg| \quad :m\\
+ &e = \frac{1}{2}|\vec{V}|^2 \approx \underline{50 \frac{J}{kg}}
+\end{align}
+
+\subsection{b}
+\begin{math}
+ \begin{array}{l l l}
+  \rho = 1,2 \frac{kg}{m^3} & \eta_{teor} = \frac{16}{27} & \eta_{turb} = \frac{1}{2}
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\dot{m} = \rho \dot{V} = \rho|\vec{V}|A = \rho|\vec{V}|\frac{\pi}{4}d^2 \approx 94,248 \cdot 10^3 \frac{kg}{s}\\
+ &P_{teor} = \eta_{teor}P_{tuuli} = \eta_{teor}\dot{m}e \approx \underline{2,793 MW}\\
+ &P_{tod} = \eta_{turb}P_{teor} \approx 1396 MW
+\end{align}
+
+\subsection{c}
+\begin{math}
+ \begin{array}{l l}
+  t_y = 8760h & t_{hk} = 0,25\cdot t_y = 2190h
+ \end{array}
+\end{math}
+
+\begin{equation}
+ W = P_{tod}t_{hk} \approx \underline{3,1\cdot 10^6 \frac{kWh}{a}}
+\end{equation}
+
+\begin{align}
+ &W_{asunto} \approx 2000 - 4000 \frac{kWh}{a}\\
+ &N_{asunnot} = \frac{W}{W_{asunto}} \approx 750 - 1500
+\end{align}
+
+\section{Tehtävä 22}
+
+\subsection{a}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\dot{E}_{yv} = \dot{m}\left(h_{yv} + \frac{1}{2}|\vec{V_{yv}}|^2 + gz_{yv}\right)\\
+  &\dot{E}_{av1} = \dot{m}\left(h_{av1} + \frac{1}{2}|\vec{V_{av1}}|^2 + gz_{av1}\right)\\
+  &\dot{E}_{av2} = \dot{m}\left(h_{av2} + \frac{1}{2}|\vec{V_{av2}}|^2 + gz_{av2}\right)
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\Delta \dot{E}_1 = \dot{E}_{av1} - \dot{E}_{yv} = \dot{Q_1}\\
+  &\Delta \dot{E}_2 = \dot{E}_{av2} - \dot{E}_{yv} = \dot{W} + \dot{Q_2}
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\dot{E}_{av1} = \dot{E}_{yv} + \dot{Q_1}\\
+  &\dot{E}_{av2} = \dot{E}_{yv} + \dot{W} + \dot{Q_2}
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\dot{E}_{av1} = \dot{E}_{yv} + \dot{Q_1} = \dot{m}\left(h_{av1} + \frac{1}{2}|\vec{V_{av1}}|^2 + gz_{av1}\right)\\
+  &\dot{E}_{av2} = \dot{E}_{yv} + \dot{W} + \dot{Q_2} = \dot{m}\left(h_{av2} + \frac{1}{2}|\vec{V_{av2}}|^2 + gz_{av2}\right)
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\dot{E}_{av1} = \dot{E}_{yv} + \dot{Q_1} = \dot{m}\left(h_{av1} + \frac{1}{2}|\vec{V_{av}}|^2 + gz_{av}\right)\\
+  &\dot{E}_{av2} = \dot{E}_{yv} + \dot{W} + \dot{Q_2} = \dot{m}\left(h_{av2} + \frac{1}{2}|\vec{V_{av}}|^2 + gz_{av}\right)
+ \end{aligned}\right.\\
+ &\dot{E}_{av2} - \dot{E}_{av1} = \dot{W} + \dot{Q_2} - \dot{Q_1} = \dot{m}(h_{av2} - h_{av1})
+\end{align}
+
+\begin{align}
+ &\dot{W} < 0\\
+ &Q_2 \approx Q_1
+\end{align}
+
+\begin{align}
+ &\dot{E}_{av2} - \dot{E}_{av1} = \dot{m}(h_{av2} - h_{av1}) \approx \dot{W}\\
+ &h_{av2} \approx h_{av1} + \frac{\dot{W}}{\dot{m}} < h_{av1}\\
+ &c_pT_{av2} < c_pT_{av1}\\
+ &T_{av2} < T_{av1}
+\end{align}
+
+\subsection{b}
+
+\begin{math}
+\begin{array}{l l l}
+ h = 23m & \dot{V} = 120 \frac{m^3}{s} & \eta = 0,85\\
+ \rho = 1000\frac{kg}{m^3} & g = 9,81\frac{m}{s^2}&
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\Delta E = \frac{\dot{Q} + \dot{W}}{\dot{m}}\\
+ &\frac{\dot{Q} + \dot{W}}{\dot{m}} = \left(h_{2} + \frac{1}{2}|\vec{V_{2}}|^2 + gz_{2}\right) - \left(h_{1} + \frac{1}{2}|\vec{V_{1}}|^2 + gz_{1}\right)\\
+ &\frac{\dot{W}}{\dot{m}} \approx g(z_2 - z_1)\\
+ &\dot{W} = \dot{m}g(z_2 - z_1) = -\rho\dot{V}gh \approx -27,076 MW\\
+ &\dot{W}_E = -\eta\dot{W} \approx 23,014 MW \approx \underline{23 MW}
+\end{align}
+
+\section{Tehtävä 23}
+
+\begin{math}
+ \begin{array}{l l l l}
+  d = 0,2m & L =100m & |\vec{v}| = 10 \frac{m}{s} & \eta = 0,6\\
+  M = 28,965 \frac{g}{mol} & R_u = 8,3145 \frac{J}{molK} & c_p = 1000 \frac{j}{kgK} & \gamma = 1,4\\
+  T_1 = 20\,^{\circ}C = 293K & p_1 = 1 bar = 10^5 Pa & \Delta p = p_2 - p_1 = 1000 Pa &
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ &p_1v_1 = RT_1\\
+ &\rho_1 = \frac{1}{v_1} = \frac{p_1}{RT_1} = \frac{p_1M}{R_uT_1} \approx 1,189 \frac{kg}{m^3} \approx \underline{1,19 \frac{kg}{m^3}}
+\end{align}
+
+\subsection{b}
+
+\begin{math}
+ \begin{array}{l l l}
+  \rho_2  = \rho_1 = \rho & z_2 = z_1 = z & A_2 = A_1 = A
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\frac{\dot{Q} + \dot{W}}{\dot{m}} = \Delta\left(h + \frac{1}{2}|\vec{V}|^2 + gz\right)\\
+  &\dot{m_2} = \dot{m_1}
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\frac{\dot{Q} + \dot{W}}{\dot{m}} = \left(h_{2} + \frac{1}{2}|\vec{V_{2}}|^2 + gz_{2}\right) - 
+    \left(h_{1} + \frac{1}{2}|\vec{V_{1}}|^2 + gz_{1}\right)\\
+  &\rho_2|\vec{V_2}|A_2 = \rho_1|\vec{V_1}|A_1
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &\frac{\dot{Q} + \dot{W}}{\dot{m}} = \left(h_{2} + \frac{1}{2}|\vec{V_{2}}|^2\right) - 
+    \left(h_{1} + \frac{1}{2}|\vec{V_{1}}|^2\right)\\
+  &|\vec{V_2}| = |\vec{V_1}|
+ \end{aligned}\right.
+\end{align}
+
+\begin{framed}
+ \begin{equation}
+  \dot{Q} + \dot{W} = \dot{m}(h_2 - h_1) = \dot{m}\Delta h
+ \end{equation}
+\end{framed}
+
+\begin{align}
+ &dh = d(u + pv) = du + d(pv) = du + pdv + vdp\\
+ &\Delta h = \Delta u + p\Delta v + v\Delta p \approx v\Delta p \quad \bigg|\bigg| \quad
+  \begin{aligned}
+   &u(T), \Delta T = 0 \Rightarrow \Delta u = 0\\
+   &\Delta\rho = 0 \Leftrightarrow \Delta v = 0
+  \end{aligned}
+  \\
+ &\dot{Q} + \dot{W} = \dot{m}\Delta h\\
+ &\dot{W} = \dot{m}v\Delta p = \frac{\dot{m}\Delta p}{\rho} = \frac{\rho\dot{V}\Delta p}{\rho}
+  = \dot{V}\Delta p\\
+ &\dot{W} = |\vec{V}|A\Delta p \approx 314,159 W \approx 314 W\\
+ &\dot{W}_E = \frac{\dot{W}}{\eta} \approx 523,599 W \approx \underline{524 W}
+\end{align}
+
+\subsection{c}
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &p_1V^\gamma_1 = p_2V^\gamma_2\\
+  &pv = nR_uT
+ \end{aligned}\right.\\
+ &T_2 = \left(\frac{p_2}{p_1}\right)^{\frac{\gamma - 1}{\gamma}}T_1 = 
+  \left(\frac{p_1 + \Delta p}{p_1}\right)^{\frac{\gamma - 1}{\gamma}}T_1 \approx 293,834 K\\
+ &\Delta T = T_2 - T_1 \approx \underline{0,83K}
+\end{align}
+
+\subsection{d}
+\begin{align}
+ &\dot{W} = \dot{m}\Delta h = \rho|\vec{V}|Ac_p\Delta T \approx 311,602W\\
+ &\dot{W}_E = \frac{\dot{W}}{\eta} \approx 519,337 W \approx \underline{519 W}
+\end{align}
+
+\begin{align}
+ \frac{\dot{W}_{E, b} - \dot{W}_{E, c}}{\dot{W}_{E, c}} \approx 1\%
+\end{align}
+
+
+\end{document}
