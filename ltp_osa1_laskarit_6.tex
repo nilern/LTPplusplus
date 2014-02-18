@@ -1,0 +1,247 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 6 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 24}
+
+\begin{math}
+ \begin{array}{l l}
+  p_{i,1} = 10^5Pa & p_{i,2} = 8\cdot 10^5Pa \\
+  T_{i,1} = 293K & T_{o,1} = 333 K \\
+  \dot{V}_{i,1} = 7,95\frac{m^3}{min} = 0,1325\frac{m^3}{s} & \dot{V}_{0,1} = 88\frac{l}{min} = 1,467\cdot 10^{-3}\frac{m^3}{s}\\                      
+  \rho_{i,1} = 1,189\frac{kg}{m^3} & \rho_o = 866\frac{kg}{m^3}\\
+  c_{pi} = 1000\frac{J}{kgK} & c_{po} = 2040\frac{J}{kgK}\\
+  \dot{W} = 48\cdot10^3W &
+ \end{array}
+\end{math}
+
+\begin{align}
+ & \frac{dE}{dt} = \dot{Q} + \dot{W} + \sum \dot{E} \quad \bigg|\bigg| \quad \text{jatkuvuustilassa} = 0\\
+ & \frac{dE}{dt} = \dot{Q} + \dot{W} + \sum \dot{m}e = 0 
+    \quad \bigg|\bigg| \quad e = h + \frac{|\vec{V}^2|}2 + gz\\
+ & \dot{Q} + \dot{W} + \sum \dot{m}\left(h + \frac{|\vec{V}^2|}2 + gz\right) = 0\\
+ & \dot{Q} + \dot{W} + \sum \dot{m}_1\left(h_1 + \frac{|\vec{V_1}^2|}2 + gz_1\right) 
+  - \sum \dot{m}_2\left(h_2 + \frac{|\vec{V_2}^2|}2 + gz_2\right)= 0\\
+ & \dot{Q} + \dot{W} = \sum \dot{m}_2\left(h_2 + \frac{|\vec{V_2}^2|}2 + gz_2\right) 
+  - \sum \dot{m}_1\left(h_1 + \frac{|\vec{V_1}^2|}2 + gz_1\right)\\
+\end{align}
+  
+\begin{framed}
+ \begin{equation}
+  \dot{Q} + \dot{W} = \sum \dot{m}_2h_2 - \sum \dot{m}_1h_1
+ \end{equation}
+\end{framed} 
+ 
+\begin{align}
+ & \dot{W} = (\dot{m}_{i,2}h_{i,2} + \dot{m}_{o,2}h_{o,2}) - (\dot{m}_{i,1}h_{i,1} + \dot{m}_{o,1}h_{o,1}) 
+  \quad \bigg|\bigg| \quad h = c_pT \\
+ & \dot{W} = (\dot{m}_{i,2}c_{pi}T_{i,2} + \dot{m}_{o,1}c_{po}T_{o,2}) 
+  - (\dot{m}_{i,1}c_{pi}T_{i,1} + \dot{m}_{o,1}c_{po}T_{o,1})
+\end{align}
+
+\begin{align}
+ & \frac{dm}{dt} = \sum \dot{m} \quad \bigg|\bigg| \quad \text{jatkuvuustilassa} = 0\\
+ & \frac{dm}{dt} = \sum \dot{m}_2 - \sum \dot{m}_1 = 0
+\end{align}
+  
+\begin{framed}
+ \begin{equation}
+  \sum \dot{m}_2 = \sum \dot{m}_1
+ \end{equation}
+\end{framed} 
+
+\begin{align}
+ & \dot{m}_{i,2} + \dot{m}_{o,2} = \dot{m}_{i,1} + \dot{m}_{o,1} \\
+ &\left\{
+ \begin{aligned}
+  & \dot{m}_{i,2} = \dot{m}_{i,1} = \dot{m}_i = \rho_{i,1}\dot{V}_{i,1} \approx 0,158\frac{kg}{s}\\
+  & \dot{m}_{o,2} = \dot{m}_{o,1} = \dot{m}_o = \rho_{o}\dot{V}_{o,1} \approx 1,27\frac{kg}{s}
+ \end{aligned}\right.\\
+ & T_{i,2} = T_{o,2} = T_2 \quad \bigg|\bigg| \quad \text{tasapainossa}
+\end{align}
+ 
+\begin{align}
+ & \dot{W} = (\dot{m}_ic_{pi}T_2 + \dot{m}_oc_{po}T_2) 
+  - (\dot{m}_ic_{pi}T_{i,1} + \dot{m}_oc_{po}T_{o,1})\\
+ & \dot{W} = (\dot{m}_ic_{pi} + \dot{m}_oc_{po})T_2 
+  - (\dot{m}_ic_{pi}T_{i,1} + \dot{m}_oc_{po}T_{o,1})\\
+ & T_2 = \frac{\dot{m}_ic_{pi}T_{i,1} + \dot{m}_oc_{po}T_{o,1} + \dot{W}}{\dot{m}_ic_{pi} + \dot{m}_oc_{po}}
+  \approx 348,2 K \approx \underline{75,2\,^{\circ}C}
+\end{align}
+
+\section{Tehtävä 27}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 60m & d = 10m & |\vec{V}| = 0,2\frac{m}{s} \\
+  T_H = 550\,^{\circ}C \approx 823K & T_L = 50\,^{\circ}C \approx 323K & \dot{W} = 1 GW\\
+  c_p = 4200 \frac{J}{kgK} & \rho = 1000 \frac{kg}{m^3} & \eta_{tod} = 0,44
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ & \dot{Q}_j + \dot{W_j} = \dot{m}_j\Delta h_j\\
+ & \dot{Q}_L = \dot{m}_jc_p\Delta T_j
+\end{align}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  & \eta = \frac{\dot{W}}{\dot{Q}_H} = \eta_{carnot}\\
+  & \eta_{carnot} = 1 - \frac{T_L}{T_H} \approx 0,608
+ \end{aligned}\right.\\
+ & \dot{Q}_H = \frac{\dot{W}}{\eta_{carnot}} \approx 1,645 GW
+\end{align}
+
+\begin{align}
+ & \dot{Q}_H - (\dot{W} + \dot{Q}_H) = 0\\
+ & \dot{Q}_L = \dot{Q}_H - \dot{W} \approx 0,645 GW
+\end{align}
+
+\begin{align}
+ & \dot{Q}_L = \dot{m}_jc_p\Delta T_j\\
+ & \dot{m}_j = \rho A_j |\vec{V}| = \rho Ld |\vec{V}| \approx 1,2\cdot 10^5 \frac{kg}{s}\\
+ & \Delta T_j = \frac{\dot{Q}_L}{\dot{m}_jc_p} \approx \underline{1,279 K}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ & \dot{Q}_H = \frac{\dot{W}}{\eta_{tod}} \approx 2,273 GW\\
+ & \dot{Q}_L = \dot{Q}_H - \dot{W} \approx 1,273 GW\\
+ & \Delta T_j = \frac{\dot{Q}_L}{\dot{m}_jc_p} \approx \underline{2,525 K}
+\end{align}
+
+\section{Tehtävä 31}
+
+\subsection{a}
+\begin{math}
+ \begin{array}{l l}
+  p = 85 bar = 8,5 MPa & T = 480\,^{\circ}C\\
+ \end{array}
+\end{math}
+
+\begin{equation}
+ h(p, T) \approx 3343 \frac{kJ}{kg}
+\end{equation}
+
+\subsection{b}
+\begin{math}
+ \begin{array}{l l}
+  p = 103 bar = 10,3 MPa & T = 541\,^{\circ}C\\
+ \end{array}
+\end{math}
+
+\begin{equation}
+ h(p, T) \approx 3476 \frac{kJ}{kg}
+\end{equation}
+
+\subsection{c}
+\begin{math}
+ \begin{array}{l l}
+  p = 137 bar = 13,7 MPa & T = 537\,^{\circ}C\\
+ \end{array}
+\end{math}
+
+\begin{equation}
+ h(p, T) \approx 3429 \frac{kJ}{kg}
+\end{equation}
+
+\section{Tehtävä 32}
+
+\begin{math}
+ \begin{array}{l l}
+  T = 140\,^{\circ}C & x = \frac{m_h}{m} = \frac{m_h}{m_h + m_v} = 0,5\\
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{equation}
+ p = p'(T) \approx \underline{3,6 bar} 
+\end{equation}
+
+\subsection{b}
+
+\begin{align}
+ & u'' = u''(T) \approx \underline{2550\frac{kJ}{kg}}\\
+ & u' = u'(T) \approx \underline{589\frac{kJ}{kg}}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ & h'' = h''(T) \approx \underline{2733\frac{kJ}{kg}}\\
+ & h' = h'(T) \approx \underline{589\frac{kJ}{kg}}
+\end{align}
+
+\subsection{d}
+
+\begin{align}
+ & h = \frac{H}{m} = \frac{H'' + H'}{m} = \frac{m_hh'' + m_vH'}{m}\\
+ & h = \frac{m_h}{m}h'' + \frac{m_v}{m}h' = \frac{m_h}{m}h'' + \frac{m - m_h}{m}h'\\
+ & h = \frac{m_h}{m}h'' + \left(1 - \frac{m_h}{m}\right)h'\\
+\end{align}
+
+\begin{framed}
+ \begin{equation}
+  h = xh'' + (1 - x)h'
+ \end{equation}
+\end{framed}
+
+\begin{equation}
+ h \approx \underline{1661 \frac{kJ}{kg}}
+\end{equation}
+
+\end{document}
