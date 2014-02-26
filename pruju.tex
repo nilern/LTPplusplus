@@ -670,23 +670,21 @@ Kun se on ymmärryksen kannalta tarpeellista, käytän tilastollista termodynami
 
 Systeemin käsite on lämpötieteissä hyvin keskeinen ja hyödyllinen.
 
-\section{Kontrollitilavuus} \label{section:kontrollitilavuus} %........................
+\section{Kontrollitilavuus}  %........................
 
 \textbf{Kontrollitilavuus} on mielivaltaisen avaruudessa sijaitsevan \textit{kontrollipinnan} sisältämä tilavuus. 
 Pinnan sijainti ja muoto voi myös riippua ajasta. 
-
-Kontrollitilavuus voidaan siis valita täysin vapaasti, 
-mutta usein oikein valittu kontrollitilavuus helpottaa haluttujen tulosten saamista tai jopa ylipäätään mahdollistaa sen.
-
 \section{Systeemin käsite} %............................................................
 
 \textbf{Systeemin} käsite on erityisesti termodynamiikassa keskeinen. Systeemiksi voidaan valita mikä tahansa 
-\nameref{section:kontrollitilavuus}.
+kontrollitilavuus, kontrollitilavuuksien yhdistelmä tai molekyylijoukko. Systeemi
+voidaan siis valita täysin vapaasti, mutta usein luontevasti (tai ovelasti) määritelty systeemi helpottaa 
+haluttujen tulosten saamista tai jopa ylipäätään mahdollistaa sen.
 
 Vaikka automaatiolle keskeisessä systeemiteoriassa systeemin käsite on suomennettu \textit{järjestelmäksi},
-lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}. Mahdollisesti sellaiset asiat kuin 
-sisäenergia ja entropia merkityksineen luovat sellaista kuvaa, että lämpötieteelliset systeemit eivät 
-yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.
+lämpötieteissä puhutaan anglisistisesti \textit{systeemeistä}\footnote{Mahdollisesti sellaiset asiat kuin 
+sisäenergia ja entropia merkityksineen ovat omian luomaan sellaista kuvaa, että lämpötieteelliset systeemit eivät 
+yleensä ole pohjimmiltaan erityisen ``järjestelmällisiä'' tai ``järjestyksessä''.}.
 
 \section{Ympäristön käsite} %...........................................................
 
@@ -699,7 +697,8 @@ muodostavat siis \textbf{maailmankaikkeuden}.
 ovat \textit{lämmönsiirrin} ja \textit{turbiini}.
 
 \textbf{Suljetun systeemin} kontrollipinta on suljettu eli sen läpi ei voi kulkea ainetta. Tyypillisiä 
-esimerkkejä ovat \textit{suljettu kaasusäiliö} ja \textit{metallikuutio}.
+esimerkkejä ovat \textit{suljettu kaasusäiliö} ja \textit{mäntämoottorin sylinteri} (venttiilien ollessa 
+puristus- ja työtahtien aikana kiinni).
 
 \section{Eristämätön ja eristetty systeemi}%............................................
 
@@ -713,6 +712,10 @@ on jokin äärellinen lämpövastus, joka vähentää systeemistä poistuvan lä
 systeemejä ovat esimerkiksi \textit{termospullo} ja \textit{passiivienergiatalo}.
 
 \section{Taselaskenta} %................................................................
+
+Tyypillisin systeemin käsitteen hyödyntämiskohde ovat erilaiset taselaskelmat. Nämä liittyvät 
+yleensä säilymislakeihin, joista lämpötekniikassa yleisimmät ovat massan säilyminen, energian 
+säilyminen (\nameref{def:td1}) ja ``liikemäärävirran säilyminen'' eli Newtonin II laki.
 
 \chapter{Energian tiede} % ------------------------------------------------------------------------------
 
@@ -913,7 +916,8 @@ kuten sisäenergia, lämpötila ja entropia kuvaavat itse asiassa näiden ilmiö
 \subsection{Sisäenergia U}
 
 Missä on liikettä, siellä on myös liike-energiaa. Termodynamiikassa systeemin kaikkien molekyylien yhteenlaskettua lämpöliikkeen 
-energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. 
+energiaa kutsutaan systeemin \textbf{sisäenergiaksi U}. Lämpöliikkeen energioihin kuuluvat (ainakin) 
+molekyylien translaation, rotaation ja värähtelyn energiat.
 
 \subsection{Entalpia H} \label{def:H} %.......................................
 
@@ -1546,7 +1550,7 @@ Nollas pääsääntö, kuten muutkin pääsäännöt, toimii ensisijaisesti klas
 Aiemmin lämpötilaa määritellessämmehän näimme, että lämpötilan syvällinen merkitys on se, että se kertoo 
 systeemin energiajakaumien todennäköisimmät muodot.
 
-\chapter{Termodynamiikan 1. pääsääntö} % ---------------------------------------------------------------
+\chapter{Termodynamiikan 1. pääsääntö} \label{def:td1} % -------------------------------------------
 
 \section{Teoria} %....................................................................
 
