@@ -1,0 +1,196 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Termodynamiikka\\Laskuharjoituksen 7 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 34}
+
+\subsection{a}
+
+\begin{math}
+ \begin{array}{l l l}
+  p_1 = p_6 = p_{6s} = 0,04 bar & p_2 = p_3 = p_4 = p_5 = 40 bar &\\
+  T_1 = T_6 = T_{6s} = 29 \,^{\circ}C & T_3 = T_4 = 250 \,^{\circ}C & T_5 = 460 \,^{\circ}C\\
+  x_6 = 0,88 & \eta_p = 0,85 &\\
+ \end{array}
+\end{math}
+
+\begin{equation}
+ \eta_t = \frac{\dot{W}_t}{\dot{W}_{ts}} = \frac{\dot{m}(h_5 - h_6)}{\dot{m}(h_5 - h_{6s})} 
+  = \frac{h_5 - h_6}{h_5 - h_{6s}}
+\end{equation}
+
+\begin{align}
+ &h_5 = h(p_5, T_5) \approx 3350 \frac{kJ}{kg}\\
+ &h_6 = h(p_6, x_6) \approx 2260 \frac{kJ}{kg}\\
+ &s_{6s} = s_5 = s(p_5, T_5) \approx 6,96 \frac{kJ}{kgK}\\
+ &h_{6s} = h(p_{6s}, s_{6s}) \approx 2100 \frac{kJ}{kg}
+\end{align}
+
+\begin{equation}
+ \eta_t = \frac{h_5 - h_6}{h_5 - h_{6s}} \approx \underline{0,872}
+\end{equation}
+
+\subsection{b}
+
+\begin{align}
+ &\dot{W}_t = \dot{m}(h_5 - h_6)\\
+ &\frac{\dot{W}_t}{\dot{m}} = w_t = h_5 - h_6 \approx \underline{1090 \frac{kJ}{kg}}
+\end{align}
+
+\subsection{c}
+
+\begin{equation}
+ \eta = \frac{\dot{W}_t - \dot{W}_p}{\dot{Q}_h} = \frac{\dot{m}w_t - \dot{m}w_p}{\dot{m}q_h} = \frac{w_t - w_p}{q_h}
+\end{equation}
+
+\begin{equation}
+ w_p = \Delta h_p = h_2 - h_1
+\end{equation}
+
+\begin{align}
+ &\eta_p = \frac{\dot{W}_{ps}}{\dot{W}_p} = \frac{\dot{m}w_{ps}}{\dot{m}w_p} = \frac{w_{ps}}{w_p} = \frac{\Delta h_{ps}}{\Delta h_p}\\
+ &\Delta h_p = \frac{\Delta h_{ps}}{\eta_p}\\
+ &\Delta h_{ps} = \bar{v}_p\Delta p_p \approx v_1(p_2 - p_1)\\
+ &v_1 = v'(T_1) \approx 1,004\cdot10^{-3}\frac{m^3}{kg}\\
+ &w_p = \Delta h_p = \frac{v_1(p_2 - p_1)}{\eta_p} \approx 5 \frac{kJ}{kg}\\
+ &h_1 = h'(T_1) \approx 120 \frac{kJ}{kg}\\
+ &h_2 = h_1 + \Delta h_p \approx 125 \frac{kJ}{kg}\\
+ &q_h = \Delta h_h = h_5 - h_2 \approx 3225 \frac{kJ}{kg}
+\end{align}
+
+\begin{equation}
+ \eta = \frac{w_t - w_p}{q_h} \approx \underline{0,336}
+\end{equation}
+
+\section{Tehtävä 37}
+
+\begin{math}
+ \begin{array}{l l l l}
+  T_1 = T_3 = 290 \,^{\circ}C & p_2 = p_3 = 25 bar & p_4 = 0,5 bar & h_2 = 2600 \frac{kJ}{kg}\\
+  \dot{W} = 1600 MW & \eta = 0,37 & \eta_t = 0,9 &\\
+  \dot{V}_j = 57 \frac{m^3}{s} & c_p = 4200 \frac{J}{kgK} & \rho_j = 1000 \frac{kg}{m^3} &
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ &\eta = \frac{\dot{W}}{\dot{Q}_H} = \frac{\dot{W}}{\dot{W} + \dot{Q}_L}\\
+ &\dot{Q}_L = \frac{\dot{W}}{\eta} - \dot{W} = \left(\frac{1}{\eta} - 1\right)\dot{W} \approx \underline{2724 MW}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\Delta H_j = c_p\dot{m}_j\Delta T_j = \dot{Q}_L\\
+ &\Delta T_j = \frac{\dot{Q}_L}{c_p\dot{m}_j} = \frac{\dot{Q}_L}{c_p\rho \dot{V}_j} \approx \underline{11,38 \,^{\circ}C}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &\dot{W} = \dot{m}(h_1 - h_2) + \dot{m}(h_3 - h_4) = \dot{m}((h_1 - h_2) + (h_3 - h_4))\\
+ &\dot{m} = \frac{\dot{W}}{(h_1 - h_2) + (h_3 - h_4)}
+\end{align}
+
+\begin{align}
+ &h_1 = h''(T_1) \approx 2766 \frac{kJ}{kg}\\
+ &h_3 = h(T_3, p_3) \approx 2980 \frac{kJ}{kg}\\
+ &\eta_t = \frac{h_3 - h_4}{h_3 - h_{4s}}\\
+ &h_{4s} = h(p_{4s}, s_{4s})\\
+ &p_{4s} = p_4\\
+ &s_{4s} = s_3 = s(p_3, T_3) \approx 6,6 \frac{kJ}{kg}\\
+ &h_{4s} = h(p_{4s}, s_{4s}) 2300 \frac{kJ}{kg}\\
+ &h_4 = h_3 - \eta_t(h_3 - h_{4s}) \approx 2368 \frac{kJ}{kg}
+\end{align}
+
+\begin{equation}
+ \dot{m} = \frac{\dot{W}}{(h_1 - h_2) + (h_3 - h_4)} \approx \underline{2057 \frac{kg}{s}} 
+\end{equation}
+
+\section{Tehtävä 28}
+
+\begin{math}
+ \begin{array}{l l l}
+  T_H = 25 \,^{\circ}C = 298 K & \dot{W} = 500 W & \varepsilon = 4,5
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ &\varepsilon = \frac{\dot{Q}_L}{\dot{W}}\\
+ &\dot{Q}_L = \varepsilon \dot{W} \approx \underline{2250W}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\varepsilon_{carnot} = \frac{\dot{Q}_L}{\dot{W}} \quad \bigg|\bigg| \quad \dot{W} = \dot{Q}_H - \dot{Q}_L\\
+ &\varepsilon_{carnot} = \frac{\dot{Q}_L}{\dot{Q}_H - \dot{Q}_L}\\
+ &\varepsilon_{carnot} = \frac{1}{\frac{\dot{Q}_H}{\dot{Q}_L} - 1} \quad \bigg|\bigg| \quad \dot{Q} = T\dot{m}\Delta s\\
+ &\varepsilon_{carnot} = \frac{1}{\frac{T_H\dot{m}\Delta s_H}{T_L\dot{m}\Delta s_L} - 1} \quad \bigg|\bigg| \quad 
+  \Delta s_L = \Delta s_H\\
+ &\varepsilon_{carnot} = \frac{1}{\frac{T_H}{T_L} - 1}\\
+ &T_L = \frac{\varepsilon}{\varepsilon + 1}T_H \approx 243,818 K \approx \underline{-29,2 \,^{\circ}C }
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &\varepsilon_{tod} \approx 1\\
+ &\varepsilon_{tod} = \frac{\dot{Q}_L}{\dot{W}}\\
+ &\dot{W} = \frac{\dot{Q}_L}{\varepsilon_{tod}} \approx \underline{2250W}
+\end{align}
+
+
+\end{document}
