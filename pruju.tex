@@ -1336,6 +1336,9 @@ siis työtä:
  &W = \int_S \vec{F{1-2}} \cdot \vec{ds} = \int_S \vec{0} \cdot \vec{ds} = 0
 \end{align}
 
+Käytännössä virtausaineista koostuvien systeemisen tapauksessa niiden väliseensä rajapintaan 
+kohdistamien paineiden täytyy olla samat.
+
 \section{Terminen tasapaino} %.................................................
 
 Systeemit ovat termisessä tasapainossa, kun niiden välillä ei ole lämpötilaeroa eikä 
@@ -1346,14 +1349,41 @@ siis siirry lämpöä:
   &\Rightarrow Q_{1-2} = 0
 \end{align}
 
-(Koska eri lämmönsiirtotapoja ei voi työn tavoin palauttaa yhteen kaavaan, lämmön 
-siirtymättömyyttä ei tässä perustella matemaattisesti.)
+Lämmön siirtymättömyys johtuu termodynamiikan toisesta pääsäännöstä.
 
-%\section{Termodynaaminen tasapaino} % (?)
+\section{Termodynaaminen tasapaino}
 
-\section{Dynaaminen tasapaino} %...............................................
+Systeemit ovat \textf{termodynaamisessa tasapainossa}, kun ne ovat sekä mekaanisessa että 
+termisessä tasapainossa eli niiden välillä ei siirry työtä eikä lämpöä ja niillä on sama 
+paine ja lämpötila:
 
-% Myös jatkuvuustila
+\begin{align}
+ &W_{1-2} = 0\\
+ &Q_{1-2} = 0\\
+ &p_1 = p_2\\
+ &T_1 = T_2
+\end{align}
+
+%Staattinen tasapaino
+%\section{Dynaaminen tasapaino} %...............................................
+
+\section{Jatkuvuustila}
+
+Systeemi on \textbf{jatkuvuustilassa} kun sen massa ja energia säilyvät muuttumattomina 
+ajanhetkestä toiseen. Käytännössä käsite on relevanteimmillaan avoimien systeemien (jollaisia useimmat 
+lämpötekniset laitteet ovat) tapauksessa. Avoin systeemi on jatkuvuustilassa, kun siihen joka 
+hetki tulee ja siitä lähtee samat määrät massaa ja energiaa:
+
+\begin{align}
+ &\sum \dot{m}_{sis\ddot{a}\ddot{a}n} = \sum \dot{m}_{ulos}\\
+ &\sum\dot{Q} + \sum\dot{W} = \sum (\dot{m}e)_{ulos} - \sum (\dot{m}e)_{sis\ddot{a}\ddot{a}n}
+\end{align}
+
+Suljetulle systeemille tarvitaan pelkkä energiatase:
+
+\begin{equation}
+ &\sum\dot{Q} + \sum\dot{W} = 0
+\end{equation}
 
 \chapter{Tilasuureet} \label{chapter:tilasuureet} % ------------------------------------------
 
