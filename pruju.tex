@@ -85,6 +85,13 @@ niiden keskeisin tai ainakin hyvödyllisin sovellusalue on edelleen juuri lämp�
 Mielikuvamme luonnontieteistä ja teknisistä tieteistä on usein sellainen, että ne koostuvat pääosin \textbf{kaavoista}. 
 Itse asiassa kaavat ovat kuitenkin vain korkealle abstraktiotasolle jalostettuja yhteenvetoja siitä ymmärryksestä, 
 joka on saavutettu \textbf{teoreettisten mallien} ja \textbf{kokeellisen tutkimuksen} vuorovaikutuksessa.
+Kaavoja suositaan luonnontieteissä myös sen takia, että ne ovat \textbf{kvantitatiivisia} tieteitä, jotka 
+pyrkivät tarkkuuteen ja yksiselitteisyyteen eli \textbf{eksaktiuteen}\footnote{Luonnontieteilijät pitävät 
+joskus -- tai useinkin -- itseään jotenkin ihmistieteilijöitä parempina tällä perusteella. Tämä näkyy 
+teekkarien ja humanistien välisessä vastakkainasettelussa mutta myös siinä, että englannin kielen tiedettä 
+tarkoittava sana \textit{science} voi yksinään tarkoittaa nimenomaan luonnontiedettä, jopa erotuksena 
+ihmistieteistä. Todellisuudessa luonnontieteiden kvantitatiivisuus ja eksaktius johtuu kuitenkin siitä, että 
+tarkasteltavat ilmiöt ovat oikeastaan hyvin yksinkertaisia verrattuna vaikkapa ihmisen käyttäytymiseen.}
 
 Useimmiten kaavat kertovat joidenkin \textbf{suureiden} välisen yhteyden matemaattisessa muodossa. Yhteys sinänsä 
 saattaa olla syvällinen ajatus, jopa \textbf{luonnonlaki} -- monet kaavat kuvaavat esimerkiksi energian säilymistä:
@@ -108,6 +115,57 @@ ettei tässä ole kyse tuotesijoittelusta tai poliittisesta propagandasta.}. Kaa
 niillä saadaan \textbf{tuloksia}, mutta vasta niiden taustalla vaikuttavien suureiden ja luonnonlakien 
 ymmärtäminen mahdollistaa \textbf{luovuuden}. Tai edes oikeiden kaavojen käytön oikeassa tilanteessa ja siten 
 tulosten \textbf{oikeellisuuden}.
+
+\section{Miksi nämä tieteet?}
+
+Lämpötieteellisten ilmiöiden ja -teknisten laitteiden analyysi on käytännössä useimmiten monitieteellistä. 
+Mietitäänpä vaikkapa \textbf{lämmönsiirrintä}, joka siirtää \textbf{lämpötehoa $\dot{Q}$} vesivirtauksesta $a$ 
+vesivirtaukseen $b$. Seuraavassa esiintyviä kaavoja ei tietenkään tarvitse tässä vaiheessa vielä ymmärtää.
+
+Ensinnäkin meitä tietenkin kiinnostaa lämmönsiirron suunta. \textbf{Termodynamiikan toisen pääsäännön} mukaan 
+lämpö siirtyy spontaanisti\footnote{``itsestään, luonnostaan''} korkeammasta lämpötilasta matalampaan. Tämä on 
+kokeellinen havainto, mutta klassinen termodynamiikka selittää sen niin, että \textbf{entropian} täytyy kasvaa. 
+Tilastollinen termodynamiikka selittää, miksi näin on. Matemaattisesti:
+
+\begin{align}
+ &T_a > T_b\\
+ &\Rightarrow \dot{Q}_a < 0\\
+ &\Rightarrow \dot{Q}_b > 0
+\end{align}
+
+Kun lämmönsiirron suunta on nyt selvillä, meitä tietenkin kiinnostaa kummankin vesivirran lämpötilan muutos. 
+\textbf{Termodynamiikan ensimmäisen pääsäännön} mukaan energia säilyy eli virtausten entalpiat muuttuvat 
+lämmön verran. Oletetaan että kaikki lämpö siirtyy $a$:sta $b$:hen (eikä esim. lämmönsiirtimen rakenteisiin):
+
+\begin{align}
+ &\dot{Q}_b = \dot{Q}_a\\
+ &\Delta \dot{H_a} = \dot{Q_a}\\
+ &\Delta \dot{H_b} = \dot{Q_b}
+\end{align}
+
+Käyttämällä entalpiavirran ja ominaisentalpian ($\dot{H} = \dot{m}h$) sekä ominaisentalpian ja lämpötilan 
+($\Delta h = c_p \Delta T$) välisiä yhteyksiä saadaan virtausten lämpötilojen muutoksen lämmönsiirtimessä:
+
+\begin{align}
+ &\Delta T_a = \frac{\dot{Q_a}}{c_p\dot{m}_a}\\
+ &\Delta T_b = \frac{\dot{Q_b}}{c_p\dot{m}_b}
+\end{align}
+
+Tässä vaiheessa ongelmaksi tulee tietenkin sen määrittäminen, miten suuri siirtyvä lämpöteho on. Tähän 
+tarvitaan \textbf{lämmönsiirtoa}. Lämpö siirtyy virtauksissa \textbf{konvektiolla} ja \textbf{johtumalla} 
+ja putkien läpi johtumalla. Lämmön johtumisen teoria on melko yksinkertainen ja tarkka. Konvektiivisesta 
+lämmönsiirrosta saadaan kohtuullinen arvio dimensiottomien lukujen avulla ilmaistuilla kokeellisilla 
+korrelaatioilla.
+
+Konvektiivisen lämmönsiirron tarkempi määrittäminen vaatisi \textbf{virtausopin} tuntemusta. Sitä 
+tarvitaan myös sen määrittämiseen, miten suuren \textbf{mekaanisen tehon} $\dot{W}$ virtauksen 
+pumppaaminen lämmönsiirtimen läpi vaatisi.
+
+Nämä kolme ovat siis keskeisimmät lämpötekniikassa tarvittavat tieteet. Tietenkään poikkitieteellisyys 
+ei välttämättä lopu vielä tähän. Esimerkiksi lämpötilaeron lämmönsiirtimen rakentaisiin kohdistamien 
+lämpörasitusten laskemiseen tarvittaisiin teknillistä mekaniikkaa. Usein voimalaitoksissa lämpö saadaan 
+joko polttoprosessista tai ydinreaktiosta, joiden analysoimiseen tarvitaan fysikaalista kemiaa tai 
+ydinfysiikkaa jne.
 
 \section{Merkinnöistä} %................................................................
 
@@ -311,6 +369,23 @@ ei mittausten mukaan ole vakio. Alun perin kilogramma piti määritellä ``1 lit
 4 $^{\circ}$C:n lämpötilassa''. Vesipohjaiseen määritelmään siirtymistä on myöhemminkin ehdotettu, joskin niin että 
 määritelmä vastaisi nykyistä kilogramman määritelmää paremmalla tarkkuudella.
 
+\subsection{Moolimassa M}
+
+Systeemin massa ja ainemäärä riippuvat toisistaan \textbf{moolimassan M} kautta:
+
+\begin{equation}
+ M = \frac{m}{n}
+\end{equation}
+
+Moolimassan SI-yksiköksi tulee
+
+\begin{equation}
+ [M] = \left[\frac{m}{n}\right] = \frac{[m]}{[n]} = \frac{kg}{mol}
+\end{equation}
+
+Tämä on kuitenkin niin suuri yksikkö että helpommin käsiteltäviä lukuja saadaan käyttämällä yksikkönä joko 
+g/mol (yleisin) tai kg/kmol.
+
 \chapter{Yksinkertaisia johdannaissuureita} % --------------------------------------------------------------------
 
 \section{Aikaderivaattasuureet} % ................................................................
@@ -327,17 +402,23 @@ Yksiulotteisen sijainnin muutoksen suhde ajan muutokseen on \textbf{vauhti $|\ve
  v = \frac{\Delta s}{\Delta t}
 \end{equation}
 
-Jos vauhti halutaan mielivaltaisen lyhyenä ajanhetkenä tämä lähestyy aikaderivaattaa:
+Jos vauhti halutaan hetkellisesti eli mielivaltaisen lyhyenä ajanhetkenä tämä lähestyy aikaderivaattaa:
 
 \begin{equation}
  v = \frac{ds}{dt}
 \end{equation}
 
-Kun tämä siiretään kolmiulotteiseen avaruuteen paikkavektorin $\vec{r}$ derivaataksi saadaan \textbf{nopeus $\vec{v}$} 
+Kun tämä siirretään kolmiulotteiseen avaruuteen paikkavektorin $\vec{r}$ derivaataksi saadaan \textbf{nopeus $\vec{v}$} 
 joka on siis myös vektorisuure:
 
 \begin{equation}
  \vec{v} = \frac{d\vec{r}}{dt}
+\end{equation}
+
+Aikaderivaattaa on usein tapana merkitä pisteellä:
+
+\begin{equation}
+ \vec{v} = \frac{d\vec{r}}{dt} = \dot{\vec{r}}
 \end{equation}
 
 Nopeuden yksiköksi tulee sama kuin vauhdinkin eli
@@ -346,38 +427,121 @@ Nopeuden yksiköksi tulee sama kuin vauhdinkin eli
  [v] = \left[\frac{ds}{dt}\right] = \left[\frac{s}{t}\right] = \frac{m}{s}
 \end{equation}
 
-% aikaderivaatan pistemerkintä & ``virta''
-
 \subsection{Kiihtyvyys \={a}}
+
+Vauhdin muutos ajan suhteen on \textbf{kiihtyvyys $|\vec{a}|$}:
+
+\begin{equation}
+ a = \frac{\Delta v}{\Delta t}
+\end{equation}
+
+Jos vauhti halutaan hetkellisesti eli mielivaltaisen lyhyenä ajanhetkenä tämä lähestyy aikaderivaattaa:
+
+\begin{equation}
+ a = \frac{dv}{dt}
+\end{equation}
+
+Kolmiulotteisessa avaruudessa nopeusvektorin $\vec{v}$ derivaataksi saadaan \textbf{kiihtyvyysvektori $\vec{a}$}:
+
+\begin{equation}
+ \vec{a} = \frac{d\vec{v}}{dt} = \dot{\vec{v}} = \ddot{\vec{r}}
+\end{equation}
+
+Kiihtyvyyden yksikkö on
+
+\begin{equation}
+ [a] = \left[\frac{dv}{dt}\right] = \left[\frac{d^2s}{dt^2}\right] = \left[\frac{s}{t^2}\right] = \frac{m}{s^2}
+\end{equation}
 
 \subsection{Tilavuusvirta \.{V}}
 
+Kun halutaan tietää, kuinka suuri tilavuus kulkee jonkin pinnan läpi aikayksikössä voidaan 
+se määrittää vastaavalla menettelyllä kuin nopeus. Keskimääräinen \textbf{tilavuusvirta} $\dot{V}$ on
+
+\begin{equation}
+ \dot{V} = \frac{\Delta V}{\Delta T}
+\end{equation}
+
+ja hetkellinen
+
+\begin{equation}
+ \dot{V} = \frac{dV}{dt}
+\end{equation}
+
+Tilavuusvirran SI-yksikkö on
+
+\begin{equation}
+ [\dot{V}] = \left[\frac{dV}{dt}\right] = \left[\frac{V}{t}\right] = \frac{m^3}{s}
+\end{equation}
+
+Tämänkaltaisista aikaderivoiduista suureista, jotka eivät ole nopeutta, kiihtyvyyttä eivätkä mekaanista tai
+lämpötehoa on tapana käyttää \textbf{virta}-nimitystä.
+
 \subsection{Moolivirta \.{n}}
+
+Pinnan läpi aikayksikössä menevä ainemäärä on \textbf{moolivirta} $\dot{n}$:
+
+\begin{align}
+ &\dot{n} = \frac{\Delta n}{\Delta t}\\ 
+ &\dot{n} = \frac{dn}{dt}\\
+ &[\dot{n}] = \left[\frac{dn}{dt}\right] = \left[\frac{n}{t}\right] = \frac{mol}{s}
+\end{align}
 
 \subsection{Massavirta \.{m}}
 
+Pinnan läpi aikayksikössä menevä massa on \textbf{massavirta} $\dot{m}$:
+
+\begin{align}
+ &\dot{m} = \frac{\Delta m}{\Delta t}\\ 
+ &\dot{m} = \frac{dm}{dt}\\
+ &[\dot{m}] = \left[\frac{dm}{dt}\right] = \left[\frac{m}{t}\right] = \frac{kg}{s}
+\end{align}
+
 \section{Ekstensiivi- ja intensiivisuureet} %...............................................
+
+\textbf{Ekstensiivisuureet} ovat suureita, joiden arvo riippuu systeemin koosta\footnote{``extent''} eli 
+massasta tai ainemäärästä. Tyypillinen ekstensiivisuure on tilavuus $V$. \textbf{Intensiivisuureiden} arvot 
+taas eivät riipu systeemin koosta. Tyypillisiä intensiivisuureita ovat paine $p$ ja lämpötila $T$.
 
 \subsection{Ominaissuureet}
 
+Intensiivisuureet ovat siinä mielessä toivottavampia, että niiden käyttö ei vaadi systeemin koon 
+selvittämistä tai kiinnittämistä. Niistä saadaan jopa skalaarikenttiä (esim. $T(\vec{r}, t)$). 
+
+Onneksi 
+ekstensiivisuureet voidaan muuttaa intensiivisuureiksi jakamalla ne systeemin massalla. Näin 
+syntyviä intensiivisuureita kutsutaan \textbf{ominaissuureiksi} ja merkitään vastaavaa ekstensiivisuureen 
+suurta vastaavalla pienellä kirjaimella. Esimerkiksi ominaistilavuus on
+
+\begin{align}
+ &v = \frac{V}{m}\\
+ &[v] = \left[\frac{V}{m}\right] = \frac{m^3}{kg}
+\end{align}
+
+ja ominaissisäenergia
+
+\begin{align}
+ &u = \frac{U}{m}\\
+ &[u] = \left[\frac{U}{m}\right] = \frac{J}{kg}
+\end{align}
+
 \subsection{Molaariset ominaissuureet}
 
-\subsection{Moolimassa M}
+Toinen vaihtoehto ekstensiivisuureiden muuntamiseksi intensiivisiksi on niiden jakaminen systeemin 
+ainemäärällä sen massan sijaan. Näin saadaan \textbf{molaarisia ominaissuureita}, joita merkitään 
+alaindeksillä $m$. Esimerkiksi moolitilavuus on
 
-Systeemin massa ja ainemäärä riippuvat toisistaan \textbf{Moolimassan M} kautta:
+\begin{align}
+ &V_m = \frac{V}{n}\\
+ &[V_m] = \left[\frac{V}{n}\right] = \frac{m^3}{mol}
+\end{align}
 
-\begin{equation}
- M = \frac{m}{n}
-\end{equation}
+ja molaarinen sisäenergia
 
-Moolimassan SI-yksiköksi tulee
-
-\begin{equation}
- [M] = \left[\frac{m}{n}\right] = \frac{[m]}{[n]} = \frac{kg}{mol}
-\end{equation}
-
-Tämä on kuitenkin niin suuri yksikkö että helpommin käsiteltäviä lukuja saadaan käyttämällä yksikkönä joko 
-g/mol (yleisin) tai kg/kmol.
+\begin{align}
+ &U_m = \frac{U}{n}\\
+ &[U_m] = \left[\frac{U}{n}\right] = \frac{J}{mol}
+\end{align}
 
 \chapter{Monimutkaisempia johdannaissuureita} % ------------------------------------------------------------------
 
@@ -408,6 +572,19 @@ Tämä voiman eksakti muoto kuvaa vain sitä mitä arkikielen voima-sanakin: ``v
 ja mitä nopeammin materiaa joudutaan kiihdyttämään (tai hidastamaan, $ a < 0$).
 
 \section{Paine p} %....................................................................
+
+\textbf{Paineella} $p$ tarkoitetaan yksinkertaisimmillaan voimaa jaettuna pinta-alalle, jolle se kohdistuu.
+Paineen SI-yksikkö on Pascal $Pa$.
+
+\begin{align}
+ &p = \frac{|\vec{F}|}{A}\\
+ &[p] = \left[\frac{|\vec{F}|}{A}\right] = \frac{N}{m^2} = Pa
+\end{align}
+
+Virtausaineissa tilanne ei kuitenkaan ole näin yksinkertainen. Paine voidaan nimittäin määrittää 
+mille tahansa virtausaineen reunoilla tai sen sisällä olevalle todelliselle tai kuvitteelliselle pinnalle. 
+Itse asiassa virtausopissa paine voidaan (infinitesimaalisten kontrollitilavuuksien $dV$ avulla) määrittää
+virtausaineen jokaiselle pisteelle eli $p = p(\vec{r}, t)$).
 
 \section{Työ W} \label{def:W}%......................................................................
 
@@ -457,6 +634,8 @@ reitin $S$ tekee voima kaavasta \ref{eq:W} laskettavissa olevan määrän työt�
 
  Huomioi, että tämä ei vaadi, että 
 juuri voima $\vec{F}$ aiheuttaisi kappaleen liikkeen.
+
+% Teho
 
 \part{Termodynamiikka} % _____________________________________________________________________________________
 \setcounter{chapter}{0}
