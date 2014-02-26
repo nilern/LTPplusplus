@@ -655,7 +655,7 @@ korostan myös tehon yhteyttä työhön (lämmön sijasta).
 \setcounter{chapter}{0}
 
 % "Lämmön liikkeet", "energian tiede"
-~\cite{4laws}~\cite{stattherintro}~\cite{thermoeng}~\cite{ltp1}
+~\cite{4laws}~\cite{stattherintro}~\cite{thermoeng}~\cite{ltp1}~\cite{fyskem}
 
 \chapter{Klassinen ja tilastollinen termodynamiikka} %--------------------------------------------------------
 
@@ -1300,7 +1300,7 @@ koostuva ``\textbf{konvektiivinen lämmönsiirto}''.}.
 \end{itemize}
 
 Lämpö siirtyy aina korkeammasta lämpötilasta matalampaan. Kuten myöhemmin selviää, tämä 
-on seurausta termodynamiikan II pääsäännöstä. Aina kun lämpöä siirtyy, joko systeemin tai 
+on seurausta termodynamiikan toisesta pääsäännöstä. Aina kun lämpöä siirtyy, joko systeemin tai 
 ympäristön entropia ja sen myötä maailmankaikkeuden epäjärjestys kasvaa.
 Tähän liittyen lämpö on ``epäjärjestynyttä energiaa'', jolla voidaan tehdä vähemmän 
 erilaisia asioita kuin työllä.
@@ -1322,7 +1322,7 @@ entropia muutu.
 
 Työ voidaan muuttaa myös sisäenergian kautta kokonaan lämmöksi. Lämpöä taas ei voida 
 (sisäenergiankaan kautta) muuttaa kokonaan työksi, koska se rikkoisi termodynamiikan 
-II pääsääntöä.
+toista pääsääntöä.
 
 \chapter{Tasapaino ja epätasapaino} %---------------------------------------------------------
 
@@ -1353,7 +1353,7 @@ Lämmön siirtymättömyys johtuu termodynamiikan toisesta pääsäännöstä.
 
 \section{Termodynaaminen tasapaino}
 
-Systeemit ovat \textf{termodynaamisessa tasapainossa}, kun ne ovat sekä mekaanisessa että 
+Systeemit ovat \textbf{termodynaamisessa tasapainossa}, kun ne ovat sekä mekaanisessa että 
 termisessä tasapainossa eli niiden välillä ei siirry työtä eikä lämpöä ja niillä on sama 
 paine ja lämpötila:
 
@@ -1382,7 +1382,7 @@ hetki tulee ja siitä lähtee samat määrät massaa ja energiaa:
 Suljetulle systeemille tarvitaan pelkkä energiatase:
 
 \begin{equation}
- &\sum\dot{Q} + \sum\dot{W} = 0
+ \sum\dot{Q} + \sum\dot{W} = 0
 \end{equation}
 
 \chapter{Tilasuureet} \label{chapter:tilasuureet} % ------------------------------------------
@@ -1395,6 +1395,12 @@ eivätkä siitä millaisella prosessilla näihin arvoihin on tultu kutsutaan til
     \textbf{tilavuus V}, \textbf{sisäenergia U} sekä \textbf{entropia S}.
  \item Keskeisiä ovat myös näiden johdannaissuureet \textbf{entalpia H}, 
   \textbf{Helmhotzin vapaaenergia F} sekä \textbf{Gibbsin vapaaenergia G}.
+\end{itemize}
+
+\begin{itemize}
+ \item Tilasuureista helposti mitattavissa ovat paine $p$, lämpötila $T$ ja tilavuus $V$.
+ \item Sisäenergia johdannaisineen ($U, H, F, G$) sekä entropia $S$ ovat käytännössä 
+  mahdottomia mitata suoraan. Teoriassa ja laskelmissa niidenkin rooli on kuitenkin keskeinen.
 \end{itemize}
 
 Mikä tahansa funktio, joka sisältää vain tilasuureita, massaa ja ainemäärää on myös tilasuure. 
@@ -1490,6 +1496,10 @@ Voimme edelleen määritellä \textit{kaasukohtaisen kaasuvakion} $R$\footnote{K
 kaasukohtaista kaasuvakiota ei juurikaan esiinny, joten \underline{yleistä kaasuvakiota} merkitään 
 vain $R$:llä.}:
 
+\begin{equation}
+  R = \frac{R_u}{M}
+\end{equation}
+
 \begin{framed}
 \begin{equation}
 \label{eq:pVmRT}
@@ -1502,15 +1512,14 @@ Aina ei massaakaan tiedetä tai muusta syystä on kätevintä toimia ominaissuur
 
 \begin{framed}
 \begin{equation}
-\label{eq:pVmRT}
  pv = RT
 \end{equation}
 \end{framed}
 
-Joskus saatetaan vielä korvata ominaistilavuus tiheydellä. Nehän ovat käänteislukuja ($v = \frac{1}{\rho}$):
+Joskus saatetaan vielä korvata ominaistilavuus tiheydellä. Nehän ovat käänteislukuja 
+($v = \frac{V}{m} = \frac{1}{\frac{m}{V}} = \frac{1}{\rho}$):
 
 \begin{equation}
-\label{eq:pVmRT}
  \frac{p}{\rho} = RT
 \end{equation}
 
