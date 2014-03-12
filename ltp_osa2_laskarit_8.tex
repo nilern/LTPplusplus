@@ -1,0 +1,218 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Virtausoppi\\Laskuharjoituksen 8 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 1}
+
+Tulos 2.5:
+
+\begin{framed}
+ \begin{equation}
+  u(r) = \frac{dp}{dx}\frac{1}{4\eta}(R^2 - r^2)
+ \end{equation}
+\end{framed}
+
+\begin{equation}
+ \rightarrow : \quad F_p(x) + F_{\tau}(dx) - F_p(x + dx) = 0
+\end{equation}
+
+\begin{align}
+ &F_p(x) = p(x)A_p = p(x)(\pi r^2)\\
+ &F_p(x + dx) = p(x + dx)A_p = p(x + dx)(\pi r^2)\\
+ &F_p(x + dx) = \left(p(x) + \frac{\partial p}{\partial x}dx\right)(\pi r^2) = \left(p(x) + \frac{dp}{dx}dx\right)(\pi r^2)\\
+ &F_{\tau}(dx) = \tau A_v = \tau(2\pi r dx)
+\end{align}
+
+\begin{align}
+ &p(x)(\pi r^2) + \tau(2\pi r dx) - \left(p(x) + \frac{dp}{dx}dx\right)(\pi r^2) = 0\\
+ &\left(p(x) - \left(p(x) + \frac{dp}{dx}dx\right)\right)(\pi r^2) + \tau(2\pi r dx) = 0\\
+ &\left(-\frac{dp}{dx}dx\right)(\pi r^2) + \tau(2\pi r dx) = 0\\
+ &-\frac{dp}{dx}r + 2\tau = 0 \quad \bigg|\bigg| \quad \tau = \eta\frac{\partial u}{\partial r} = \eta\frac{du}{dr}\\
+ &-\frac{dp}{dx}r + 2\eta\frac{du}{dr} = 0\\
+ &\frac{du}{dr} = \frac{1}{2\eta}\frac{dp}{dx}r \quad \bigg|\bigg| \quad \text{separointi } ()\cdot dr\\
+ &du = \frac{1}{2\eta}\frac{dp}{dx}rdr \quad \bigg|\bigg| \quad \text{integrointi puolittain } \int ()\\
+ &\int du = \int\frac{1}{2\eta}\frac{dp}{dx}rdr\\
+ &u(r) + C_1 = \frac{1}{2\eta}\frac{dp}{dx}\int rdr = \frac{1}{2\eta}\frac{dp}{dx}\frac{1}{2}r^2 + C_2 = \frac{dp}{dx}\frac{1}{4\eta}r^2 + C_2\\
+ &u(r) = \frac{dp}{dx}\frac{1}{4\eta}r^2 + C \quad \bigg|\bigg| \quad C = C_2 - C_1
+\end{align}
+
+1 vakio $\rightarrow$ 1 reunaehto:
+
+\begin{equation}
+ u(R) = 0
+\end{equation}
+
+\begin{align}
+ &u(R) = \frac{dp}{dx}\frac{1}{4\eta}R^2 + C = 0\\
+ &C = -\frac{dp}{dx}\frac{1}{4\eta}R^2
+\end{align}
+
+\begin{equation}
+ u(r) = \frac{dp}{dx}\frac{1}{4\eta}r^2 + C = \frac{dp}{dx}\frac{1}{4\eta}r^2 - \frac{dp}{dx}\frac{1}{4\eta}R^2
+  = \frac{dp}{dx}\frac{1}{4\eta}(r^2 - R^2)
+\end{equation}
+
+Jotta virtaus etenee positiiviseen x-suuntaan, on painegradientin $\frac{dp}{dx}$ oltava negatiivinen. Mikäli kuitenkin 
+ilmoitetaan painegradientin itseisarvo täytyy olla $\left(\frac{dp}{dx}\right)_{kaava} = -\left(\frac{dp}{dx}\right)_{ilmoitettu}$. Siis:
+
+\begin{equation}
+ u(r) = \frac{dp}{dx}\frac{1}{4\eta}(r^2 - R^2) = -\left(\frac{dp}{dx}\right)_{ilmoitettu}\frac{1}{4\eta}(r^2 - R^2)
+\end{equation}
+
+\begin{framed}
+ \begin{equation}
+  u(r) = \frac{dp}{dx}\frac{1}{4\eta}(R^2 - r^2) \square
+ \end{equation}
+\end{framed}
+
+\section{Tehtävä 5}
+
+\subsection{a}
+
+\begin{align}
+ &A = \pi r^2 = \pi \left(\frac{d}{2}\right)^2 = \frac{\pi}{4}d^2\\
+ &P = \pi d\\
+ &d_h = \frac{4A}{P} = \frac{4\frac{\pi}{4}d^2}{\pi d} = \underline{d}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &A = a^2\\
+ &P = 4a\\
+ &d_h = \frac{4A}{P} = \frac{4a^2}{4a} = \underline{a}
+\end{align}
+
+\subsection{c}
+
+\begin{equation}
+ A = \frac{1}{2}ah
+\end{equation}
+
+\begin{align}
+ & a^2 = \left(\frac{a}{2}\right)^2  + h^2\\
+ & h = \sqrt{a^2 - \left(\frac{a}{2}\right)^2} = \sqrt{a^2 - \left(\frac{a^2}{4}\right)} = \sqrt{\frac{3}{4}a^2} = \frac{\sqrt{3}}{2}a
+\end{align}
+
+\begin{align}
+ &A = \frac{1}{2}ah = \frac{1}{2}a\frac{\sqrt{3}}{2}a = \frac{\sqrt{3}}{4}a^2\\
+ &P = 3a\\
+ &d_h = \frac{4A}{P} = \frac{4\frac{\sqrt{3}}{4}a^2}{3a} = \underline{\frac{\sqrt{3}}{3}a} = \frac{a}{\sqrt{3}}
+\end{align}
+
+\subsection{d}
+
+\begin{align}
+ &A = 2hb\\
+ &P = 4h + 2b \approx 2b \quad \bigg|\bigg| \quad b >> h\\
+ &d_h = \frac{4A}{P} = \frac{4\cdot 2hb}{2b} = \underline{4h}
+\end{align}
+
+\section{Tehtävä 3}
+
+Sivun 6 tulos:
+
+\begin{framed}
+ \begin{equation}
+  u(y) = \frac{U}{s}y - \frac{1}{2\eta}\left(\frac{dp}{dx} - \rho g\sin \theta \right)(sy - y^2)
+ \end{equation}
+\end{framed}
+
+Tässä h on vaihdettu s:ksi. Nyt ylempi levy ei liiku suhteessa alempaan eli $U = 0$ ja rako on 
+vaakatasossa eli $\theta = 0 \Rightarrow \sin\theta = 0$:
+
+\begin{equation}
+ u(y) = - \frac{1}{2\eta}\frac{dp}{dx}(sy - y^2)
+\end{equation}
+
+\begin{align}
+  &\bar{u} = \frac{1}{A}\int_0^A u(y)dA = \frac{1}{sb}\int_0^s u(y)bdy = \frac{b}{sb}\int_0^s u(y)dy\\ 
+  &\bar{u} = \frac{1}{s}\int_0^s u(y)dy = \frac{1}{s}\int_0^s - \frac{1}{2\eta}\frac{dp}{dx}(sy - y^2)dy\\ 
+  &\bar{u} = - \frac{1}{2s\eta}\frac{dp}{dx}\int_0^s (sy - y^2)dy = - \frac{1}{2s\eta}\frac{dp}{dx}\bigg/_0^s \left(\frac{s}{2}y^2 - \frac{1}{3}y^3\right)\\ 
+  &\bar{u} = - \frac{1}{2s\eta}\frac{dp}{dx}\left( \left(\frac{s^3}{2} - \frac{s^3}{3}\right) - 0 \right) 
+    = - \frac{1}{2s\eta}\frac{dp}{dx}\left(\frac{1}{2} - \frac{1}{3}\right)s^3\\
+  &\bar{u} = - \frac{1}{2\eta}\frac{dp}{dx}\left(\frac{3}{6} - \frac{2}{6}\right)s^2 = -\frac{1}{2\eta}\frac{dp}{dx}\frac{1}{6}s^2\\ 
+\end{align}
+
+\begin{framed}
+ \begin{equation}
+  \label{eq:u_avg}
+  \bar{u} = V = -\frac{1}{12\eta}\frac{dp}{dx}s^2
+ \end{equation}
+\end{framed}
+
+\section{Tehtävä 4}
+
+\subsection{a}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 0,040m & d = 0,020m & s = \frac{e}{2} = 1\cdot10^{-5}m\\
+  \Delta p = p_2 - p_1 = -(p_1 - p_2) = -10^7Pa & \eta = 0,08\frac{kg}{ms} &
+ \end{array}
+\end{math}
+
+\begin{equation}
+ \dot{V} = \int_0^A u(y) dA = A\frac{1}{A}\int_0^Au(y)dA = A\frac{1}{s}\int_0^su(y)dy = A\bar{u}(y)
+\end{equation}
+
+Kuten tehtävänannossa sanottiin, rako voidaan ``levittää'' kahden tasolevyn väliseksi, koska $s << d$. 
+Voidaan siis käyttää keskinopeudelle $\bar{u}(y)$ tehtävässä 3 saatua lauseketta \ref{eq:u_avg}:
+
+\begin{align}
+ &\dot{V} = \pi sd\left(-\frac{1}{12\eta}\frac{dp}{dx}s^2\right) = -\frac{\pi d}{12\eta}\frac{dp}{dx}s^3
+   \quad \bigg|\bigg| \quad \frac{dp}{dx} \approx \frac{\Delta p}{L}\\
+ &\dot{V} = -\frac{\pi d}{12\eta}\frac{\Delta p}{L}s^3 \approx \underline{1,63\cdot 10^{-8}\frac{m^3}{s}}
+\end{align}
+
+
+\end{document}
