@@ -1,0 +1,343 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Virtausoppi\\Laskuharjoituksen 9 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 46}
+
+\begin{math}
+ \begin{array}{l l l l}
+  R = \frac{d}{2} = 2,5 cm & u_a = 2\frac{m}{s} & T_a = 40 \,^{\circ}C & T_b = 20 \,^{\circ}C\\
+  \rho = 1000 \frac{kg}{m^3} & c_p = 4200 \frac{J}{kg}
+ \end{array}
+\end{math}
+
+\begin{equation}
+ u(r) = u_a\left(1 - \left(\frac{r}{R}\right)^2\right)
+\end{equation}
+
+\begin{equation}
+ T(r) = T_a + T_b\left(\frac{r}{R}\right)^2
+\end{equation}
+
+\subsection{a} \label{46a}
+
+\begin{framed}
+ \begin{equation}
+  V = \bar{u} = \frac{1}{A}\int_0^AudA
+ \end{equation}
+\end{framed}
+
+\begin{align}
+ &A = \pi R^2\\
+ &u = u(r) = u_a\left(1 - \left(\frac{r}{R}\right)^2\right)\\
+ &dA \approx 2\pi rdr \quad \bigg|\bigg| \quad \text{Rengasmainen pinta-ala-alkio}
+\end{align}
+
+\begin{align}
+ &\bar{u} = \frac{1}{\pi R^2}\int_0^Ru_a\left(1 - \left(\frac{r}{R}\right)^2\right)
+   2\pi rdr\\
+ &\bar{u} = \frac{2u_a}{R^2}\int_0^R\left(r - \frac{r^3}{R^2}\right)dr\\
+ &\bar{u} = \frac{2u_a}{R^2}\bigg/_0^R\left(\frac{1}{2}r^2 - \frac{1}{4R^2}r^4\right)\\
+ &\bar{u} = \frac{2u_a}{R^2}\left(\left(\frac{1}{2}R^2 - \frac{1}{4R^2}R^4\right) - 
+   \left(\frac{1}{2}0^2 - \frac{1}{4R^2}0^4\right)\right)\\
+ &\bar{u} = \frac{2u_a}{R^2}\left(\frac{1}{2}R^2 - \frac{1}{4}R^2\right)
+   = \frac{2}{4}u_a = \frac{u_a}{2} \approx \underline{1 \frac{m}{s}}
+\end{align}
+
+\subsection{b} \label{46b}
+
+\begin{framed}
+ \begin{align}
+  &T_m = \frac{1}{AV}\int_0^AuTdA\\
+  &\bar{T} = \frac{1}{A\bar{u}}\int_0^AuTdA
+ \end{align}
+\end{framed}
+
+\begin{align}
+ &A = \pi R^2\\
+ &u = u(r) = u_a\left(1 - \left(\frac{r}{R}\right)^2\right)\\
+ &T = T(r) = T_a + T_b\left(\frac{r}{R}\right)^2\\
+ &dA \approx 2\pi rdr
+\end{align}
+
+\begin{align}
+  &\bar{T} = \frac{1}{\pi R^2\bar{u}}\int_0^Ru_a\left(1 - \left(\frac{r}{R}\right)^2\right)
+   \left(T_a + T_b\left(\frac{r}{R}\right)^2\right)2\pi rdr\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\int_0^R\left(r - \frac{r^3}{R^2}\right)
+   \left(T_a + T_b\left(\frac{r}{R}\right)^2\right) dr\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\int_0^R\left(T_a\left(r - \frac{r^3}{R^2}\right)
+   + T_b\left(\frac{r}{R}\right)^2\left(r - \frac{r^3}{R^2}\right)\right)dr\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\int_0^R\left(T_ar - T_a\frac{r^3}{R^2}
+   + T_b\frac{r^3}{R^2} - T_b\frac{r^5}{R^4}\right)dr\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\int_0^R\left(- T_b\frac{r^5}{R^4} 
+   + (T_b - T_a)\frac{r^3}{R^2} + T_ar\right)dr
+\end{align}
+
+\begin{align}
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\bigg/_0^R\left(-\frac{T_b}{6R^4}r^6 
+   + \frac{T_b - T_a}{4R^2}r^4 + \frac{T_a}{2}r^2\right)\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\left(\left(-\frac{T_b}{6R^4}R^6 
+   + \frac{T_b - T_a}{4R^2}R^4 + \frac{T_a}{2}R^2\right)
+   - \left(-\frac{T_b}{6R^4}0^6 
+   + \frac{T_b - T_a}{4R^2}0^4 + \frac{T_a}{2}0^2\right)\right)\\
+  &\bar{T} = \frac{2u_a}{R^2\bar{u}}\left(-\frac{T_b}{6}R^2 
+   + \frac{T_b - T_a}{4}R^2 + \frac{T_a}{2}R^2\right)\\
+  &\bar{T} = \frac{2u_a}{\bar{u}}\left(-\frac{T_b}{6} 
+   + \frac{T_b - T_a}{4} + \frac{T_a}{2}\right)\\
+  &\bar{T} = \frac{2u_a}{\bar{u}}\left(\left(\frac{1}{4} -\frac{1}{6}\right)T_b 
+   + \left(\frac{1}{2} - \frac{1}{4}\right)T_a\right)\\
+  &\bar{T} = \frac{2u_a}{\bar{u}}\left(\left(\frac{6}{24} -\frac{4}{24}\right)T_b 
+   + \left(\frac{2}{4} - \frac{1}{4}\right)T_a\right)\\
+  &\bar{T} = \frac{2u_a}{\bar{u}}\left(\frac{1}{12}T_b + \frac{1}{4}T_a\right)
+   \approx \underline{46,7 \,^{\circ}C}
+\end{align}
+
+\subsection{c}
+
+Kohtien \nameref{46a} ja \nameref{46b} tuloksia hyödyntäen:
+
+\begin{align}
+ &\dot{Q} = \dot{H} = \dot{m}\bar{h} = \dot{m}c_p\bar{T} = \rho A\bar{u}c_p\bar{T}\\
+ &\dot{Q} = \dot{H} = \rho c_p\pi R^2\bar{u}\bar{T} \approx \underline{385kW}
+\end{align}
+
+Suoraan integroimalla:
+
+\begin{align}
+ &d\dot{Q} = d\dot{H} = hd\dot{m} = c_pT\rho dAu = \rho c_p uTdA\\
+ &\dot{Q} = \int_0^{\dot{Q}}d\dot{Q} = \int_0^{\dot{H}}d\dot{H} 
+  = \int_0^A\rho c_p uTdA\\
+ &\dot{Q} = \rho c_p\int_0^A uTdA \quad \bigg|\bigg| \quad 
+  \begin{aligned}
+   &\text{Integrointi kuten \nameref{46b}:ssä,}\\&\text{mutta edessä eri vakiot.}
+  \end{aligned}\\
+ &\dot{Q} = \rho c_p \pi R^2 2u_a\left(\frac{1}{12}T_b + \frac{1}{4}T_a\right)
+   \approx \underline{385kW}
+\end{align}
+
+\section{Tehtävä 6}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 0,5m & d = 0,01m & \\
+  \rho = 1,189 \frac{kg}{m^3} & \nu = 1,5\cdot 10^{-5}\frac{m^2}{s} & Re = 2000
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\xi_{eff} = \frac{\dfrac{\partial p}{\partial x}}{\dfrac{\frac{1}{2}\rho \bar{u}^2}{D}}
+  \approx \frac{\Delta p/L}{\frac{1}{2}\rho \bar{u}^2/d}\\
+ &\Delta p = \xi_{eff}\frac{L}{d}\frac{1}{2}\rho \bar{u}^2
+\end{align}
+
+\begin{align}
+ &Re_d = \frac{\bar{u}d}{\nu} \Leftrightarrow \bar{u} = \frac{\nu}{d}Re_d \approx 3 \frac{m}{s}\\
+ &\xi_{eff} = 4f_{eff}\\
+ &f_{eff}Re_d = g\left(\frac{Re_dd}{L}\right) \quad \bigg|\bigg| \quad 
+  \text{kaavakokoelman sivu 6}\\
+ &\frac{Re_dd}{L} \approx 40\\
+ &f_{eff}Re_d = g\left(\frac{Re_dd}{L}\right) \approx 27\\
+ &f_{eff} = \frac{27}{Re_d} \approx 0,014\\
+ &\xi_{eff} = 4f_{eff} \approx 0,056\\
+ &\Delta p = \xi_{eff}\frac{L}{d}\frac{1}{2}\rho \bar{u}^2 \approx \underline{14,58 Pa}
+\end{align}
+
+\section{Tehtävä 7}
+
+\begin{equation}
+ \dot{V} = \int_0^AudA
+\end{equation}
+
+Kuten tavallista, ensimmäinen selvitettävä asia on siis nopeuskenttä $u(r, y)$. Koska 
+putki on pitkä $l >>d$, ei kertavastuksia tai kehittymistä tarvitse huomioida ja voidaan 
+siis olettaa että joka kohdassa $u = u(r)$.
+
+\begin{align}
+ \uparrow: \quad &F_{\tau 1} - F_{\tau 2} - G = 0\\
+ &F_{\tau}(r) - F_{\tau}(r + dr) - G = 0\\
+ &F_{\tau}(r) - \left(F_{\tau}(r) + \frac{\partial F_{\tau}(r)}{\partial r}dr\right) - G = 0\\
+ &- \frac{\partial F_{\tau}(r)}{\partial r}dr - G = 0\\
+ &\frac{\partial F_{\tau}(r)}{\partial r}dr + G = 0
+\end{align}
+
+\begin{align}
+ &F_{\tau}(r) = \tau(r)A_v(r) = \tau(r)2\pi rdy\\
+ &G = gdm(r) = \rho g dV(r) = \rho g dA_p(r)dy = \rho g 2\pi r drdy
+\end{align}
+
+\begin{align}
+ &\frac{\partial(\tau(r)2\pi rdy)}{\partial r}dr + \rho g 2\pi r drdy = 0\\
+ &2\pi dydr\frac{\partial(\tau(r)r)}{\partial r} + \rho g 2\pi r drdy = 0\\
+ &\frac{\partial(\tau(r)r)}{\partial r} + \rho g r = 0\\
+ &\frac{d(\tau(r)r)}{dr} + \rho gr = 0 \quad \bigg|\bigg| \quad \tau(r) 
+  = \eta\frac{dv}{dr}\\
+ &\frac{d\left(\eta\frac{dv}{dr}r\right)}{dr} + \rho gr = 0\\
+ &\eta\frac{d}{dr}\left(\frac{dv}{dr}r\right) + \rho gr = 0\\
+ &\frac{d}{dr}\left(\frac{dv}{dr}r\right) = -\frac{\rho g}{\eta}r\\
+ &d\left(\frac{dv}{dr}r\right) = -\frac{\rho g}{\eta}rdr\\
+ &\int d\left(\frac{dv}{dr}r\right) = -\int\frac{\rho g}{\eta}rdr 
+  = -\frac{\rho g}{\eta}\int rdr\\
+ &\frac{dv}{dr}r = -\frac{\rho g}{2\eta}r^2 + C_1\\
+ &\frac{dv}{dr} = -\frac{\rho g}{2\eta}r + \frac{C_1}{r}
+\end{align}
+
+\begin{align}
+ &dv =  \left(-\frac{\rho g}{2\eta}r + \frac{C_1}{r}\right)dr\\
+ &\int dv = \int\left(-\frac{\rho g}{2\eta}r + \frac{C_1}{r}\right)dr\\
+ &v(r) = -\frac{\rho g}{4\eta}r^2 + C_1\ln r + C_2
+\end{align}
+
+Kaksi integroimisvakiota $\Rightarrow$ tarvitaan kaksi reunaehtoa:
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &v(R) = 0\\
+  &\frac{dv}{dr}\bigg|_{r=0} = 0
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &v(R) = -\frac{\rho g}{4\eta}R^2 + C_1\ln R + C_2 = 0\\
+  &r\frac{dv}{dr}\bigg|_{r=0} = -\frac{\rho g}{2\eta}0^2 + C_1 = 0 \Leftrightarrow C_1 = 0
+ \end{aligned}\right.\\
+  &v(R) = -\frac{\rho g}{4\eta}R^2 + C_2 = 0\\
+  &C_2 = \frac{\rho g}{4\eta}R^2
+\end{align}
+
+Nopeuskenttä on nyt saatu ratkaistua:
+
+\begin{equation}
+ v(r) = -\frac{\rho g}{4\eta}r^2 + \frac{\rho g}{4\eta}R^2 = \frac{\rho g}{4\eta}(R^2 - r^2)
+\end{equation}
+
+\begin{align}
+  &\dot{V} = \int_0^AudA = \int_0^R\frac{\rho g}{4\eta}(R^2 - r^2)2\pi rdr
+   = \frac{\pi\rho g}{2\eta}\int_0^R(R^2r - r^3) dr\\
+  &\dot{V} = \frac{\pi\rho g}{2\eta}\bigg/_0^R\left(\frac{R^2}{2}r^2 - \frac{1}{4}r^4\right)
+   = \frac{\pi\rho g}{2\eta}\left(\frac{R^4}{2} - \frac{R^4}{4}\right)r\\
+  &\dot{V} = \frac{\pi\rho g}{8\eta}R^4
+\end{align}
+
+Tulos \underline{ei riipu putken pituudesta $l$}, mutta tämä oli oikeastaan selvää siitä 
+lähtien kun oletettiin, että $v = v(r)$.
+
+\section{Tehtävä 8}
+
+\begin{math}
+ \begin{array}{l l l}
+  s = 10^{-4}m & t = 0,003m & \theta = 10\,^{\circ} = \frac{10\,^{\circ}}{180\,^{\circ}}\pi = \frac{\pi}{18}\\
+  \rho = 1000\frac{kg}{m^3} & \eta = 0,001\frac{kg}{ms} & \rho_L = 2500\frac{kg}{m^3}
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\frac{d^2u}{dy^2} = \frac{1}{\eta}\frac{dp}{dx} -\frac{\rho g}{\eta}\sin\theta
+  \quad \bigg|\bigg| \quad \text{Tulos 2.17, prujun sivu 6}\\
+ &\frac{d^2u}{dy^2} = -\frac{\rho g}{\eta}\sin\theta \quad \bigg|\bigg| \quad \text{Koska } \frac{dp}{dx} = 0\\
+ &\frac{du}{dy} = \int d\left(\frac{du}{dy}\right) = \int -\frac{\rho g}{\eta}\sin\theta dy
+  = -\frac{\rho g}{\eta}\sin\theta\int dy\\
+ &\frac{du}{dy} = -\frac{\rho g}{\eta}\sin\theta y + C_1\\
+ &u(y) = \int du = \int \left(-\frac{\rho g}{\eta}\sin\theta y + C_1\right)dy\\
+ &u(y) = -\frac{\rho g}{2\eta}\sin\theta y^2 + C_1y + C_2
+\end{align}
+
+Kaksi integroimisvakiota, kaksi reunaehtoa:
+
+\begin{equation}
+ \left\{
+ \begin{aligned}
+  &u(0) = 0\\
+  \rightarrow: \quad &G_{Lx} - F_{\tau}(s) = 0
+ \end{aligned}\right.
+\end{equation}
+
+\begin{align}
+ &G_L = mg = \rho_L V_L g = \rho_L tLW g\\
+ &G_{Lx} = G_L\sin\theta = \rho_L tLW g\sin\theta\\
+ &F_{\tau}(s) = \tau(s)A_L = \tau(s)LW = \eta \frac{du}{dy}\bigg|_{y=s}LW
+\end{align}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &u(0) = 0\\
+  &\rho_L tLW g\sin\theta - \eta \frac{du}{dy}\bigg|_{y=s}LW = 0
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &u(0) = 0\\
+  &\frac{du}{dy}\bigg|_{y=s} = \frac{\rho_L tg}{\eta} \sin\theta
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &u(0) = -\frac{\rho g}{2\eta}\sin\theta 0^2 + C_1\cdot0 + C_2 = 0\\
+  &\frac{du}{dy}\bigg|_{y=s} = -\frac{\rho g}{\eta}\sin\theta s + C_1 = \frac{\rho_L tg}{\eta} \sin\theta
+ \end{aligned}\right.
+\end{align}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &C_2 = 0\\
+  &C_1 = \frac{\rho_L t + \rho s}{\eta} g\sin\theta
+ \end{aligned}\right.
+\end{align}
+
+\begin{align}
+ &u(y) = -\frac{\rho g}{2\eta}\sin\theta y^2 + C_1y + C_2 = -\frac{\rho g}{2\eta}\sin\theta y^2 + \frac{\rho_L t + \rho s}{\eta} g\sin\theta y\\
+ &u(y) = \frac{g}{\eta}\sin\theta \left(-\frac{\rho}{2}y^2 + (\rho_L t + \rho s) y\right)\\
+ &U_L = u(s) = \frac{g}{\eta}\sin\theta \left(-\frac{\rho}{2}s^2 + (\rho_L t + \rho s) s\right)\\
+ &U_L = \frac{g}{\eta}\sin\theta \left(\left(\rho -\frac{\rho}{2}\right)s^2 + \rho_L t s\right)\\
+ &U_L = \frac{g}{\eta}\sin\theta \left(\frac{\rho}{2}s^2 + \rho_L t s\right) \approx \underline{1,29 \frac{m}{s}}
+\end{align}
+
+\end{document}
