@@ -162,10 +162,10 @@ tarvitaan myös sen määrittämiseen, miten suuren \textbf{mekaanisen tehon} $\
 pumppaaminen lämmönsiirtimen läpi vaatisi.
 
 Nämä kolme ovat siis keskeisimmät lämpötekniikassa tarvittavat tieteet. Tietenkään poikkitieteellisyys 
-ei välttämättä lopu vielä tähän. Esimerkiksi lämpötilaeron lämmönsiirtimen rakentaisiin kohdistamien 
-lämpörasitusten laskemiseen tarvittaisiin teknillistä mekaniikkaa. Usein voimalaitoksissa lämpö saadaan 
-joko polttoprosessista tai ydinreaktiosta, joiden analysoimiseen tarvitaan fysikaalista kemiaa tai 
-ydinfysiikkaa jne.
+ei välttämättä lopu vielä tähän. Esimerkiksi lämmönsiirtimen rakenteiden mitoittamiseen 
+lämpötilaeroista johtuvat mekaaniset rasitukset kestäviksi tarvittaisiin lujuuslaskentaa. Usein 
+voimalaitoksissa lämpö saadaan joko polttoprosessista tai ydinreaktiosta, joiden analysoimiseen 
+tarvitaan fysikaalista kemiaa tai ydinfysiikkaa jne.
 
 \section{Merkinnöistä} %................................................................
 
@@ -651,6 +651,7 @@ välttämiseksi paineen kanssa, jota joskus myös merkitään pienen sijaan isol
 Erityisesti paine ei ole ominaisteho $p \neq \frac{P}{m}$.}. Toisaalta näin 
 korostan myös tehon yhteyttä työhön (lämmön sijasta).
 
+\renewcommand{\thepart}{\Roman{part}}
 \part{Termodynamiikka} % _____________________________________________________________________________________
 \setcounter{chapter}{0}
 
@@ -2128,6 +2129,78 @@ Virheettömiä kristallejakaan ei tietenkään ole olemassa, niinkuin ei mitää
 tulee nimittäin aina virheitä, kun aineita jäähdytetään nopeammin kuin äärettömän hitaasti. Lasin 
 ja kvartsin ero on nimenomaan se, että lasi on jäähtynyt niin nopeasti, ettei silä ole lainkaan säännöllistä 
 kiderakennetta. Mutta kvartsikiteetkään eivät ikinä ole täysin virheettömiä.
+
+\part{Virtausoppi} %__________________________________________________________________________________
+\setcounter{chapter}{0}
+
+\chapter{Virtausoppi mekaniikan alana}
+\section{Virtausaine}
+%Fluidi, (neste). Leikkausjännitys-määritelmä. Muu kuin kiinteä (neste, kaasu, ylikriittinen [neste], plasma)
+
+\section{Statiikka ja dynamiikka}
+\section{Partikkeli- ja jatkumomekaniikka}
+
+\chapter{Virtaustyypit}
+\section{Sisäpuolinen ja ulkopuolinen}
+\section{Kokoonpuristuva ja kokoonpuristumaton}
+%Hydrauliikka ja kaasudynamiikka}
+\section{Kitkallinen ja kitkaton}
+\section{Laminaari ja turbulentti}
+
+\chapter{Käsittelytavat}
+\section{Kontrollitilavuus}
+\section{Kenttäteoria}
+\subsection{Nopeuskentän keskeisyys}
+\section{Dimensioanalyysi}
+\section{Teoria, kokeellisuus ja tietokoneet}
+
+\chapter{Säilymislait}
+\section{Noetherin teoreema}
+\section{Massan säilyminen}
+\section{Liikemäärän säilyminen}
+\section{Kulmaliikemäärän säilyminen}
+\section{Energian säilyminen}
+
+\chapter{Pintavoimat ja tilavuusvoimat}
+\section{Pintavoimat}
+\subsection{Kitka}
+\subsubsection{Leikkausjännitys}
+\subsubsection{Nopeuden reunaehto}
+\subsubsection{Viskositeetti}
+\section{Tilavuusvoimat}
+\subsection{Painovoima}
+\subsection{Sähköiset voimat}
+
+\chapter{Kontrollitilavuus}
+\section{Säilymislait}
+\subsection{Reynoldsin siirtoteoreema}
+\section{Nopeita vastauksia}
+\section{CFD}
+
+\chapter{Kenttäteoria}
+\section{Säilymislait}
+\subsection{Navier-Stokesin yhtälöt}
+\section{Kitkaton virtaus}
+\subsection{Potentiaalivirtaus}
+
+\chapter{Dimensioanalyysi}
+\section{Suhteelliset suureet}
+\section{Dimensiottomat luvut}
+
+\part{Lämmönsiirto} %____________________________________________________________________
+\setcounter{chapter}{0}
+
+\chapter{Lämmönsiirtotavat}
+\section{Johtuminen}
+\section{Konvektio}
+\section{Säteily}
+
+\chapter{Johtuminen}
+
+\chapter{Konvektiivinen lämmönsiirto}
+\section{Johtuminen ja konvektio}
+
+\chapter{Säteilylämmönsiirto}
 
 \part*{Liitteet} %___________________________________________________________________________________
 \addcontentsline{toc}{part}{Liitteet}
