@@ -1,0 +1,305 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Virtausoppi\\Laskuharjoituksen 10 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 13}
+
+\begin{math}
+ \begin{array}{l l}
+  U_{\infty} = 10 \frac{m}{s} & L = 1m\\
+  \rho = 1,2 \frac{kg}{m^3} & \nu = 1,6\cdot10^{-5}\frac{m^2}{s}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+Dimensioton paikka $\eta(x, y)$ ja nopeuskentän ratkaisu sen funktiona $u(\eta)$:
+
+\begin{align}
+ &\eta = \eta(x, y) = \sqrt{U_{\infty}}\frac{y}{\sqrt{\nu x}}\\
+ &u(x, y) = u(\eta) = U_{\infty}f'(\eta)
+\end{align}
+
+Yksi tapa määritellä rajakerroksen paksuus on seuraava: rajakerros ulottuu pinnasta kohtisuoraan 
+(y-koordinaatin suuntaan) siihen pisteeseen asti, jossa $u(x, y) = 0,99U_{\infty}$ eli virtauksen 
+nopeus $u(x,y)$ on 99\% sen nopeudesta vapaassa virtauksessa $U_{\infty}$ (matemaattis-teoreettisesti 
+'vapaa virtaus' on äärettömän kaukana). Eli siis:
+
+\begin{equation}
+ u(x, \delta) = 0,99U_{\infty}
+\end{equation}
+
+Rajakerroksen reunalla ($y = \delta$):
+
+\begin{align}
+ &\eta(x, \delta) = \sqrt{U_{\infty}}\frac{\delta}{\sqrt{\nu x}}\\
+ &u(x, \delta) = u(\eta(x, \delta)) = U_{\infty}f'(\eta(x, \delta))\\
+ &u(x, \delta) = 0,99U_{\infty} 
+\end{align}
+
+\begin{align}
+ &u(x, \delta) = U_{\infty}f'(\eta(x, \delta)) = 0,99U_{\infty}\\
+ &f'(\eta(x, \delta)) = 0,99\\
+ &\eta(x, \delta) = \eta(f') = \eta(0,99) \approx 5
+\end{align}
+
+Levyn jättöreunalla $x = L$:
+
+\begin{align}
+ &\eta(L, \delta) = \sqrt{U_{\infty}}\frac{\delta}{\sqrt{\nu L}} = \eta(x, \delta)\\
+ &\delta(L) = \sqrt{\frac{\nu L}{U_{\infty}}}\eta(x, \delta) \approx 0,0063 m = \underline{6,3 mm}
+\end{align}
+
+\subsection{b} \label{13b}
+
+\begin{align}
+ &F - F_{\tau} = 0\\
+ &F = F_{\tau} = \bar{\tau}_sA = \bar{\tau}_sLW\\
+ &F' = \frac{F}{W} = \bar{\tau}_sL
+\end{align}
+
+Keskimääräinen Fanningin kitkakerroin $\bar{f}$ (ei siis sama kuin a-kohdan $f$, joka on dimensioton virtafunktio) 
+on määritelty (vrt. Darcyn kitkakerroin):
+
+\begin{align}
+ &\bar{f} = \frac{\bar{\tau}_s}{\frac{1}{2}\rho U_{\infty}^2}\\
+ &\bar{\tau}_s = \frac{1}{2}\bar{f}\rho U_{\infty}^2
+\end{align}
+
+Paikalliselle Fanningin kitkakertoimelle on tässä tapauksessa ratkaisu:
+
+\begin{align}
+ &f_x = 2f''(0)Re_x^{-\frac{1}{2}}\\
+ &f''(0) = 0,332\\
+ &Re_x = \frac{U_{\infty}x}{\nu}
+\end{align}
+
+Todella typerästi nyt $f''(0)$ merkitsee kuitenkin \textit{dimensiottoman virtafunktion} toista derivaattaa 
+kohdassa $0$. Keskimääräinen kitkakerroin $\bar{f}$ saadaan seuraavasti:
+
+\begin{align}
+ &\bar{f} = \frac{1}{L}\int_0^Lf_xdx = \frac{1}{L}\int_0^L2f''(0)Re_x^{-\frac{1}{2}}dx 
+  = \frac{1}{L}\int_0^L0,664\left(\frac{U_{\infty}x}{\nu}\right)^{-\frac{1}{2}}dx\\
+ &\bar{f} = \frac{0,664}{L}\left(\frac{U_{\infty}}{\nu}\right)^{-\frac{1}{2}}\int_0^Lx^{-\frac{1}{2}}dx
+  = \frac{0,664}{L}\left(\frac{U_{\infty}}{\nu}\right)^{-\frac{1}{2}}\bigg/_0^L2x^{\frac{1}{2}}\\
+ &\bar{f} = \frac{0,664}{L}\left(\frac{U_{\infty}}{\nu}\right)^{-\frac{1}{2}}2L^{\frac{1}{2}}
+  = 1,328\left(\frac{U_{\infty}L}{\nu}\right)^{-\frac{1}{2}} = 1,328Re_L^{-\frac{1}{2}}
+\end{align}
+
+\begin{align}
+ &Re_L = \frac{U_{\infty}L}{\nu} \approx 6,25\cdot10^5\\
+ &\bar{f} = 1,328Re_L^{-\frac{1}{2}} \approx 1,68\cdot10^{-3}\\
+ &\bar{\tau}_s = \frac{1}{2}\bar{f}\rho U_{\infty}^2 \approx 0,101 Pa\\
+ &F' = \bar{\tau}_s L \approx \underline{0,101 \frac{N}{m}}
+\end{align}
+
+\section{Tehtävä 16}
+
+\begin{math}
+ \begin{array}{l l}
+  L = 200 m & W = P = 45 m\\
+  &u_{laiva} = U_{\infty} = 21 \text{solmua} = 21\cdot1,852\frac{km}{h} = 21\cdot1,852\frac{1000m}{3600s} \approx 10,803\frac{m}{s}\\
+  \rho = 1000 \frac{kg}{m^3} & \nu = 1,7\cdot10^{-6}\frac{m^2}{s}
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\dot{W} = \frac{dW}{dt} = \frac{d(Fs)}{dt} = F\frac{ds}{dt} = Fu_{laiva}\\
+ &F = \bar{\tau}_sA_p = \bar{\tau}_sLW\\
+ &\bar{\tau}_s = \frac{1}{2}\bar{f}\rho U_{\infty}^2 
+  \quad \bigg|\bigg| \quad \bar{f} = \frac{\bar{\tau}_s}{\frac{1}{2}\rho U_{\infty}^2}\\
+ &\bar{f} = \bar{f}(Re_L) \quad \bigg|\bigg| \quad \text{kaavakokoelma sivu 8}\\
+ &Re_L = \frac{U_{\infty}L}{\nu} \approx 1,271\cdot10^9\\
+ &\bar{f} = \bar{f}(Re_L) \approx 1,5\cdot10^{-3}\\
+ &\bar{\tau}_s = \frac{1}{2}\bar{f}\rho U_{\infty}^2 \approx 87,534 Pa\\
+ &F = \bar{\tau}_sLW \approx 787,806 kN\\
+ &\dot{W} = Fu_{laiva} \approx \underline{8,5 MW}
+\end{align}
+
+Vaihtoehtoisesti keskimääräisen Fanningin kitkakertoimen saa integroimalla paikallista 
+$f_x = 0,0592Re_x^{-\frac{5}{5}}$ vastaavasti kuin tehtävän 13 \nameref{13b}-kohdassa. 
+Tulos on samassa suuruusluokassa mutta eroaa merkittävästi.
+
+\section{Tehtävä 10}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 2,5 m & h = 0,005m & \bar{u}_{\infty} = 10\frac{m}{s}\\ 
+  \rho = 1,2 \frac{kg}{m^2} & \eta = 18\cdot10^{-6}\frac{kg}{ms}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ \rightarrow: \quad &F_p(x) - F_p(x + dx) - F_{\tau}(y) + F_{\tau}(y + dy) = 0\\
+ &p(x)A_x - p(x + dx)A_x - \tau(y)A_y + \tau(y + dy)A_y = 0\\
+ &p(x)dydz - p(x + dx)dydz - \tau(y)dxdz + \tau(y + dy)dxdz = 0\\
+ &p(x)dy - \left(p(x) + \frac{\partial p}{\partial x}dx\right)dy - 
+  \tau(y)dx + \left(\tau(y) + \frac{\partial \tau}{\partial y}dy\right)dx = 0\\
+ &-\frac{\partial p}{\partial x}dxdy +\frac{\partial \tau}{\partial y}dydx = 0\\
+ &\frac{\partial \tau}{\partial y} = \frac{\partial p}{\partial x}
+   \quad \bigg|\bigg| \quad \tau = \eta\frac{\partial u}{\partial y}\\
+ &\frac{\partial}{\partial y}\left(\eta\frac{\partial u}{\partial y}\right) = \frac{\partial p}{\partial x}\\
+ &\frac{\partial^2 u}{\partial y^2} = \frac{1}{\eta}\frac{\partial p}{\partial x}\\
+ &\int\left(\frac{\partial u}{\partial y}\right) = \int\frac{1}{\eta}\frac{\partial p}{\partial x}dy 
+  = \frac{1}{\eta}\frac{\partial p}{\partial x}\int dy \\
+ &\frac{\partial u}{\partial y} = \frac{1}{\eta}\frac{\partial p}{\partial x}y + C_1\\
+ &\int du = \int\left(\frac{1}{\eta}\frac{\partial p}{\partial x}y + C_1\right)dy\\
+ &u(y) = \frac{1}{2\eta}\frac{\partial p}{\partial x}y^2 + C_1y + C_2
+\end{align}
+
+Kaksi integroimisvakiota eli tarvitaan kaksi reunaehtoa:
+
+\begin{equation}
+ \left\{
+ \begin{aligned}
+  &u(h) = 0\\
+  &u(-h) = 0
+ \end{aligned}\right.
+\end{equation}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &u(h) = \frac{1}{2\eta}\frac{\partial p}{\partial x}h^2 + C_1h + C_2 = 0\\
+  &u(-h) = \frac{1}{2\eta}\frac{\partial p}{\partial x}h^2 - C_1h + C_2 = 0
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &C_2 = -\frac{1}{2\eta}\frac{\partial p}{\partial x}h^2 - C_1h\\
+  &C_1 = \frac{1}{2\eta}\frac{\partial p}{\partial x}h + \frac{C_2}{h}
+ \end{aligned}\right.\\
+ &C_1 = \frac{1}{2\eta}\frac{\partial p}{\partial x}h -\frac{1}{2\eta}\frac{\partial p}{\partial x}h - C_1\\
+ &C_1 = -C_1 \Leftrightarrow C_1 = 0\\
+ &C_2 = -\frac{1}{2\eta}\frac{\partial p}{\partial x}h^2
+\end{align}
+
+\begin{equation}
+ u(y) = \frac{1}{2\eta}\frac{\partial p}{\partial x}y^2 -\frac{1}{2\eta}\frac{\partial p}{\partial x}h^2
+\end{equation}
+
+\begin{framed}
+ \begin{equation}
+  u(y) = \frac{1}{2\eta}\frac{\partial p}{\partial x}(y^2 - h^2)
+ \end{equation}
+\end{framed}
+
+\subsection{b}
+
+\begin{equation}
+ \dot{m} = \rho_{\infty}\dot{V}_{\infty} = \rho_L\dot{V}_L
+\end{equation}
+
+Koska nopeus on pieni, oletetaan virtaus kokoonpuristumattomaksi $\rho_{\infty} = \rho_L = \rho$:
+
+\begin{align}
+ &\dot{m} = \rho\dot{V}_{\infty} = \rho\dot{V}_L\\
+ &\dot{V}_{\infty} = \dot{V}_L\\
+ &\bar{u}_{\infty}A_{\infty} = \bar{u}_LA_L
+\end{align}
+
+Oletetaan, että lasilevyt ovat hyvin ohuita rakoihin verrattuna $A_{\infty} = A_L + t \approx A_L$:
+
+\begin{align}
+ &\bar{u}_{\infty}A_L = \bar{u}_LA_L\\
+ &\bar{u}_{\infty} = \bar{u}_L
+\end{align}
+
+\begin{align}
+ &\bar{u}_{\infty} = \bar{u}_L = \frac{1}{A_L}\int_{-h}^{h}u(y)dA = \frac{1}{2hW}\int_{-h}^{h}u(y)Wdy
+  = \frac{1}{2h}\int_{-h}^{h}u(y)dy\\
+ &\bar{u}_{\infty} = \frac{1}{2h}\int_{-h}^{h}\frac{1}{2\eta}\frac{\partial p}{\partial x}(y^2 - h^2)dy
+  = \frac{1}{4\eta h}\frac{\partial p}{\partial x}\int_{-h}^{h}(y^2 - h^2)dAy\\
+ &\bar{u}_{\infty} = \frac{1}{4\eta h}\frac{\partial p}{\partial x}
+  \bigg/_{-h}^{h}\left(\frac{1}{3}y^3 - h^2y\right)dy\\
+ &\bar{u}_{\infty} = \frac{1}{4\eta h}\frac{\partial p}{\partial x}
+  \left( \left(\frac{1}{3}h^3 - h^2h\right) - \left(\frac{1}{3}(-h)^3 - h^2(-h)\right) \right)\\
+ &\bar{u}_{\infty} = \frac{1}{4\eta h}\frac{\partial p}{\partial x}
+  \left( \left(\frac{1}{3}h^3 - h^3\right) - \left(-\frac{1}{3}h^3 + h^3\right) \right)\\
+ &\bar{u}_{\infty} = \frac{1}{4\eta h}\frac{\partial p}{\partial x}
+  \left( \frac{1}{3}h^3 - h^3 + \frac{1}{3}h^3 - h^3\right)
+  = \frac{1}{4\eta h}\frac{\partial p}{\partial x}\left( \frac{2}{3} - 2 \right)h^3\\
+ &\bar{u}_{\infty} = \frac{1}{4\eta}\frac{\partial p}{\partial x} \left( \frac{2}{3} - \frac{6}{3} \right)h^2
+  = -\frac{1}{3\eta}\frac{\partial p}{\partial x}h^2
+\end{align}
+
+\begin{align}
+ &\bar{u}_{\infty} = -\frac{1}{3\eta}\frac{\partial p}{\partial x}h^2 \approx 
+  -\frac{1}{3\eta}\frac{\Delta p}{L}h^2 = -\frac{1}{3\eta}\frac{p_2 - p_1}{L}h^2 = \frac{1}{3\eta}\frac{p_1 - p_2}{L}h^2\\
+ &p_1 - p_2 = \frac{3\eta L}{h^2}\bar{u}_{\infty} \approx \underline{54,3 Pa}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &\xi = \frac{\Delta p/L}{\frac{1}{2}\rho \bar{u}_L^2/d_h}\\
+ &\Delta p = \xi \frac{1}{2}\rho \bar{u}_L^2\frac{L}{d_h} = 4f \frac{1}{2}\rho \bar{u}_L^2\frac{L}{d_h}
+\end{align}
+
+\begin{align}
+ &d_h = 4h \approx 0,02 m\\
+ &f = \frac{24}{Re_{d_h}} \quad \bigg|\bigg| \quad \text{Rakovirtaukselle, ei prujussa}\\
+ &Re_{d_h} = \frac{\bar{u}_Ld_h}{\nu} \quad \bigg|\bigg| \quad \eta = \rho\nu\\
+ &Re_{d_h} = \frac{\rho\bar{u}_Ld_h}{\eta} \approx 1,326\cdot 10^4\\
+ &f = \frac{24}{Re_{d_h}} \approx 1,810\cdot10^{-3}\\
+ &\Delta p = 4f \frac{1}{2}\rho \bar{u}_L^2\frac{L}{d_h} \approx \underline{54,3 Pa}
+\end{align}
+
+\subsection{d}
+
+\begin{align}
+ &f = f(Re_{d_h}) \approx 0,029 \quad \bigg|\bigg| \quad \text{kaavakokoelman sivu 6}\\
+ &\Delta p = 4f \frac{1}{2}\rho \bar{u}_L^2\frac{L}{d_h} \approx \underline{220 Pa}
+\end{align}
+
+\end{document}
