@@ -20,6 +20,7 @@
 \usepackage{ae,aecompl}                     % Paremman näköiset fontit
 \usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
 % \usepackage{a4wide}
+\usepackage{shorttoc}
 \usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
 \usepackage{fixltx2e}                       % \textsubscript
 \usepackage{enumerate}
@@ -44,6 +45,7 @@
 % GPL, LaTeX-maininnat tähän
 \newpage
 \pagenumbering{Roman}
+\shorttoc{Sisältö lyhyesti}{0}
 \setcounter{tocdepth}{3}
 \tableofcontents
 \newpage
@@ -2134,7 +2136,6 @@ ja kvartsin ero on nimenomaan se, että lasi on jäähtynyt niin nopeasti, ettei
 kiderakennetta. Mutta kvartsikiteetkään eivät ikinä ole täysin virheettömiä.
 
 \part{Virtausoppi} %__________________________________________________________________________________
-\setcounter{chapter}{0}
 
 \chapter{Virtausoppi mekaniikan alana}
 \textbf{Virtausoppi} (``Fluid Mechanics'') on mekaniikan ala, joka käsittelee virtausaineita.
@@ -2146,23 +2147,6 @@ Virtausaine (``fluid'') on mikä tahansa aine, joka virtaa. Eksaktimmin tämä v
 että 'virtausaineet deformoituvat jatkuvasti leikkausjännityksen vaikutuksesta'. Käytännössä esiintyvistä 
 aineen olomuodoista virtausaineita ovat \textbf{nesteet} ja \textbf{kaasut}. Plasmatkin ovat toki 
 virtausaineita mutta toistaiseksi harvinaisia käytännön sovelluksissa.
-
-\section{Statiikka ja dynamiikka}
-Virtausoppi voidaan jakaa \textbf{hydrostatiikkaan} (``Hydrostatics'') ja \textbf{virtausdynamiikkaan} 
-(``Fluid Dynamics''). Koska virtausaineet kuitenkin yleensä virtaavat ja niitä käytetään ja niistä 
-ollaan kiinnostuneita juuri sen takia on suurin osa virtausopista käytännössä virtausdynamiikkaa.
-\footnote{``Hydrostatiikka''-termin käyttö johtuu varmaankin siitä, että virtausaineiden statiikkaa 
-tarvitaan lähinnä erilaisten nestealtaiden ja patojen suunnittelussa. Suomeksi ``virtausstatiikka'' 
-on myös itseristiriita (``oksymoroni''), mutta ``Fluid Statics'' ei olisi ollenkaan niin paha.}
-Käytännössä englanniksi käytetään yleensä termiä ``Fluid Dynamics'' ja suomeksi ``virtauslaskenta''.
-\footnote{Virtausoppi on käytännössä hyvin laskennallista, kuten tulet huomaamaan.}
-
-
-\subsection{Nopeuskentän keskeisyys}
-Yleensä virtausopissa pyritään ratkaisemaan nopeuskenttä \(\vec{v}(\vec{r}, t)\) eli virtausaineen 
-nopeusvektori jokaisessa tarkasteltavan tilavuuden pisteessä ja tarkasteltavan ajanjakson 
-ajanhetkenä. Nopeuskentän avulla on sitten melko suoraviivaista laskea suureita kuten painekenttä 
-\(p(\vec{r}, t)\) tai tilavuus, massa- tai energiavirta (teho) jonkin pinnan läpi.
 
 \section{Partikkeli- ja kontinuumimekaniikka}
 Teknillinen mekaniikka voidaan jakaa partikkeli- ja jatkumomekaniikkaan. 
@@ -2184,6 +2168,22 @@ Vaikka kontinuumimekaniikka ei nykytietämyksen mukaan olekaan fysikaalisesti oi
 saadaan hyviä tuloksia. Aineen epäjatkuvuus nimittäin ilmenee vasta niin pienessä mittakaavassa, 
 että jatkumo-oletus toimii vielä makroskooppisesta näkökulmasta differentiaalisina näyttäytyville 
 tilavuuksille.
+
+\section{Statiikka ja dynamiikka}
+Virtausoppi voidaan jakaa \textbf{hydrostatiikkaan} (``Hydrostatics'') ja \textbf{virtausdynamiikkaan} 
+(``Fluid Dynamics''). Koska virtausaineet kuitenkin yleensä virtaavat ja niitä käytetään ja niistä 
+ollaan kiinnostuneita juuri sen takia on suurin osa virtausopista käytännössä virtausdynamiikkaa.
+\footnote{``Hydrostatiikka''-termin käyttö johtuu varmaankin siitä, että virtausaineiden statiikkaa 
+tarvitaan lähinnä erilaisten nestealtaiden ja patojen suunnittelussa. Suomeksi ``virtausstatiikka'' 
+on myös itseristiriita (``oksymoroni''), mutta ``Fluid Statics'' ei olisi ollenkaan niin paha.}
+Käytännössä englanniksi käytetään yleensä termiä ``Fluid Dynamics'' ja suomeksi ``virtauslaskenta''.
+\footnote{Virtausoppi on käytännössä hyvin laskennallista, kuten tulet huomaamaan.}
+
+\subsection{Nopeuskentän keskeisyys}
+Yleensä virtausopissa pyritään ratkaisemaan nopeuskenttä \(\vec{v}(\vec{r}, t)\) eli virtausaineen 
+nopeusvektori jokaisessa tarkasteltavan tilavuuden pisteessä ja tarkasteltavan ajanjakson 
+ajanhetkenä. Nopeuskentän avulla on sitten melko suoraviivaista laskea suureita kuten painekenttä 
+\(p(\vec{r}, t)\) tai tilavuus, massa- tai energiavirta (teho) jonkin pinnan läpi.
 
 \chapter{Virtaustyypit}
 Virtauksia voidaan jaotella eri tavoin. Kaikki nämä jaottelut ovat tietenkin liukuvia (esimerkiksi 
@@ -2311,7 +2311,6 @@ vain (yleensä hyvin ohuessa) \textbf{rajakerroksessa}.
 \section{Dimensiottomat luvut}
 
 \part{Lämmönsiirto} %____________________________________________________________________
-\setcounter{chapter}{0}
 
 \chapter{Lämmönsiirtotavat}
 \section{Johtuminen}
@@ -2327,7 +2326,6 @@ vain (yleensä hyvin ohuessa) \textbf{rajakerroksessa}.
 
 \part*{Liitteet} %___________________________________________________________________________________
 \addcontentsline{toc}{part}{Liitteet}
-\setcounter{chapter}{0}
 
 \chapter{Lähdeluettelo} %----------------------------------------------------------------------------
 
