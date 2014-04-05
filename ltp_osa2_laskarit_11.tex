@@ -1,0 +1,321 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Lämmönsiirto\\Laskuharjoituksen 11 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 18}
+
+\begin{framed}
+ \begin{equation}
+   \rho c\frac{\partial T}{\partial t} = k\nabla^2T + \dot{Q}_v'''
+ \end{equation}
+\end{framed}
+
+Lämmön varastoitumista sisäenergiaksi tai lämmön tuotantoa ei tapahdu:
+
+\begin{align}
+ &\rho c\frac{\partial T}{\partial t} = 0\\
+ &\dot{Q}_v''' = 0
+\end{align}
+
+Joten
+
+\begin{equation}
+  k\nabla^2T = 0
+\end{equation}
+
+\begin{framed}
+ \begin{equation}
+   \nabla^2T = 0
+ \end{equation}
+\end{framed}
+
+Ns. \textit{Laplacen yhtälö}. Sylinterikoordinaateissa $\nabla^2$ eli \textit{Laplacen operaattori}:
+
+\begin{equation}
+ \nabla^2 = \left(\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial}{\partial r}\right)
+   + \frac{1}{r^2}\frac{\partial^2}{\partial \varphi^2} + \frac{\partial^2}{\partial z^2}\right)
+\end{equation}
+
+\begin{align}
+ &\left(\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial}{\partial r}\right)
+   + \frac{1}{r^2}\frac{\partial^2}{\partial \varphi^2} + \frac{\partial^2}{\partial z^2}\right)T = 0\\
+ &\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial T}{\partial r}\right)
+   + \frac{1}{r^2}\frac{\partial^2T}{\partial \varphi^2} + \frac{\partial^2T}{\partial z^2} = 0
+\end{align}
+
+Nyt ratkaistaan säteen suhteen eli oletetaan ettei jakauma muutu $z$:n tai kulman $\varphi$ funktiona. 
+Tällöin derivaatat niiden suhteen $= 0$ ja derivaatta $r$:n suhteen on kokonaisderivaatta:
+
+\begin{align}
+ &\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial T}{\partial r}\right) = 0\\
+ &\frac{d}{d r}\left(r\frac{d T}{d r}\right) = 0
+\end{align}
+
+Separoidaan ja integroidaan kahdesti:
+
+\begin{align}
+ &\int d\left(r\frac{d T}{d r}\right) = \int 0 dr\\
+ &r\frac{d T}{d r} = C_1\\
+ &\frac{d T}{d r} = \frac{C_1}{r} \label{eq:int18}\\
+ &\int dT = \int\frac{C_1}{r}dr\\
+ &T(r) = C_1\ln r + C_2
+\end{align}
+
+Kaksi vakiota $\Rightarrow$ kaksi reunaehtoa. Nyt ne ovat tunnetut sisä- ja ulkolämpötilat:
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &T(r_1) = T_1\\
+  &T(r_2) = T_2
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &T(r_1) = C_1\ln r_1 + C_2 = T_1\\
+  &T(r_2) = C_1\ln r_2 + C_2 = T_2
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &C_2 = T_1 - C_1\ln r_1\\
+  &C_2 = T_2 - C_1\ln r_2
+ \end{aligned}\right.\\
+ &T_1 - C_1\ln r_1 = T_2 - C_1\ln r_2\\
+ &C_1(\ln r_1 - \ln r_2) = C_1\ln \frac{r_1}{r_2} = T_2 - T_1\\
+ &C_1 = \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}} \label{eq:C_1}\\
+ &C_2 = T_1 - \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}\ln r_1
+\end{align}
+
+Sijoitetaan takaisin lämpötilajakaumaan:
+
+\begin{equation}
+ T(r) = \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}\ln r + T_1 - \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}\ln r_1
+\end{equation}
+
+\begin{framed}
+  \begin{equation}
+  T(r) = T_1 + \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}\ln \frac{r}{r_1}
+  \end{equation}
+\end{framed}
+
+\begin{equation}
+ \label{eq:dotQ}
+ \dot{Q} = A_v\dot{Q}'' = A_vq = PLq
+\end{equation}
+
+Kokeellinen \textit{Fourierin lämmönjohtumisyhtälö}:
+
+\begin{equation}
+ \label{eq:Fourier}
+ q = q_r = -k\frac{\partial T}{\partial r} = -k\frac{dT}{dr}
+\end{equation}
+
+Sijoitetaan yhtälö \ref{eq:Fourier} yhtälöön \ref{eq:dotQ}:
+
+\begin{align}
+ &\dot{Q} = PLq = -PLk\frac{dT}{dr}\\
+ &\dot{Q}' = -Pk\frac{dT}{dr}
+\end{align}
+
+\begin{align}
+ &P = 2\pi r\\
+ &\frac{d T}{d r} = \frac{C_1}{r} = \frac{T_2 - T_1}{\ln \frac{r_1}{r_2}r}
+  \quad \bigg|\bigg| \quad \text{Yhtälöt \ref{eq:int18} ja \ref{eq:C_1}}
+\end{align}
+
+\begin{framed}
+ \begin{equation}
+  \dot{Q}' = -2\pi k\frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}
+ \end{equation}
+\end{framed}
+
+\section{Tehtävä 20}
+
+\begin{math}
+ \begin{array}{l l l l}
+  d_1 = 0.010 m & d_2 = 0.020 m & r_1 = \frac{d_1}{2} = 0.005m & r_2 = \frac{d_2}{2} = 0.010m\\
+  T_{\infty} = 293,15K& \dot{Q}' = 200 \frac{W}{m} & k = 1.6 \frac{W}{mK}
+ \end{array}
+\end{math}\\
+
+Edellisestä tehtävästä saamme johtumisen lämpövirraksi pituutta kohden
+
+\begin{equation}
+  \dot{Q}_j' = -2\pi k\frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}
+\end{equation}
+
+Lämmönsiirto eristeestä ilmaan on konvektiivista eli ilmaistaan \textit{konvektiivisen lämmönsiirtokertoimen} 
+$h_c$ avulla:
+
+\begin{align}
+ &\dot{Q}_c = A_v\dot{Q}'' = A_vq = PLq \quad \bigg|\bigg| \quad q = -h_c(T_{\infty} - T_2)\\
+ &\dot{Q}_c = -PLh_c(T_{\infty} - T_2)\\
+ &\dot{Q}'_c = \frac{\dot{Q}_c}{L} = -2\pi r_2 h_c(T_{\infty} - T_2)
+\end{align}
+
+\subsection{a}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\dot{Q}_j' = -2\pi k\frac{T_2 - T_1}{\ln \frac{r_1}{r_2}}\\
+  &\dot{Q}_c' = -2\pi r_2 h_c(T_{\infty} - T_2)\\
+  &\dot{Q}_j = \dot{Q}_c
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &T_1 = T_2 + \frac{\dot{Q}_j'}{2\pi k}\ln \frac{r_1}{r_2}\\
+  &T_2 = T_{\infty} + \frac{\dot{Q}_c'}{2\pi r_2 h_c}\\
+  &\dot{Q}_j' = \dot{Q}_c' = \dot{Q}'
+ \end{aligned}\right.\\
+ &\left\{
+ \begin{aligned}
+  &T_1 = T_2 + \frac{\dot{Q}'}{2\pi k}\ln \frac{r_1}{r_2}\\
+  &T_2 = T_{\infty} + \frac{\dot{Q}_c'}{2\pi r_2 h_c} 
+   \approx \lim_{h_c \to \infty}\left( T_{\infty} + \frac{\dot{Q}'}{2\pi r_2 h_c}\right) = T_{\infty}
+ \end{aligned}\right.\\
+  &T_1 \approx T_{\infty} + \frac{\dot{Q}'}{2\pi k}\ln \frac{r_1}{r_2} \approx \underline{33,8\,^{\circ}C}
+\end{align}
+
+\subsection{b}
+
+\begin{center}
+  \begin{math}
+  h_c = 20\frac{W}{m^2}
+  \end{math}
+\end{center}
+
+\begin{align}
+  &T_2 = T_{\infty} + \frac{\dot{Q}_c'}{2\pi r_2 h_c} \approx \underline{179,2\,^{\circ}C}\\
+  &\left(T_1 = T_2 + \frac{\dot{Q}'}{2\pi k}\ln \frac{r_1}{r_2} \approx 193\,^{\circ}C\right)
+\end{align}
+
+\subsection{a}
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &q = \dot{Q}'' = -h_c(T_{\infty} - T_2) - \varepsilon\sigma(T_{\infty}^4 - T_2^4)\\
+  &\dot{Q}_{cr}' = Pq = \dot{Q}_j = \dot{Q}
+ \end{aligned}\right.\\
+  &\dot{Q}' = P(-h_c(T_{\infty} - T_2) - \varepsilon\sigma(T_{\infty}^4 - T_2^4))
+\end{align}
+
+\begin{framed}
+ \begin{equation}2\pi r_2(h_c(T_2 - T_{\infty}) + \varepsilon\sigma(T_2^4 - T_{\infty}^4)) - \dot{Q}' = 0
+ \end{equation}
+\end{framed}
+
+\section{Tehtävä 47}
+
+Olkoon systeemimme ajanjaksossa $dt$ jäätyvä vesi $dm_j$. Kyseessä on siis lämmönsiirto vakiopaineessa, jolle
+termodynamiikan 1. pääsääntö on
+
+\begin{align}
+ &dH_j = dQ\\
+ &dH_{sf, j} = dQ\\
+ &h_{sf, j}dm_j = dQ
+\end{align}
+
+Tämä tapahtuu ajanjaksossa $dt$, joten lämpövirta (= lämpöteho) saadaan jakamalla $dt$:llä:
+
+\begin{align}
+ &h_{sf, j}\frac{dm_j}{dt} = \frac{dQ}{dt}\\
+ &\dot{Q} = h_{sf, j}\frac{dm_j}{dt} = \rho Ah_{sf, j}\frac{dx}{dt}\\
+ &\frac{\dot{Q}}{A} = \dot{Q}'' = q = \rho h_{sf, j}\frac{dx}{dt}
+\end{align}
+
+Jäässä lämpö siirtyy johtumalla, joten lämpövirran tiheys saadaan Fourierin lämmönjohtumisyhtälöstä:
+
+\begin{equation}
+ q = -k\frac{dT}{dx}
+\end{equation}
+
+$x(t)$ on jään paksuus jollakin hetkellä $t$. Oletetaan että lämpöä ei varastoidu jäähän (ns. 
+\textit{jatkuvuustila}), jolloin sen kaiken pitää johtua jään läpi. Tällöin voidaan myös 
+olettaa, että lämpötilajakauma on joka hetki lineaarinen:
+
+\begin{align}
+ &q = \rho h_{sf, j}\frac{dx}{dt} = -k\frac{dT}{dx} \approx -k\frac{T_{sf} - T_s}{x(t)}\\
+ &x(t)\frac{dx}{dt} = \frac{k}{\rho h_{sf, j}}(T_s - T_{sf})\\
+ &\int_0^t x(t)dx = \int_{x_0}^x(t) \left(\frac{k}{\rho h_{sf, j}}(T_s - T_{sf}) \right) dt
+\end{align}
+
+Matemaattisesti $x(t)$ sekä funktiona että ylärajana on kyseenalainen, mutta merkinnät 
+muuttuvat vain sekavammiksi jos ne yrittää erottaa. Integroidaan siis alkuhetkestä $0$, jolloin 
+jään paksuus on $x_0$ mielivaltaiseen ajanhetkeen $t$, jolloin jään paksuus on $x(t)$.
+
+\begin{equation}
+ \frac{1}{2}x^2(t) - \frac{1}{2}x_0^2 = \frac{k}{\rho h_{sf, j}}(T_s - T_{sf}) t
+\end{equation}
+
+\begin{framed}
+ \begin{equation}
+  x(t) = \sqrt{\frac{2k}{\rho h_{sf, j}}(T_s - T_{sf}) t + x_0^2}
+ \end{equation}
+\end{framed}
+
+Parametrit tehtävänannon tilanteelle:\\
+
+\begin{math}
+ \begin{array}{l l l l}
+  k = 2,2\frac{W}{mK} & \rho = 913\frac{kg}{m^3} & h_{sf} = 330 \frac{kJ}{kg} &\\
+  T_s = -10\,^{\circ}C & T_{sf} = 0\,^{\circ}C & x_0 = 0,30 m & t_1 = 1d = 86400 s
+ \end{array}
+\end{math}
+
+\begin{align}
+ \Delta x = x(t_1) - x_0 = \sqrt{\frac{2k}{\rho h_{sf, j}}(T_s - T_{sf}) t_1 + x_0^2} - x_0 
+   \approx \underline{20 mm}
+\end{align}
+
+
+\end{document}

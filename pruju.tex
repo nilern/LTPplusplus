@@ -29,7 +29,10 @@
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
+  urlcolor=blue
 }
+
+
 
 \title{LTP++\\Lämpötekniikan perusteita}
 \date{\today}
@@ -329,7 +332,7 @@ muita hiukkasia tai sellaisten hiukkasten määriteltyjä ryhmiä. (14. CGPM, 19
 Ainemäärä on hyödyllinen yleensä kemiassa (koska reaktioissa väliä on molekyylien määrällä) ja kaasuja käsiteltäessä 
 (koska mm. tilavuudet ja paineet riippuvat molekyylien määristä).
 
-\subsection{Massa m}
+\subsection{Massa m} \label{def:massa}
 
 Mekaniikassa meitä kiinnostaa kuitenkin yleensä pikemminkin se, miten ``painava'' tai ``hidas'' käsiteltävä systeemi 
 on. Tätä mitataan \textbf{massalla m}. Klassisessa fysiikassa esiintyy itse asiassa kahdenlaista massaa:
@@ -2134,18 +2137,138 @@ kiderakennetta. Mutta kvartsikiteetkään eivät ikinä ole täysin virheettömi
 \setcounter{chapter}{0}
 
 \chapter{Virtausoppi mekaniikan alana}
+\textbf{Virtausoppi} (``Fluid Mechanics'') on mekaniikan ala, joka käsittelee virtausaineita.
+
 \section{Virtausaine}
 %Fluidi, (neste). Leikkausjännitys-määritelmä. Muu kuin kiinteä (neste, kaasu, ylikriittinen [neste], plasma)
 
+Virtausaine (``fluid'') on mikä tahansa aine, joka virtaa. Eksaktimmin tämä voidaan ilmaista niin, 
+että 'virtausaineet deformoituvat jatkuvasti leikkausjännityksen vaikutuksesta'. Käytännössä esiintyvistä 
+aineen olomuodoista virtausaineita ovat \textbf{nesteet} ja \textbf{kaasut}. Plasmatkin ovat toki 
+virtausaineita mutta toistaiseksi harvinaisia käytännön sovelluksissa.
+
 \section{Statiikka ja dynamiikka}
-\section{Partikkeli- ja jatkumomekaniikka}
+Virtausoppi voidaan jakaa \textbf{hydrostatiikkaan} (``Hydrostatics'') ja \textbf{virtausdynamiikkaan} 
+(``Fluid Dynamics''). Koska virtausaineet kuitenkin yleensä virtaavat ja niitä käytetään ja niistä 
+ollaan kiinnostuneita juuri sen takia on suurin osa virtausopista käytännössä virtausdynamiikkaa.
+\footnote{``Hydrostatiikka''-termin käyttö johtuu varmaankin siitä, että virtausaineiden statiikkaa 
+tarvitaan lähinnä erilaisten nestealtaiden ja patojen suunnittelussa. Suomeksi ``virtausstatiikka'' 
+on myös itseristiriita (``oksymoroni''), mutta ``Fluid Statics'' ei olisi ollenkaan niin paha.}
+Käytännössä englanniksi käytetään yleensä termiä ``Fluid Dynamics'' ja suomeksi ``virtauslaskenta''.
+\footnote{Virtausoppi on käytännössä hyvin laskennallista, kuten tulet huomaamaan.}
+
+
+\subsection{Nopeuskentän keskeisyys}
+Yleensä virtausopissa pyritään ratkaisemaan nopeuskenttä \(\vec{v}(\vec{r}, t)\) eli virtausaineen 
+nopeusvektori jokaisessa tarkasteltavan tilavuuden pisteessä ja tarkasteltavan ajanjakson 
+ajanhetkenä. Nopeuskentän avulla on sitten melko suoraviivaista laskea suureita kuten painekenttä 
+\(p(\vec{r}, t)\) tai tilavuus, massa- tai energiavirta (teho) jonkin pinnan läpi.
+
+\section{Partikkeli- ja kontinuumimekaniikka}
+Teknillinen mekaniikka voidaan jakaa partikkeli- ja jatkumomekaniikkaan. 
+
+\textbf{Partikkelimekaniikassa} oletetaan, 
+että massa\footnote{Tässä tarkoitetaan lähinnä \textit{hidasta massaa}, ks. \nameref{def:massa}.} on 
+keskittynyt \textit{partikkeleiksi} eli pistemassoiksi. Nämä pistemassat voivat sitten muodostaa 
+suurempia systeemejä, joista hyödyllisin lienee \textit{jäykkä kappale}.
+
+\textbf{Kontinuumimekaniikassa} taas ajatellaan, että massa on jakautunut avaruuteen jatkuvasti. 
+Tätä voidaan tietenkin kuvata tiheyskentällä \(\rho(\vec{r}, t)\). Tällöin muutkin ominaisuudet kuten 
+esimerkiksi nopeus \(\vec{v}(\vec{r}, t)\), paine \(p(\vec{r}, t)\) tai lämpötila \(T(\vec{r}, t)\) 
+ovat jatkuvia vektori- tai skalaarikenttiä, siis paikan (1-3 ulottuvuudessa) ja mahdollisesti 
+ajan funktioita. Niinpä virtausopin teoria nojaa vahvasti \textbf{differentiaali- ja integraalilaskentaan} 
+ja \textbf{vektorianalyysiin}.
+
+Nykyään tiedämme, että aine ei ole mikrotasolla jatkuvaa. Virtausopin teoria on tätä tietoa vanhempi. 
+Vaikka kontinuumimekaniikka ei nykytietämyksen mukaan olekaan fysikaalisesti oikeellista, sillä 
+saadaan hyviä tuloksia. Aineen epäjatkuvuus nimittäin ilmenee vasta niin pienessä mittakaavassa, 
+että jatkumo-oletus toimii vielä makroskooppisesta näkökulmasta differentiaalisina näyttäytyville 
+tilavuuksille.
 
 \chapter{Virtaustyypit}
-\section{Sisäpuolinen ja ulkopuolinen}
+Virtauksia voidaan jaotella eri tavoin. Kaikki nämä jaottelut ovat tietenkin liukuvia (esimerkiksi 
+transitioalue laminaarista turbulenttiin virtaukseen) ja yhdistettävissä (esimerkiksi aluksi on 
+helpointa keskittyä \underline{\smash{sisäpuolisen}} \underline{laminaarin} 
+\underline{\smash{kokoonpuristumattoman}} \underline{kitkallisen} virtauksen tarkasteluun).
+
+\section{Kitkallinen ja kitkaton}
+\textbf{Kitkallisessa virtauksessa} kitka aiheuttaa virtausta vastustavan \textbf{leikkausvoiman},
+joka pitää ohuen kerroksen virtausainetta kiinni virtausaineen tilavuutta rajoittavissa seinämissä. 
+Tämän kerroksen läheisyydessä olevaan virtausaineeseen aiheutuu myös leikkausvoima, jota vastaan 
+virtaus joutuu tekemään työtä. 
+
+Tämä kuluttaa virtauskentän koordinoitunutta liike-energiaa 
+molekyylien lämpöliikkeen liike-energiaksi eli sisäenergiaksi jolloin virtausaineen nopeus 
+pienenee ja entropia kasvaa. Virtauksen sisäenergiaksi kuluvaa liike-energiaa kutsutaan virtauksen 
+\textbf{kitkahäviöksi}. Kitka aiheutuu tietenkin virtausaineen ja myös sen kanssa tekemisissä olevan 
+kiinteän aineen molekylien voimavuorovaikutuksista.
+
+\textbf{Kitkattomassa virtauksessa} ei nimensä mukaisesti ole kitkaa, leikkausvoimaa tai kitkahäviöitä. 
+Varsinkin koska kitka vaikuttaa myös nopeuskentän muotoon ja sitä kautta suunnilleen kaikkiin tuloksiin, 
+kitkaton virtaus on pätevä malli lähinnä \textbf{vapaalle virtaukselle}, joka tapahtuu kaukana 
+kaikista pinnoista. Tähän vaaditaan yleensä ulkopuolinen virtaus, mutta rajakerrosten 
+ohuuden ansiosta ``kaukana'' voi tarkoittaa yläilmakehän lisäksi vaikkapa ``huoneessa yli sentin 
+päässä kiinteistä pinnoista''. Ideaalikaasu olisi määritelmällisesti kitkatonta,
+koska sen molekyylit vuorovaikuttavat vain törmäämällä kimmoisasti. Sellaista ei kuitenkaan oikeasti 
+ole olemassa.\footnote{Suprajuoksevat (``superfluid'') virtausaineet, kuten 
+\href{http://www.youtube.com/watch?v=2Z6UJbwxBZI}{nestemäinen helium} sen sijaan virtaavat kitkattomasti. 
+Valitettavasti suprajuoksevuuden saavuttamiseen vaaditaan vielä kylmempiä lämpötiloja kuin suprajohtavuuden.}
+
+\section{Laminaari ja turbulentti}
+\textbf{Laminaarin} eli pyörteettömän virtauksen nopeuskenttä muuttuu loivasti ja sulavasti ajan 
+ja paikan funktiona\footnote{Niinpä 
+\href{http://www.newscientist.com/blogs/nstv/2011/08/born-to-be-viral-how-to-unmix-a-mixed-fluid.html}
+{tämä} on mahdollista.} ja kitkahäviöitä aiheutuu ainoastaan leikkausvoimasta. \textbf{Turbulentissa} 
+eli pyörteisessä virtauksessa sen sijaan nopeuskenttä vaihtelee voimakkaasti ajan ja paikan funktiona 
+moudostaen myös pyörteitä. Tarpeeksi pienten pyörteiden liike-energian voidaan katsoa muuttuvan 
+sisäenergiaksi ja kasvattavan täten entropiaa. Turbulenssi aiheuttaa siis ylimääräisiä kitkahäviöitä 
+mutta toisaalta tehostaa virtausaineiden sekoittumista ja lämmönsiirtoa.
+
+Turbulentin virtauksen nopeuskentästä pyritään ratkaisemaan sen aikakeskiarvo. Turbulenssin 
+vaikutusta nopeuskenttään ja turbulenssihäviöitä kuvataan usein näennäisen leikkausvoiman avulla. 
+Turbulenssin mallintaminen eli käytännössä tuon näennäisen leikkausvoiman funktion määrittäminen 
+on hyvin haastavaa.
+
+Laminaarin virtauksen muuttuminen turbulentiksi eli \textbf{transitio} ei ole ollenkaan suoraviivaista 
+ja tätä toiminta-aluetta pyritään sen mallinnuksen vaikeuden ja käytännöllisen arvaamattomuuden vuoksi 
+välttämään suunniteltaessa virtausaineita hyödyntäviä laitteita.
+
 \section{Kokoonpuristuva ja kokoonpuristumaton}
 %Hydrauliikka ja kaasudynamiikka}
-\section{Kitkallinen ja kitkaton}
-\section{Laminaari ja turbulentti}
+Virtausaineet ovat tietenkin periaatteessa aina \textbf{kokoonpuristuvia} eli niiden 
+tiheys muuttuu paineen funktiona:
+
+\begin{equation}
+ \frac{\partial \rho}{\partial p} \neq 0
+\end{equation}
+
+Käytännössä kuitenkin nesteiden tiheys muuttuu harvoin merkittävästi paineen funktiona eli
+
+\begin{equation}
+ \frac{\partial \rho_{neste}}{\partial p} \rightarrow 0
+\end{equation}
+
+Kaasujen tiheys toisaalta muuttuu voimakkaasti paineen funktiona ja tämä on otettava huomioon:
+
+\begin{equation}
+ \left|\frac{\partial \rho_{kaasu}}{\partial p}\right| >> 0
+\end{equation}
+
+Nesteiden ja kaasujen tyypillisen käyttäytymisen johdosta oppia kokoonpuristumattomasta virtauksesta 
+kutsutaan \textbf{hydrauliikaksi}\footnote{kreikan kielestä ``hydor'' = vesi} (``Hydraulics'') ja 
+kokoonpuristuvasta \textbf{kaasudynamiikaksi} (``Gas Dynamics'').
+
+\section{Sisäpuolinen ja ulkopuolinen}
+\textbf{Sisäpuolinen virtaus} on virtausaineen liikettä jossakin usealta puolelta rajatussa kanavassa. 
+Tyypillisesti nämä ovat jonkinlaisia putkia. Eksaktimmin ja matemaattisen käsittelyn kannalta 
+sisäpuolinen virtaus on virtausta, jossa kitkan ja mahdollisesti turbulenssin aiheuttama 
+leikkausvoima vaikuttaa suurimpaan osaan virtauksen nopeuskentästä.
+
+\textbf{Ulkopuolisessa virtauksessa} virtausaine pääsee liikkumaan enimmäkseen vapaasti. Mikäli 
+seinämiä esiintyy, ne aiheuttavan leikkausvoiman kautta vaikutusta virtauksen nopeuskenttään 
+vain (yleensä hyvin ohuessa) \textbf{rajakerroksessa}. 
+
+%Newtoninen ja epänewtoninen?
 
 \chapter{Käsittelytavat}
 \section{Kontrollitilavuus}
