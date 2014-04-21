@@ -1,0 +1,353 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Lämmönsiirto\\Laskuharjoituksen 12 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 17}
+
+(Tämä tehtävä vastaa monilta osin edellisten harjoitusten tehtävää 47. Ratkaisu on 
+kuitenkin käsitteellistetty eri tavalla.)
+
+Jäätyvän veden ja ilman välinen \textbf{lämpötilaero} $\Delta T$ aiheuttaa \textbf{lämpövirran} 
+$\dot{Q}$. Koska jään lämmönjohtavuus ja jään pinnan lämmönsiirtokerroin ovat äärellisiä, 
+lämpövirta $\dot{Q}$ kohtaa kuitenkin \textbf{lämpövastuksen} $R$:
+
+\begin{equation}
+ \dot{Q} = \frac{\Delta T}{R}
+\end{equation}
+
+Johtumisen lämpövastus on:
+
+\begin{equation}
+ R_j = \frac{x}{kA}
+\end{equation}
+
+Lämmönsiirtokerroin (konvektio ja mahdollisesti säteily) taas aiheuttaa lämpövastuksen
+
+\begin{equation}
+ R_h = \frac{1}{hA}
+\end{equation}
+
+Tässä vastukset ovat sarjassa, joten
+
+\begin{equation}
+ R = \sum R_i = R_j + R_h = \frac{x}{kA} + \frac{1}{hA}
+\end{equation}
+
+Eli
+
+\begin{equation}
+ \dot{Q} = \frac{\Delta T}{R} = \frac{T_{\infty} - T_{sf}}{R} = \frac{T_{\infty} 
+  - T_{sf}}{\frac{x}{kA} + \frac{1}{hA}} = A\frac{T_{\infty} 
+  - T_{sf}}{\frac{x}{k} + \frac{1}{h}}
+\end{equation}
+
+Jään jäätyminen taas vapauttaa lämpötehon (johto tehtävässä 47)
+
+\begin{equation}
+ \dot{Q} = -\rho Ah_{sf}\frac{dx}{dt}
+\end{equation}
+
+Vapautuva lämpöteho siirtyy ilmaan vastusten kautta:
+
+\begin{equation}
+ \dot{Q} = -\rho Ah_{sf}\frac{dx}{dt} = A\frac{T_{\infty} - T_{sf}}{\frac{x}{k} + \frac{1}{h}}
+\end{equation}
+
+\textbf{Huom!} $h$ on lämmönsiirtokerroin $\left(\frac{W}{m^2K}\right)$, $h_{sf}$ sulamisentalpia 
+$\left(\frac{J}{kg}\right)$...
+
+Ratkaistaan differentiaaliyhtälö separoimalla ja integroimalla määrätysti (vastaavasti kuin tehtävässä 47):
+
+\begin{align}
+ &\rho h_{sf}\frac{dx}{dt} = \frac{T_{sf} - T_{\infty}}{\frac{x}{k} + \frac{1}{h}}\\
+ &\left(\frac{x}{k} + \frac{1}{h}\right) \frac{dx}{dt} = \frac{T_{sf} - T_{\infty}}{\rho h_{sf}}\\
+ &\int_0^{x(t)} \left(\frac{x}{k} + \frac{1}{h}\right) dx = \int_0^t \frac{T_{sf} - T_{\infty}}{\rho h_{sf}}dt\\
+ &\int_0^{x(t)} \left(\frac{x}{k} + \frac{1}{h}\right) dx = \frac{T_{sf} - T_{\infty}}{\rho h_{sf}} \int_0^t dt\\
+ &\bigg/_0^{x(t)} \left(\frac{x^2}{2k} + \frac{x}{h}\right) = \frac{T_{sf} - T_{\infty}}{\rho h_{sf}} \bigg/_0^t t\\
+ &\frac{x^2(t)}{2k} + \frac{x(t)}{h} = \frac{T_{sf} - T_{\infty}}{\rho h_{sf}}t
+\end{align}
+
+Saatiin toisen asteen yhtälö. Saatetaan se ``standardiin'' polynomimuotoon ja käytetään ratkaisukaavaa:
+
+\begin{align}
+ &\frac{1}{2k}x^2(t) + \frac{1}{h}x(t) - \frac{T_{sf} - T_{\infty}}{\rho h_{sf}}t = 0\\
+ &x(t) = \frac{ -\frac{1}{h} \pm \sqrt{ \left(\frac{1}{h}\right)^2 
+  - 4\frac{1}{2k}\left(-\frac{T_{sf} - T_{\infty}}{\rho h_{sf}}t\right)}}{2\frac{1}{2k}}\\
+ &x(t) = \frac{ -\frac{1}{h} \pm \sqrt{ \frac{1}{h^2} 
+  + \frac{2}{k\rho h_{sf}}(T_{sf} - T_{\infty})t}}{\frac{1}{k}}\\
+ &x(t) = \frac{k}{h}\left( -1 \pm \sqrt{ 1 
+  + \frac{2h^2}{k\rho h_{sf}}(T_{sf} - T_{\infty})t}\right)\\
+\end{align}
+
+Miinusmerkki neliöjuuren edessä tuottaa negatiivisia paksuuksia, joten lopullinen kaava on
+
+\begin{framed}
+ \begin{equation}
+  x(t) = \frac{k}{h}\left( -1 + \sqrt{ 1 + \frac{2h^2}{k\rho h_{sf}}(T_{sf} - T_{\infty})t}\right)
+ \end{equation}
+\end{framed}
+
+
+Tehtävänannon parametrit:\\
+
+\begin{math}
+ \begin{array}{l l l l}
+  t = 10 h = 36000 s & T_{sf} = 0\,^{\circ}C & T_{\infty} = -10\,^{\circ}C &\\
+  k = 2,2 \frac{W}{m^2K} & h = 10 \frac{W}{m^2K} & h_{sf} = 330 \frac{kJ}{kg} & \rho = 913 \frac{kg}{m^3}
+ \end{array}
+\end{math}\\
+
+Sijoitus:
+
+\begin{equation}
+ x(t) = \frac{k}{h}\left( -1 + \sqrt{ 1 + \frac{2h^2}{k\rho h_{sf}}(T_{sf} - T_{\infty})t}\right) \approx \underline{12 mm}
+\end{equation}
+
+\section{Tehtävä 21}
+
+\subsection{a}
+
+\begin{align}
+ &\rho c_p \frac{\partial T}{\partial t} = k\nabla^2T + \dot{Q}_v\\
+ &\rho c \frac{\partial T}{\partial t} = k\nabla^2T\\
+\end{align}
+
+Sylinterikoordinaatistossa:
+
+\begin{equation}
+ \nabla^2 = \left(\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial}{\partial r}\right)
+   + \frac{1}{r^2}\frac{\partial^2}{\partial \varphi^2} + \frac{\partial^2}{\partial z^2}\right)
+\end{equation}
+
+\begin{align}
+ &\rho c \frac{\partial T}{\partial t} = k\left(\frac{1}{r}\frac{\partial}{\partial r}
+ \left(r\frac{\partial T}{\partial r}\right) 
+  + \frac{1}{r^2}\frac{\partial^2 T}{\partial \varphi^2} + \frac{\partial^2 T}{\partial z^2}\right)\\
+ &\frac{\partial T}{\partial t} = \frac{k}{\rho c}\left(\frac{1}{r}\frac{\partial}{\partial r}
+ \left(r\frac{\partial T}{\partial r}\right)\right)
+\end{align}
+
+$\frac{k}{\rho c}$ on \textit{terminen diffusiviteetti} $\alpha$. Saadaan yhtälöksi
+
+\begin{equation}
+ \frac{\partial T(r, t)}{\partial t} = \frac{\alpha}{r}\frac{\partial}{\partial r}
+ \left(r\frac{\partial T(r, t)}{\partial r}\right)
+\end{equation}
+
+Toisen asteen differentiaaliyhtälö $r$:n suhteen $\Rightarrow$ kaksi reunaehtoa:
+
+\begin{equation}
+ \left\{
+ \begin{aligned}
+  &\frac{\partial T}{\partial r}\bigg|_{r = 0} = 0\\
+  &q = -k\frac{\partial T}{\partial r}\bigg|_{r = R} = -h_c(T_{\infty} - T(R, t))
+ \end{aligned}\right.
+\end{equation}
+
+Eli lämpötilakenttä on symmetrinen x-akselin suhteen ja energian on säilyttävä tangon pinnassa.
+
+Ajan suhteen differentiaaliyhtälö on ensimmäistä astetta eli tarvitaan yksi alkuehto:
+
+\begin{equation}
+ T(r, 0) = T_0
+\end{equation}
+
+Ratkaisu on siis
+
+\begin{framed}
+ \begin{align}
+  &\frac{\partial T(r, t)}{\partial t} = \frac{\alpha}{r}\frac{\partial}{\partial r}
+    \left(r\frac{\partial T(r, t)}{\partial r}\right)\\
+  &\frac{\partial T}{\partial r}\bigg|_{r = 0} = 0\\
+  &q = -k\frac{\partial T}{\partial r}\bigg|_{r = R} = -h_c(T_{\infty} - T(R, t))\\
+  &T(r, 0) = T_0
+ \end{align}
+\end{framed}
+
+\subsection{b}
+
+\begin{math}
+ \begin{array}{l l l l}
+  T(t) = 100\,^{\circ}C & T_{\infty} = 20\,^{\circ}C & R = 0,005 m & \\
+  k = 380 \frac{W}{mK} & h_c = 20 \frac{W}{m^2K} & c_p = 380 \frac{J}{kgK} & \rho 8900 \frac{kg}{m^3}
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\Delta H = Q\\
+ &c_pm\Delta T = qA_v\Delta t\\
+ &c_pmdT = qA_v dt\\
+ &\frac{dT}{dt} = \frac{qA_v}{c_pm}
+\end{align}
+
+\begin{align}
+ &q = -h_c(T_{\infty} - T(t)) = h_c(T(t) - T_{\infty})\\
+ &A_v = 2\pi RL\\
+ &m = \rho V = \rho A_pL = \rho \pi R^2 L
+\end{align}
+
+\begin{align}
+ &\frac{dT}{dt} = \frac{h_c(T(t) - T_{\infty})2\pi RL}{c_p\rho \pi R^2 L}\\
+ &\frac{dT}{dt} = \frac{2h_c}{c_p\rho R}(T(t) - T_{\infty}) \approx \underline{0,189 \frac{K}{s}}
+\end{align}
+
+\section{Tehtävä 23}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 0,5m & D = 0,01m & V = \bar{u} = 5 \frac{m}{s}\\
+  T_0 = 20\,^{\circ}C & T_s = 100\,^{\circ}C
+ \end{array}
+\end{math}
+
+\begin{align}
+ &Nu_D = \frac{h_cD}{k}\\
+ &h_c(x) = \frac{k}{D}Nu_D(x)
+\end{align}
+
+\begin{align}
+ &Nu_D(x) = Nu_D(x^*)\\
+ &x^* = \frac{x}{DRe_DPr}\\
+ &Re_D = \frac{VD}{\nu}\\
+ &Pr = \frac{\nu}{\alpha}
+\end{align}
+
+Aineominaisuudet ovat lämpötilan funktioita. Putkessa lämpötilakenttä ei kuitenkaan ole vakio. 
+Keskimääräiset (virtausaineen!) aineominaisuudet saadaan usein riittävän tarkasti ottamalla ne 
+referenssilämpötilassa 
+
+\begin{equation}
+ T_r = \frac{T_0 + T_s}{2} = 60\,^{\circ}C
+\end{equation}
+
+\begin{math}
+ \begin{array}{l l l}
+  k(T_r) \approx 0,028 & \nu(T_r) \approx 1,89\cdot10^{-5}\frac{m^2}{s} &
+  Pr(T_r) \left(= \frac{\nu(T_r)}{\alpha(T_r)}\right) \approx 0,708
+ \end{array}
+\end{math}
+
+Näillä tiedoilla
+
+\begin{equation}
+ Re_D = \frac{VD}{\nu} \approx 2646
+\end{equation}
+
+\subsection{a}
+
+\begin{align}
+ &x^*(L) = \frac{L}{DRe_DPr} \approx 2,669\cdot 10^{-2}\\
+ &Nu_D(L) = Nu_D(x^*(L)) \approx 4\\
+ &h_c(L) = \frac{k}{D}Nu_D(L) \approx \underline{11,2\frac{W}{m^2K}}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\overline{Nu}_D(L) = \overline{Nu}_D(L(x^*(L)) \approx 5\\
+ &\bar{h}_c(L) = \frac{k}{D}\overline{Nu}_D(L) \approx \underline{14\frac{W}{m^2K}}
+\end{align}
+
+\subsection{c}
+
+\begin{equation}
+ \frac{T_m(L) - T_s}{T_0 - T_s} = \exp\left(-\frac{4KL}{\rho c_pVD}\right)
+\end{equation}
+
+Tässä $K$ on lämmönläpäisykerroin ('lämpökonduktanssi', voidaan usein merkitä myös $U$ tai $H$):
+
+\begin{equation}
+ q = K\Delta T
+\end{equation}
+
+Verrattaessa lämpövastukseen ('lämpöresistanssi'), havaitaan että
+
+\begin{align}
+ &\dot{Q} = \frac{\Delta T}{R} = Aq = AK\Delta T\\
+ &K = \frac{1}{RA}
+\end{align}
+
+Koska tässä ilmavirtauksen ja putken pinnan välissä lämpö siirtyy vain konvektiolla, jolloin 
+$q = h_c\Delta T$, niin nyt
+
+\begin{align}
+ &K = h_c(L) \approx 11,2\frac{W}{m^2K}\\
+ &\frac{T_m(L) - T_s}{T_0 - T_s} = \exp\left(-\frac{4h_c(L)L}{\rho c_pVD}\right)
+\end{align}
+
+Tarvitaan muutama aineominaisuus lisää, otetaan nämäkin lämpötilassa $T_r$:\\
+
+\begin{math}
+  \begin{array}{l l}
+  c_p(T_r) = 1000 \frac{J}{kgK} & \rho(T_r) = 1,1 \frac{kg}{m^3}
+  \end{array}
+\end{math}\\
+
+Ratkaistaan keskilämpötila putken päässä
+
+\begin{equation}
+ T_m(L) = T_s + \exp\left(-\frac{4h_c(L)L}{\rho c_pVD}\right)(T_0 - T_s) \approx \underline{51,917\,^{\circ}C}
+\end{equation}
+
+\subsection{d}
+
+Menee transitioalueeseen, joten voidaan käyttää vain muutenkin epätarkkaa Dittus-Bolterin sovitetta 
+(virhe voi olla jopa 30-40\%):
+
+\begin{align}
+ &\overline{Nu}_D = \overline{Nu}_D(Re_D, Pr) = 0,023Re_D^{0,8}Pr^{0,4} \approx 10,958\\
+ &\bar{h}_c = \frac{k}{D}\overline{Nu}_D \approx \underline{30,684 \frac{W}{m^2K}}
+\end{align}
+
+No, ainakin se oli helppo laskea ja ainakin suuruusluokka verrattuna laminaariin lienee oikein.
+
+\end{document}
