@@ -816,8 +816,140 @@ vain (yleensä hyvin ohuessa) \textbf{rajakerroksessa}.
 \subsection{Sähköiset voimat}
 
 \chapter{Kontrollitilavuus}
-\section{Säilymislait}
+
+Kontrollitilavuuden menetelmissä tarkastelemme virtauksen suureita äärellisen kokoisessa\footnote{siis ei 
+äärettömän suuressa muttei myöskään olemattomassa tai diffrentiaalisen pienessä} kontrollitilavuudessa.
+
+Yleisessä tapauksessa kontrollitilavuuden koko ja muoto ovat ajasta riippuvia. Eksaktimmin tämä voidaan sanoa niin, 
+että kontrollitilavuus $V$ ja sen kontrollipinta $S$ ovat ajan funktioita:
+
+\begin{align}
+ &V = V(t)\\
+ &S = S(t)
+\end{align}
+
+Kontrollitilavuutta voidaan tietenkin ajatella avoimena systeeminä, jolla on erinäisiä ekstensiivisuureita, 
+esimerkiksi massa $m$ ja entalpia $H$. Haluamme tietenkin pysyä perillä siitä, mitkä näiden ekstensiivisuureiden 
+ja niitä vastaavien intensiivisuureiden arvot ovat milläkin ajanhetkellä. Olkoon $B$ mielivaltainen 
+kontrollitilavuuden ekstensiivisuure\footnote{kuten pian näemme, $B$ voi olla myös vektori.} ja $b$ sitä vastaava 
+intensiivisuure ja nämä ajan funktioita:
+
+\begin{equation}
+ dB(\vec{r}, t) = b(\vec{r}, t)dm(\vec{r}, t) = b(\vec{r}, t)\rho(\vec{r}, t)dV(\vec{r}, t)
+\end{equation}
+
+Eli differentiaaliselle tilavuuselementille kohdassa $\vec{r}$ ajanhetkellä $t$ ekstensiivisuureen $B$ arvo on 
+intensiivisuureen $b$ arvo tuossa kohdassa tuolloin kerrottuna tuon differentiaalisen tilavuuselementin massalla.
+Differentiaalinen massa on vuorostaan tiheys tuossa kohdassa tuolloin kerottuna differentiaalisen tilavuuselementin
+tilavuudella. 
+Koska meitä kuitenkin kiinnostaa koko kontrollitilavuuden $B$, laskemme sen integroimalla:
+
+\begin{equation}
+ B(t) = \int_{B(t)} dB(\vec{r}, t) = \iiint_{V(t)} b(\vec{r}, t)\rho(\vec{r}, t)dV(\vec{r}, t)
+\end{equation}
+
+Voimme tutkia ekstensiivisuureiden aikariippuvuutta aikaderivoimalla ne:
+
+\begin{equation}
+ \label{eq:dBdt}
+ \frac{dB(t)}{dt} = \frac{d}{dt}\iiint_{V(t)} b(\vec{r}, t)\rho(\vec{r}, t)dV(\vec{r}, t)
+\end{equation}
+
+Tästä on ennen kaikkea se hyöty, että erilaiset säilymislait on helppo ilmaista matemaattisesti aikaderivaattojen avulla. 
+Jatkossa kirjoitan selkeyden vuoksi ``$b(\vec{r}, t)$'':n sijaan vain $b$, mutta pidä mielessäsi suureiden 
+paikka- ja aikariipppuvuus.
+
 \subsection{Reynoldsin siirtoteoreema}
+
+Nyt meillä on enää sellainen ongelma, että sekä integroitavat funktiot, että kontrollitilavuus, jonka 
+yli integroidaan ovat ajan funktioita. Olisi sekä käsitteellisesti että laskennallisesti kätevää, jos 
+saisimme kontrollitilavuuden $V(t)$ muodon ja koon sekä intensiivisuureen $b(\vec{r}, t)$ muutosten vaikutukset 
+intensiivisuureen $B(t)$ arvoon eriytettyä omiksi termeikseen. Tämä onnistuu \textbf{Reynoldsin siirtoteoreeman} 
+avulla. Sen mukaan:
+
+\begin{framed}
+ \begin{equation}
+    \label{eq:RTT}
+    \frac{dB(t)}{dt} = \frac{d}{dt}\iiint_{V(t)} b\rho dV
+      = \iiint_{V(t)}\frac{d( b\rho)}{dt}dV 
+	+ \iint_{S(t)} b\rho(\vec{v}_s \cdot \vec{n})dA
+ \end{equation}
+\end{framed}
+
+Missä $\vec{v}_s(\vec{r}, t)$ on kontrollipinnan nopeus ja $\vec{n}(\vec{r}, t)$ siitä ulospäin osoittava 
+yksikkönormaali.
+
+Reynoldsin siirtoteoreema on tietenkin matemaattisesti todistettu. Toisaalta se on varsin intuitiivinen tulos;
+$B$:n muutos on sen muutoksen kontrollitilavuudessa ja kontrollipinnan ylittävän $B$:n summa
+
+\section{Säilymislait kontrollitilavuudelle}
+
+Makroskooppiselle systeemille massan, liikemäärän, kulmaliikemäärän ja energian säilymislait ovat
+
+\begin{align}
+ \label{eq:V-sailymislait1}
+ &\frac{dm(t)}{dt} = 0\\
+ &\frac{d\vec{p}(t)}{dt} = \sum \vec{F}\\
+ &\frac{d\vec{L}(t)}{dt} = \sum \vec{M}\\
+ \label{eq:V-sailymislait4}
+ &\frac{dE(t)}{dt} = \dot{Q} + \dot{W}
+\end{align}
+
+Massa $m$ ei siis muutu\footnote{Oletamme edelleen että ydinreaktioita ei tapahdu.}. Liikemäärän $\vec{p}$ muutoksen 
+aiheuttaa voima $\vec{F}$, joka on itse asiassa määritelty liikemäärän aikaderivaatan suuruiseksi. Täysin vastaavasti 
+kulmaliikemäärän $\vec{L}$ muutos on momentin $\vec{M}$ suuruinen. Termodynamiikasta tuttu energian säilyminen, 
+$\Delta E = Q + W$ eli systeemin energian muutos on työn ja lämmön summa, sulautuu joukkoon aikaderivoidussa muodossaan.
+
+Systeemin massa $m$, liikemäärä $\vec{p}$, kulmaliikemäärä $\vec{L}$ ja energia $E$ ovat kaikki ekstensiivisuureita. 
+Niitä vastaavat ``intensiivisuureet'' ovat
+
+\begin{align}
+ &\frac{m}{m} = 1\\
+ &\frac{\vec{p}}{m} = \frac{m\vec{v}}{m} = \vec{v}\\
+ &\frac{\vec{L}}{m} = \frac{\vec{r} \times m \vec{v}}{m} = \vec{r} \times \vec{v}\\
+ &\frac{E}{m} = e 
+\end{align}
+
+Yllä ``intensiivisuureet'' on heittomerkeissä, koska näin voidaan kyllä matemaattisessa mielessä sanoa, mutta 
+fysikaalisesti emme miellä nopeutta tai varsinkaan ykköstä kovin ``intensiivisuuremaisiksi'' siinä mielessä kuin 
+esimerkiksi ominaisenergian $e$. Joka tapauksessa näiden avulla voimme nyt sijoittaa kunkin neljästä 
+ekstensiivisuureestamme Reynoldsin siirtoteoreemaan \ref{eq:RTT}:
+
+\begin{align}
+ &\frac{dm(t)}{dt}
+  = \iiint_{V(t)}\frac{d( \rho)}{dt}dV 
+    + \iint_{S(t)} \rho(\vec{v}_s \cdot \vec{n})dA\\
+ &\frac{d\vec{p}(t)}{dt}
+  = \iiint_{V(t)}\frac{d( \vec{v}\rho)}{dt}dV 
+    + \iint_{S(t)} \vec{v}\rho(\vec{v}_s \cdot \vec{n})dA\\
+ &\frac{d\vec{L}(t)}{dt}
+  = \iiint_{V(t)}\frac{d( \vec{r} \times \vec{v}\rho)}{dt}dV 
+    + \iint_{S(t)} \vec{r} \times \vec{v}\rho(\vec{v}_s \cdot \vec{n})dA\\
+ &\frac{dE(t)}{dt}
+  = \iiint_{V(t)}\frac{d( e\rho)}{dt}dV 
+    + \iint_{S(t)} e\rho(\vec{v}_s \cdot \vec{n})dA
+\end{align}
+
+Kun sijoitamme nämä säilymislakeihin \ref{eq:V-sailymislait1}-\ref{eq:V-sailymislait1}, saamme 
+säilymislaeiksi
+
+\begin{framed}
+  \begin{align}
+  &\frac{dm(t)}{dt}
+    = \iiint_{V(t)}\frac{d( \rho)}{dt}dV 
+      + \iint_{S(t)} \rho(\vec{v}_s \cdot \vec{n})dA = 0\\
+  &\frac{d\vec{p}(t)}{dt}
+    = \iiint_{V(t)}\frac{d( \vec{v}\rho)}{dt}dV 
+      + \iint_{S(t)} \vec{v}\rho(\vec{v}_s \cdot \vec{n})dA = \sum \vec{F} \\
+  &\frac{d\vec{L}(t)}{dt}
+    = \iiint_{V(t)}\frac{d( \vec{r} \times \vec{v}\rho)}{dt}dV 
+      + \iint_{S(t)} \vec{r} \times \vec{v}\rho(\vec{v}_s \cdot \vec{n})dA = \sum \vec{M} \\
+  &\frac{dE(t)}{dt}
+    = \iiint_{V(t)}\frac{d( e\rho)}{dt}dV 
+      + \iint_{S(t)} e\rho(\vec{v}_s \cdot \vec{n})dA = \dot{Q} + \dot{W}
+  \end{align}
+\end{framed}
+
 \section{Nopeita vastauksia}
 \section{CFD}
 
@@ -834,10 +966,10 @@ vain (yleensä hyvin ohuessa) \textbf{rajakerroksessa}.
 \part*{Liitteet} %___________________________________________________________________________________
 \addcontentsline{toc}{part}{Liitteet}
 
-\chapter{Lähdeluettelo} %----------------------------------------------------------------------------
-
-\bibliography{pruju}{}
-\bibliographystyle{plain}
+% \chapter{Lähdeluettelo} %----------------------------------------------------------------------------
+% 
+% \bibliography{pruju}{}
+% \bibliographystyle{plain}
 
 \end{document}
 
