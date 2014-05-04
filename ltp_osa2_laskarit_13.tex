@@ -1,0 +1,201 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Lämmönsiirto\\Laskuharjoituksen 13 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 28}
+
+\begin{math}
+ \begin{array}{l l l l}
+  L = 0,03m & d = 0,0025m & b = 0,006m & A_L = 1 m^2\\
+  T_s = 100\,^{\circ}C & T_{\infty} = 20\,^{\circ}C & k = 380 \frac{W}{mK} & h = 35\frac{W}{m^2K}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+\begin{align}
+ &\frac{\theta(L)}{\theta_0} = \frac{T(L) - T_{\infty}}{T_s - T_{\infty}} = \frac{\cosh(m(L - L))}{\cosh(mL)}\\
+ &T(L) = T_{\infty} + \frac{\cosh(0)}{\cosh(mL)}(T_s - T_{\infty}) = T_{\infty} + \frac{T_s - T_{\infty}}{\cosh(mL)}\\
+ &m = \sqrt{\frac{4h}{kd}} \approx 12,14 \frac{1}{m}\\
+ &T(L) \approx \underline{95\,^{\circ}C}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\dot{Q}_R = mkA_c\tanh(mL)\theta_0 = mk\frac{\pi d^2}{4}\tanh(mL)(T_s - T_{\infty})\\
+ &\dot{Q}_R \approx \underline{0,632 W}
+\end{align}
+
+\subsection{c}
+
+\begin{align}
+ &N = \frac{A_L}{A_b} = \frac{A_L}{b^2} \approx 27780\\
+ &\sum \dot{Q}_R = N\dot{Q}_R \approx \underline{17,6 kW}\\
+ &\dot{Q}_L = (A_L - NA_c)h(T_s - T_{\infty}) = (A_L - N\frac{\pi d^2}{4})h(T_s - T_{\infty})\\
+ &\dot{Q}_L \approx 2,4 kW\\
+ &\dot{Q} = \sum \dot{Q}_R + \dot{Q}_L \approx \underline{20 kW}
+\end{align}
+
+\section{Tehtävä 25}
+
+\subsection{Kaava}
+
+\begin{align}
+ &\frac{\theta_{A,i}}{\theta_{B,i}} = \frac{T_A - T_i}{T_B - T_i} = \frac{\cosh(m_i(L - L))}{\cosh(m_iL)} = \frac{1}{\cosh(m_iL)}\\
+ &T_A = T_i + \frac{T_B - T_i}{\cosh(m_iL)}
+\end{align}
+
+Ripaparametrille $m$ löytyy valmis kaava, mutta $T_B$ joudutaan ratkaisemaan energian säilymislaista:
+
+\begin{align}
+ &\dot{Q}_B = \dot{Q}_i = -\dot{Q}_v\\
+ &m_ikA_c\tanh(m_iL)\theta_{i,0} = -m_vkA_c\tanh(m_vL)\theta_{v,0}\\
+ &m_i\tanh(m_iL)(T_B - T_i) = -m_v\tanh(m_vL)(T_B - T_v)\\
+ &T_B = \frac{m_v\tanh(m_vL)T_v + m_i\tanh(m_iL)T_i}{m_v\tanh(m_vL) + m_i\tanh(m_iL)}
+\end{align}
+
+\begin{framed}
+  \begin{align}
+  &T_B = \frac{m_v\tanh(m_vL)T_v + m_i\tanh(m_iL)T_i}{m_v\tanh(m_vL) + m_i\tanh(m_iL)}\\
+  &T_A = T_i + \frac{T_B - T_i}{\cosh(m_iL)}
+  \end{align}
+\end{framed}
+
+\subsection{Arvot}
+
+\begin{math}
+ \begin{array}{l l l}
+  L = 0,075m & s = 0,005m & t = 0,0015m\\
+  A_c = st = 7,5\cdot10^{-6}m & P = 2(s + t) = 0,013m & \\
+  T_i = 20\,^{\circ}C & T_v = 90\,^{\circ}C & \\
+  h_i = 10 \frac{W}{m^2K} & h_v = 100 \frac{W}{m^2K} & \\
+  k_h = 417 \frac{W}{mK} & k_t = 16 \frac{W}{mK}
+ \end{array}
+\end{math}
+
+\subsubsection{Hopea}
+
+\begin{align}
+ &m_{i,h} = \sqrt{\frac{h_iP}{k_hA_c}} \approx 6,447 \frac{1}{m}\\
+ &m_{v,h} = \sqrt{\frac{h_vP}{k_hA_c}} \approx 20,388 \frac{1}{m}\\
+ &T_{B,h} \approx 80,533\,^{\circ}C\\
+ &T_{A,h} \approx 74,1\,^{\circ}C
+\end{align}
+
+\subsubsection{Teräs}
+
+\begin{align}
+ &m_{i,t} = \sqrt{\frac{h_iP}{k_tA_c}} \approx 32,914 \frac{1}{m}\\
+ &m_{v,t} = \sqrt{\frac{h_vP}{k_tA_c}} \approx 104,083 \frac{1}{m}\\
+ &T_{B,t} \approx 73,365\,^{\circ}C\\
+ &T_{A,t} \approx 29,0\,^{\circ}C
+\end{align}
+
+\section{Tehtävä 34}
+
+\subsection{HUOM!}
+
+\begin{align}
+ &\overline{Nu_L} = \frac{1}{L}\int_0^L Nu_x dx\\
+ &\frac{\overline{h}L}{k} = \frac{1}{L}\int_0^L \frac{h_x x}{k} dx\\
+ &\frac{L}{k}\frac{1}{L}\int_0^L h_x dx = \frac{1}{kL}\int_0^L h_x x dx\\
+ &L\int_0^L h_x dx \neq \int_0^L \frac{h_x x}{k} dx
+\end{align}
+
+(Sisäpuolisessa virtauksessa tätä ongelmaa ei tule, koska $Nu_D = \frac{hD}{k}$.)
+
+\begin{align}
+ &\left\{
+ \begin{aligned}
+  &\overline{Nu}_L = \frac{\overline{h}L}{k} = \frac{L}{k}\frac{1}{L}\int_0^L h_x dx = \frac{1}{k}\int_0^L h_x dx\\
+  &Nu_x = \frac{h_x x}{k} \Leftrightarrow h_x = \frac{kNu_x}{x}
+ \end{aligned}\right.\\
+ &\overline{Nu}_L = \frac{1}{k}\int_0^L \frac{kNu_x}{x} dx = \int_0^L \frac{Nu_x}{x} dx
+\end{align}
+
+\subsection{a}
+
+\begin{framed}
+ \begin{equation}
+  Nu_x = 0,332Re_x^{1/2}Pr^{1/3} 
+ \end{equation}
+\end{framed}
+
+\begin{align}
+ &Nu_x = 0,332\left(\frac{U_{\infty}x}{\nu}\right)^{1/2}Pr^{1/3}
+   = 0,332Pr^{1/3}\left(\frac{U_{\infty}}{\nu}\right)^{1/2}x^{1/2}\\
+ &\overline{Nu}_L = \int_0^L \frac{Nu_x}{x} dx = \int_0^L 0,332Pr^{1/3}\left(\frac{U_{\infty}}{\nu}\right)^{1/2}x^{-1/2} dx\\
+ &\overline{Nu}_L = 0,332Pr^{1/3}\left(\frac{U_{\infty}}{\nu}\right)^{1/2}\int_0^L x^{-1/2} dx\\
+ &\overline{Nu}_L = 0,332Pr^{1/3}\left(\frac{U_{\infty}}{\nu}\right)^{1/2}\bigg/_0^L 2x^{1/2} dx\\
+ &\overline{Nu}_L = 0,664Pr^{1/3}\left(\frac{U_{\infty}}{\nu}\right)^{1/2}L^{1/2} = \underline{0,664Re_L^{1/2}Pr^{1/3}}
+\end{align}
+
+\subsection{b}
+
+\begin{framed}
+ \begin{equation}
+  Nu_x = 0,0297Re_x^{0,8}Pr^{0,6}
+ \end{equation}
+\end{framed}
+
+\begin{align}
+ &Nu_x = 0,0297\left(\frac{U_{\infty}x}{\nu}\right)^{0,8}Pr^{0,6}
+  = 0,0297Pr^{0,6}\left(\frac{U_{\infty}}{\nu}\right)^{0,8}x^{0,8}\\
+ &\overline{Nu}_L = \int_0^L \frac{Nu_x}{x} dx = \int_0^L 0,0297Pr^{0,6}\left(\frac{U_{\infty}}{\nu}\right)^{0,8}x^{-0,2} dx\\
+ &\overline{Nu}_L = 0,0297Pr^{0,6}\left(\frac{U_{\infty}}{\nu}\right)^{0,8}\int_0^L x^{-1/5} dx\\
+ &\overline{Nu}_L = 0,0297Pr^{0,6}\left(\frac{U_{\infty}}{\nu}\right)^{0,8}\bigg/_0^L \frac{5}{4}x^{4/5} dx\\
+ &\overline{Nu}_L = 0,0297Pr^{0,6}\left(\frac{U_{\infty}}{\nu}\right)^{0,8}\frac{5}{4}L^{0,8} = \underline{0,037Re_L^{0,8}Pr^{0,6}}
+\end{align}
+
+\end{document}
