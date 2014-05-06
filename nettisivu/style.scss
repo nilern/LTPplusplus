@@ -1,0 +1,53 @@
+$bgcolor: firebrick;
+$hlcolor: gold;
+$basepadding: 2em;
+
+@mixin center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-color: $bgcolor;
+  padding-top: 70px;
+}
+
+.col-md-4 h1 { 
+  color: $hlcolor;
+  text-shadow: 0 0 4px yellow;
+}
+h1, h2 { text-align: center;}
+.btn-primary {
+  display: block;
+  width: 30%;
+  @include center-block;
+}
+
+.navbar-header {
+  a {
+    &:link { color: $hlcolor; }
+    &:hover { color: $hlcolor; }
+    &:visited { color: $hlcolor; }
+  }
+}
+
+.cover {
+  margin-bottom: 3ex;
+  @include center-block; 
+  height: 43ex;
+  width: 16em;
+  
+  padding: $basepadding;
+  
+  background-color: white;
+  border: solid 1px black;
+  
+  text-align: center;
+  font-family: serif;
+  font-size: large;
+}
+
+.cover, well {
+  padding: $basepadding;
+}
+  

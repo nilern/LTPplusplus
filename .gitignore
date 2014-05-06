@@ -17,7 +17,5 @@
 *.blg
 *.png
 .directory
-/pruju
-/laskarit
-/jaakkol4_ltp.py
-/lahteet
+./build
+.sass-cache

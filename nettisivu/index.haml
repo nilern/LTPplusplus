@@ -1,0 +1,207 @@
+!!!
+%html{lang: "fi"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
+    %meta{content: "LTP++: Lämpötieteitä helpommalla", name: "description"}
+    %meta{content: "Pauli Jaakkola", name: "author"}
+    
+    %title LTP++: Lämpötieteitä helpommalla
+    
+    %script{src: "http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js", type: "text/javascript"}
+    %link{href: "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel: "stylesheet"}
+    %script{src: "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js", type: "text/javascript"}
+    
+    %link{href: "style.css", rel: "stylesheet"}
+    
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", 
+            "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "http://www.students.tut.fi/~jaakkol4/ltpplusplus/"} LTP++: Lämpötieteitä helpommalla
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{href: "http://www.students.tut.fi/~jaakkol4/index.html"} Tekijä
+            %li
+              %a{href: "https://github.com/nilern/LTPplusplus"} Lähdekoodi
+          
+    .container
+      .row
+        .col-md-4
+          %h1 Termodynamiikka
+          %h2 Epävirallinen opintomoniste:
+          
+          .cover
+            %h2 LTP++
+            %p 
+              Johdatus termodynamiikkaan
+            %p.glyphicon.glyphicon-log-in
+            %p
+              %a.btn.btn-warning{href: "./opintomonisteet/termodynamiikka.pdf"} Lataa omaksi!
+              
+          .well
+            %h3 Laskuharjoitukset
+            
+            %h4 Laskuharjoitus 1
+            %ul
+              %li Ideaalikaasun tilanyhtälö
+              %li Termodynamiikan I pääsääntö
+              %li Ominaislämpökapasiteetit
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_1.pdf"} Ratkaisut
+            
+            %h4 Laskuharjoitus 2
+            %ul 
+              %li Ideaalikaasuprosessit
+              %li Faasimuutosentalpia
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_2.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 3
+            %ul 
+              %li Ideaalikaasuprosessit 
+              %li Ainemäärä ja massa
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_3.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 4
+            %ul 
+              %li Kostea ilma
+              %li Ideaalikaasuseokset
+              %li Avoin systeemi
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_4.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 5
+            %ul 
+              %li Avoimen systeemin energiayhtälö
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_5.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 6
+            %ul 
+              %li Energian ja massan säilyminen
+              %li Höyryprosessi
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_6.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 7
+            %ul 
+              %li Voimalaitokset
+              %li Jäähdytyskoneet
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_7.pdf"} Ratkaisut
+            
+        .col-md-4
+          %h1 Virtausoppi
+          %h2 Epävirallinen opintomoniste:
+          
+          .cover
+            %h2 LTP++
+            %p 
+              Johdatus virtausoppiin
+              %p.glyphicon.glyphicon-tint
+            %p
+              %a.btn.btn-info{href: "./opintomonisteet/virtausoppi.pdf"} Lataa omaksi!
+              
+          .well
+            %h3 Laskuharjoitukset
+             
+            %h4 Laskuharjoitus 8
+            %ul 
+              %li Virtauskenttä
+              %li Tilavuusvirta
+              %li Hydraulinen halkaisija
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_8.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 9
+            %ul 
+              %li Virtaus- ja lämpötilakenttien hyödyntäminen
+              %li Putkivirtauksen kitkakerroin
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_9.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 10
+            %ul 
+              %li Ulkopuolinen virtaus
+              %li Rakovirtaus
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_10.pdf"} Ratkaisut
+            
+        .col-md-4
+          %h1 Lämmönsiirto
+          %h2 Epävirallinen opintomoniste:
+          
+          .cover
+            %h2 LTP++
+            %p 
+              Johdatus lämmönsiirtoon
+              %p.glyphicon.glyphicon-fire
+            %p
+              %a.btn.btn-danger{href: "./opintomonisteet/lammonsiirto.pdf"} Lataa omaksi!
+              
+          .well
+            %h3 Laskuharjoitukset
+             
+            %h4 Laskuharjoitus 11
+            %ul 
+              %li Lämmön johtuminen
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_11.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 12
+            %ul 
+              %li Lämpövastukset
+              %li Lämmön johtuminen, reunaehdot
+              %li Konvektiivinen lämmönsiirtokerroin
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_12.pdf"} Ratkaisut
+             
+            %h4 Laskuharjoitus 13
+            %ul 
+              %li Ripateoria
+              %li Keskimääräinen Nusseltin luku
+            %a.btn.btn-primary{href: "./laskuharjoitukset/laskuharjoitus_13.pdf"} Ratkaisut
+              
+      .jumbotron
+        %h1 Tausta
+        %p Luonnontieteitä voidaan opettaa kahdella tavalla:
+        %ol
+          %li 
+            Pyritään ilmiöiden ymmärtämiseen. Tästä ymmärryksestä kumpuavat 
+            sitten kaavat sovellusmahdollisuuksineen.
+          %li
+            Opetellaan lähinnä työkalujen käyttöä. Mitään ei välttämättä 
+            ymmärrä, mutta riittävän ajan jälkeen tuloksia syntyy rutiinilla. 
+            Välillä kaavat kyllä unohtuvat käyttötarkoituksineen koska 
+            niistä ei koskaan mitään ymmärtänyt.
+        %p 
+          Tarkoitus olisi, että DI-tutkinnossa (ehkä toisin kuin AMK-insinöörin 
+          tutkinnossa) opiskeltaisiin enemmän ensimmäisen kaavan mukaan. Kokemusteni
+          mukaan ainakin <a href="http://www.tut.fi/">TTY</a>:llä tähän päästään hyvin vaihtelevasti.
+        %p
+          Motivaationi lämpötekniikan perusteiden tuntiassistenttina toimimiseen 
+          ja LTP++-projektin aloittamiseen koostuu suurelta osin halusta edistää 
+          kanssaopiskelijoiden ymmärrystä tällä alalla. Lämpötieteiden syvin 
+          olemus ei ole kaavojen runsaudenpula vaan syvälliset oivallukset 
+          ja ovelasti määritellyt suureet.
+          
+        %h1 Tämän sivun sisältö ja tarkoitus
+
+        %p
+          Lämpötieteiden (termodynamiikka, virtausoppi ja lämmönsiirto) käsitteistön ja ajatusrakennelmien ymmärtämiseen ei tarvitse käyttää vuosikausia. Näillä sivuilla pyrin siihen, ettei lämpötieteiden ymmärtäminen tai niiden soveltaminen tuntuisi sinulle tarpeettoman vaikealta.
+
+        %p Rakennan näihin tarkoituksiin kahdentyyppisiä dokumenttieja:
+
+        %ol
+          %li 
+            Epäviralliset teoriaprujut pyrkivät selittämään, mistä käsitteissä (suureissa, laeissa jne.) on pohjimmiltaan kyse.
+          %li
+            Laskuharjoitusten ratkaisut olen pyrkinyt laatimaan niin, että yksittäisten ongelmien lisäksi valottuu ratkaisun lämpötieteellinen perusta.
+        %p
+          Olen laatinut dokumentit LaTeXilla ja projektin lähdekoodit ovat  
+          <a href="https://github.com/nilern/LTPplusplus">saatavilla GitHubista</a> 
+          (<a href="https://www.gnu.org/copyleft/gpl.html">GPL</a>-lisenssi).
+            
