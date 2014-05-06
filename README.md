@@ -21,4 +21,4 @@ Saatavilla on myös make-komennot erikseen opintomonisteille, laskuharjoituksill
 * `make laskuharjoitukset`
 * `make nettisivu`
 
-Voit poistaa kääntämäsi tiedostot komennolla `make all`.
+Voit poistaa kääntämäsi tiedostot komennolla `make clean`.
