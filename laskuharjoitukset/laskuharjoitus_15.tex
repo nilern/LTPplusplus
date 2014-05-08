@@ -1,0 +1,306 @@
+% Copyright 2013 Pauli Jaakkola
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[12pt,a4paper,finnish]{article}
+
+\usepackage[utf8]{inputenc}                 % Tekstiasetuksia, sisältää ääkköset
+\usepackage[T1]{fontenc}                    % Tekstiasetuksia, T1-koodatut fontit
+\usepackage{ae,aecompl}                     % Paremman näköiset fontit
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+% \usepackage{a4wide}
+\usepackage[intlimits]{amsmath}             % Lisää kaavavoimaa!
+\usepackage{amssymb} 
+\usepackage{fixltx2e}                       % \textsubscript
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{hyperref}
+\makeatother
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\makeatletter
+\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+\let\sectionignore\@gobbletwo
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+
+\title{LTP++: Lämmönsiirto\\Laskuharjoituksen 15 ratkaisut}
+\date{\today}
+\author{Pauli Jaakkola}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Tehtävä 49}
+
+\begin{math}
+ \begin{array}{l l l}
+  T_1 = 5800 K & T_2 = 5700 K & \sigma = 5,6697 \cdot 10^{-8} \frac{W}{m^2K^4}
+ \end{array}
+\end{math}
+
+\begin{align}
+  &\left\{
+  \begin{aligned}
+    &G_a = \sigma T^4 \quad \bigg|\bigg| \quad [G] = \frac{W}{m^2} = [q] \\
+    &\dot{Q}_a = A_aG_a = A_{mk}G_{mk}
+  \end{aligned}\right.\\
+  &G_{mk} = \frac{A_aG_a}{A_{mk}} = \frac{A_a}{A_{mk}}\sigma T^4 \\
+  &\frac{\Delta G_{mk}}{G_{mk1}} = \frac{G_{mk2} - G_{mk1}}{G_{mk1}} 
+    = \frac{\frac{A_a}{A_{mk}}\sigma T_2^4 - \frac{A_a}{A_{mk}}\sigma T_1^4}{\frac{A_a}{A_{mk}}\sigma T_1^4} \\
+  &\frac{\Delta G_{mk}}{G_{mk1}} = \frac{T_2^4 - T_1^4}{ T_1^4} \approx 0,067 \approx \underline{7\%}
+\end{align}
+
+\section{Tehtävä 42}
+
+\begin{math}
+ \begin{array}{l l l l}
+  d_1 = 0,010 m & r_1 = \frac{d_1}{2} = 0,005 m & d_2 = 0,020 m & r_2 = \frac{d_2}{2} = 0,010 m \\
+  \dot{Q}' = -200 \frac{W}{m} & T_{\infty} = 293,15 K & & \\
+  k = 1,6 \frac{W}{mK} & h_c = 20 \frac{W}{m^2K} & \varepsilon = 0,9 & \sigma = 5,6697 \cdot 10^{-8} \frac{W}{m^2K^4}
+ \end{array}
+\end{math}
+
+\subsection{a}
+
+Eristeen korkein lämpötila on tietenkin vastuksen ja eristeen kohtauspinnassa. Kyseessä on 
+johtuminen sylinterikuoren läpi:
+
+\begin{align}
+ &\dot{Q}' = \frac{\dot{Q}}{L} = \frac{1}{L}\dot{Q} = \frac{1}{L}\frac{T_2 - T_1}{R}
+  \quad \bigg|\bigg| \quad R = \frac{\ln \frac{r_2}{r_1}}{2\pi kL} \\
+ &\dot{Q}' = \frac{1}{L}\frac{T_2 - T_1}{\frac{\ln \frac{r_2}{r_1}}{2\pi kL}} 
+  = \frac{2\pi k}{\ln \frac{r_2}{r_1}}(T_2 - T_1) \\
+ &T_1 = T_2 - \frac{\ln \frac{r_2}{r_1}}{2\pi k}\dot{Q}'\\
+\end{align}
+
+Mutta tähän tarvitaan $T_2$. Eristeestä poistuva lämpövirta pituutta kohden on jatkuvuustilassa
+sama kuin vastuksesta lähtevä:
+
+\begin{align}
+ &\dot{Q}' = \frac{\dot{Q}}{L} = \frac{A_v}{L}q = \frac{2\pi r_2L}{L}(q_c + q_r)\\
+ &\dot{Q}' = \frac{\dot{Q}}{L} = \frac{A_v}{L}q 
+  = \frac{2\pi r_2L}{L}\left(h_c(T_{\infty} - T_2) + \varepsilon\sigma(T_{\infty}^4 - T_2^4)\right)\\
+ &\dot{Q}' = 2\pi r_2\left(h_c(T_{\infty} - T_2) + \varepsilon\sigma(T_{\infty}^4 - T_2^4)\right)
+\end{align}
+
+Säteilyn johdosta joudutaan neljännen asteen yhtälöön. Se voidaan ratkaista ratkaisukaavalla, iteroimalla 
+tai laskimella/laskentaohjelmilla\footnote{MATLAB/Octave/Scilab, Wolfram Alpha/Mathematica, Maxima, Maple, EES...
+Luultavasti symboliset laskentaohjelmat käyttävät ratkaisukaavaa ja numeeriset iteroivat.}.
+
+Ratkaisukaava, laskin ja laskentaohjelmat haluavat syödä standardimuotoisia polynomiyhtälöitä:
+
+\begin{equation}
+  \varepsilon\sigma T_2^4 + h_cT_2 
+    - \left(\varepsilon\sigma T_{\infty}^4 + h_cT_{\infty} - \frac{\dot{Q}'}{2\pi r_2}\right) = 0
+\end{equation}
+
+Ratkaistaan kuitenkin nyt iteroimalla, sillä sitä seuraa jatkossa lisää.
+
+(Kiertopiste)iterointiin tarvitaan $T_{2,(i+1)} = f(T_{2,i})$:
+
+\begin{equation}
+ T_{2,(i+1)} = \frac{\varepsilon\sigma}{h_c}(T_{\infty}^4 - T_{2,i}^4) + T_{\infty}
+  - \frac{\dot{Q}'}{2\pi r_2h_c}
+\end{equation}
+
+Prosessin aloittamiseen tarvitaan tietenkin alkuarvaus, olkoon se nyt 
+
+\begin{equation}
+  T_{2, 0} = 100 \,^{\circ}C = 373,15K
+\end{equation}
+
+Iterointia jatketaan kunnes se 'konvergoi' johonkin arvoon eli tulos ei enää muutu halutuissa rajoissa. 
+Olkoon konvergoimisehto nyt
+
+\begin{equation}
+ |T_{2,(i+1)} - T_{2,i}| < 0,01
+\end{equation}
+
+Sitten toimeen:
+
+\begin{equation}
+  \begin{array}{l l l}
+    T_{2,0} = 373,15 K &  T_{2,8} = 402,36 K &  T_{2,16} = 403,46 K \\
+    T_{2,1} = 421,68 K &  T_{2,9} = 404,28 K &  T_{2,17} = 403,54 K \\
+    T_{2,2} = 390,48 K &  T_{2,10} = 402,99 K &  T_{2,18} = 403,49 K \\
+    T_{2,3} = 411,83 K &  T_{2,11} = 403,86 K &  T_{2,19} = 403,52 K \\
+    T_{2,4} = 397,75 K &  T_{2,12} = 403,28 K &  T_{2,20} = 403,50 K \\
+    T_{2,5} = 407,29 K &  T_{2,13} = 403,67 K &  T_{2,21} = 403,51 K \\
+    T_{2,6} = 400,94 K &  T_{2,14} = 403,41 K &  T_{2,22} = 403,51 K \\
+    T_{2,7} = 405,22 K &  T_{2,15} = 403,58 K &  T_{2,23} = 403,51 K
+  \end{array}
+\end{equation}
+
+\begin{equation}
+ T_2 \approx 403,5 K
+\end{equation}
+
+Riippuen funktion $f$ muodosta sekä alkuarvauksen ja tuloksen arvoista iterointi saattaa konvergoinnin 
+sijaan hajaantua. Tämän välttämiseen on keinoja, joista yksinkertaisin lienee alkuarvauksen muuttaminen ja 
+monimutkaisin jokin paljon kiertopisteiterointia kehittyneempi algoritmi. Näihin ei tässä kuitenkaan ole 
+tarvetta mennä.
+
+Enää on sijoitettava tämä eristeen maksimilämpötilan kaavaan:
+
+\begin{equation}
+ T_1 = T_2 - \frac{\ln \frac{r_2}{r_1}}{2\pi k}\dot{Q}' \approx 417,4 K \approx \underline{144\,^{\circ}C}
+\end{equation}
+
+\subsection{b}
+
+\begin{math}
+ g = 9,81 \frac{m}{s^2}
+\end{math}\\
+
+Johtumisen kannalta tilanne ei muutu:
+
+\begin{equation}
+ T_1 = T_2 - \frac{\ln \frac{r_2}{r_1}}{2\pi k}\dot{Q}'
+\end{equation}
+
+Pinnasta lämpö siirtyy kuitenkin vain konvektiolla, jolloin
+
+\begin{align}
+ &\dot{Q}' = \frac{\dot{Q}}{L} = \frac{A_v}{L}q = \frac{2\pi r_2L}{L}q_c = 2\pi r_2\bar{h}_c(T_{\infty} - T_2)\\
+ &T_2 =  T_{\infty} - \frac{\dot{Q}'}{2\pi r_2\bar{h}_c}
+\end{align}
+
+Nusseltin luvun avulla saadaan lämmönsiirtokerroin:
+
+\begin{align}
+ &\overline{Nu}_{d_e} = \frac{\bar{h}_cd_e}{k_a}\\
+ &\bar{h}_c = \frac{k_a}{d_e}\overline{Nu}_{d_e}
+\end{align}
+
+Avataan tähän vielä Nusseltin luku annetusta kaavasta:
+
+\begin{align}
+ &\bar{h}_c = \frac{k_a}{d_e}\left(0,36 + 
+  \frac{0,518Ra_{d_e}^{1/4}}{\left(1 + \left(\frac{0,559}{Pr}\right)^{9/16}\right)^{4/9}}\right)\\
+ &\bar{h}_c = \frac{k_a}{d_e}\left(0,36 + 
+  \frac{0,518(Gr_{d_e}Pr)^{1/4}}{\left(1 + \left(\frac{0,559}{Pr}\right)^{9/16}\right)^{4/9}}\right)\\
+ &\bar{h}_c = \frac{k_a}{d_e}\left(0,36 + 
+  \frac{0,518\left(\frac{g\beta(T_2 - T_{\infty})d_e^3}{\nu^2}Pr\right)^{1/4}}
+    {\left(1 + \left(\frac{0,559}{Pr}\right)^{9/16}\right)^{4/9}}\right)
+\end{align}
+
+Grashofin luvusta tuli lämmönsiirtokertoimen kaavaan $T_2$, jota olemme ratkaisemassa. Joudutaan siis iteroimaan.
+Myös ilman aineominaisuudet $k_a$, $Pr$, $\beta$ ja $\nu$ ovat lämpötilariippuvaisia. 
+Iterointi käsittää nyt seuraavan kaavasarjan:
+
+\begin{align}
+ &T_{r,i + 1} = \frac{T_{2,i} + T_{\infty}}{2}\\
+ &\begin{array}{l l l l}
+  k_{a,i+1} = k_a(T_{r, i + 1}) & \beta_{i+1} = \beta(T_{r, i + 1}) \\
+    Pr_{i+1} = Pr(T_{r, i + 1}) & \nu_{i+1} = \nu(T_{r, i + 1})
+  \end{array}\\
+ &\bar{h}_{c, i+1} = \frac{k_{a,i+1}}{d_e}\left(0,36 + 
+  \frac{0,518\left(\frac{g\beta_{i+1}(T_{2, i} - T_{\infty})d_e^3}{\nu_{i+1}^2}Pr_{i+1}\right)^{1/4}}
+    {\left(1 + \left(\frac{0,559}{Pr_{i+1}}\right)^{9/16}\right)^{4/9}}\right)\\
+ &T_{2, i+1} =  T_{\infty} - \frac{\dot{Q}'}{2\pi r_2\bar{h}_{c, i+1}}
+\end{align}
+
+Otetaan alkuarvaukseksi $T_{2,0} = 180\,^{\circ}C$ ja toistetaan ylläolevaa iterointiprosessia kunnes
+$|T_{2, i+1} - T_{2,i}| < 0,1 K$. Iterointi konvergoi arvoon $T_2 \approx 325\,^{\circ}C$.
+
+\begin{equation}
+  T_1 = T_2 - \frac{\ln \frac{r_2}{r_1}}{2\pi k}\dot{Q}' \approx \underline{339\,^{\circ}C}
+\end{equation}
+
+\newpage
+
+\section{Tehtävä 43}
+
+\subsection{a}
+
+\begin{math}
+ \begin{array}{l l l}
+  T_w = 2500 K & \lambda_1 = 0,4\cdot10^{-6}m & \lambda_2 = 0,7\cdot10^{-6}m
+ \end{array}
+\end{math}
+
+\begin{align}
+ &\lambda_1 T_w = 1000 \mu mK\\
+ &\lambda_2 T_w = 1750 \mu mK\\
+ &F_{\lambda_1-\lambda 2} =  F_{0-\lambda 2} - F_{0-\lambda 1}
+  =  F_{0-\lambda}(\lambda_2 T_w) - F_{0-\lambda}(\lambda_1 T_w)\\
+ &F_{\lambda_1-\lambda 2} \approx 0,07 - 0 = 0,07 = \underline{7\%}
+\end{align}
+
+\subsection{b}
+
+\begin{align}
+ &\lambda_{max} T_w = 0,28978\cdot10^{-2}mK\\
+ &\lambda_{max} = \frac{0,28978\cdot10^{-2}mK}{T_w} \approx 1,159\cdot10^{-6}m \approx \underline{1,16\mu m}
+\end{align}
+
+\subsection{c}
+
+\begin{math}
+ \begin{array}{l l l l}
+  D = 0,05 m & L^+ = P = \pi D & \dot{Q} = -60 W & \lambda_1 = 2,7\mu m \\
+  \tau = 
+    \left\{\begin{aligned}
+	    &1, \text{kun} \lambda \leq \lambda_1 \\
+	    &0, \text{kun} \lambda > \lambda_1
+	   \end{aligned}\right. &
+  \varepsilon = 0,92 & g = 9,81 \frac{m}{s^2} &
+ \end{array}
+\end{math}
+
+\begin{align}
+ &F_{0 - \lambda_1} = F_{0-\lambda}(\lambda_2r T_w) \approx 0,8 \\
+ &\dot{Q}_L = F_{\lambda_1 - \infty}\dot{Q} = (F_{0 - \infty} - F_{0 - \lambda_1})\dot{Q} 
+  = (1 - F_{0 - \lambda_1})\dot{Q} \approx -48 W \\
+ &q_L = \frac{\dot{Q}_L}{A_L} = \frac{\dot{Q}_L}{4\pi\left(\frac{D}{2}\right)^2} \approx -1746,2 \frac{W}{m^2} \\
+ &q_L = q_c + q_r = \bar{h}_c(T_{\infty} - T_L) + \varepsilon\sigma(T_{\infty}^4 - T_L^4)
+\end{align}
+
+Saatiin neljännen asteen yhtälö, jossa lisäksi on lämpötilariippuvainen lämmönsiirtokerroin. Kuten 
+tehtävässä 42 opimme, näistä molemmista haasteista selviää iteroimalla. Iteroitavat yhtälöt ovat:
+
+\begin{align}
+ &T_{r,i + 1} = \frac{T_{L,i} + T_{\infty}}{2}\\
+ &\begin{array}{l l l l}
+  k_{i+1} = k(T_{r,i + 1}) & \beta_{i+1} = \beta(T_{r,i + 1}) \\
+    Pr_{i+1} = Pr(T_{r,i + 1}) & \nu_{i+1} = \nu(T_{r,i + 1})
+  \end{array}\\
+ &\bar{h}_{c, i+1} = \frac{k_{i+1}}{L^+}\overline{Nu}_{L^+,i+1} \\
+ &= \frac{k_{i+1}}{\pi D}\left(5,75 + 
+  0,75\left(\frac{\frac{g\beta_{i+1}(T_{L, i} - T_{\infty})(\pi D)^3}{\nu_{i+1}^2}Pr_{i+1}}
+    {\left(1 + \left(\frac{0,49}{Pr_{i+1}}\right)^{9/16}\right)^{16/9}}\right)^{0,252}\right)\\
+ &T_{L, i+1} =  T_{\infty} + \frac{\varepsilon\sigma}{\bar{h}_{c, i+1}}(T_{\infty}^4 - T_L^4) 
+  - \frac{q_L}{\bar{h}_{c, i+1}}
+\end{align}
+
+Olkoon nyt alkuarvaus lasin lämpötilaksi $T_{L, 0} = 80\,^{\circ}C = 353,15 K$ ja iteroinnin lopettamisehto 
+$|T_{L, i + 1} - T_{L, i}| < 0,1 K$. Tulokseksi suppenee
+
+\begin{equation}
+ T_L \approx 112\,^{\circ}C \approx \underline{110\,^{\circ}C}
+\end{equation}
+
+
+\end{document}
